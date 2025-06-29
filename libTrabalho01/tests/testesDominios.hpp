@@ -3,7 +3,7 @@
 
 #include<stdexcept>
 
-#include "dominios.hpp"
+#include "../dominios/dominios.hpp"
 
 using namespace std;
 

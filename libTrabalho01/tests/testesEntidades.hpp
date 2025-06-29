@@ -3,8 +3,8 @@
 
 #include <stdexcept>
 
-#include "dominios.hpp"
-#include "entidades.hpp"
+#include "../dominios/dominios.hpp"
+#include "../entidades/entidades.hpp"
 
 //Teste Unitario entidade: Conta   (Responsavel: Micaele 231021450)
 class TUConta {

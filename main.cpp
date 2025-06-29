@@ -1,10 +1,10 @@
 #include <iostream>
 #include <stdexcept>
 
-#include "dominios.hpp"
-#include "entidades.hpp"
-#include "testesDominios.hpp"
-#include "testesEntidades.hpp"
+#include "libTrabalho01/dominios/dominios.hpp"
+#include "libTrabalho01/entidades/entidades.hpp"
+#include "libTrabalho01/tests/testesDominios.hpp"
+#include "libTrabalho01/tests/testesEntidades.hpp"
 
 using namespace std;
 

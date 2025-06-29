@@ -28,7 +28,7 @@
 #define ENTIDADES_HPP_INCLUDED
 
 //---------------------------------------------------------------------
-#include "dominios.hpp"
+#include "../dominios/dominios.hpp"
 
 using namespace std;
 

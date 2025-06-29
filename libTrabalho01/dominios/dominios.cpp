@@ -133,14 +133,14 @@ bool isBissexto(int ano) {
     return (ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0);
 }
 
-// Valida se ano, mês e dia representa uma data valida
+// Valida se ano, mï¿½s e dia representa uma data valida
 void dataValida(int ano, int mes, int dia) {
-    // Verifica se o ano, mês e dia estao dentro das faixas validas
+    // Verifica se o ano, mï¿½s e dia estao dentro das faixas validas
     if (ano < 1 || mes < 1 || mes > 12 || dia < 1){
             throw invalid_argument("Argumento invalido! Data fora da faixa.");
     }
 
-    // Define a quantidade de dias segundo cada mês
+    // Define a quantidade de dias segundo cada mï¿½s
     int diasMes = 0;
     if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 ||mes == 10 ||mes == 12){
         diasMes = 31;
@@ -158,7 +158,7 @@ void dataValida(int ano, int mes, int dia) {
             }
     }
 
-    // Valida se o dia informado esta dentro da faixa do mês correspondente.
+    // Valida se o dia informado esta dentro da faixa do mï¿½s correspondente.
     if (dia > diasMes){
         throw invalid_argument("Argumento invalido! Data fora da faixa.");
     }
@@ -179,7 +179,7 @@ void Data::validar(const string& valor){
         }
     }
 
-    // Extrai ano, mês e dia a partir da string, assumindo o formato "AAAAMMDD"
+    // Extrai ano, mï¿½s e dia a partir da string, assumindo o formato "AAAAMMDD"
     int ano = stoi(valor.substr(0, 4));
     int mes = stoi(valor.substr(4, 2));
     int dia = stoi(valor.substr(6, 2));
@@ -232,7 +232,7 @@ void Nome::setValor(const string& valor){
 // Implementacao do metodo privado que valida o valor do perfil de investimento, considerando
 // as opcoes validas: "Conservador", "Moderado" ou "Agressivo".
 void TipoPerfil::validar(const string& valor){
-    // Verifica se o valor passado e um dos três perfis validos: "Conservador", "Moderado" ou "Agressivo"
+    // Verifica se o valor passado e um dos trï¿½s perfis validos: "Conservador", "Moderado" ou "Agressivo"
     if (valor != "Conservador" && valor != "Moderado" && valor != "Agressivo"){
             throw invalid_argument("Argumento invalido! Opcoes permitidas: Conservador, Moderado ou Agressivo.");
     }
