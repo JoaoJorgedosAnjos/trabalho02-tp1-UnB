@@ -1,0 +1,93 @@
+\doxysection{Codigo Class Reference}
+\hypertarget{class_codigo}{}\label{class_codigo}\index{Codigo@{Codigo}}
+
+
+Classe que representa uma sequencia numerica unica de identificacao, com exatamente 5 digitos numericos.  
+
+
+
+
+{\ttfamily \#include $<$dominios.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_codigo_a78ccbafec5fe4213788805ca242802a8}{set\+Valor}} (const string \&)
+\begin{DoxyCompactList}\small\item\em Metodo publico que define o valor do codigo apos realizar validacao. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_codigo_ae7dad73e010b3760cbd9310336c19aa2}{get\+Valor}} () const
+\begin{DoxyCompactList}\small\item\em Metodo publico que retorna o valor atual do codigo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que representa uma sequencia numerica unica de identificacao, com exatamente 5 digitos numericos. 
+
+\DoxyHorRuler{0}
+
+
+Esta classe e utilizada para representar um valor unico (codigo) no sistema de investimentos, podendo estar associado a Carteiras de investimento ou Ordens de compra/venda. Ela garante que os valores dos codigos obedecam a um formato estrito\+: exatamente 5 caracteres, todos digitos de 0 a 9.
+
+A classe e usada para armazenar e validar um valor (codigo) representado como uma string, que deve obedecer a regras especificas de formato, garantindo que o valor interno sempre esteja em conformidade com as regras estabelecidas.
+
+Regras de validacao\+:
+\begin{DoxyItemize}
+\item O codigo deve conter exatamente 5 caracteres.
+\item Todos os caracteres devem ser digitos numericos.
+\end{DoxyItemize}
+
+Metodos disponiveis\+:
+\begin{DoxyItemize}
+\item {\ttfamily set\+Valor}\+: Metodo publico que atribui um novo valor ao codigo, apos validacao.
+\item {\ttfamily get\+Valor}\+: Metodo publico que retorna o valor atual armazenado.
+\end{DoxyItemize}
+
+O codigo invalido resultara em uma excecao {\ttfamily std\+::invalid\+\_\+argument}. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_codigo_ae7dad73e010b3760cbd9310336c19aa2}\index{Codigo@{Codigo}!getValor@{getValor}}
+\index{getValor@{getValor}!Codigo@{Codigo}}
+\doxysubsubsection{\texorpdfstring{getValor()}{getValor()}}
+{\footnotesize\ttfamily \label{class_codigo_ae7dad73e010b3760cbd9310336c19aa2} 
+string Codigo\+::get\+Valor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que retorna o valor atual do codigo. 
+
+Implementacao inline do metodo get\+Valor.
+
+\begin{DoxyReturn}{Returns}
+string contendo Valor do codigo armazenado.
+\end{DoxyReturn}
+Retorna o valor atualmente armazenado no objeto.
+
+\begin{DoxyReturn}{Returns}
+Valor do codigo como string. 
+\end{DoxyReturn}
+\Hypertarget{class_codigo_a78ccbafec5fe4213788805ca242802a8}\index{Codigo@{Codigo}!setValor@{setValor}}
+\index{setValor@{setValor}!Codigo@{Codigo}}
+\doxysubsubsection{\texorpdfstring{setValor()}{setValor()}}
+{\footnotesize\ttfamily \label{class_codigo_a78ccbafec5fe4213788805ca242802a8} 
+void Codigo\+::set\+Valor (\begin{DoxyParamCaption}\item[{const string \&}]{valor}{}\end{DoxyParamCaption})}
+
+
+
+Metodo publico que define o valor do codigo apos realizar validacao. 
+
+Utiliza o metodo interno {\ttfamily validar} para garantir que o valor esteja correto antes de armazena-\/lo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em valor} & Valor de codigo a ser atribuido. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & Se o valor for invalido. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{dominios_8hpp}{dominios.\+hpp}}\item 
+\mbox{\hyperlink{dominios_8cpp}{dominios.\+cpp}}\end{DoxyCompactItemize}

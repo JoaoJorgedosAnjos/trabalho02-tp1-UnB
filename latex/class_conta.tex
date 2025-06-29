@@ -1,0 +1,169 @@
+\doxysection{Conta Class Reference}
+\hypertarget{class_conta}{}\label{class_conta}\index{Conta@{Conta}}
+
+
+Classe que representa um conjunto de dados que identifica um usuario no sistema de investimentos financeiros.  
+
+
+
+
+{\ttfamily \#include $<$entidades.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_conta_a43311ce624c7f47b3db12cb8465f517c}{set\+Ncpf}} (\mbox{\hyperlink{class_ncpf}{Ncpf}})
+\begin{DoxyCompactList}\small\item\em Metodo publico que define o CPF da conta. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ncpf}{Ncpf}} \mbox{\hyperlink{class_conta_a59cbf0f353467c48fbc42f15a56a61a0}{get\+Ncpf}} ()
+\begin{DoxyCompactList}\small\item\em Metodo publico que retorna o CPF armazenado na conta. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_conta_a11a93387df644b2320209d427bca097e}{set\+Nome}} (\mbox{\hyperlink{class_nome}{Nome}})
+\begin{DoxyCompactList}\small\item\em Metodo publico que define o nome do titular da conta. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_nome}{Nome}} \mbox{\hyperlink{class_conta_a2470f41f0456370b90e84f51627c15d3}{get\+Nome}} ()
+\begin{DoxyCompactList}\small\item\em Metodo publico que retorna o nome do titular da conta. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_conta_a98a6e1362fe65d2849413a52823e7247}{set\+Senha}} (\mbox{\hyperlink{class_senha}{Senha}})
+\begin{DoxyCompactList}\small\item\em Metodo publico que define a senha da conta. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_senha}{Senha}} \mbox{\hyperlink{class_conta_acc8aa57be6ffe3bbc04a7ab89a08f1bd}{get\+Senha}} ()
+\begin{DoxyCompactList}\small\item\em Metodo publico que retorna a senha armazenada na conta. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que representa um conjunto de dados que identifica um usuario no sistema de investimentos financeiros. 
+
+\DoxyHorRuler{0}
+
+
+A classe {\ttfamily \doxylink{class_conta}{Conta}} e utilizada para armazenar as informacoes essenciais de um usuario autenticado no sistema, permitindo seu acesso, personalizacao e controle de permissoes protegidas por credenciais. Cada conta esta associada a um CPF unico, um nome e uma senha segura.
+
+Esta entidade e fundamental para a gestao de acessos e identificacao dos usuarios no sistema de investimentos. Ela utiliza os dominios previamente definidos para garantir que os valores atribuidos a seus atributos obedecam as regras de negocio.
+
+Atributos\+:
+\begin{DoxyItemize}
+\item {\ttfamily cpf}\+: Numero do CPF do usuario, encapsulado pelo dominio {\ttfamily \doxylink{class_ncpf}{Ncpf}}.
+\item {\ttfamily nome}\+: \doxylink{class_nome}{Nome} completo do usuario, encapsulado pelo dominio {\ttfamily \doxylink{class_nome}{Nome}}.
+\item {\ttfamily senha}\+: \doxylink{class_senha}{Senha} de acesso do usuario, encapsulada pelo dominio {\ttfamily \doxylink{class_senha}{Senha}}.
+\end{DoxyItemize}
+
+Metodos publicos\+:
+\begin{DoxyItemize}
+\item {\ttfamily \doxylink{class_conta_a43311ce624c7f47b3db12cb8465f517c}{set\+Ncpf(\+Ncpf)}}\+: Define o CPF do usuario apos validacao.
+\item {\ttfamily \doxylink{class_conta_a59cbf0f353467c48fbc42f15a56a61a0}{get\+Ncpf()}}\+: Retorna o CPF armazenado.
+\item {\ttfamily \doxylink{class_conta_a11a93387df644b2320209d427bca097e}{set\+Nome(\+Nome)}}\+: Define o nome do usuario apos validacao.
+\item {\ttfamily \doxylink{class_conta_a2470f41f0456370b90e84f51627c15d3}{get\+Nome()}}\+: Retorna o nome armazenado.
+\item {\ttfamily \doxylink{class_conta_a98a6e1362fe65d2849413a52823e7247}{set\+Senha(\+Senha)}}\+: Define a senha do usuario apos validacao.
+\item {\ttfamily \doxylink{class_conta_acc8aa57be6ffe3bbc04a7ab89a08f1bd}{get\+Senha()}}\+: Retorna a senha armazenada. 
+\end{DoxyItemize}
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_conta_a59cbf0f353467c48fbc42f15a56a61a0}\index{Conta@{Conta}!getNcpf@{getNcpf}}
+\index{getNcpf@{getNcpf}!Conta@{Conta}}
+\doxysubsubsection{\texorpdfstring{getNcpf()}{getNcpf()}}
+{\footnotesize\ttfamily \label{class_conta_a59cbf0f353467c48fbc42f15a56a61a0} 
+\mbox{\hyperlink{class_ncpf}{Ncpf}} Conta\+::get\+Ncpf (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que retorna o CPF armazenado na conta. 
+
+Retorna o CPF da conta.
+
+\begin{DoxyReturn}{Returns}
+Objeto {\ttfamily \doxylink{class_ncpf}{Ncpf}} com o CPF do usuario.
+
+Objeto {\ttfamily \doxylink{class_ncpf}{Ncpf}}. 
+\end{DoxyReturn}
+\Hypertarget{class_conta_a2470f41f0456370b90e84f51627c15d3}\index{Conta@{Conta}!getNome@{getNome}}
+\index{getNome@{getNome}!Conta@{Conta}}
+\doxysubsubsection{\texorpdfstring{getNome()}{getNome()}}
+{\footnotesize\ttfamily \label{class_conta_a2470f41f0456370b90e84f51627c15d3} 
+\mbox{\hyperlink{class_nome}{Nome}} Conta\+::get\+Nome (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que retorna o nome do titular da conta. 
+
+Retorna o nome da conta.
+
+\begin{DoxyReturn}{Returns}
+Objeto {\ttfamily \doxylink{class_nome}{Nome}} com o nome do usuario.
+
+Objeto {\ttfamily \doxylink{class_nome}{Nome}}. 
+\end{DoxyReturn}
+\Hypertarget{class_conta_acc8aa57be6ffe3bbc04a7ab89a08f1bd}\index{Conta@{Conta}!getSenha@{getSenha}}
+\index{getSenha@{getSenha}!Conta@{Conta}}
+\doxysubsubsection{\texorpdfstring{getSenha()}{getSenha()}}
+{\footnotesize\ttfamily \label{class_conta_acc8aa57be6ffe3bbc04a7ab89a08f1bd} 
+\mbox{\hyperlink{class_senha}{Senha}} Conta\+::get\+Senha (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que retorna a senha armazenada na conta. 
+
+Retorna a senha da conta.
+
+\begin{DoxyReturn}{Returns}
+Objeto {\ttfamily \doxylink{class_senha}{Senha}} com a senha do usuario.
+
+Objeto {\ttfamily \doxylink{class_senha}{Senha}}. 
+\end{DoxyReturn}
+\Hypertarget{class_conta_a43311ce624c7f47b3db12cb8465f517c}\index{Conta@{Conta}!setNcpf@{setNcpf}}
+\index{setNcpf@{setNcpf}!Conta@{Conta}}
+\doxysubsubsection{\texorpdfstring{setNcpf()}{setNcpf()}}
+{\footnotesize\ttfamily \label{class_conta_a43311ce624c7f47b3db12cb8465f517c} 
+void Conta\+::set\+Ncpf (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ncpf}{Ncpf}}}]{cpf}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que define o CPF da conta. 
+
+Atribui um objeto {\ttfamily \doxylink{class_ncpf}{Ncpf}} ao atributo {\ttfamily cpf}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & Objeto {\ttfamily \doxylink{class_ncpf}{Ncpf}} contendo o CPF a ser atribuido.\\
+\hline
+{\em cpf} & Objeto do dominio {\ttfamily \doxylink{class_ncpf}{Ncpf}}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_conta_a11a93387df644b2320209d427bca097e}\index{Conta@{Conta}!setNome@{setNome}}
+\index{setNome@{setNome}!Conta@{Conta}}
+\doxysubsubsection{\texorpdfstring{setNome()}{setNome()}}
+{\footnotesize\ttfamily \label{class_conta_a11a93387df644b2320209d427bca097e} 
+void Conta\+::set\+Nome (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_nome}{Nome}}}]{nome}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que define o nome do titular da conta. 
+
+Atribui um objeto {\ttfamily \doxylink{class_nome}{Nome}} ao atributo {\ttfamily nome}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome} & Objeto {\ttfamily \doxylink{class_nome}{Nome}} contendo o nome a ser atribuido.\\
+\hline
+{\em nome} & Objeto do dominio {\ttfamily \doxylink{class_nome}{Nome}}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_conta_a98a6e1362fe65d2849413a52823e7247}\index{Conta@{Conta}!setSenha@{setSenha}}
+\index{setSenha@{setSenha}!Conta@{Conta}}
+\doxysubsubsection{\texorpdfstring{setSenha()}{setSenha()}}
+{\footnotesize\ttfamily \label{class_conta_a98a6e1362fe65d2849413a52823e7247} 
+void Conta\+::set\+Senha (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_senha}{Senha}}}]{senha}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que define a senha da conta. 
+
+Atribui um objeto {\ttfamily \doxylink{class_senha}{Senha}} ao atributo {\ttfamily senha}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em senha} & Objeto {\ttfamily \doxylink{class_senha}{Senha}} contendo a senha a ser atribuida.\\
+\hline
+{\em senha} & Objeto do dominio {\ttfamily \doxylink{class_senha}{Senha}}. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{entidades_8hpp}{entidades.\+hpp}}\end{DoxyCompactItemize}

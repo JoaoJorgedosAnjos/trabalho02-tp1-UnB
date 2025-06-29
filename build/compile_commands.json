@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/build",
+  "command": "/usr/bin/g++ -g -Wall -Wextra -std=gnu++17 -o CMakeFiles/T2_TP1_241004686.dir/main.cpp.o -c \"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/main.cpp\"",
+  "file": "/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/main.cpp"
+},
+{
+  "directory": "/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/build",
+  "command": "/usr/bin/g++ -g -Wall -Wextra -std=gnu++17 -o CMakeFiles/T2_TP1_241004686.dir/dominios.cpp.o -c \"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/dominios.cpp\"",
+  "file": "/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/dominios.cpp"
+},
+{
+  "directory": "/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/build",
+  "command": "/usr/bin/g++ -g -Wall -Wextra -std=gnu++17 -o CMakeFiles/T2_TP1_241004686.dir/entidades.cpp.o -c \"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/entidades.cpp\"",
+  "file": "/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/entidades.cpp"
+},
+{
+  "directory": "/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/build",
+  "command": "/usr/bin/g++ -g -Wall -Wextra -std=gnu++17 -o CMakeFiles/T2_TP1_241004686.dir/testesDominios.cpp.o -c \"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/testesDominios.cpp\"",
+  "file": "/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/testesDominios.cpp"
+},
+{
+  "directory": "/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/build",
+  "command": "/usr/bin/g++ -g -Wall -Wextra -std=gnu++17 -o CMakeFiles/T2_TP1_241004686.dir/testesEntidades.cpp.o -c \"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/testesEntidades.cpp\"",
+  "file": "/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/testesEntidades.cpp"
+}
+]

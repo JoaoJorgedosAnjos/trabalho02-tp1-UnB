@@ -1,0 +1,50 @@
+\doxysection{dominios.\+hpp File Reference}
+\hypertarget{dominios_8hpp}{}\label{dominios_8hpp}\index{dominios.hpp@{dominios.hpp}}
+
+
+Biblioteca de dominios do sistema de investimentos financeiros.  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$regex$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_codigo}{Codigo}}
+\begin{DoxyCompactList}\small\item\em Classe que representa uma sequencia numerica unica de identificacao, com exatamente 5 digitos numericos. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_codigo_neg}{Codigo\+Neg}}
+\begin{DoxyCompactList}\small\item\em Classe que representa uma sequencia unica de identificacao, com exatamente 12 caracteres alfanumericos ou espacos. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_ncpf}{Ncpf}}
+\begin{DoxyCompactList}\small\item\em Classe que representa uma sequencia unica de identificacao, com exatamente 14 caracteres no formato XXX.\+XXX.\+XXX-\/XX. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_data}{Data}}
+\begin{DoxyCompactList}\small\item\em Classe que representa uma abstracao de tempo por meio de uma sequencia de 8 digitos numericos no formato AAAAMMDD. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_nome}{Nome}}
+\begin{DoxyCompactList}\small\item\em Classe que representa a identificacao textual de uma pessoa, objeto ou entidade. Pode ser composta por um ou mais componentes, com ate 20 caracteres alfanumericos e espacos. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_tipo_perfil}{Tipo\+Perfil}}
+\begin{DoxyCompactList}\small\item\em Classe que representa o tipo de investidor de um usuario. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_dinheiro}{Dinheiro}}
+\begin{DoxyCompactList}\small\item\em Classe que representa um valor monetario ou recurso financeiro aplicado, resgatado e movimentado pelos usuarios, em formato textual. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_quantidade}{Quantidade}}
+\begin{DoxyCompactList}\small\item\em Classe que representa o numero inteiro de unidades de um ativo financeiro, adquiridas, utilizadas ou mantidas por um investidor em transacoes financeiras. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_senha}{Senha}}
+\begin{DoxyCompactList}\small\item\em Classe que representa um conjunto de caracteres usado para autenticar a identidade de um usuario no sistema de investimentos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Biblioteca de dominios do sistema de investimentos financeiros. 
+
+Este arquivo define os tipos fundamentais utilizados como base para validacao e representacao de valores primitivos com regras de negocio especificas no sistema de investimentos.
+
+Cada dominio encapsula um tipo basico (como string) com regras de validacao proprias, garantindo a integridade e a consistencia dos dados desde sua criacao ate o uso nas entidades do sistema.
+
+Os dominios foram projetados para validar automaticamente os valores atribuidos a eles, evitando inconsistencias e entradas invalidas no sistema. Exemplos incluem CPF, nome, senha, codigo de ativos, datas, quantidades, valores monetarios e tipos de perfil.
+
+Estes tipos sao amplamente utilizados nas entidades do sistema, como \doxylink{class_conta}{Conta}, \doxylink{class_carteira}{Carteira} e \doxylink{class_ordem}{Ordem}, promovendo reutilizacao e seguranca de dados nas operacoes financeiras.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{entidades_8hpp}{entidades.\+hpp} 
+\end{DoxySeeAlso}

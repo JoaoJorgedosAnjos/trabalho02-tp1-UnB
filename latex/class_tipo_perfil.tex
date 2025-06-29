@@ -1,0 +1,96 @@
+\doxysection{Tipo\+Perfil Class Reference}
+\hypertarget{class_tipo_perfil}{}\label{class_tipo_perfil}\index{TipoPerfil@{TipoPerfil}}
+
+
+Classe que representa o tipo de investidor de um usuario.  
+
+
+
+
+{\ttfamily \#include $<$dominios.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_tipo_perfil_a72f41116df46b3fddde4db053462afb9}{set\+Valor}} (const string \&)
+\begin{DoxyCompactList}\small\item\em Metodo publico que define o valor do perfil apos validacao. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_tipo_perfil_ac79328b56862a2e7fc9dc51e1cc18d5e}{get\+Valor}} () const
+\begin{DoxyCompactList}\small\item\em Metodo publico que retorna o perfil armazenado. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que representa o tipo de investidor de um usuario. 
+
+\DoxyHorRuler{0}
+
+
+Esta classe e utilizada no sistema de investimentos para indicar o perfil do investidor de um usuario, levando em conta sua disposicao para correr riscos, objetivos financeiros e tempo que pretende deixar o dinheiro investido. Ela permite que recomendacoes e decisoes financeiras sejam personalizadas conforme o grau de tolerancia a riscos e preferencias pessoais.
+
+O perfil do investidor pode ser classificado em uma das seguintes categorias\+:
+\begin{DoxyItemize}
+\item "{}\+Conservador"{}
+\item "{}\+Moderado"{}
+\item "{}\+Agressivo"{}
+\end{DoxyItemize}
+
+A classe {\ttfamily \doxylink{class_tipo_perfil}{Tipo\+Perfil}} e responsavel por armazenar e validar o valor do perfil atribuido ao investidor, garantindo que ele esteja entre as opcoes validas predefinidas pelo sistema.
+
+Regras de validacao\+:
+\begin{DoxyItemize}
+\item O valor deve ser exatamente uma das tres strings\+: "{}\+Conservador"{}, "{}\+Moderado"{} ou "{}\+Agressivo"{}.
+\end{DoxyItemize}
+
+Metodos disponiveis\+:
+\begin{DoxyItemize}
+\item {\ttfamily set\+Valor}\+: Metodo publico que define o perfil apos validar.
+\item {\ttfamily get\+Valor}\+: Metodo publico que retorna o perfil atualmente armazenado.
+\end{DoxyItemize}
+
+Em caso de valor invalido, lanca {\ttfamily std\+::invalid\+\_\+argument}. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_tipo_perfil_ac79328b56862a2e7fc9dc51e1cc18d5e}\index{TipoPerfil@{TipoPerfil}!getValor@{getValor}}
+\index{getValor@{getValor}!TipoPerfil@{TipoPerfil}}
+\doxysubsubsection{\texorpdfstring{getValor()}{getValor()}}
+{\footnotesize\ttfamily \label{class_tipo_perfil_ac79328b56862a2e7fc9dc51e1cc18d5e} 
+string Tipo\+Perfil\+::get\+Valor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que retorna o perfil armazenado. 
+
+Implementacao inline do metodo que retorna o valor do perfil de investimento.
+
+\begin{DoxyReturn}{Returns}
+std\+::string Valor do perfil de investimento atual.
+
+std\+::string Valor atual do perfil ("{}\+Conservador"{}, "{}\+Moderado"{} ou "{}\+Agressivo"{}). 
+\end{DoxyReturn}
+\Hypertarget{class_tipo_perfil_a72f41116df46b3fddde4db053462afb9}\index{TipoPerfil@{TipoPerfil}!setValor@{setValor}}
+\index{setValor@{setValor}!TipoPerfil@{TipoPerfil}}
+\doxysubsubsection{\texorpdfstring{setValor()}{setValor()}}
+{\footnotesize\ttfamily \label{class_tipo_perfil_a72f41116df46b3fddde4db053462afb9} 
+void Tipo\+Perfil\+::set\+Valor (\begin{DoxyParamCaption}\item[{const string \&}]{valor}{}\end{DoxyParamCaption})}
+
+
+
+Metodo publico que define o valor do perfil apos validacao. 
+
+Utiliza o metodo {\ttfamily validar()} para assegurar que o valor esta dentro das opcoes permitidas. O valor e armazenado somente se a validacao for bem-\/sucedida.
+
+
+\begin{DoxyParams}{Parameters}
+{\em valor} & String contendo o perfil a ser atribuido. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & Se o valor for invalido. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{dominios_8hpp}{dominios.\+hpp}}\item 
+\mbox{\hyperlink{dominios_8cpp}{dominios.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,38 @@
+\doxysection{entidades.\+hpp File Reference}
+\hypertarget{entidades_8hpp}{}\label{entidades_8hpp}\index{entidades.hpp@{entidades.hpp}}
+
+
+Biblioteca de entidades do sistema de investimentos financeiros.  
+
+
+{\ttfamily \#include "{}dominios.\+hpp"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_conta}{Conta}}
+\begin{DoxyCompactList}\small\item\em Classe que representa um conjunto de dados que identifica um usuario no sistema de investimentos financeiros. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_carteira}{Carteira}}
+\begin{DoxyCompactList}\small\item\em Classe que representa a estrutura ou composicao dos diferentes ativos de investimentos (como acoes, titulos publicos, fundos, imoveis, etc.) pertencentes a um investidor no sistema. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_ordem}{Ordem}}
+\begin{DoxyCompactList}\small\item\em Classe que representa uma instrucao formal enviada por um investidor (ou sistema automatizado) para comprar ou vender ativos financeiros (como acoes, fundos, titulos ou criptomoedas) ma plataforma de negociacao. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Biblioteca de entidades do sistema de investimentos financeiros. 
+
+Este arquivo contem a definicao das entidades principais utilizadas na modelagem do sistema, que representam os objetos de negocio como \doxylink{class_conta}{Conta}, \doxylink{class_carteira}{Carteira} e \doxylink{class_ordem}{Ordem}.
+
+As entidades encapsulam dominios especificos que garantem a integridade dos dados atraves de regras de validacao rigorosas. Sao responsaveis por organizar e manter os dados estruturados no sistema, atuando como elo entre a camada de dominio e as funcionalidades da aplicacao.
+
+Cada entidade e formada por atributos privados representados por dominios, e metodos publicos de acesso (getters e setters). As validacoes sao garantidas pela definicao de cada dominio, promovendo seguranca e padronizacao.
+
+Entidades disponiveis\+:
+\begin{DoxyItemize}
+\item \doxylink{class_conta}{Conta}
+\item \doxylink{class_carteira}{Carteira}
+\item \doxylink{class_ordem}{Ordem}
+\end{DoxyItemize}
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{dominios_8hpp}{dominios.\+hpp} 
+\end{DoxySeeAlso}

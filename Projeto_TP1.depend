@@ -1,0 +1,86 @@
+# depslib dependency file v1.0
+1747593452 source:c:\users\ingkb\arquivosc\projeto_tp1\main.cpp
+	<iostream>
+	<stdexcept>
+	"dominios.hpp"
+	"entidades.hpp"
+	"testesDominios.hpp"
+	"testesEntidades.hpp"
+
+1747594365 c:\users\ingkb\arquivosc\projeto_tp1\dominios.hpp
+	<string>
+	<iostream>
+	<regex>
+	<stdexcept>
+	<iomanip>
+	<set>
+
+1747576800 source:c:\users\ingkb\arquivosc\projeto_tp1\dominios.cpp
+	"dominios.hpp"
+
+1747594363 c:\users\ingkb\arquivosc\projeto_tp1\entidades.hpp
+	"dominios.hpp"
+
+1747583576 source:c:\users\ingkb\arquivosc\projeto_tp1\entidades.cpp
+
+1747090658 c:\users\ingkb\arquivosc\projeto_tp1\testes.hpp
+	<stdexcept>
+	"dominios.hpp"
+
+1747090877 source:c:\users\ingkb\arquivosc\projeto_tp1\testes.cpp
+	"testes.hpp"
+
+1747314042 source:c:\users\ingkb\arquivosc\projeto_tp1\testesentidades.cpp
+	"testesEntidades.hpp"
+
+1747593455 c:\users\ingkb\arquivosc\projeto_tp1\testesdominios.hpp
+	<stdexcept>
+	"dominios.hpp"
+
+1747593454 source:c:\users\ingkb\arquivosc\projeto_tp1\testesdominios.cpp
+	"testesDominios.hpp"
+
+1747593453 c:\users\ingkb\arquivosc\projeto_tp1\testesentidades.hpp
+	<stdexcept>
+	"dominios.hpp"
+	"entidades.hpp"
+
+1747594364 source:c:\users\ingkb\arquivosc\t1 - tp1 - 241022460  - 241004686 - 231006140 -  231021431 - 231021450\dominios.cpp
+	"dominios.hpp"
+
+1747595238 c:\users\ingkb\arquivosc\t1 - tp1 - 241022460  - 241004686 - 231006140 -  231021431 - 231021450\dominios.hpp
+	<string>
+	<iostream>
+	<regex>
+	<stdexcept>
+	<iomanip>
+	<set>
+
+1747583576 source:c:\users\ingkb\arquivosc\t1 - tp1 - 241022460  - 241004686 - 231006140 -  231021431 - 231021450\entidades.cpp
+
+1747593452 source:c:\users\ingkb\arquivosc\t1 - tp1 - 241022460  - 241004686 - 231006140 -  231021431 - 231021450\main.cpp
+	<iostream>
+	<stdexcept>
+	"dominios.hpp"
+	"entidades.hpp"
+	"testesDominios.hpp"
+	"testesEntidades.hpp"
+
+1747595238 c:\users\ingkb\arquivosc\t1 - tp1 - 241022460  - 241004686 - 231006140 -  231021431 - 231021450\entidades.hpp
+	"dominios.hpp"
+
+1747593455 c:\users\ingkb\arquivosc\t1 - tp1 - 241022460  - 241004686 - 231006140 -  231021431 - 231021450\testesdominios.hpp
+	<stdexcept>
+	"dominios.hpp"
+
+1747593453 c:\users\ingkb\arquivosc\t1 - tp1 - 241022460  - 241004686 - 231006140 -  231021431 - 231021450\testesentidades.hpp
+	<stdexcept>
+	"dominios.hpp"
+	"entidades.hpp"
+
+1747593454 source:c:\users\ingkb\arquivosc\t1 - tp1 - 241022460  - 241004686 - 231006140 -  231021431 - 231021450\testesdominios.cpp
+	"testesDominios.hpp"
+
+1747314042 source:c:\users\ingkb\arquivosc\t1 - tp1 - 241022460  - 241004686 - 231006140 -  231021431 - 231021450\testesentidades.cpp
+	"testesEntidades.hpp"
+

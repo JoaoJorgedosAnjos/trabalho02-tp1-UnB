@@ -1,0 +1,97 @@
+\doxysection{Dinheiro Class Reference}
+\hypertarget{class_dinheiro}{}\label{class_dinheiro}\index{Dinheiro@{Dinheiro}}
+
+
+Classe que representa um valor monetario ou recurso financeiro aplicado, resgatado e movimentado pelos usuarios, em formato textual.  
+
+
+
+
+{\ttfamily \#include $<$dominios.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_dinheiro_ac36b4ac822369ed80d9accd612c06a6c}{set\+Valor}} (const string \&)
+\begin{DoxyCompactList}\small\item\em Metodo publico que define o valor monetario apos validacao. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_dinheiro_a8bdf6f6ddd5287d4c170cd15f067becd}{get\+Valor}} () const
+\begin{DoxyCompactList}\small\item\em Metodo publico que retorna o valor monetario armazenado. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que representa um valor monetario ou recurso financeiro aplicado, resgatado e movimentado pelos usuarios, em formato textual. 
+
+\DoxyHorRuler{0}
+
+
+Esta classe e utilizada no sistema de investimentos para armazenar valores que o investidor aplica em produtos financeiros, como acoes, titulos, fundos ou poupanca, representados no formato brasileiro com separadores de milhar e virgula como separador decimal. Ela garante que os valores informados estejam no formato correto e dentro do intervalo permitido para operacoes financeiras no sistema.
+
+O valor deve estar no seguinte formato\+: {\ttfamily \#.\#\#\#.\#\#\#,\#\#}, contendo\+:
+\begin{DoxyItemize}
+\item Separadores de milhar com pontos ({\ttfamily .})
+\item Duas casas decimais separadas por virgula ({\ttfamily ,}), obrigatoriamente
+\end{DoxyItemize}
+
+A classe {\ttfamily \doxylink{class_dinheiro}{Dinheiro}} e responsavel por armazenar uma string que representa um valor monetario valido, realizando a validacao do formato e convertendo internamente para numero real para verificar se esta dentro dos limites estabelecidos.
+
+Regras de validacao\+:
+\begin{DoxyItemize}
+\item O valor deve estar no formato\+: {\ttfamily \#.\#\#\#.\#\#\#,\#\#}
+\item Deve estar no intervalo entre 0,01 e 1.\+000.\+000,00 inclusive
+\item Aceita ate 6 digitos antes da virgula e 2 apos
+\end{DoxyItemize}
+
+Metodos disponiveis\+:
+\begin{DoxyItemize}
+\item {\ttfamily set\+Valor}\+: Metodo publico que define o valor monetario apos validacao.
+\item {\ttfamily get\+Valor}\+: Metodo publico que retorna o valor monetario armazenado como string.
+\end{DoxyItemize}
+
+Em caso de valor invalido, lanca {\ttfamily std\+::invalid\+\_\+argument}. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_dinheiro_a8bdf6f6ddd5287d4c170cd15f067becd}\index{Dinheiro@{Dinheiro}!getValor@{getValor}}
+\index{getValor@{getValor}!Dinheiro@{Dinheiro}}
+\doxysubsubsection{\texorpdfstring{getValor()}{getValor()}}
+{\footnotesize\ttfamily \label{class_dinheiro_a8bdf6f6ddd5287d4c170cd15f067becd} 
+string Dinheiro\+::get\+Valor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que retorna o valor monetario armazenado. 
+
+Implementacao inline do metodo que retorna o valor monetario.
+
+\begin{DoxyReturn}{Returns}
+std\+::string Valor no formato {\ttfamily \#.\#\#\#.\#\#\#,\#\#}.
+
+std\+::string Valor armazenado no formato {\ttfamily \#.\#\#\#.\#\#\#,\#\#}. 
+\end{DoxyReturn}
+\Hypertarget{class_dinheiro_ac36b4ac822369ed80d9accd612c06a6c}\index{Dinheiro@{Dinheiro}!setValor@{setValor}}
+\index{setValor@{setValor}!Dinheiro@{Dinheiro}}
+\doxysubsubsection{\texorpdfstring{setValor()}{setValor()}}
+{\footnotesize\ttfamily \label{class_dinheiro_ac36b4ac822369ed80d9accd612c06a6c} 
+void Dinheiro\+::set\+Valor (\begin{DoxyParamCaption}\item[{const string \&}]{valor}{}\end{DoxyParamCaption})}
+
+
+
+Metodo publico que define o valor monetario apos validacao. 
+
+Utiliza o metodo {\ttfamily validar()} para garantir que o valor esteja corretamente formatado e dentro do intervalo permitido. O valor e armazenado apenas se a validacao for bem-\/sucedida.
+
+
+\begin{DoxyParams}{Parameters}
+{\em valor} & String com o valor a ser atribuido, no formato {\ttfamily \#.\#\#\#.\#\#\#,\#\#}. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & Se o valor for invalido. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{dominios_8hpp}{dominios.\+hpp}}\item 
+\mbox{\hyperlink{dominios_8cpp}{dominios.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,90 @@
+\doxysection{Codigo\+Neg Class Reference}
+\hypertarget{class_codigo_neg}{}\label{class_codigo_neg}\index{CodigoNeg@{CodigoNeg}}
+
+
+Classe que representa uma sequencia unica de identificacao, com exatamente 12 caracteres alfanumericos ou espacos.  
+
+
+
+
+{\ttfamily \#include $<$dominios.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_codigo_neg_aa335bc62927b70983485add1adf85b13}{set\+Valor}} (const string \&)
+\begin{DoxyCompactList}\small\item\em Metodo publico que atribui um valor ao codigo de negociacao, apos validacao. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_codigo_neg_abc939134be078ca5c01b79402672f061}{get\+Valor}} () const
+\begin{DoxyCompactList}\small\item\em Metodo publico que retorna o valor atual do codigo de negociacao. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que representa uma sequencia unica de identificacao, com exatamente 12 caracteres alfanumericos ou espacos. 
+
+\DoxyHorRuler{0}
+
+
+Esta classe e utilizada para representar um valor unico (codigo de negociacao) no sistema de investimentos, podendo estar associado a Ordens de compra/venda. Ela garante que os valores dos codigos de negociacao obedecam a um formato estrito\+: exatamente 12 caracteres, podendo conter letras, numeros e espacos.
+
+A classe e usada para armazenar e validar um valor (codigo de negociacao) representado como uma string, que deve obedecer a regras especificas de formato, garantindo que o valor interno sempre esteja em conformidade com as regras estabelecidas.
+
+Regras de validacao\+:
+\begin{DoxyItemize}
+\item O codigo deve conter exatamente 12 caracteres.
+\item Os caracteres devem ser alfanumericos (letras e/ou numeros) ou espacos em branco.
+\end{DoxyItemize}
+
+Metodos disponiveis\+:
+\begin{DoxyItemize}
+\item {\ttfamily set\+Valor}\+: Metodo publico que atribui um novo valor ao codigo de negociacao, apos validacao.
+\item {\ttfamily get\+Valor}\+: Metodo publico que retorna o valor atual armazenado.
+\end{DoxyItemize}
+
+Codigos invalidos resultam em uma excecao {\ttfamily std\+::invalid\+\_\+argument}. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_codigo_neg_abc939134be078ca5c01b79402672f061}\index{CodigoNeg@{CodigoNeg}!getValor@{getValor}}
+\index{getValor@{getValor}!CodigoNeg@{CodigoNeg}}
+\doxysubsubsection{\texorpdfstring{getValor()}{getValor()}}
+{\footnotesize\ttfamily \label{class_codigo_neg_abc939134be078ca5c01b79402672f061} 
+string Codigo\+Neg\+::get\+Valor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que retorna o valor atual do codigo de negociacao. 
+
+Implementacao inline do metodo que recupera o valor do codigo de negociacao.
+
+\begin{DoxyReturn}{Returns}
+string contendo o codigo de negociacao armazenado.
+
+string com o valor atual do codigo de negociacao. 
+\end{DoxyReturn}
+\Hypertarget{class_codigo_neg_aa335bc62927b70983485add1adf85b13}\index{CodigoNeg@{CodigoNeg}!setValor@{setValor}}
+\index{setValor@{setValor}!CodigoNeg@{CodigoNeg}}
+\doxysubsubsection{\texorpdfstring{setValor()}{setValor()}}
+{\footnotesize\ttfamily \label{class_codigo_neg_aa335bc62927b70983485add1adf85b13} 
+void Codigo\+Neg\+::set\+Valor (\begin{DoxyParamCaption}\item[{const string \&}]{valor}{}\end{DoxyParamCaption})}
+
+
+
+Metodo publico que atribui um valor ao codigo de negociacao, apos validacao. 
+
+Utiliza o metodo {\ttfamily validar()} para verificar se o valor atende aos criterios definidos.
+
+
+\begin{DoxyParams}{Parameters}
+{\em valor} & Valor de codigo de negociacao a ser atribuido. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & Se o valor nao for valido. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{dominios_8hpp}{dominios.\+hpp}}\item 
+\mbox{\hyperlink{dominios_8cpp}{dominios.\+cpp}}\end{DoxyCompactItemize}
