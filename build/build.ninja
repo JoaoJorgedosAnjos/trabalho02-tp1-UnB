@@ -49,35 +49,54 @@ cmake_ninja_workdir = /home/joaojorge/Documents/UnB/03_semestre/tp1/T2$ -$ TP1$ 
 
 build cmake_object_order_depends_target_T2_TP1_241004686: phony || CMakeFiles/T2_TP1_241004686.dir
 
-build CMakeFiles/T2_TP1_241004686.dir/main.cpp.o: CXX_COMPILER__T2_TP1_241004686_Debug /home/joaojorge/Documents/UnB/03_semestre/tp1/T2$ -$ TP1$ -$ 241004686/main.cpp || cmake_object_order_depends_target_T2_TP1_241004686
-  DEP_FILE = CMakeFiles/T2_TP1_241004686.dir/main.cpp.o.d
-  FLAGS = -g -Wall -Wextra -std=gnu++17
+build CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.o: CXX_COMPILER__T2_TP1_241004686_Debug /home/joaojorge/Documents/UnB/03_semestre/tp1/T2$ -$ TP1$ -$ 241004686/src/controladoras/controladorasApresentacao.cpp || cmake_object_order_depends_target_T2_TP1_241004686
+  DEP_FILE = CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.o.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/dominios" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/entidades" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/interfaces" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/controladoras"
   OBJECT_DIR = CMakeFiles/T2_TP1_241004686.dir
-  OBJECT_FILE_DIR = CMakeFiles/T2_TP1_241004686.dir
+  OBJECT_FILE_DIR = CMakeFiles/T2_TP1_241004686.dir/src/controladoras
 
-build CMakeFiles/T2_TP1_241004686.dir/dominios.cpp.o: CXX_COMPILER__T2_TP1_241004686_Debug /home/joaojorge/Documents/UnB/03_semestre/tp1/T2$ -$ TP1$ -$ 241004686/dominios.cpp || cmake_object_order_depends_target_T2_TP1_241004686
-  DEP_FILE = CMakeFiles/T2_TP1_241004686.dir/dominios.cpp.o.d
-  FLAGS = -g -Wall -Wextra -std=gnu++17
+build CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.o: CXX_COMPILER__T2_TP1_241004686_Debug /home/joaojorge/Documents/UnB/03_semestre/tp1/T2$ -$ TP1$ -$ 241004686/src/controladoras/controladorasServico.cpp || cmake_object_order_depends_target_T2_TP1_241004686
+  DEP_FILE = CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.o.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/dominios" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/entidades" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/interfaces" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/controladoras"
   OBJECT_DIR = CMakeFiles/T2_TP1_241004686.dir
-  OBJECT_FILE_DIR = CMakeFiles/T2_TP1_241004686.dir
+  OBJECT_FILE_DIR = CMakeFiles/T2_TP1_241004686.dir/src/controladoras
 
-build CMakeFiles/T2_TP1_241004686.dir/entidades.cpp.o: CXX_COMPILER__T2_TP1_241004686_Debug /home/joaojorge/Documents/UnB/03_semestre/tp1/T2$ -$ TP1$ -$ 241004686/entidades.cpp || cmake_object_order_depends_target_T2_TP1_241004686
-  DEP_FILE = CMakeFiles/T2_TP1_241004686.dir/entidades.cpp.o.d
-  FLAGS = -g -Wall -Wextra -std=gnu++17
+build CMakeFiles/T2_TP1_241004686.dir/src/dominios/dominios.cpp.o: CXX_COMPILER__T2_TP1_241004686_Debug /home/joaojorge/Documents/UnB/03_semestre/tp1/T2$ -$ TP1$ -$ 241004686/src/dominios/dominios.cpp || cmake_object_order_depends_target_T2_TP1_241004686
+  DEP_FILE = CMakeFiles/T2_TP1_241004686.dir/src/dominios/dominios.cpp.o.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/dominios" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/entidades" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/interfaces" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/controladoras"
   OBJECT_DIR = CMakeFiles/T2_TP1_241004686.dir
-  OBJECT_FILE_DIR = CMakeFiles/T2_TP1_241004686.dir
+  OBJECT_FILE_DIR = CMakeFiles/T2_TP1_241004686.dir/src/dominios
 
-build CMakeFiles/T2_TP1_241004686.dir/testesDominios.cpp.o: CXX_COMPILER__T2_TP1_241004686_Debug /home/joaojorge/Documents/UnB/03_semestre/tp1/T2$ -$ TP1$ -$ 241004686/testesDominios.cpp || cmake_object_order_depends_target_T2_TP1_241004686
-  DEP_FILE = CMakeFiles/T2_TP1_241004686.dir/testesDominios.cpp.o.d
-  FLAGS = -g -Wall -Wextra -std=gnu++17
+build CMakeFiles/T2_TP1_241004686.dir/src/entidades/entidades.cpp.o: CXX_COMPILER__T2_TP1_241004686_Debug /home/joaojorge/Documents/UnB/03_semestre/tp1/T2$ -$ TP1$ -$ 241004686/src/entidades/entidades.cpp || cmake_object_order_depends_target_T2_TP1_241004686
+  DEP_FILE = CMakeFiles/T2_TP1_241004686.dir/src/entidades/entidades.cpp.o.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/dominios" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/entidades" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/interfaces" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/controladoras"
   OBJECT_DIR = CMakeFiles/T2_TP1_241004686.dir
-  OBJECT_FILE_DIR = CMakeFiles/T2_TP1_241004686.dir
+  OBJECT_FILE_DIR = CMakeFiles/T2_TP1_241004686.dir/src/entidades
 
-build CMakeFiles/T2_TP1_241004686.dir/testesEntidades.cpp.o: CXX_COMPILER__T2_TP1_241004686_Debug /home/joaojorge/Documents/UnB/03_semestre/tp1/T2$ -$ TP1$ -$ 241004686/testesEntidades.cpp || cmake_object_order_depends_target_T2_TP1_241004686
-  DEP_FILE = CMakeFiles/T2_TP1_241004686.dir/testesEntidades.cpp.o.d
-  FLAGS = -g -Wall -Wextra -std=gnu++17
+build CMakeFiles/T2_TP1_241004686.dir/src/main.cpp.o: CXX_COMPILER__T2_TP1_241004686_Debug /home/joaojorge/Documents/UnB/03_semestre/tp1/T2$ -$ TP1$ -$ 241004686/src/main.cpp || cmake_object_order_depends_target_T2_TP1_241004686
+  DEP_FILE = CMakeFiles/T2_TP1_241004686.dir/src/main.cpp.o.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/dominios" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/entidades" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/interfaces" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/controladoras"
   OBJECT_DIR = CMakeFiles/T2_TP1_241004686.dir
-  OBJECT_FILE_DIR = CMakeFiles/T2_TP1_241004686.dir
+  OBJECT_FILE_DIR = CMakeFiles/T2_TP1_241004686.dir/src
+
+build CMakeFiles/T2_TP1_241004686.dir/src/tests/testesDominios.cpp.o: CXX_COMPILER__T2_TP1_241004686_Debug /home/joaojorge/Documents/UnB/03_semestre/tp1/T2$ -$ TP1$ -$ 241004686/src/tests/testesDominios.cpp || cmake_object_order_depends_target_T2_TP1_241004686
+  DEP_FILE = CMakeFiles/T2_TP1_241004686.dir/src/tests/testesDominios.cpp.o.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/dominios" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/entidades" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/interfaces" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/controladoras"
+  OBJECT_DIR = CMakeFiles/T2_TP1_241004686.dir
+  OBJECT_FILE_DIR = CMakeFiles/T2_TP1_241004686.dir/src/tests
+
+build CMakeFiles/T2_TP1_241004686.dir/src/tests/testesEntidades.cpp.o: CXX_COMPILER__T2_TP1_241004686_Debug /home/joaojorge/Documents/UnB/03_semestre/tp1/T2$ -$ TP1$ -$ 241004686/src/tests/testesEntidades.cpp || cmake_object_order_depends_target_T2_TP1_241004686
+  DEP_FILE = CMakeFiles/T2_TP1_241004686.dir/src/tests/testesEntidades.cpp.o.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/dominios" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/entidades" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/interfaces" -I"/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/controladoras"
+  OBJECT_DIR = CMakeFiles/T2_TP1_241004686.dir
+  OBJECT_FILE_DIR = CMakeFiles/T2_TP1_241004686.dir/src/tests
 
 
 # =============================================================================
@@ -87,7 +106,7 @@ build CMakeFiles/T2_TP1_241004686.dir/testesEntidades.cpp.o: CXX_COMPILER__T2_TP
 #############################################
 # Link the executable T2_TP1_241004686
 
-build T2_TP1_241004686: CXX_EXECUTABLE_LINKER__T2_TP1_241004686_Debug CMakeFiles/T2_TP1_241004686.dir/main.cpp.o CMakeFiles/T2_TP1_241004686.dir/dominios.cpp.o CMakeFiles/T2_TP1_241004686.dir/entidades.cpp.o CMakeFiles/T2_TP1_241004686.dir/testesDominios.cpp.o CMakeFiles/T2_TP1_241004686.dir/testesEntidades.cpp.o
+build T2_TP1_241004686: CXX_EXECUTABLE_LINKER__T2_TP1_241004686_Debug CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.o CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.o CMakeFiles/T2_TP1_241004686.dir/src/dominios/dominios.cpp.o CMakeFiles/T2_TP1_241004686.dir/src/entidades/entidades.cpp.o CMakeFiles/T2_TP1_241004686.dir/src/main.cpp.o CMakeFiles/T2_TP1_241004686.dir/src/tests/testesDominios.cpp.o CMakeFiles/T2_TP1_241004686.dir/src/tests/testesEntidades.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/T2_TP1_241004686.dir
   POST_BUILD = :

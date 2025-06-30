@@ -11,7 +11,7 @@
 		"commands" : 
 		[
 			"add_executable",
-			"target_compile_options"
+			"target_include_directories"
 		],
 		"files" : 
 		[
@@ -25,13 +25,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 27,
+				"line" : 15,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 30,
+				"line" : 19,
 				"parent" : 0
 			}
 		]
@@ -45,15 +45,30 @@
 					"fragment" : "-g"
 				},
 				{
-					"backtrace" : 2,
-					"fragment" : "-Wall"
-				},
-				{
-					"backtrace" : 2,
-					"fragment" : "-Wextra"
-				},
-				{
 					"fragment" : "-std=gnu++17"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 2,
+					"path" : "/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/dominios"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/entidades"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/interfaces"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/src/controladoras"
 				}
 			],
 			"language" : "CXX",
@@ -71,7 +86,9 @@
 				1,
 				2,
 				3,
-				4
+				4,
+				5,
+				6
 			]
 		}
 	],
@@ -108,17 +125,9 @@
 				1,
 				2,
 				3,
-				4
-			]
-		},
-		{
-			"name" : "Header Files",
-			"sourceIndexes" : 
-			[
+				4,
 				5,
-				6,
-				7,
-				8
+				6
 			]
 		}
 	],
@@ -127,52 +136,44 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "main.cpp",
+			"path" : "src/controladoras/controladorasApresentacao.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "dominios.cpp",
+			"path" : "src/controladoras/controladorasServico.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "entidades.cpp",
+			"path" : "src/dominios/dominios.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "testesDominios.cpp",
+			"path" : "src/entidades/entidades.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "testesEntidades.cpp",
+			"path" : "src/main.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "dominios.hpp",
-			"sourceGroupIndex" : 1
+			"compileGroupIndex" : 0,
+			"path" : "src/tests/testesDominios.cpp",
+			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "entidades.hpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "testesDominios.hpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "testesEntidades.hpp",
-			"sourceGroupIndex" : 1
+			"compileGroupIndex" : 0,
+			"path" : "src/tests/testesEntidades.cpp",
+			"sourceGroupIndex" : 0
 		}
 	],
 	"type" : "EXECUTABLE"

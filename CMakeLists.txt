@@ -1,44 +1,28 @@
+# Versão mínima do CMake
 cmake_minimum_required(VERSION 3.15)
+
+# Nome do projeto
 project(T2_TP1_241004686)
 
+# Define o padrão C++ para 17
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Define source directories
-set(DOMINIOS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libTrabalho01/dominios)
-set(ENTIDADES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libTrabalho01/entidades)
-set(TESTS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libTrabalho01/tests)
+# Encontra todos os arquivos .cpp recursivamente dentro da pasta src
+file(GLOB_RECURSE SOURCES "src/*.cpp")
 
-# Create library for domain classes
-add_library(trabalho01_lib
-    ${DOMINIOS_DIR}/dominios.cpp
-    ${DOMINIOS_DIR}/dominios.hpp
-    ${ENTIDADES_DIR}/entidades.cpp
-    ${ENTIDADES_DIR}/entidades.hpp
-    ${TESTS_DIR}/testesDominios.cpp
-    ${TESTS_DIR}/testesDominios.hpp
-    ${TESTS_DIR}/testesEntidades.cpp
-    ${TESTS_DIR}/testesEntidades.hpp
+# Cria o executável principal com todos os arquivos .cpp encontrados
+add_executable(${PROJECT_NAME} ${SOURCES})
+
+# Define os diretórios onde o compilador deve procurar por arquivos de cabeçalho (.hpp)
+# Qualquer subpasta dentro de 'src' que tenha arquivos .hpp deve ser listada aqui.
+target_include_directories(${PROJECT_NAME} PUBLIC 
+    "${CMAKE_CURRENT_SOURCE_DIR}/src"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/dominios"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/entidades"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/interfaces"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/controladoras"
 )
 
-# Create main executable
-add_executable(${PROJECT_NAME} main.cpp)
-
-# Link the library to the main executable
-target_link_libraries(${PROJECT_NAME} PRIVATE trabalho01_lib)
-
-# Include directories for the library
-target_include_directories(trabalho01_lib PUBLIC 
-    ${CMAKE_CURRENT_SOURCE_DIR}/libTrabalho01
-    ${CMAKE_CURRENT_SOURCE_DIR}/libTrabalho01/dominios
-    ${CMAKE_CURRENT_SOURCE_DIR}/libTrabalho01/entidades
-    ${CMAKE_CURRENT_SOURCE_DIR}/libTrabalho01/tests
-)
-
-# Include directories for the main executable
-target_include_directories(${PROJECT_NAME} PRIVATE 
-    ${CMAKE_CURRENT_SOURCE_DIR}/libTrabalho01
-    ${CMAKE_CURRENT_SOURCE_DIR}/libTrabalho01/dominios
-    ${CMAKE_CURRENT_SOURCE_DIR}/libTrabalho01/entidades
-    ${CMAKE_CURRENT_SOURCE_DIR}/libTrabalho01/tests
-)
+# Mensagem para o usuário após a configuração
+message(STATUS "Projeto configurado. Para compilar, use 'make' ou seu gerador de build.")
