@@ -1,4 +1,4 @@
-# Install script for directory: /home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686
+# Install script for directory: /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "Debug")
+    set(CMAKE_INSTALL_CONFIG_NAME "")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/joaojorge/Documents/UnB/03_semestre/tp1/T2 - TP1 - 241004686/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

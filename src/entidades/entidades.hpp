@@ -88,7 +88,7 @@ class Conta {
          * @brief Metodo publico que retorna o CPF armazenado na conta.
          * @return Objeto `Ncpf` com o CPF do usuario.
          */
-        Ncpf getNcpf();
+        Ncpf getNcpf() const;
 
         /**
          * @brief Metodo publico que define o nome do titular da conta.
@@ -100,7 +100,7 @@ class Conta {
          * @brief Metodo publico que retorna o nome do titular da conta.
          * @return Objeto `Nome` com o nome do usuario.
          */
-        Nome getNome();
+        Nome getNome() const;
 
         /**
          * @brief Metodo publico que define a senha da conta.
@@ -112,7 +112,7 @@ class Conta {
          * @brief Metodo publico que retorna a senha armazenada na conta.
          * @return Objeto `Senha` com a senha do usuario.
          */
-        Senha getSenha();
+        Senha getSenha() const;
 };
 //---------------------------------------------------------------------
 
@@ -129,7 +129,7 @@ inline void Conta::setNcpf(Ncpf cpf){ this->cpf = cpf; }
  * @brief Retorna o CPF da conta.
  * @return Objeto `Ncpf`.
  */
-inline Ncpf Conta::getNcpf(){ return cpf; }
+inline Ncpf Conta::getNcpf() const { return cpf; }
 
 //---------------------------------------------------------------------
 /**
@@ -143,7 +143,7 @@ inline void Conta::setNome(Nome nome){ this->nome = nome; }
  * @brief Retorna o nome da conta.
  * @return Objeto `Nome`.
  */
-inline Nome Conta::getNome(){ return nome; }
+inline Nome Conta::getNome() const { return nome; }
 
 //---------------------------------------------------------------------
 /**
@@ -157,7 +157,7 @@ inline void Conta::setSenha(Senha senha){ this->senha = senha; }
  * @brief Retorna a senha da conta.
  * @return Objeto `Senha`.
  */
-inline Senha Conta::getSenha(){ return senha; }
+inline Senha Conta::getSenha() const { return senha; }
 
 ///---------------------------------------------------------------------
 //Entidade: Carteira   (Responsavel: Bruno 241022460)
@@ -215,7 +215,7 @@ class Carteira {
          * @brief Metodo publico que retorna o codigo da carteira.
          * @return Objeto `Codigo` com o valor atribuido.
          */
-        Codigo getCodigo();
+        Codigo getCodigo() const;
 
         /**
          * @brief Metodo publico que define o nome da carteira.
@@ -227,7 +227,7 @@ class Carteira {
          * @brief Metodo publico que retorna o nome da carteira.
          * @return Objeto `Nome` com o valor atribuido.
          */
-        Nome getNome();
+        Nome getNome() const;
 
         /**
          * @brief Metodo publico que define o tipo de perfil do investidor associado a carteira.
@@ -239,7 +239,7 @@ class Carteira {
          * @brief Metodo publico que retorna o tipo de perfil associado a carteira.
          * @return Objeto `TipoPerfil` com o valor atribuido.
          */
-        TipoPerfil getTipoPerfil();
+        TipoPerfil getTipoPerfil() const;
 };
 //---------------------------------------------------------------------
 
@@ -256,7 +256,7 @@ inline void Carteira::setCodigo(Codigo codigo){ this->codigo = codigo; }
  * @brief Retorna o codigo da carteira.
  * @return Objeto `Codigo`.
  */
-inline Codigo Carteira::getCodigo(){ return codigo; }
+inline Codigo Carteira::getCodigo() const { return codigo; }
 
 //---------------------------------------------------------------------
 /**
@@ -270,7 +270,7 @@ inline void Carteira::setNome(Nome nome){ this->nome = nome; }
  * @brief Retorna o nome da carteira.
  * @return Objeto `Nome`.
  */
-inline Nome Carteira::getNome(){ return nome; }
+inline Nome Carteira::getNome() const { return nome; }
 
 //---------------------------------------------------------------------
 /**
@@ -281,10 +281,10 @@ inline void Carteira::setTipoPerfil(TipoPerfil perfil){ this->perfil = perfil; }
 
 //---------------------------------------------------------------------
 /**
- * @brief Retorna o nome da carteira.
- * @return Objeto `Nome`.
+ * @brief Retorna o tipo de perfil da carteira.
+ * @return Objeto `TipoPerfil`.
  */
-inline TipoPerfil Carteira::getTipoPerfil(){ return perfil; }
+inline TipoPerfil Carteira::getTipoPerfil() const { return perfil; }
 
 ///---------------------------------------------------------------------
 //Entidade: Ordem   (Responsavel: Karina 231006140)
@@ -357,7 +357,7 @@ class Ordem {
          * @brief Metodo publico que retorna o codigo da ordem.
          * @return Objeto `Codigo`.
          */
-        Codigo getCodigo();
+        Codigo getCodigo() const;
 
         /**
          * @brief Metodo publico que define o codigo do ativo negociado.
@@ -369,7 +369,7 @@ class Ordem {
          * @brief Metodo publico que retorna o codigo do ativo negociado.
          * @return Objeto `CodigoNeg`.
          */
-        CodigoNeg getCodigoNeg();
+        CodigoNeg getCodigoNeg() const;
 
         /**
          * @brief Metodo publico que define a data da ordem.
@@ -381,7 +381,7 @@ class Ordem {
          * @brief Metodo publico que retorna a data da ordem.
          * @return Objeto `Data`.
          */
-        Data getData();
+        Data getData() const;
 
         /**
          * @brief Metodo publico que define o valor financeiro da ordem.
@@ -393,7 +393,7 @@ class Ordem {
          * @brief Metodo publico que retorna o valor financeiro da ordem.
          * @return Objeto `Dinheiro`.
          */
-        Dinheiro getDinheiro();
+        Dinheiro getDinheiro() const;
 
          /**
          * @brief Metodo publico que define a quantidade de ativos negociados.
@@ -405,7 +405,7 @@ class Ordem {
          * @brief Metodo publico que retorna a quantidade de ativos negociados.
          * @return Objeto `Quantidade`.
          */
-        Quantidade getQuantidade();
+        Quantidade getQuantidade() const;
 };
 //---------------------------------------------------------------------
 
@@ -422,7 +422,7 @@ inline void Ordem::setCodigo(Codigo codigo){ this->codigo = codigo; }
  * @brief Retorna o codigo da ordem.
  * @return Objeto do dominio Codigo.
  */
-inline Codigo Ordem::getCodigo(){ return codigo; }
+inline Codigo Ordem::getCodigo() const { return codigo; }
 
 //---------------------------------------------------------------------
 /**
@@ -436,7 +436,7 @@ inline void Ordem::setCodigoNeg(CodigoNeg codigoNeg){ this->codigoNeg = codigoNe
  * @brief Retorna o codigo do ativo negociado.
  * @return Objeto do dominio CodigoNeg.
  */
-inline CodigoNeg Ordem::getCodigoNeg(){ return codigoNeg; }
+inline CodigoNeg Ordem::getCodigoNeg() const { return codigoNeg; }
 
 //---------------------------------------------------------------------
 /**
@@ -450,7 +450,7 @@ inline void Ordem::setData(Data data){ this->data = data; }
  * @brief Retorna a data da ordem.
  * @return Objeto do dominio Data.
  */
-inline Data Ordem::getData(){ return data; }
+inline Data Ordem::getData() const { return data; }
 
 //---------------------------------------------------------------------
 /**
@@ -464,7 +464,7 @@ inline void Ordem::setDinheiro(Dinheiro dinheiro){ this->dinheiro = dinheiro; }
  * @brief Retorna o valor financeiro da ordem.
  * @return Objeto do dominio Dinheiro.
  */
-inline Dinheiro Ordem::getDinheiro(){ return dinheiro; }
+inline Dinheiro Ordem::getDinheiro() const { return dinheiro; }
 
 //---------------------------------------------------------------------
 /**
@@ -478,7 +478,7 @@ inline void Ordem::setQuantidade(Quantidade quantidade){ this->quantidade = quan
  * @brief Retorna a quantidade de ativos da ordem.
  * @return Objeto do dominio Quantidade.
  */
-inline Quantidade Ordem::getQuantidade(){ return quantidade; }
+inline Quantidade Ordem::getQuantidade() const { return quantidade; }
 
 ///---------------------------------------------------------------------
 
