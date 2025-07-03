@@ -12,7 +12,7 @@
 // =================================================================================================
 
 ControladoraServico::ControladoraServico() {
-    dbManager = std::make_unique<DatabaseManager>("novo_teste.db");
+    dbManager = std::make_unique<DatabaseManager>("../database/sistema_investimentos.db");
 }
 
 ControladoraServico::~ControladoraServico() {
@@ -82,7 +82,7 @@ bool ControladoraServico::consultarConta(const Ncpf& cpf, Conta* conta, Dinheiro
     if (!dbManager->listarCarteiras(cpf, &carteiras)) {
         // Se não tem carteiras, saldo é zero
         try {
-            saldo->setValor("0,00");
+            saldo->setValor("0,01");
             return true;
         } catch (const std::exception& e) {
             return false;
@@ -212,9 +212,9 @@ bool ControladoraServico::criarOrdem(const Codigo& codigoCarteira, const Ordem& 
     }
     
     // 3. Buscar preço histórico no arquivo DADOS_HISTORICOS.txt
-    std::ifstream arquivo("DADOS_HISTORICOS.txt");
+    std::ifstream arquivo("../data/DADOS_HISTORICOS.txt");
     if (!arquivo.is_open()) {
-        std::cout << "Erro: Não foi possível abrir o arquivo DADOS_HISTORICOS.txt!" << std::endl;
+        std::cout << "Erro: Não foi possível abrir o arquivo ../data/DADOS_HISTORICOS.txt!" << std::endl;
         return false; // Não foi possível abrir o arquivo de dados históricos
     }
     
@@ -231,6 +231,8 @@ bool ControladoraServico::criarOrdem(const Codigo& codigoCarteira, const Ordem& 
     if (posFimCodigo != std::string::npos) {
         codigoNegBusca = codigoNegBusca.substr(0, posFimCodigo + 1);
     }
+    
+
     
     while (std::getline(arquivo, linha)) {
         // Ignora linhas de comentário

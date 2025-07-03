@@ -39,8 +39,10 @@ target_link_libraries(${PROJECT_NAME}
 # Define as flags de compilação para SQLite3
 target_compile_options(${PROJECT_NAME} PRIVATE ${SQLITE3_CFLAGS_OTHER})
 
+
+
 # Mensagem para o usuário após a configuração
 message(STATUS "Projeto configurado com SQLite3. Para compilar, use 'make' ou seu gerador de build.")
 message(STATUS "SQLite3 versão: ${SQLITE3_VERSION}")
-message(STATUS "SQLite3 bibliotecas: ${SQLITE3_LIBRARIES}")
-message(STATUS "SQLite3 include dirs: ${SQLITE3_INCLUDE_DIRS}")
+message(STATUS "SQLITE3 bibliotecas: ${SQLITE3_LIBRARIES}")
+message(STATUS "SQLITE3 include dirs: ${SQLITE3_INCLUDE_DIRS}")

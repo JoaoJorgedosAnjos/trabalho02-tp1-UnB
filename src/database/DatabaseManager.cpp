@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <algorithm>
 #include <list>
+#include <regex>
 
 // =================================================================================================
 // FUNÇÕES AUXILIARES PARA CONVERSÃO DE DINHEIRO COM PRECISÃO
@@ -46,25 +47,24 @@ long long DatabaseManager::dinheiroParaCentavos(const Dinheiro& dinheiro) {
  * @brief Converte um total de centavos (123456) para formato brasileiro de dinheiro ("1.234,56").
  */
 std::string DatabaseManager::centavosParaDinheiro(long long totalCentavos) {
-    if (totalCentavos == 0) return "0,00";
+    if (totalCentavos == 0) return "0,01";
 
     long long reais = totalCentavos / 100;
     long long centavos = totalCentavos % 100;
     
     std::string parteReais = std::to_string(reais);
     
-    // Adiciona separadores de milhares (pontos)
+    // Adiciona separadores de milhares (pontos) usando regex
     if (parteReais.length() > 3) {
-        for (int i = parteReais.length() - 3; i > 0; i -= 3) {
-            parteReais.insert(i, ".");
-        }
+        std::regex pattern(R"((\d)(?=(\d{3})+$))");
+        parteReais = std::regex_replace(parteReais, pattern, "$1.");
     }
     
     // Formata os centavos com 2 dígitos
     std::string parteCentavos;
     if (centavos < 10) {
         parteCentavos = "0" + std::to_string(centavos);
-        } else {
+    } else {
         parteCentavos = std::to_string(centavos);
     }
     
@@ -638,7 +638,49 @@ bool DatabaseManager::excluirConta(const Ncpf& cpf) {
     return rc == SQLITE_DONE && sqlite3_changes(db) > 0;
 }
 
-bool DatabaseManager::atualizarCarteira(const Carteira& carteira) { return false; }
+bool DatabaseManager::atualizarCarteira(const Carteira& carteira) {
+    if (!connected) {
+        return false;
+    }
+    
+    if (sqlite3_exec(db, "BEGIN TRANSACTION", nullptr, nullptr, nullptr) != SQLITE_OK) {
+        return false;
+    }
+    
+    std::string sql = "UPDATE carteiras SET nome = ?, tipo_perfil = ? WHERE codigo = ?";
+    sqlite3_stmt* stmt;
+    
+    if (sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr) != SQLITE_OK) {
+        sqlite3_exec(db, "ROLLBACK", nullptr, nullptr, nullptr);
+        return false;
+    }
+    
+    // Capturar os valores em variáveis locais para evitar problemas de referência temporária
+    std::string nomeValor = carteira.getNome().getValor();
+    std::string tipoPerfilValor = carteira.getTipoPerfil().getValor();
+    std::string codigoValor = carteira.getCodigo().getValor();
+    
+    sqlite3_bind_text(stmt, 1, nomeValor.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 2, tipoPerfilValor.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 3, codigoValor.c_str(), -1, SQLITE_STATIC);
+    
+    int rc = sqlite3_step(stmt);
+    
+    if (rc != SQLITE_DONE) {
+        sqlite3_finalize(stmt);
+        sqlite3_exec(db, "ROLLBACK", nullptr, nullptr, nullptr);
+        return false;
+    }
+    
+    sqlite3_finalize(stmt);
+    
+    if (sqlite3_exec(db, "COMMIT", nullptr, nullptr, nullptr) != SQLITE_OK) {
+        sqlite3_exec(db, "ROLLBACK", nullptr, nullptr, nullptr);
+        return false;
+    }
+    
+    return sqlite3_changes(db) > 0;
+}
 
 bool DatabaseManager::buscarOrdem(const Codigo& codigo, Ordem* ordem) {
     if (!connected || !ordem) {

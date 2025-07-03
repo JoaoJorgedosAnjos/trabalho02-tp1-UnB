@@ -1622,15 +1622,15 @@ void ControladoraApresentacaoInvestimento::criarOrdem(const Codigo& codigoCartei
     std::cout << "┌─────────┬──────────────────────────────────┐" << std::endl;
     std::cout << "│  CÓDIGO │           PRODUTO                │" << std::endl;
     std::cout << "├─────────┼──────────────────────────────────┤" << std::endl;
-    std::cout << "│   00001 │ Caneta Esferográfica             │" << std::endl;
-    std::cout << "│   00002 │ Lápis HB                         │" << std::endl;
-    std::cout << "│   00003 │ Caderno 96 folhas                │" << std::endl;
-    std::cout << "│   00004 │ Borracha Branca                  │" << std::endl;
-    std::cout << "│   00005 │ Régua 30cm                       │" << std::endl;
-    std::cout << "│   00006 │ Tesoura Escolar                  │" << std::endl;
-    std::cout << "│   00007 │ Cola Branca                      │" << std::endl;
-    std::cout << "│   00008 │ Papel A4 500 folhas              │" << std::endl;
-    std::cout << "│   00009 │ Mochila Escolar                  │" << std::endl;
+    std::cout << "│  00001  │ Caneta Esferográfica             │" << std::endl;
+    std::cout << "│  00002  │ Lápis HB                         │" << std::endl;
+    std::cout << "│  00003  │ Caderno 96 folhas                │" << std::endl;
+    std::cout << "│  00004  │ Borracha Branca                  │" << std::endl;
+    std::cout << "│  00005  │ Régua 30cm                       │" << std::endl;
+    std::cout << "│  00006  │ Tesoura Escolar                  │" << std::endl;
+    std::cout << "│  00007  │ Cola Branca                      │" << std::endl;
+    std::cout << "│  00008  │ Papel A4 500 folhas              │" << std::endl;
+    std::cout << "│  00009  │ Mochila Escolar                  │" << std::endl;
     std::cout << "└─────────┴──────────────────────────────────┘" << std::endl;
     std::cout << "DICA: Digite apenas o código (ex: 00001)" << std::endl;
     std::cout << "======================" << std::endl;
@@ -1664,7 +1664,7 @@ void ControladoraApresentacaoInvestimento::criarOrdem(const Codigo& codigoCartei
             }
             
             // Verificar se existe pelo menos uma linha com esse código no arquivo
-            std::ifstream arquivo("DADOS_HISTORICOS.txt");
+            std::ifstream arquivo("../data/DADOS_HISTORICOS.txt");
             bool produtoEncontrado = false;
             std::string linha;
             
@@ -1729,7 +1729,7 @@ void ControladoraApresentacaoInvestimento::criarOrdem(const Codigo& codigoCartei
             dataOrdem.setValor(valorData);
             
             // VALIDAÇÃO EM TEMPO REAL: Verificar se a data existe no arquivo histórico
-            std::ifstream arquivo("DADOS_HISTORICOS.txt");
+            std::ifstream arquivo("../data/DADOS_HISTORICOS.txt");
             bool dataEncontrada = false;
             std::string linha;
             
@@ -1801,7 +1801,7 @@ void ControladoraApresentacaoInvestimento::criarOrdem(const Codigo& codigoCartei
             }
             
             // Verificar se existe a combinação específica no arquivo
-            std::ifstream arquivo("DADOS_HISTORICOS.txt");
+            std::ifstream arquivo("../data/DADOS_HISTORICOS.txt");
             bool combinacaoEncontrada = false;
             std::string linha;
             

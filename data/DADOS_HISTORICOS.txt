@@ -1,7 +1,7 @@
 # Dados Históricos de Negociação - Sistema de Investimentos
 # Formato: CodigoNegociacao|Data|PrecoMedio
 # Data no formato AAAAMMDD
-# PrecoMedio em formato brasileiro (com vírgula decimal)
+# Preços em formato brasileiro (com vírgula decimal)
 
 # Produtos de Papelaria - Dados Fictícios para Fins Didáticos
 
@@ -75,4 +75,4 @@
 00009|20240317|24,63
 00009|20240318|24,38
 00009|20240319|24,73
-00009|20240320|24,48
+00009|20240320|24,48 
