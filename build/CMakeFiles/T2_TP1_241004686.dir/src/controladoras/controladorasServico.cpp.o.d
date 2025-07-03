@@ -222,4 +222,12 @@ CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.o: \
  /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/entidades/entidades.hpp \
  /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/entidades/../dominios/dominios.hpp \
  /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
- /usr/include/c++/11/bits/list.tcc
+ /usr/include/c++/11/bits/list.tcc \
+ /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/database/DatabaseManager.hpp \
+ /usr/include/sqlite3.h \
+ /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/database/../dominios/dominios.hpp \
+ /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/database/../entidades/entidades.hpp \
+ /usr/include/c++/11/fstream \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+ /usr/include/c++/11/bits/fstream.tcc

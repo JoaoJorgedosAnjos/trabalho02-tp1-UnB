@@ -33,7 +33,7 @@ public:
  */
 class IApresentacaoUsuario {
 public:
-    virtual void executar(const Ncpf& cpf) = 0;
+    virtual bool executar(const Ncpf& cpf) = 0;
     virtual void cadastrar() = 0;
     virtual void setControladoraServico(IServicoUsuario* cntrServicoUsuario) = 0;
     virtual ~IApresentacaoUsuario() {}

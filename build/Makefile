@@ -177,6 +177,30 @@ src/controladoras/controladorasServico.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/T2_TP1_241004686.dir/build.make CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.s
 .PHONY : src/controladoras/controladorasServico.cpp.s
 
+src/database/DatabaseManager.o: src/database/DatabaseManager.cpp.o
+.PHONY : src/database/DatabaseManager.o
+
+# target to build an object file
+src/database/DatabaseManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/T2_TP1_241004686.dir/build.make CMakeFiles/T2_TP1_241004686.dir/src/database/DatabaseManager.cpp.o
+.PHONY : src/database/DatabaseManager.cpp.o
+
+src/database/DatabaseManager.i: src/database/DatabaseManager.cpp.i
+.PHONY : src/database/DatabaseManager.i
+
+# target to preprocess a source file
+src/database/DatabaseManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/T2_TP1_241004686.dir/build.make CMakeFiles/T2_TP1_241004686.dir/src/database/DatabaseManager.cpp.i
+.PHONY : src/database/DatabaseManager.cpp.i
+
+src/database/DatabaseManager.s: src/database/DatabaseManager.cpp.s
+.PHONY : src/database/DatabaseManager.s
+
+# target to generate assembly for a file
+src/database/DatabaseManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/T2_TP1_241004686.dir/build.make CMakeFiles/T2_TP1_241004686.dir/src/database/DatabaseManager.cpp.s
+.PHONY : src/database/DatabaseManager.cpp.s
+
 src/dominios/dominios.o: src/dominios/dominios.cpp.o
 .PHONY : src/dominios/dominios.o
 
@@ -312,6 +336,9 @@ help:
 	@echo "... src/controladoras/controladorasServico.o"
 	@echo "... src/controladoras/controladorasServico.i"
 	@echo "... src/controladoras/controladorasServico.s"
+	@echo "... src/database/DatabaseManager.o"
+	@echo "... src/database/DatabaseManager.i"
+	@echo "... src/database/DatabaseManager.s"
 	@echo "... src/dominios/dominios.o"
 	@echo "... src/dominios/dominios.i"
 	@echo "... src/dominios/dominios.s"

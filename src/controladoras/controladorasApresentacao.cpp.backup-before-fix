@@ -1,7 +1,6 @@
 #include <iostream>
 #include <iomanip>
 #include <cctype>
-#include <limits>
 #include "controladorasApresentacao.hpp"
 
 // =================================================================================================
@@ -95,18 +94,11 @@ bool ControladoraApresentacaoAutenticacao::autenticar(Ncpf* cpf) {
 
     while (true) {
         std::cout << "\n--- Autenticacao de Usuario ---" << std::endl;
-        std::cout << "(Digite '0' a qualquer momento para cancelar)" << std::endl;
 
         try {
             // Entrada flexível de CPF com máscara automática
             std::cout << "CPF (apenas numeros ou XXX.XXX.XXX-XX): ";
             std::cin >> valor;
-            
-            // Verificar se o usuário quer cancelar
-            if (valor == "0") {
-                std::cout << "Login cancelado pelo usuario." << std::endl;
-                return false;
-            }
             
             // Aplica a máscara automática se necessário
             try {
@@ -121,13 +113,6 @@ bool ControladoraApresentacaoAutenticacao::autenticar(Ncpf* cpf) {
 
             std::cout << "Senha (6 caracteres)    : ";
             std::cin >> valor;
-            
-            // Verificar se o usuário quer cancelar
-            if (valor == "0") {
-                std::cout << "Login cancelado pelo usuario." << std::endl;
-                return false;
-            }
-            
             senha.setValor(valor); // Validação ocorre aqui, no domínio
             
             break; // Se ambos os dados forem válidos, sai do loop.
@@ -156,7 +141,7 @@ void ControladoraApresentacaoUsuario::setControladoraServico(IServicoUsuario* cn
     this->cntrServicoUsuario = cntrServicoUsuario;
 }
 
-bool ControladoraApresentacaoUsuario::executar(const Ncpf& cpf) {
+void ControladoraApresentacaoUsuario::executar(const Ncpf& cpf) {
     int opcao = -1;
     while (opcao != 0) {
         std::cout << "\n--- Gerenciamento de Conta ---" << std::endl;
@@ -169,19 +154,13 @@ bool ControladoraApresentacaoUsuario::executar(const Ncpf& cpf) {
         
         switch (opcao) {
             case 1:
-                if (consultarConta(cpf)) {
-                    // Conta foi excluída a partir do sub-menu de consulta
-                    return true;
-                }
+                consultarConta(cpf);
                 break;
             case 2:
                 editarConta(cpf);
                 break;
             case 3:
-                if (excluirConta(cpf)) {
-                    // Conta foi excluída com sucesso, retornar true para fazer logout
-                    return true;
-                }
+                excluirConta(cpf);
                 break;
             case 0:
                 break;
@@ -189,7 +168,6 @@ bool ControladoraApresentacaoUsuario::executar(const Ncpf& cpf) {
                 std::cout << "Opcao invalida!" << std::endl;
         }
     }
-    return false; // Retorna false quando sai normalmente (não excluiu conta)
 }
 
 /**
@@ -206,7 +184,6 @@ bool ControladoraApresentacaoUsuario::executar(const Ncpf& cpf) {
  */
 void ControladoraApresentacaoUsuario::cadastrar() {
     std::cout << "\n--- Cadastro de Nova Conta ---" << std::endl;
-    std::cout << "(Digite '0' a qualquer momento para cancelar)" << std::endl;
     
     std::string valor;
     Conta novaConta;
@@ -219,12 +196,6 @@ void ControladoraApresentacaoUsuario::cadastrar() {
             // Entrada de CPF com máscara automática
             std::cout << "CPF (apenas numeros ou XXX.XXX.XXX-XX): ";
             std::cin >> valor;
-
-            // Verificar se o usuário quer cancelar
-            if (valor == "0") {
-                std::cout << "Cadastro cancelado pelo usuario." << std::endl;
-                return;
-            }
             
             // Aplica a máscara automática se necessário
             try {
@@ -236,28 +207,13 @@ void ControladoraApresentacaoUsuario::cadastrar() {
                 cpf.setValor(valor);
             }
             
-            // Limpa completamente o buffer
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cin.ignore(); // Limpa o buffer para getline
             std::cout << "Nome (ate 20 caracteres): ";
             std::getline(std::cin, valor);
-            
-            // Verificar se o usuário quer cancelar
-            if (valor == "0") {
-                std::cout << "Cadastro cancelado pelo usuario." << std::endl;
-                return;
-            }
-            
             nome.setValor(valor);
             
             std::cout << "Senha (6 caracteres): ";
             std::cin >> valor;
-            
-            // Verificar se o usuário quer cancelar
-            if (valor == "0") {
-                std::cout << "Cadastro cancelado pelo usuario." << std::endl;
-                return;
-            }
-            
             senha.setValor(valor);
             
             novaConta.setNcpf(cpf);
@@ -278,7 +234,6 @@ void ControladoraApresentacaoUsuario::cadastrar() {
         }
     }
     
-
     if (cntrServicoUsuario->cadastrarConta(novaConta)) {
         std::cout << "\nConta cadastrada com sucesso!" << std::endl;
         std::cout << "CPF cadastrado: " << cpf.getValor() << std::endl;
@@ -288,7 +243,7 @@ void ControladoraApresentacaoUsuario::cadastrar() {
     }
 }
 
-bool ControladoraApresentacaoUsuario::consultarConta(const Ncpf& cpf) {
+void ControladoraApresentacaoUsuario::consultarConta(const Ncpf& cpf) {
     Conta conta;
     Dinheiro saldo;
     
@@ -297,43 +252,13 @@ bool ControladoraApresentacaoUsuario::consultarConta(const Ncpf& cpf) {
         std::cout << "CPF   : " << conta.getNcpf().getValor() << std::endl;
         std::cout << "Nome  : " << conta.getNome().getValor() << std::endl;
         std::cout << "Saldo Total: R$ " << saldo.getValor() << std::endl;
-        std::cout << "======================" << std::endl;
-        
-        // Sub-menu após mostrar os dados
-        int opcao;
-        std::cout << "\nO que deseja fazer agora?" << std::endl;
-        std::cout << "1. Editar dados da conta" << std::endl;
-        std::cout << "2. Excluir minha conta" << std::endl;
-        std::cout << "0. Voltar ao menu anterior" << std::endl;
-        std::cout << "Escolha uma opcao: ";
-        std::cin >> opcao;
-        
-        switch (opcao) {
-            case 1:
-                editarConta(cpf);
-                break;
-            case 2:
-                if (excluirConta(cpf)) {
-                    // Se a conta foi excluída, retorna true para fazer logout
-                    return true;
-                }
-                break;
-            case 0:
-                break;
-            default:
-                std::cout << "Opcao invalida!" << std::endl;
-                std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
-                std::cin.ignore();
-                std::cin.get();
-        }
     } else {
         std::cout << "\nErro ao consultar conta." << std::endl;
-        std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
-        std::cin.ignore();
-        std::cin.get();
     }
     
-    return false; // Retorna false se a conta não foi excluída
+    std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
+    std::cin.ignore();
+    std::cin.get();
 }
 
 void ControladoraApresentacaoUsuario::editarConta(const Ncpf& cpf) {
@@ -401,7 +326,7 @@ void ControladoraApresentacaoUsuario::editarConta(const Ncpf& cpf) {
     std::cin.get();
 }
 
-bool ControladoraApresentacaoUsuario::excluirConta(const Ncpf& cpf) {
+void ControladoraApresentacaoUsuario::excluirConta(const Ncpf& cpf) {
     std::cout << "\n--- Exclusao de Conta ---" << std::endl;
     std::cout << "ATENCAO: Esta operacao e irreversivel!" << std::endl;
     std::cout << "Tem certeza que deseja excluir sua conta? (s/N): ";
@@ -413,24 +338,16 @@ bool ControladoraApresentacaoUsuario::excluirConta(const Ncpf& cpf) {
         if (cntrServicoUsuario->excluirConta(cpf)) {
             std::cout << "\nConta excluida com sucesso!" << std::endl;
             std::cout << "Obrigado por utilizar nosso sistema." << std::endl;
-            
-            std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
-            std::cin.ignore();
-            std::cin.get();
-            
-            return true; // Indica que a conta foi excluída
         } else {
             std::cout << "\nErro ao excluir conta. Verifique se nao existem carteiras associadas." << std::endl;
-            std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
-            std::cin.ignore();
-            std::cin.get();
         }
     } else {
         std::cout << "\nOperacao cancelada." << std::endl;
-        // Não pede para apertar tecla, volta diretamente ao menu anterior
     }
     
-    return false; // Indica que a conta não foi excluída
+    std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
+    std::cin.ignore();
+    std::cin.get();
 }
 
 // =================================================================================================
@@ -533,7 +450,6 @@ void ControladoraApresentacaoInvestimento::menuCarteiras(const Ncpf& cpf) {
 
 void ControladoraApresentacaoInvestimento::criarCarteira(const Ncpf& cpf) {
     std::cout << "\n--- Criação de Nova Carteira ---" << std::endl;
-    std::cout << "(Digite '0' a qualquer momento para cancelar)" << std::endl;
     
     // Primeiro, verificar quantas carteiras o usuário já possui
     std::list<Carteira> carteirasExistentes;
@@ -581,13 +497,6 @@ void ControladoraApresentacaoInvestimento::criarCarteira(const Ncpf& cpf) {
             std::cout << "\nDigite o código da nova carteira (5 digitos): ";
             std::string valorCodigo;
             std::cin >> valorCodigo;
-            
-            // Verificar se o usuário quer cancelar
-            if (valorCodigo == "0") {
-                std::cout << "Criacao de carteira cancelada pelo usuario." << std::endl;
-                return;
-            }
-            
             codigo.setValor(valorCodigo);
             break; // Código válido
         } catch (const std::invalid_argument &exp) {
@@ -603,13 +512,6 @@ void ControladoraApresentacaoInvestimento::criarCarteira(const Ncpf& cpf) {
             std::string valorNome;
             std::cin.ignore(); // Limpa o buffer do cin anterior
             std::getline(std::cin, valorNome);
-            
-            // Verificar se o usuário quer cancelar
-            if (valorNome == "0") {
-                std::cout << "Criacao de carteira cancelada pelo usuario." << std::endl;
-                return;
-            }
-            
             nome.setValor(valorNome);
             break; // Nome válido
         } catch (const std::invalid_argument &exp) {
@@ -625,17 +527,10 @@ void ControladoraApresentacaoInvestimento::criarCarteira(const Ncpf& cpf) {
             std::cout << "1. Conservador" << std::endl;
             std::cout << "2. Moderado" << std::endl;
             std::cout << "3. Agressivo" << std::endl;
-            std::cout << "0. Cancelar criacao" << std::endl;
-            std::cout << "Escolha o perfil (1-3) ou 0 para cancelar: ";
+            std::cout << "Escolha o perfil (1-3): ";
             
             int opcaoPerfil;
             std::cin >> opcaoPerfil;
-            
-            // Verificar se o usuário quer cancelar
-            if (opcaoPerfil == 0) {
-                std::cout << "Criacao de carteira cancelada pelo usuario." << std::endl;
-                return;
-            }
             
             std::string valorPerfil;
             switch (opcaoPerfil) {
@@ -649,7 +544,7 @@ void ControladoraApresentacaoInvestimento::criarCarteira(const Ncpf& cpf) {
                     valorPerfil = "Agressivo";
                     break;
                 default:
-                    std::cout << "Opcao invalida! Escolha entre 1 e 3, ou 0 para cancelar." << std::endl;
+                    std::cout << "Opcao invalida! Escolha entre 1 e 3." << std::endl;
                     continue;
             }
             
@@ -714,28 +609,11 @@ void ControladoraApresentacaoInvestimento::listarCarteiras(const Ncpf& cpf) {
         
         if (!cntrServicoInvestimento->listarCarteiras(cpf, &carteiras) || carteiras.empty()) {
             std::cout << "\nVoce ainda nao possui carteiras." << std::endl;
-            std::cout << "\n=== OPCOES ===" << std::endl;
-            std::cout << "1. Criar nova carteira" << std::endl;
-            std::cout << "0. Voltar ao menu anterior" << std::endl;
-            std::cout << "Escolha uma opcao: ";
-            
-            int opcao;
-            std::cin >> opcao;
-            
-            switch (opcao) {
-                case 1:
-                    criarCarteira(cpf);
-                    // Após criar, volta ao loop para mostrar a lista atualizada
-                    continue;
-                case 0:
-                    return;
-                default:
-                    std::cout << "Opcao invalida!" << std::endl;
-                    std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
-                    std::cin.ignore();
-                    std::cin.get();
-                    continue;
-            }
+            std::cout << "Use a opcao 'Criar carteira' para comecar!" << std::endl;
+            std::cout << "\nPressione qualquer tecla para voltar..." << std::endl;
+            std::cin.ignore();
+            std::cin.get();
+            return;
         }
         
         // Exibe a lista de carteiras
@@ -772,8 +650,6 @@ void ControladoraApresentacaoInvestimento::listarCarteiras(const Ncpf& cpf) {
         try {
             Codigo codigo;
             codigo.setValor(entrada);
-            
-            std::cout << "[DEBUG] Tentando consultar carteira com codigo: '" << codigo.getValor() << "'" << std::endl;
             
             Carteira carteiraDetalhada;
             Dinheiro saldo;
@@ -1186,16 +1062,9 @@ void ControladoraApresentacaoInvestimento::excluirCarteira(const Ncpf& cpf) {
     
     while (true) {
         try {
-            std::cout << "\nDigite o codigo da carteira que deseja excluir (ou '0' para cancelar): ";
+            std::cout << "\nDigite o codigo da carteira que deseja excluir: ";
             std::string valorCodigo;
             std::cin >> valorCodigo;
-            
-            // Verificar se o usuário quer cancelar
-            if (valorCodigo == "0") {
-                std::cout << "Exclusao cancelada pelo usuario." << std::endl;
-                return;
-            }
-            
             codigo.setValor(valorCodigo);
             
             // Buscar a carteira para mostrar os dados
@@ -1208,7 +1077,7 @@ void ControladoraApresentacaoInvestimento::excluirCarteira(const Ncpf& cpf) {
             }
         } catch (const std::invalid_argument &exp) {
             std::cout << "Erro: " << exp.what() << std::endl;
-            std::cout << "Dica: Use um codigo de 5 digitos da lista acima, ou '0' para cancelar." << std::endl;
+            std::cout << "Dica: Use um codigo de 5 digitos da lista acima." << std::endl;
         }
     }
     
@@ -1438,15 +1307,7 @@ void ControladoraApresentacaoInvestimento::criarOrdem(const Codigo& codigoCartei
     std::cout << "Saldo Atual: R$ " << saldoAtual.getValor() << std::endl;
     std::cout << "============================" << std::endl;
     
-    // Explicar os dados necessários para criar uma ordem
-    std::cout << "\n=== COMO CRIAR UMA ORDEM ===" << std::endl;
-    std::cout << "Para criar uma ordem, você precisa fornecer:" << std::endl;
-    std::cout << "1. CODIGO DA ORDEM    - ID único de 5 dígitos (ex: 30001, 30002)" << std::endl;
-    std::cout << "2. PAPEL/ATIVO        - Código do papel (ex: PETR4, VALE3)" << std::endl;
-    std::cout << "3. DATA               - Data da operação (ex: 20240315)" << std::endl;
-    std::cout << "4. QUANTIDADE         - Quantos papéis (ex: 100, 1.000)" << std::endl;
-    std::cout << "============================" << std::endl;
-    
+    // Mostrar papéis disponíveis no arquivo histórico
     std::cout << "\n=== PAPEIS DISPONIVEIS (com dados historicos) ===" << std::endl;
     std::cout << "PETR4, VALE3, MGLU3, ITUB4, BBDC4, ABEV3, WEGE3, JBSS3, SUZB3" << std::endl;
     std::cout << "Datas disponíveis: 20240315 a 20240320" << std::endl;
@@ -1461,41 +1322,24 @@ void ControladoraApresentacaoInvestimento::criarOrdem(const Codigo& codigoCartei
     // === CÓDIGO DA ORDEM ===
     while (true) {
         try {
-            std::cout << "\n1. Digite o CODIGO DA ORDEM (ID único de 5 dígitos) ou '0' para cancelar: ";
+            std::cout << "\n1. Digite o codigo da ordem (5 digitos): ";
             std::string valorCodigo;
             std::cin >> valorCodigo;
-            
-            if (valorCodigo == "0") {
-                std::cout << "\nCriação de ordem cancelada pelo usuário." << std::endl;
-                std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
-                std::cin.ignore();
-                std::cin.get();
-                return;
-            }
-            
             codigoOrdem.setValor(valorCodigo);
             break;
         } catch (const std::invalid_argument &exp) {
             std::cout << "Erro: " << exp.what() << std::endl;
-            std::cout << "Exemplo: 30001, 30002, 30003, etc." << std::endl;
-            std::cout << "DICA: Este é um identificador único da ordem, NÃO o código do papel!" << std::endl;
+            std::cout << "Exemplo: 30001, 30002, etc." << std::endl;
         }
     }
     
     // === CÓDIGO DE NEGOCIAÇÃO ===
     while (true) {
         try {
-            std::cout << "\n2. Digite o PAPEL/ATIVO (código de negociação) ou '0' para cancelar: ";
+            std::cout << "\n2. Digite o codigo de negociacao (12 caracteres): ";
             std::string valorCodigoNeg;
             std::cin.ignore(); // Limpa buffer
             std::getline(std::cin, valorCodigoNeg);
-            
-            if (valorCodigoNeg == "0") {
-                std::cout << "\nCriação de ordem cancelada pelo usuário." << std::endl;
-                std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
-                std::cin.get();
-                return;
-            }
             
             // Completa com espaços se necessário (até 12 caracteres)
             if (valorCodigoNeg.length() < 12) {
@@ -1506,32 +1350,22 @@ void ControladoraApresentacaoInvestimento::criarOrdem(const Codigo& codigoCartei
             break;
         } catch (const std::invalid_argument &exp) {
             std::cout << "Erro: " << exp.what() << std::endl;
-            std::cout << "Exemplo: PETR4, VALE3, MGLU3, ITUB4, BBDC4, ABEV3, WEGE3, JBSS3, SUZB3" << std::endl;
-            std::cout << "DICA: Use um dos papéis listados acima que têm dados históricos!" << std::endl;
+            std::cout << "Exemplo: PETR4, VALE3, MGLU3, ITUB4, etc." << std::endl;
         }
     }
     
     // === DATA DA ORDEM ===
     while (true) {
         try {
-            std::cout << "\n3. Digite a DATA da ordem (AAAAMMDD) ou '0' para cancelar: ";
+            std::cout << "\n3. Digite a data da ordem (AAAAMMDD): ";
             std::string valorData;
             std::cin >> valorData;
-            
-            if (valorData == "0") {
-                std::cout << "\nCriação de ordem cancelada pelo usuário." << std::endl;
-                std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
-                std::cin.ignore();
-                std::cin.get();
-                return;
-            }
-            
             dataOrdem.setValor(valorData);
             break;
         } catch (const std::invalid_argument &exp) {
             std::cout << "Erro: " << exp.what() << std::endl;
-            std::cout << "Exemplo: 20240315, 20240316, 20240317, 20240318, 20240319, 20240320" << std::endl;
-            std::cout << "DICA: Use apenas datas entre 20240315 e 20240320 (dados históricos disponíveis)!" << std::endl;
+            std::cout << "Exemplo: 20240315, 20240316, etc." << std::endl;
+            std::cout << "Use datas entre 20240315 e 20240320 (dados disponiveis)" << std::endl;
         }
     }
     

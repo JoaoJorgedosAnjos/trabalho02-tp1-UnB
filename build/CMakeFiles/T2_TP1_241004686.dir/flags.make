@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src -I/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/dominios -I/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/entidades -I/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/interfaces -I/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras
+CXX_INCLUDES = -I/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src -I/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/dominios -I/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/entidades -I/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/interfaces -I/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras -I/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/database -I/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/tests
 
 CXX_FLAGS = -std=gnu++17
 

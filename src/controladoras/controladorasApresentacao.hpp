@@ -29,15 +29,15 @@ private:
     IServicoUsuario* cntrServicoUsuario; // Ponteiro para a camada de serviço
 
 public:
-    void executar(const Ncpf& cpf) override;
+    bool executar(const Ncpf& cpf) override;
     void cadastrar() override;
     void setControladoraServico(IServicoUsuario* cntrServicoUsuario) override;
 
 private:
     // Métodos auxiliares para cada funcionalidade
-    void consultarConta(const Ncpf& cpf);
+    bool consultarConta(const Ncpf& cpf);
     void editarConta(const Ncpf& cpf);
-    void excluirConta(const Ncpf& cpf);
+    bool excluirConta(const Ncpf& cpf);
 };
 
 // =================================================================================================
@@ -71,7 +71,7 @@ private:
     void menuOrdens(const Codigo& codigoCarteira);
     void criarOrdem(const Codigo& codigoCarteira);
     void listarOrdens(const Codigo& codigoCarteira);
-    void excluirOrdem();
+    void excluirOrdem(const Codigo& codigoCarteira);
 };
 
 // As outras controladoras de apresentação virão aqui depois...
