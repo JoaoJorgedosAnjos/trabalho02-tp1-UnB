@@ -526,8 +526,8 @@ inline string TipoPerfil::getValor() const { return valor; }
 *
 * Regras de validacao:
 * - O valor deve estar no formato: `#.###.###,##`
-* - Deve estar no intervalo entre 0,01 e 1.000.000,00 inclusive
-* - Aceita ate 6 digitos antes da virgula e 2 apos
+* - Deve estar no intervalo entre 0,01 e 100.000.000,00 inclusive
+* - Aceita ate 8 digitos antes da virgula e 2 apos
 *
 * Metodos disponiveis:
 * - `setValor`: Metodo publico que define o valor monetario apos validacao.
@@ -543,7 +543,7 @@ class Dinheiro {
         static const float MINIMO;
 
         /**
-        * @brief Valor maximo permitido (inclusive): R$ 1.000.000,00.
+        * @brief Valor maximo permitido (inclusive): R$ 100.000.000,00.
         */
         static const float MAXIMO;
 
@@ -603,18 +603,18 @@ inline string Dinheiro::getValor() const{ return valor; }
 * movimentadas por usuarios, como acoes compradas ou cotas de fundos. A quantidade deve estar em um formato legivel,
 * com separador de milhar, e respeitar o intervalo permitido.
 *
-* O valor e fornecido como uma string formatada com pontos como separadores de milhar, por exemplo:
-* - "1.000"
-* - "10.000"
-* - "999.999"
+* O valor e fornecido como uma string com numeros inteiros simples ou formato brasileiro, por exemplo:
+* - "1000" ou "1.000"
+* - "10000" ou "10.000"
+* - "999999" ou "999.999"
 *
 * A classe `Quantidade` e responsavel por armazenar essa string, garantindo que esteja corretamente formatada
 * e que o numero representado esteja dentro do intervalo permitido.
 *
 * Regras de validacao:
-* - O valor deve estar no formato: `#.###.###` (apenas digitos com separadores de milhar).
+* - O valor deve ser um numero inteiro positivo simples (ex: "1000", "50000") ou formato brasileiro (ex: "1.000", "50.000").
 * - Deve representar um numero inteiro entre 1 e 1.000.000 (inclusive).
-* - Nao sao permitidas casas decimais ou simbolos fora do padrao numerico.
+* - Nao sao permitidas casas decimais ou outros simbolos alem de pontos como separadores de milhar.
 *
 * Metodos disponiveis:
 * - `setValor`: Metodo publico que define a quantidade apos validacao.
@@ -635,17 +635,17 @@ class Quantidade {
         static const int MAXIMO = 1000000;
 
         /**
-         * @brief Armazena a quantidade validada no formato `#.###.###`.
+         * @brief Armazena a quantidade validada como numero inteiro simples.
          */
         string valor;
 
-        /**
+                 /**
          * @brief Metodo privado responsavel por validar o formato e intervalo da quantidade.
          *
          * Regras de validacao:
-         * - Deve obedecer ao formato `#.###.###`, com pontos como separadores de milhar;
-         * - Deve conter apenas digitos e pontos;
-         * - O numero convertido deve estar no intervalo entre 1 e 1.000.000.
+         * - Deve ser um numero inteiro positivo simples (ex: "1000", "50000") ou formato brasileiro (ex: "1.000", "50.000");
+         * - Deve conter apenas digitos e pontos como separadores de milhar;
+         * - O numero deve estar no intervalo entre 1 e 1.000.000.
          *
          * @param valor String representando a quantidade a ser validada.
          * @throws std::invalid_argument Se o valor estiver em formato invalido ou fora do intervalo.
@@ -667,7 +667,7 @@ class Quantidade {
         /**
          * @brief Metodo publico que retorna a quantidade armazenada.
          *
-         * @return std::string Valor atual da quantidade no formato `#.###.###`.
+         * @return std::string Valor atual da quantidade como numero inteiro simples.
          */
         string getValor() const;
 };
@@ -675,7 +675,7 @@ class Quantidade {
 /**
  * @brief Implementacao inline do metodo que retorna a quantidade armazenada.
  *
- * @return std::string Quantidade no formato `#.###.###`.
+ * @return std::string Quantidade como numero inteiro simples.
  */
 inline string Quantidade::getValor() const { return valor; }
 

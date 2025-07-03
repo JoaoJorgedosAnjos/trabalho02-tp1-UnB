@@ -250,7 +250,7 @@ void TipoPerfil::setValor(const string& valor){
 //---------------------------------------------------------------------
 // Constantes de intervalo para valores monetarios validos
 const float Dinheiro::MINIMO = 0.01f;
-const float Dinheiro::MAXIMO = 1000000.00f;
+const float Dinheiro::MAXIMO = 100000000.00f; // Aumentado para R$ 100.000.000,00
 //---------------------------------------------------------------------
 // Implementacao do metodo privado que valida o valor monetario fornecido.
 void Dinheiro::validar(const string& valor){
@@ -270,7 +270,7 @@ void Dinheiro::validar(const string& valor){
 
     // Verifica intervalo permitido
     if (numero < MINIMO || numero > MAXIMO){
-            throw invalid_argument("Argumento invalido! Valor fora do intervalo permitido (0,01 a 1.000.000,00).");
+            throw invalid_argument("Argumento invalido! Valor fora do intervalo permitido (0,01 a 100.000.000,00).");
     }
 }
 //---------------------------------------------------------------------
@@ -285,15 +285,15 @@ void Dinheiro::setValor(const string& valor){
 //  Dominio Quantidade
 //---------------------------------------------------------------------
 // Implementacao do metodo privado que valida o valor da quantidade fornecida
-// no formato `#.###.###` e intervalo permitdo
+// aceita numeros inteiros simples (5000) ou formato brasileiro (5.000) de 1 a 1.000.000
 void Quantidade::validar(const string& valor){
-    // Regex para validar apenas numeros inteiros, sem casas decimais (formato #.###.###)
-    regex formato_valido(R"(^[1-9]\d{0,2}(\.\d{3})*$)");
+    // Regex para validar numeros inteiros simples OU formato brasileiro com pontos
+    regex formato_valido(R"(^[1-9]\d{0,6}$|^[1-9]\d{0,2}(\.\d{3})*$)");
     if (!regex_match(valor, formato_valido)) {
-        throw invalid_argument("Argumento invalido! Fora do formato #.###.###.");
+        throw invalid_argument("Argumento invalido! Quantidade deve ser um numero inteiro positivo (ex: 5000 ou 5.000).");
     }
 
-    // Extrai apenas a parte numerica da string, removendo os pontos
+    // Extrai apenas a parte numerica da string, removendo os pontos se existirem
     string numeroValor = valor;
     numeroValor.erase(remove(numeroValor.begin(), numeroValor.end(), '.'), numeroValor.end());
 
@@ -302,7 +302,7 @@ void Quantidade::validar(const string& valor){
 
     // Verifica intervalo permitido  (1 a 1.000.000)
     if (numero < MINIMO || numero > MAXIMO) {
-            throw invalid_argument("Argumento invalido! Valor fora do intervalo permitido (1 e 1.000.000).");
+            throw invalid_argument("Argumento invalido! Valor fora do intervalo permitido (1 a 1.000.000).");
     }
 }
 //---------------------------------------------------------------------

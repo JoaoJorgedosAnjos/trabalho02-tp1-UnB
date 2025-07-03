@@ -27,6 +27,10 @@ private:
     void finalizarStatement(sqlite3_stmt* stmt);
     std::string escaparString(const std::string& str);
 
+    // Métodos auxiliares para validação de integridade referencial
+    bool carteiraTemOrdens(const Codigo& codigoCarteira);
+    bool contaTemCarteiras(const Ncpf& cpf);
+
 public:
     /**
      * @brief Construtor padrão
@@ -207,6 +211,20 @@ public:
      * @return string com informações sobre número de registros
      */
     std::string obterEstatisticas();
+    
+    /**
+     * @brief Converte centavos para formato brasileiro de dinheiro
+     * @param centavos Valor em centavos
+     * @return string formatada no padrão brasileiro (#.###.###,##)
+     */
+    static std::string centavosParaDinheiro(long long centavos);
+    
+    /**
+     * @brief Converte um objeto Dinheiro para centavos
+     * @param dinheiro Objeto Dinheiro no formato brasileiro
+     * @return Valor em centavos como long long
+     */
+    static long long dinheiroParaCentavos(const Dinheiro& dinheiro);
 };
 
 #endif // DATABASEMANAGER_HPP_INCLUDED 

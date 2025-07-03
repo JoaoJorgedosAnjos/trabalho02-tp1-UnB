@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <cctype>
 #include <limits>
+#include <fstream>
 #include "controladorasApresentacao.hpp"
 
 // =================================================================================================
@@ -214,73 +215,145 @@ void ControladoraApresentacaoUsuario::cadastrar() {
     Nome nome;
     Senha senha;
     
-    while (true) {
-        try {
-            // Entrada de CPF com máscara automática
-            std::cout << "CPF (apenas numeros ou XXX.XXX.XXX-XX): ";
-            std::cin >> valor;
-
-            // Verificar se o usuário quer cancelar
-            if (valor == "0") {
-                std::cout << "Cadastro cancelado pelo usuario." << std::endl;
-                return;
-            }
-            
-            // Aplica a máscara automática se necessário
+    // Estados para controlar qual campo está sendo preenchido
+    bool cpfValido = false;
+    bool nomeValido = false;
+    bool senhaValida = false;
+    
+    while (!cpfValido || !nomeValido || !senhaValida) {
+        
+        // === CPF ===
+        if (!cpfValido) {
             try {
-                std::string cpfFormatado = formatarCPF(valor);
-                std::cout << "CPF formatado: " << cpfFormatado << std::endl;
-                cpf.setValor(cpfFormatado);
-            } catch (const std::invalid_argument& e) {
-                // Se falhou na formatação, tenta usar o valor original
-                cpf.setValor(valor);
+                std::cout << "\n=== 1. CPF ===" << std::endl;
+                std::cout << "CPF (apenas numeros ou XXX.XXX.XXX-XX): ";
+                std::cin >> valor;
+
+                // Verificar se o usuário quer cancelar
+                if (valor == "0") {
+                    std::cout << "Cadastro cancelado pelo usuario." << std::endl;
+                    return;
+                }
+                
+                // Aplica a máscara automática se necessário
+                try {
+                    std::string cpfFormatado = formatarCPF(valor);
+                    std::cout << "CPF formatado: " << cpfFormatado << std::endl;
+                    cpf.setValor(cpfFormatado);
+                } catch (const std::invalid_argument& e) {
+                    // Se falhou na formatação, tenta usar o valor original
+                    cpf.setValor(valor);
+                }
+                
+                cpfValido = true; // CPF válido
+                
+            } catch (const std::invalid_argument &exp) {
+                std::cout << "\nErro no CPF: " << exp.what() << std::endl;
+                std::cout << "Dica: Digite apenas os 11 numeros (ex: 04348848122)" << std::endl;
+                // Continua direto para o próximo input
             }
-            
-            // Limpa completamente o buffer
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Nome (ate 20 caracteres): ";
-            std::getline(std::cin, valor);
-            
-            // Verificar se o usuário quer cancelar
-            if (valor == "0") {
-                std::cout << "Cadastro cancelado pelo usuario." << std::endl;
-                return;
+        }
+        
+        // === NOME ===
+        else if (!nomeValido) {
+            try {
+                std::cout << "\n=== 2. NOME ===" << std::endl;
+                std::cout << "CPF já cadastrado: " << cpf.getValor() << " ✓" << std::endl;
+                std::cout << "(Digite '0' para cancelar ou 'r' para reescrever CPF)" << std::endl;
+                
+                // Limpa o buffer
+                std::cin.ignore();
+                std::cout << "Nome (ate 20 caracteres): ";
+                std::getline(std::cin, valor);
+                
+                // Verificar se o usuário quer cancelar
+                if (valor == "0") {
+                    std::cout << "Cadastro cancelado pelo usuario." << std::endl;
+                    return;
+                }
+                
+                // Verificar se o usuário quer reescrever CPF
+                if (valor == "r" || valor == "R") {
+                    std::cout << "Voltando para reescrever CPF..." << std::endl;
+                    cpfValido = false; // Volta para CPF
+                    continue;
+                }
+                
+                nome.setValor(valor);
+                nomeValido = true; // Nome válido
+                
+            } catch (const std::invalid_argument &exp) {
+                std::cout << "\nErro no Nome: " << exp.what() << std::endl;
+                std::cout << "Dica: Maximo 20 caracteres, sem espacos duplos" << std::endl;
+                // Continua direto para o próximo input
             }
-            
-            nome.setValor(valor);
-            
-            std::cout << "Senha (6 caracteres): ";
-            std::cin >> valor;
-            
-            // Verificar se o usuário quer cancelar
-            if (valor == "0") {
-                std::cout << "Cadastro cancelado pelo usuario." << std::endl;
-                return;
+        }
+        
+        // === SENHA ===
+        else if (!senhaValida) {
+            try {
+                std::cout << "\n=== 3. SENHA ===" << std::endl;
+                std::cout << "CPF já cadastrado: " << cpf.getValor() << " ✓" << std::endl;
+                std::cout << "Nome já cadastrado: " << nome.getValor() << " ✓" << std::endl;
+                std::cout << "(Digite '0' para cancelar, 'r' para reescrever CPF, 'n' para reescrever nome)" << std::endl;
+                
+                std::cout << "Senha (6 caracteres): ";
+                std::cin >> valor;
+                
+                // Verificar se o usuário quer cancelar
+                if (valor == "0") {
+                    std::cout << "Cadastro cancelado pelo usuario." << std::endl;
+                    return;
+                }
+                
+                // Verificar se o usuário quer reescrever CPF
+                if (valor == "r" || valor == "R") {
+                    std::cout << "Voltando para reescrever CPF..." << std::endl;
+                    cpfValido = false; // Volta para CPF
+                    continue;
+                }
+                
+                // Verificar se o usuário quer reescrever nome
+                if (valor == "n" || valor == "N") {
+                    std::cout << "Voltando para reescrever nome..." << std::endl;
+                    nomeValido = false; // Volta para nome
+                    continue;
+                }
+                
+                senha.setValor(valor);
+                senhaValida = true; // Senha válida
+                
+            } catch (const std::invalid_argument &exp) {
+                std::cout << "\nErro na Senha: " << exp.what() << std::endl;
+                std::cout << "Dica: 6 caracteres com 1 maiuscula, 1 minuscula, 1 numero e 1 simbolo (#$%&)" << std::endl;
+                // Continua direto para o próximo input
             }
-            
-            senha.setValor(valor);
-            
-            novaConta.setNcpf(cpf);
-            novaConta.setNome(nome);
-            novaConta.setSenha(senha);
-            
-            break;
-            
-        } catch (const std::invalid_argument &exp) {
-            std::cout << "\nErro: " << exp.what() << std::endl;
-            std::cout << "\nDicas para cadastro:" << std::endl;
-            std::cout << "- CPF: Digite apenas os 11 numeros (ex: 04348848122)" << std::endl;
-            std::cout << "- Nome: Maximo 20 caracteres, sem espacos duplos" << std::endl;
-            std::cout << "- Senha: 6 caracteres com 1 maiuscula, 1 minuscula, 1 numero e 1 simbolo (#$%&)" << std::endl;
-            std::cout << "\nPressione qualquer tecla para tentar novamente..." << std::endl;
-            std::cin.ignore();
-            std::cin.get();
         }
     }
     
+    // === RESUMO E CONFIRMAÇÃO ===
+    std::cout << "\n=== RESUMO DO CADASTRO ===" << std::endl;
+    std::cout << "CPF  : " << cpf.getValor() << std::endl;
+    std::cout << "Nome : " << nome.getValor() << std::endl;
+    std::cout << "Senha: ****** (6 caracteres)" << std::endl;
+    std::cout << "==========================" << std::endl;
+    
+    char confirmacao;
+    std::cout << "\nConfirma o cadastro? (s/n): ";
+    std::cin >> confirmacao;
+    
+    if (confirmacao != 's' && confirmacao != 'S') {
+        std::cout << "\nCadastro cancelado pelo usuario." << std::endl;
+        return;
+    }
+    
+    // === CRIAR CONTA ===
+    novaConta.setNcpf(cpf);
+    novaConta.setNome(nome);
+    novaConta.setSenha(senha);
 
     if (cntrServicoUsuario->cadastrarConta(novaConta)) {
-        std::cout << "\nConta cadastrada com sucesso!" << std::endl;
+        std::cout << "\n*** CONTA CADASTRADA COM SUCESSO! ***" << std::endl;
         std::cout << "CPF cadastrado: " << cpf.getValor() << std::endl;
         std::cout << "Agora voce ja pode fazer login!" << std::endl;
     } else {
@@ -1438,17 +1511,57 @@ void ControladoraApresentacaoInvestimento::criarOrdem(const Codigo& codigoCartei
     std::cout << "Saldo Atual: R$ " << saldoAtual.getValor() << std::endl;
     std::cout << "============================" << std::endl;
     
+    // Listar ordens existentes na carteira
+    std::cout << "\n=== ORDENS EXISTENTES NA CARTEIRA ===" << std::endl;
+    std::list<Ordem> ordensExistentes;
+    if (cntrServicoInvestimento->listarOrdens(codigoCarteira, &ordensExistentes)) {
+        if (ordensExistentes.empty()) {
+            std::cout << "Nenhuma ordem encontrada nesta carteira." << std::endl;
+        } else {
+            std::cout << "┌─────────┬────────────┬────────────┬──────────────┬────────────┐" << std::endl;
+            std::cout << "│ CÓDIGO  │   PAPEL    │    DATA    │    VALOR     │ QUANTIDADE │" << std::endl;
+            std::cout << "├─────────┼────────────┼────────────┼──────────────┼────────────┤" << std::endl;
+            
+            for (const Ordem& ordem : ordensExistentes) {
+                std::string codigo = ordem.getCodigo().getValor();
+                std::string papel = ordem.getCodigoNeg().getValor();
+                std::string data = ordem.getData().getValor();
+                std::string valor = ordem.getDinheiro().getValor();
+                std::string quantidade = ordem.getQuantidade().getValor();
+                
+                // Remove espaços extras do papel
+                size_t posFim = papel.find_last_not_of(' ');
+                if (posFim != std::string::npos) {
+                    papel = papel.substr(0, posFim + 1);
+                }
+                
+                // Formata a data para exibição (AAAAMMDD -> DD/MM/AAAA)
+                std::string dataFormatada = data.substr(6, 2) + "/" + data.substr(4, 2) + "/" + data.substr(0, 4);
+                
+                std::cout << "│ " << std::setw(7) << std::left << codigo 
+                         << " │ " << std::setw(10) << std::left << papel 
+                         << " │ " << std::setw(10) << std::left << dataFormatada 
+                         << " │ " << std::setw(12) << std::left << ("R$ " + valor) 
+                         << " │ " << std::setw(10) << std::left << quantidade << " │" << std::endl;
+            }
+            std::cout << "└─────────┴────────────┴────────────┴──────────────┴────────────┘" << std::endl;
+        }
+    } else {
+        std::cout << "Erro ao carregar ordens existentes." << std::endl;
+    }
+    std::cout << "===============================================" << std::endl;
+    
     // Explicar os dados necessários para criar uma ordem
     std::cout << "\n=== COMO CRIAR UMA ORDEM ===" << std::endl;
     std::cout << "Para criar uma ordem, você precisa fornecer:" << std::endl;
     std::cout << "1. CODIGO DA ORDEM    - ID único de 5 dígitos (ex: 30001, 30002)" << std::endl;
-    std::cout << "2. PAPEL/ATIVO        - Código do papel (ex: PETR4, VALE3)" << std::endl;
+    std::cout << "2. PAPEL/ATIVO        - Código do produto (ex: 00001, 00002)" << std::endl;
     std::cout << "3. DATA               - Data da operação (ex: 20240315)" << std::endl;
     std::cout << "4. QUANTIDADE         - Quantos papéis (ex: 100, 1.000)" << std::endl;
     std::cout << "============================" << std::endl;
     
-    std::cout << "\n=== PAPEIS DISPONIVEIS (com dados historicos) ===" << std::endl;
-    std::cout << "PETR4, VALE3, MGLU3, ITUB4, BBDC4, ABEV3, WEGE3, JBSS3, SUZB3" << std::endl;
+    std::cout << "\n=== PRODUTOS DISPONIVEIS (com dados historicos) ===" << std::endl;
+    std::cout << "00001, 00002, 00003, 00004, 00005, 00006, 00007, 00008, 00009" << std::endl;
     std::cout << "Datas disponíveis: 20240315 a 20240320" << std::endl;
     std::cout << "=================================================" << std::endl;
     
@@ -1459,9 +1572,17 @@ void ControladoraApresentacaoInvestimento::criarOrdem(const Codigo& codigoCartei
     Quantidade quantidadeOrdem;
     
     // === CÓDIGO DA ORDEM ===
+    std::cout << "\n=== 1. CÓDIGO DA ORDEM ===" << std::endl;
+    std::cout << "Exemplos de códigos válidos:" << std::endl;
+    std::cout << "• 30001, 30002, 30003, 30004, 30005" << std::endl;
+    std::cout << "• 40001, 40002, 40003, 40004, 40005" << std::endl;
+    std::cout << "• 50001, 50002, 50003, 50004, 50005" << std::endl;
+    std::cout << "DICA: Use qualquer código de 5 dígitos que não esteja em uso" << std::endl;
+    std::cout << "=========================" << std::endl;
+    
     while (true) {
         try {
-            std::cout << "\n1. Digite o CODIGO DA ORDEM (ID único de 5 dígitos) ou '0' para cancelar: ";
+            std::cout << "\nDigite o CODIGO DA ORDEM (5 dígitos) ou '0' para cancelar: ";
             std::string valorCodigo;
             std::cin >> valorCodigo;
             
@@ -1474,18 +1595,49 @@ void ControladoraApresentacaoInvestimento::criarOrdem(const Codigo& codigoCartei
             }
             
             codigoOrdem.setValor(valorCodigo);
+            
+            // VALIDAÇÃO EM TEMPO REAL: Verificar se o código já existe
+            std::list<Ordem> ordensExistentes;
+            if (cntrServicoInvestimento->listarOrdens(codigoCarteira, &ordensExistentes)) {
+                for (const Ordem& ordem : ordensExistentes) {
+                    if (ordem.getCodigo().getValor() == valorCodigo) {
+                        std::cout << "❌ ERRO: Código '" << valorCodigo << "' já está em uso!" << std::endl;
+                        std::cout << "   Use um código diferente." << std::endl;
+                        continue;
+                    }
+                }
+            }
+            
+            std::cout << "✅ Código da ordem válido: " << valorCodigo << std::endl;
             break;
         } catch (const std::invalid_argument &exp) {
-            std::cout << "Erro: " << exp.what() << std::endl;
-            std::cout << "Exemplo: 30001, 30002, 30003, etc." << std::endl;
-            std::cout << "DICA: Este é um identificador único da ordem, NÃO o código do papel!" << std::endl;
+            std::cout << "❌ ERRO: " << exp.what() << std::endl;
+            std::cout << "   Exemplo: 30001, 30002, 40001, 50001, etc." << std::endl;
         }
     }
-    
+
     // === CÓDIGO DE NEGOCIAÇÃO ===
+    std::cout << "\n=== 2. PAPEL/ATIVO ===" << std::endl;
+    std::cout << "Produtos disponíveis no arquivo histórico:" << std::endl;
+    std::cout << "┌─────────┬──────────────────────────────────┐" << std::endl;
+    std::cout << "│  CÓDIGO │           PRODUTO                │" << std::endl;
+    std::cout << "├─────────┼──────────────────────────────────┤" << std::endl;
+    std::cout << "│   00001 │ Caneta Esferográfica             │" << std::endl;
+    std::cout << "│   00002 │ Lápis HB                         │" << std::endl;
+    std::cout << "│   00003 │ Caderno 96 folhas                │" << std::endl;
+    std::cout << "│   00004 │ Borracha Branca                  │" << std::endl;
+    std::cout << "│   00005 │ Régua 30cm                       │" << std::endl;
+    std::cout << "│   00006 │ Tesoura Escolar                  │" << std::endl;
+    std::cout << "│   00007 │ Cola Branca                      │" << std::endl;
+    std::cout << "│   00008 │ Papel A4 500 folhas              │" << std::endl;
+    std::cout << "│   00009 │ Mochila Escolar                  │" << std::endl;
+    std::cout << "└─────────┴──────────────────────────────────┘" << std::endl;
+    std::cout << "DICA: Digite apenas o código (ex: 00001)" << std::endl;
+    std::cout << "======================" << std::endl;
+    
     while (true) {
         try {
-            std::cout << "\n2. Digite o PAPEL/ATIVO (código de negociação) ou '0' para cancelar: ";
+            std::cout << "\nDigite o PAPEL/ATIVO (código de negociação) ou '0' para cancelar: ";
             std::string valorCodigoNeg;
             std::cin.ignore(); // Limpa buffer
             std::getline(std::cin, valorCodigoNeg);
@@ -1503,18 +1655,66 @@ void ControladoraApresentacaoInvestimento::criarOrdem(const Codigo& codigoCartei
             }
             
             codigoNegociacao.setValor(valorCodigoNeg);
+            
+            // VALIDAÇÃO EM TEMPO REAL: Verificar se o produto existe no arquivo histórico
+            std::string codigoLimpo = valorCodigoNeg;
+            size_t posFim = codigoLimpo.find_last_not_of(' ');
+            if (posFim != std::string::npos) {
+                codigoLimpo = codigoLimpo.substr(0, posFim + 1);
+            }
+            
+            // Verificar se existe pelo menos uma linha com esse código no arquivo
+            std::ifstream arquivo("DADOS_HISTORICOS.txt");
+            bool produtoEncontrado = false;
+            std::string linha;
+            
+            while (std::getline(arquivo, linha)) {
+                // Pular linhas de comentário
+                if (linha.empty() || linha[0] == '#') {
+                    continue;
+                }
+                
+                if (linha.find(codigoLimpo + "|") == 0) {
+                    produtoEncontrado = true;
+                    break;
+                }
+            }
+            arquivo.close();
+            
+            if (!produtoEncontrado) {
+                std::cout << "❌ ERRO: Produto '" << codigoLimpo << "' não encontrado no arquivo histórico!" << std::endl;
+                std::cout << "   Use um dos produtos disponíveis: 00001, 00002, 00003, etc." << std::endl;
+                continue;
+            }
+            
+            std::cout << "✅ Produto válido: " << codigoLimpo << std::endl;
             break;
         } catch (const std::invalid_argument &exp) {
-            std::cout << "Erro: " << exp.what() << std::endl;
-            std::cout << "Exemplo: PETR4, VALE3, MGLU3, ITUB4, BBDC4, ABEV3, WEGE3, JBSS3, SUZB3" << std::endl;
-            std::cout << "DICA: Use um dos papéis listados acima que têm dados históricos!" << std::endl;
+            std::cout << "❌ ERRO: " << exp.what() << std::endl;
+                            std::cout << "   Exemplo: 00001, 00002, 00003, 00004, 00005, 00006, 00007, 00008, 00009" << std::endl;
+            std::cout << "   DICA: Use um dos produtos listados acima que têm dados históricos!" << std::endl;
         }
     }
-    
+
     // === DATA DA ORDEM ===
+    std::cout << "\n=== 3. DATA DA ORDEM ===" << std::endl;
+    std::cout << "Datas disponíveis no arquivo histórico:" << std::endl;
+    std::cout << "┌────────────┬─────────────────┬───────────────┐" << std::endl;
+    std::cout << "│   CÓDIGO   │      DATA       │  DIA SEMANA   │" << std::endl;
+    std::cout << "├────────────┼─────────────────┼───────────────┤" << std::endl;
+    std::cout << "│  20240315  │  15/03/2024     │  Sexta-feira  │" << std::endl;
+    std::cout << "│  20240316  │  16/03/2024     │  Sábado       │" << std::endl;
+    std::cout << "│  20240317  │  17/03/2024     │  Domingo      │" << std::endl;
+    std::cout << "│  20240318  │  18/03/2024     │  Segunda-feira│" << std::endl;
+    std::cout << "│  20240319  │  19/03/2024     │  Terça-feira  │" << std::endl;
+    std::cout << "│  20240320  │  20/03/2024     │  Quarta-feira │" << std::endl;
+    std::cout << "└────────────┴─────────────────┴───────────────┘" << std::endl;
+    std::cout << "DICA: Digite o código da data (ex: 20240315)" << std::endl;
+    std::cout << "========================" << std::endl;
+    
     while (true) {
         try {
-            std::cout << "\n3. Digite a DATA da ordem (AAAAMMDD) ou '0' para cancelar: ";
+            std::cout << "\nDigite a DATA da ordem (AAAAMMDD) ou '0' para cancelar: ";
             std::string valorData;
             std::cin >> valorData;
             
@@ -1527,25 +1727,110 @@ void ControladoraApresentacaoInvestimento::criarOrdem(const Codigo& codigoCartei
             }
             
             dataOrdem.setValor(valorData);
+            
+            // VALIDAÇÃO EM TEMPO REAL: Verificar se a data existe no arquivo histórico
+            std::ifstream arquivo("DADOS_HISTORICOS.txt");
+            bool dataEncontrada = false;
+            std::string linha;
+            
+            while (std::getline(arquivo, linha)) {
+                // Pular linhas de comentário
+                if (linha.empty() || linha[0] == '#') {
+                    continue;
+                }
+                
+                if (linha.find("|" + valorData + "|") != std::string::npos) {
+                    dataEncontrada = true;
+                    break;
+                }
+            }
+            arquivo.close();
+            
+            if (!dataEncontrada) {
+                std::cout << "❌ ERRO: Data '" << valorData << "' não encontrada no arquivo histórico!" << std::endl;
+                std::cout << "   Use uma das datas disponíveis: 20240315, 20240316, 20240317, 20240318, 20240319, 20240320" << std::endl;
+                continue;
+            }
+            
+            std::cout << "✅ Data válida: " << valorData << std::endl;
             break;
         } catch (const std::invalid_argument &exp) {
-            std::cout << "Erro: " << exp.what() << std::endl;
-            std::cout << "Exemplo: 20240315, 20240316, 20240317, 20240318, 20240319, 20240320" << std::endl;
-            std::cout << "DICA: Use apenas datas entre 20240315 e 20240320 (dados históricos disponíveis)!" << std::endl;
+            std::cout << "❌ ERRO: " << exp.what() << std::endl;
+            std::cout << "   Exemplo: 20240315, 20240316, 20240317, 20240318, 20240319, 20240320" << std::endl;
+            std::cout << "   DICA: Use apenas datas entre 20240315 e 20240320 (dados históricos disponíveis)!" << std::endl;
         }
     }
     
     // === QUANTIDADE ===
+    std::cout << "\n=== 4. QUANTIDADE ===" << std::endl;
+    std::cout << "Exemplos de quantidades válidas:" << std::endl;
+    std::cout << "┌─────────────┬────────────────────────────────┐" << std::endl;
+    std::cout << "│ QUANTIDADE  │           OBSERVAÇÃO           │" << std::endl;
+    std::cout << "├─────────────┼────────────────────────────────┤" << std::endl;
+    std::cout << "│     100     │ Lote padrão pequeno            │" << std::endl;
+    std::cout << "│     500     │ Lote médio                     │" << std::endl;
+    std::cout << "│   1.000     │ Lote padrão                    │" << std::endl;
+    std::cout << "│   5.000     │ Lote grande                    │" << std::endl;
+    std::cout << "│  10.000     │ Lote muito grande              │" << std::endl;
+    std::cout << "│ 100.000     │ Lote institucional             │" << std::endl;
+    std::cout << "└─────────────┴────────────────────────────────┘" << std::endl;
+    std::cout << "DICA: Digite números inteiros (ex: 1000 ou 1.000, 5000 ou 5.000)" << std::endl;
+    std::cout << "=========================" << std::endl;
+    
     while (true) {
         try {
-            std::cout << "\n4. Digite a quantidade de papeis: ";
+            std::cout << "\nDigite a QUANTIDADE de papéis ou '0' para cancelar: ";
             std::string valorQuantidade;
             std::cin >> valorQuantidade;
+            
+            if (valorQuantidade == "0") {
+                std::cout << "\nCriação de ordem cancelada pelo usuário." << std::endl;
+                std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
+                std::cin.ignore();
+                std::cin.get();
+                return;
+            }
+            
             quantidadeOrdem.setValor(valorQuantidade);
+            
+            // VALIDAÇÃO EM TEMPO REAL: Verificar se a combinação produto+data+quantidade é válida
+            std::string codigoLimpo = codigoNegociacao.getValor();
+            size_t posFim = codigoLimpo.find_last_not_of(' ');
+            if (posFim != std::string::npos) {
+                codigoLimpo = codigoLimpo.substr(0, posFim + 1);
+            }
+            
+            // Verificar se existe a combinação específica no arquivo
+            std::ifstream arquivo("DADOS_HISTORICOS.txt");
+            bool combinacaoEncontrada = false;
+            std::string linha;
+            
+            while (std::getline(arquivo, linha)) {
+                // Pular linhas de comentário
+                if (linha.empty() || linha[0] == '#') {
+                    continue;
+                }
+                
+                // Verificar se a linha contém a combinação produto+data
+                if (linha.find(codigoLimpo + "|" + dataOrdem.getValor() + "|") == 0) {
+                    combinacaoEncontrada = true;
+                    break;
+                }
+            }
+            arquivo.close();
+            
+            if (!combinacaoEncontrada) {
+                std::cout << "❌ ERRO: Combinação inválida!" << std::endl;
+                std::cout << "   Produto '" << codigoLimpo << "' não tem dados para a data '" << dataOrdem.getValor() << "'" << std::endl;
+                std::cout << "   Verifique se o produto e a data são compatíveis." << std::endl;
+                continue;
+            }
+            
+            std::cout << "✅ Quantidade válida: " << valorQuantidade << std::endl;
             break;
         } catch (const std::invalid_argument &exp) {
-            std::cout << "Erro: " << exp.what() << std::endl;
-            std::cout << "Exemplo: 100, 1.000, 10.000, etc." << std::endl;
+            std::cout << "❌ ERRO: " << exp.what() << std::endl;
+            std::cout << "   Exemplo: 100, 500, 1000 ou 1.000, 5000 ou 5.000, etc." << std::endl;
         }
     }
     
@@ -1561,7 +1846,7 @@ void ControladoraApresentacaoInvestimento::criarOrdem(const Codigo& codigoCartei
     std::cout << "\nIMPORTANTE:" << std::endl;
     std::cout << "- O PRECO da ordem sera calculado automaticamente" << std::endl;
     std::cout << "- Formula: Preco Medio Historico × Quantidade" << std::endl;
-            std::cout << "- Os dados serao buscados no arquivo DADOS_HISTORICOS.txt" << std::endl;
+    std::cout << "- Os dados serao buscados no arquivo DADOS_HISTORICOS.txt" << std::endl;
     
     char confirmacao;
     std::cout << "\nConfirma a criacao da ordem? (s/n): ";
@@ -1622,7 +1907,7 @@ void ControladoraApresentacaoInvestimento::criarOrdem(const Codigo& codigoCartei
         
         std::cout << "\nDICAS:" << std::endl;
         std::cout << "- Verifique se o codigo da ordem e unico" << std::endl;
-        std::cout << "- Use apenas papeis disponiveis: PETR4, VALE3, MGLU3, etc." << std::endl;
+        std::cout << "- Use apenas produtos disponiveis: 00001, 00002, 00003, etc." << std::endl;
         std::cout << "- Use datas entre 20240315 e 20240320" << std::endl;
         std::cout << "- Certifique-se que o arquivo DADOS_HISTORICOS.txt existe" << std::endl;
     }

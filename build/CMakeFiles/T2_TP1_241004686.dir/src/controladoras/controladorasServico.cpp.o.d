@@ -227,6 +227,7 @@ CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.o: \
  /usr/include/sqlite3.h \
  /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/database/../dominios/dominios.hpp \
  /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/database/../entidades/entidades.hpp \
+ /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/../database/DatabaseManager.hpp \
  /usr/include/c++/11/fstream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \

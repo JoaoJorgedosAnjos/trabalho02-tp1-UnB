@@ -6,6 +6,71 @@
 #include <algorithm>
 #include <list>
 
+// =================================================================================================
+// FUNÇÕES AUXILIARES PARA CONVERSÃO DE DINHEIRO COM PRECISÃO
+// =================================================================================================
+
+/**
+ * @brief Converte um objeto Dinheiro (formato "1.234,56") para um total de centavos (123456).
+ */
+long long DatabaseManager::dinheiroParaCentavos(const Dinheiro& dinheiro) {
+    std::string valor = dinheiro.getValor();
+    
+    // Remove todos os pontos (separadores de milhares)
+    valor.erase(std::remove(valor.begin(), valor.end(), '.'), valor.end());
+    
+    // Localiza a vírgula (separador decimal)
+    size_t posVirgula = valor.find(',');
+    if (posVirgula == std::string::npos) {
+        // Se não há vírgula, assume que são apenas reais inteiros
+        return std::stoll(valor) * 100;
+    }
+    
+    std::string parteInteira = valor.substr(0, posVirgula);
+    std::string parteDecimal = valor.substr(posVirgula + 1);
+    
+    // Garante que a parte decimal tenha exatamente 2 dígitos
+    if (parteDecimal.length() > 2) {
+        parteDecimal = parteDecimal.substr(0, 2); // Trunca se tiver mais de 2
+    } else if (parteDecimal.length() < 2) {
+        parteDecimal.append(2 - parteDecimal.length(), '0'); // Adiciona zeros se tiver menos de 2
+    }
+    
+    long long reais = parteInteira.empty() ? 0 : std::stoll(parteInteira);
+    long long centavos = std::stoll(parteDecimal);
+    
+    return reais * 100 + centavos;
+}
+
+/**
+ * @brief Converte um total de centavos (123456) para formato brasileiro de dinheiro ("1.234,56").
+ */
+std::string DatabaseManager::centavosParaDinheiro(long long totalCentavos) {
+    if (totalCentavos == 0) return "0,00";
+
+    long long reais = totalCentavos / 100;
+    long long centavos = totalCentavos % 100;
+    
+    std::string parteReais = std::to_string(reais);
+    
+    // Adiciona separadores de milhares (pontos)
+    if (parteReais.length() > 3) {
+        for (int i = parteReais.length() - 3; i > 0; i -= 3) {
+            parteReais.insert(i, ".");
+        }
+    }
+    
+    // Formata os centavos com 2 dígitos
+    std::string parteCentavos;
+    if (centavos < 10) {
+        parteCentavos = "0" + std::to_string(centavos);
+        } else {
+        parteCentavos = std::to_string(centavos);
+    }
+    
+    return parteReais + "," + parteCentavos;
+}
+
 DatabaseManager::DatabaseManager(const std::string& caminhoBanco) 
     : db(nullptr), dbPath(caminhoBanco), connected(false) {
 }
@@ -434,6 +499,11 @@ bool DatabaseManager::excluirCarteira(const Codigo& codigo) {
         return false;
     }
     
+    // VALIDAÇÃO: Verificar se a carteira possui ordens associadas
+    if (carteiraTemOrdens(codigo)) {
+        return false; // Não pode excluir carteira que possui ordens
+    }
+    
     std::string sql = "DELETE FROM carteiras WHERE codigo = ?";
     sqlite3_stmt* stmt;
     
@@ -473,25 +543,24 @@ bool DatabaseManager::calcularSaldoCarteira(const Codigo& codigoCarteira, Dinhei
         }
     }
     
-    double valorTotal = 0.0;
+    // Usar long long para evitar erros de arredondamento
+    long long saldoTotalCentavos = 0;
+    
     for (const auto& ordem : ordens) {
-        std::string valorStr = ordem.getDinheiro().getValor();
-        // Remove "R$ " e substitui vírgula por ponto
-        if (valorStr.size() > 3) {
-            valorStr.erase(0, 3); // Remove "R$ "
+        try {
+            // Converter cada valor de ordem para centavos usando a nova função
+            long long valorOrdemCentavos = DatabaseManager::dinheiroParaCentavos(ordem.getDinheiro());
+            saldoTotalCentavos += valorOrdemCentavos;
+        } catch (const std::exception& e) {
+            // Se houver erro na conversão de uma ordem, ignora e continua
+            std::cerr << "Erro ao converter valor da ordem: " << e.what() << std::endl;
         }
-        std::replace(valorStr.begin(), valorStr.end(), ',', '.');
-        valorTotal += std::stod(valorStr);
     }
     
-    // Converter de volta para formato brasileiro
-    std::ostringstream oss;
-    oss << std::fixed << std::setprecision(2) << valorTotal;
-    std::string valorFormatado = oss.str();
-    std::replace(valorFormatado.begin(), valorFormatado.end(), '.', ',');
-    
     try {
-        saldo->setValor(valorFormatado);
+        // Converter de volta para formato brasileiro
+        std::string saldoFormatado = DatabaseManager::centavosParaDinheiro(saldoTotalCentavos);
+        saldo->setValor(saldoFormatado);
         return true;
     } catch (const std::exception& e) {
         return false;
@@ -542,43 +611,21 @@ bool DatabaseManager::atualizarConta(const Conta& conta) {
     
     return sqlite3_changes(db) > 0;
 }
+
 bool DatabaseManager::excluirConta(const Ncpf& cpf) {
     if (!connected) {
         return false;
     }
     
-    if (sqlite3_exec(db, "BEGIN TRANSACTION", nullptr, nullptr, nullptr) != SQLITE_OK) {
-        return false;
+    // VALIDAÇÃO: Verificar se a conta possui carteiras associadas
+    if (contaTemCarteiras(cpf)) {
+        return false; // Não pode excluir conta que possui carteiras
     }
     
-    // Primeiro exclui todas as ordens das carteiras do usuário
-    std::string sqlOrdens = "DELETE FROM ordens WHERE codigo_carteira IN (SELECT codigo FROM carteiras WHERE cpf_conta = ?)";
-    sqlite3_stmt* stmtOrdens;
-    
-    if (sqlite3_prepare_v2(db, sqlOrdens.c_str(), -1, &stmtOrdens, nullptr) == SQLITE_OK) {
-        std::string cpfValor = cpf.getValor();
-        sqlite3_bind_text(stmtOrdens, 1, cpfValor.c_str(), -1, SQLITE_STATIC);
-        sqlite3_step(stmtOrdens);
-        sqlite3_finalize(stmtOrdens);
-    }
-    
-    // Depois exclui todas as carteiras do usuário
-    std::string sqlCarteiras = "DELETE FROM carteiras WHERE cpf_conta = ?";
-    sqlite3_stmt* stmtCarteiras;
-    
-    if (sqlite3_prepare_v2(db, sqlCarteiras.c_str(), -1, &stmtCarteiras, nullptr) == SQLITE_OK) {
-        std::string cpfValor = cpf.getValor();
-        sqlite3_bind_text(stmtCarteiras, 1, cpfValor.c_str(), -1, SQLITE_STATIC);
-        sqlite3_step(stmtCarteiras);
-        sqlite3_finalize(stmtCarteiras);
-    }
-    
-    // Por fim exclui a conta
     std::string sql = "DELETE FROM contas WHERE cpf = ?";
     sqlite3_stmt* stmt;
     
     if (sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr) != SQLITE_OK) {
-        sqlite3_exec(db, "ROLLBACK", nullptr, nullptr, nullptr);
         return false;
     }
     
@@ -588,20 +635,56 @@ bool DatabaseManager::excluirConta(const Ncpf& cpf) {
     int rc = sqlite3_step(stmt);
     sqlite3_finalize(stmt);
     
-    if (rc != SQLITE_DONE) {
-        sqlite3_exec(db, "ROLLBACK", nullptr, nullptr, nullptr);
-        return false;
-    }
-    
-    if (sqlite3_exec(db, "COMMIT", nullptr, nullptr, nullptr) != SQLITE_OK) {
-        sqlite3_exec(db, "ROLLBACK", nullptr, nullptr, nullptr);
-        return false;
-    }
-    
-    return sqlite3_changes(db) > 0;
+    return rc == SQLITE_DONE && sqlite3_changes(db) > 0;
 }
+
 bool DatabaseManager::atualizarCarteira(const Carteira& carteira) { return false; }
-bool DatabaseManager::buscarOrdem(const Codigo& codigo, Ordem* ordem) { return false; }
+
+bool DatabaseManager::buscarOrdem(const Codigo& codigo, Ordem* ordem) {
+    if (!connected || !ordem) {
+        return false;
+    }
+    
+    std::string sql = "SELECT codigo, codigo_neg, data, valor, quantidade FROM ordens WHERE codigo = ?";
+    sqlite3_stmt* stmt;
+    
+    if (sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr) != SQLITE_OK) {
+        return false;
+    }
+    
+    std::string codigoValor = codigo.getValor();
+    sqlite3_bind_text(stmt, 1, codigoValor.c_str(), -1, SQLITE_STATIC);
+    
+    bool found = false;
+    if (sqlite3_step(stmt) == SQLITE_ROW) {
+        try {
+            Codigo codigoResult;
+            CodigoNeg codigoNegResult;
+            Data dataResult;
+            Dinheiro valorResult;
+            Quantidade quantidadeResult;
+            
+            codigoResult.setValor(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0)));
+            codigoNegResult.setValor(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1)));
+            dataResult.setValor(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2)));
+            valorResult.setValor(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3)));
+            quantidadeResult.setValor(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 4)));
+            
+            ordem->setCodigo(codigoResult);
+            ordem->setCodigoNeg(codigoNegResult);
+            ordem->setData(dataResult);
+            ordem->setDinheiro(valorResult);
+            ordem->setQuantidade(quantidadeResult);
+            
+            found = true;
+        } catch (const std::exception& e) {
+            std::cerr << "Erro ao criar ordem: " << e.what() << std::endl;
+        }
+    }
+    
+    sqlite3_finalize(stmt);
+    return found;
+}
 
 bool DatabaseManager::prepararStatement(const std::string& sql, sqlite3_stmt** stmt) {
     return sqlite3_prepare_v2(db, sql.c_str(), -1, stmt, nullptr) == SQLITE_OK;
@@ -625,6 +708,8 @@ std::string DatabaseManager::escaparString(const std::string& str) {
     return escaped;
 }
 
+
+
 std::string DatabaseManager::obterEstatisticas() {
     if (!connected) {
         return "Não conectado ao banco";
@@ -645,4 +730,59 @@ bool DatabaseManager::limparTodasTabelas() {
     
     std::string sql = "DELETE FROM ordens; DELETE FROM carteiras; DELETE FROM contas;";
     return executarSQL(sql);
+}
+
+// Implementação dos métodos auxiliares para validação de integridade referencial
+bool DatabaseManager::carteiraTemOrdens(const Codigo& codigoCarteira) {
+    if (!connected) {
+        return false;
+    }
+    
+    std::string sql = "SELECT COUNT(*) FROM ordens WHERE codigo_carteira = ?";
+    sqlite3_stmt* stmt;
+    
+    if (sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr) != SQLITE_OK) {
+        return false;
+    }
+    
+    std::string codigoValor = codigoCarteira.getValor();
+    sqlite3_bind_text(stmt, 1, codigoValor.c_str(), -1, SQLITE_STATIC);
+    
+    int rc = sqlite3_step(stmt);
+    int count = 0;
+    
+    if (rc == SQLITE_ROW) {
+        count = sqlite3_column_int(stmt, 0);
+    }
+    
+    sqlite3_finalize(stmt);
+    
+    return count > 0; // Retorna true se há ordens associadas
+}
+
+bool DatabaseManager::contaTemCarteiras(const Ncpf& cpf) {
+    if (!connected) {
+        return false;
+    }
+    
+    std::string sql = "SELECT COUNT(*) FROM carteiras WHERE cpf_conta = ?";
+    sqlite3_stmt* stmt;
+    
+    if (sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr) != SQLITE_OK) {
+        return false;
+    }
+    
+    std::string cpfValor = cpf.getValor();
+    sqlite3_bind_text(stmt, 1, cpfValor.c_str(), -1, SQLITE_STATIC);
+    
+    int rc = sqlite3_step(stmt);
+    int count = 0;
+    
+    if (rc == SQLITE_ROW) {
+        count = sqlite3_column_int(stmt, 0);
+    }
+    
+    sqlite3_finalize(stmt);
+    
+    return count > 0; // Retorna true se há carteiras associadas
 }

@@ -202,6 +202,10 @@ CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
   /usr/include/c++/11/limits \
+  /usr/include/c++/11/fstream \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc \
   ../src/controladoras/controladorasApresentacao.hpp \
   ../src/interfaces/interfaces.hpp \
   ../src/dominios/dominios.hpp \
@@ -559,6 +563,7 @@ CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.o: ..
   /usr/include/sqlite3.h \
   ../src/dominios/dominios.hpp \
   ../src/entidades/entidades.hpp \
+  ../src/database/DatabaseManager.hpp \
   /usr/include/c++/11/fstream \
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
@@ -1957,14 +1962,6 @@ CMakeFiles/T2_TP1_241004686.dir/src/tests/testesEntidades.cpp.o: ../src/tests/te
 
 ../src/dominios/dominios.cpp:
 
-/usr/include/c++/11/bits/fstream.tcc:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
-
-/usr/include/c++/11/fstream:
-
 /usr/include/sqlite3.h:
 
 ../src/controladoras/controladorasServico.cpp:
@@ -1995,7 +1992,13 @@ CMakeFiles/T2_TP1_241004686.dir/src/tests/testesEntidades.cpp.o: ../src/tests/te
 
 /usr/include/c++/11/bits/regex_constants.h:
 
+/usr/include/strings.h:
+
+/usr/include/c++/11/bits/stl_multimap.h:
+
 /usr/include/c++/11/bits/cxxabi_forced.h:
+
+/usr/include/c++/11/fstream:
 
 /usr/include/x86_64-linux-gnu/bits/endian.h:
 
@@ -2012,8 +2015,6 @@ CMakeFiles/T2_TP1_241004686.dir/src/tests/testesEntidades.cpp.o: ../src/tests/te
 /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
-
-/usr/include/strings.h:
 
 /usr/include/c++/11/bits/basic_string.h:
 
@@ -2185,8 +2186,6 @@ CMakeFiles/T2_TP1_241004686.dir/src/tests/testesEntidades.cpp.o: ../src/tests/te
 
 /usr/include/features.h:
 
-/usr/include/c++/11/bits/stl_multimap.h:
-
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
 
 /usr/include/x86_64-linux-gnu/bits/timex.h:
@@ -2252,6 +2251,10 @@ CMakeFiles/T2_TP1_241004686.dir/src/tests/testesEntidades.cpp.o: ../src/tests/te
 /usr/include/c++/11/bits/nested_exception.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
+
+/usr/include/c++/11/cstring:
+
+/usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
 
 /usr/include/c++/11/bits/std_function.h:
 
@@ -2409,6 +2412,10 @@ CMakeFiles/T2_TP1_241004686.dir/src/tests/testesEntidades.cpp.o: ../src/tests/te
 
 /usr/include/c++/11/stdexcept:
 
+/usr/include/string.h:
+
+/usr/include/c++/11/bits/streambuf.tcc:
+
 /usr/include/c++/11/bits/atomic_lockfree_defines.h:
 
 /usr/include/c++/11/bits/uniform_int_dist.h:
@@ -2456,6 +2463,12 @@ CMakeFiles/T2_TP1_241004686.dir/src/tests/testesEntidades.cpp.o: ../src/tests/te
 /usr/include/c++/11/sstream:
 
 /usr/include/c++/11/limits:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
+
+/usr/include/c++/11/bits/fstream.tcc:
 
 ../src/interfaces/interfaces.hpp:
 
@@ -2520,11 +2533,3 @@ CMakeFiles/T2_TP1_241004686.dir/src/tests/testesEntidades.cpp.o: ../src/tests/te
 /usr/include/c++/11/bits/stl_stack.h:
 
 /usr/include/c++/11/bits/stl_map.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
-
-/usr/include/c++/11/cstring:
-
-/usr/include/c++/11/bits/streambuf.tcc:
-
-/usr/include/string.h:

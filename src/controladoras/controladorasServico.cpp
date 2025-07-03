@@ -1,87 +1,11 @@
 #include "controladorasServico.hpp"
+#include "../database/DatabaseManager.hpp"
 #include <string>
 #include <iostream>
 #include <algorithm>
 #include <fstream>
 #include <sstream>
 #include <vector>
-
-// =================================================================================================
-// FUNÇÕES AUXILIARES PARA CONVERSÃO DE DINHEIRO COM PRECISÃO
-// =================================================================================================
-
-/**
- * @brief Converte um objeto Dinheiro (formato brasileiro) para centavos como inteiro longo
- */
-long long dinheiroParaCentavos(const Dinheiro& dinheiro) {
-    std::string valor = dinheiro.getValor();
-    
-    // Remove todos os pontos (separadores de milhares)
-    valor.erase(std::remove(valor.begin(), valor.end(), '.'), valor.end());
-    
-    // Localiza a vírgula (separador decimal)
-    size_t posVirgula = valor.find(',');
-    if (posVirgula == std::string::npos) {
-        // Se não há vírgula, assume que são apenas reais inteiros
-        try {
-            return std::stoll(valor) * 100;
-        } catch (const std::exception&) {
-            throw std::invalid_argument("Valor monetário inválido para conversão");
-        }
-    }
-    
-    // Separa parte inteira e parte decimal
-    std::string parteInteira = valor.substr(0, posVirgula);
-    std::string parteDecimal = valor.substr(posVirgula + 1);
-    
-    // Garante que a parte decimal tenha exatamente 2 dígitos
-    if (parteDecimal.length() != 2) {
-        throw std::invalid_argument("Formato de centavos inválido");
-    }
-    
-    try {
-        // Converte para centavos: parte_inteira * 100 + parte_decimal
-        long long reais = std::stoll(parteInteira);
-        long long centavos = std::stoll(parteDecimal);
-        return reais * 100 + centavos;
-    } catch (const std::exception&) {
-        throw std::invalid_argument("Erro na conversão de valor monetário");
-    }
-}
-
-/**
- * @brief Converte centavos (inteiro longo) para formato brasileiro de dinheiro
- */
-std::string centavosParaDinheiro(long long centavos) {
-    // Aplica os limites do domínio Dinheiro
-    const long long CENTAVOS_MINIMO = 1;         // 0,01
-    const long long CENTAVOS_MAXIMO = 100000000; // 1.000.000,00
-    
-    if (centavos < CENTAVOS_MINIMO) centavos = CENTAVOS_MINIMO;
-    if (centavos > CENTAVOS_MAXIMO) centavos = CENTAVOS_MAXIMO;
-    
-    // Separa reais e centavos
-    long long reais = centavos / 100;
-    long long centavosRestantes = centavos % 100;
-    
-    // Converte a parte dos reais para string
-    std::string parteReais = std::to_string(reais);
-    
-    // Adiciona separadores de milhares (pontos) da direita para esquerda
-    if (parteReais.length() > 3) {
-        for (int i = parteReais.length() - 3; i > 0; i -= 3) {
-            parteReais.insert(i, ".");
-        }
-    }
-    
-    // Formata os centavos com 2 dígitos (com zero à esquerda se necessário)
-    std::string parteCentavos = (centavosRestantes < 10) ? 
-        "0" + std::to_string(centavosRestantes) : 
-        std::to_string(centavosRestantes);
-    
-    // Combina no formato brasileiro: reais,centavos
-    return parteReais + "," + parteCentavos;
-}
 
 // =================================================================================================
 // IMPLEMENTAÇÃO DA CONTROLADORA COM SQLITE
@@ -171,7 +95,7 @@ bool ControladoraServico::consultarConta(const Ncpf& cpf, Conta* conta, Dinheiro
         Dinheiro saldoCarteira;
         if (dbManager->calcularSaldoCarteira(carteira.getCodigo(), &saldoCarteira)) {
             try {
-                long long saldoCarteiraCentavos = dinheiroParaCentavos(saldoCarteira);
+                long long saldoCarteiraCentavos = DatabaseManager::dinheiroParaCentavos(saldoCarteira);
                 saldoTotalCentavos += saldoCarteiraCentavos;
             } catch (const std::exception& e) {
                 // Ignora erros de conversão e continua
@@ -180,7 +104,7 @@ bool ControladoraServico::consultarConta(const Ncpf& cpf, Conta* conta, Dinheiro
     }
     
     try {
-        std::string saldoFormatado = centavosParaDinheiro(saldoTotalCentavos);
+        std::string saldoFormatado = DatabaseManager::centavosParaDinheiro(saldoTotalCentavos);
         saldo->setValor(saldoFormatado);
         return true;
     } catch (const std::exception& e) {
@@ -323,8 +247,8 @@ bool ControladoraServico::criarOrdem(const Codigo& codigoCarteira, const Ordem& 
             campos.push_back(campo);
         }
         
-        // Verifica se a linha tem o formato correto (8 campos)
-        if (campos.size() != 8) {
+        // Verifica se a linha tem o formato correto (3 campos: CodigoNegociacao|Data|PrecoMedio)
+        if (campos.size() != 3) {
             continue;
         }
         
@@ -339,7 +263,7 @@ bool ControladoraServico::criarOrdem(const Codigo& codigoCarteira, const Ordem& 
         
         // Verifica se encontrou o papel e a data
         if (codigoNegArquivo == codigoNegBusca && dataArquivo == dataBusca) {
-            precoMedio = campos[6]; // PrecoMedio está na posição 6
+            precoMedio = campos[2]; // PrecoMedio está na posição 2
             encontrouDados = true;
             break;
         }
@@ -348,7 +272,22 @@ bool ControladoraServico::criarOrdem(const Codigo& codigoCarteira, const Ordem& 
     arquivo.close();
     
     if (!encontrouDados) {
-        std::cout << "Erro: Não foram encontrados dados históricos para " << codigoNegBusca << " na data " << dataBusca << std::endl;
+        std::cout << "=== ERRO: DADOS HISTÓRICOS NÃO ENCONTRADOS ===" << std::endl;
+        std::cout << "Papel: " << codigoNegBusca << " | Data: " << dataBusca << std::endl;
+        std::cout << std::endl;
+        std::cout << "OBSERVAÇÃO IMPORTANTE:" << std::endl;
+        std::cout << "- A data " << dataBusca << " é VÁLIDA no calendário" << std::endl;
+        std::cout << "- Porém, não há dados históricos disponíveis para essa data" << std::endl;
+        std::cout << "- Isso é uma limitação dos dados históricos, não um erro de validação" << std::endl;
+        std::cout << std::endl;
+        std::cout << "DATAS DISPONÍVEIS NO ARQUIVO:" << std::endl;
+        std::cout << "- 20240315 (15/03/2024)" << std::endl;
+        std::cout << "- 20240316 (16/03/2024)" << std::endl;
+        std::cout << "- 20240317 (17/03/2024)" << std::endl;
+        std::cout << "- 20240318 (18/03/2024)" << std::endl;
+        std::cout << "- 20240319 (19/03/2024)" << std::endl;
+        std::cout << "- 20240320 (20/03/2024)" << std::endl;
+        std::cout << "=============================================" << std::endl;
         return false; // Não encontrou dados históricos para o papel na data especificada
     }
     
@@ -357,7 +296,7 @@ bool ControladoraServico::criarOrdem(const Codigo& codigoCarteira, const Ordem& 
         // Converter preço médio para centavos
         Dinheiro precoMedioObj;
         precoMedioObj.setValor(precoMedio);
-        long long precoMedioCentavos = dinheiroParaCentavos(precoMedioObj);
+        long long precoMedioCentavos = DatabaseManager::dinheiroParaCentavos(precoMedioObj);
         
         // Converter quantidade para número
         std::string quantidadeStr = ordem.getQuantidade().getValor();
@@ -376,7 +315,7 @@ bool ControladoraServico::criarOrdem(const Codigo& codigoCarteira, const Ordem& 
         long long precoFinalCentavos = precoMedioCentavos * quantidade;
         
         // Converte de volta para formato brasileiro
-        std::string precoFinalFormatado = centavosParaDinheiro(precoFinalCentavos);
+        std::string precoFinalFormatado = DatabaseManager::centavosParaDinheiro(precoFinalCentavos);
         
         // 5. Criar nova ordem com o preço calculado
         Ordem novaOrdem = ordem; // Copia todos os dados
