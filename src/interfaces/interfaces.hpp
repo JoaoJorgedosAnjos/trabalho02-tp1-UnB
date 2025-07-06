@@ -1,22 +1,15 @@
 #ifndef INTERFACES_H_INCLUDED
 #define INTERFACES_H_INCLUDED
 
-// Inclui suas classes de domínio já implementadas.
 #include "dominios.hpp"
-// Inclui as classes de entidade.
 #include "entidades.hpp"
 
 #include <list>
 #include <string>
 
-// Forward declarations para as interfaces de serviço.
 class IServicoAutenticacao;
 class IServicoUsuario;
 class IServicoInvestimento;
-
-// =================================================================================================
-// INTERFACES DE APRESENTAÇÃO
-// =================================================================================================
 
 /**
  * @brief Interface para os serviços de autenticação na camada de apresentação.
@@ -50,11 +43,6 @@ public:
     virtual ~IApresentacaoInvestimento() {}
 };
 
-
-// =================================================================================================
-// INTERFACES DE SERVIÇO
-// =================================================================================================
-
 /**
  * @brief Interface para os serviços de autenticação providos pela camada de serviço.
  */
@@ -81,14 +69,11 @@ public:
  */
 class IServicoInvestimento {
 public:
-    // --- Métodos para Carteira ---
     virtual bool criarCarteira(const Ncpf& cpf, const Carteira& carteira) = 0;
     virtual bool listarCarteiras(const Ncpf& cpf, std::list<Carteira>* listaCarteiras) = 0;
     virtual bool consultarCarteira(const Codigo& codigo, Carteira* carteira, Dinheiro* saldo) = 0;
     virtual bool editarCarteira(const Carteira& carteira) = 0;
     virtual bool excluirCarteira(const Codigo& codigo) = 0;
-
-    // --- Métodos para Ordem ---
     virtual bool criarOrdem(const Codigo& codigoCarteira, const Ordem& ordem) = 0;
     virtual bool listarOrdens(const Codigo& codigoCarteira, std::list<Ordem>* listaOrdens) = 0;
     virtual bool excluirOrdem(const Codigo& codigo) = 0;

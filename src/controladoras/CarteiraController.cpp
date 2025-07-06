@@ -1,10 +1,34 @@
 #include "CarteiraController.hpp"
 #include <limits>
 
+/**
+ * @brief Construtor do controlador de carteiras
+ * 
+ * @param servico Ponteiro para o serviço de investimentos que será utilizado
+ *                para realizar operações no banco de dados
+ * 
+ * @details Inicializa o controlador com uma referência ao serviço de investimentos.
+ * O serviço é responsável por todas as operações de persistência de dados.
+ */
 CarteiraController::CarteiraController(IServicoInvestimento* servico) 
     : servicoInvestimento(servico) {
 }
 
+/**
+ * @brief Executa o menu principal de gerenciamento de carteiras
+ * 
+ * @param cpf CPF do usuário autenticado para filtrar as carteiras
+ * 
+ * @details Apresenta um menu interativo com as seguintes opções:
+ * - 1: Criar nova carteira
+ * - 2: Listar e consultar carteiras existentes
+ * - 3: Editar carteira existente
+ * - 4: Excluir carteira
+ * - 0: Voltar ao menu anterior
+ * 
+ * O menu é executado em loop até que o usuário escolha sair (opção 0).
+ * Todas as operações são realizadas no contexto do CPF fornecido.
+ */
 void CarteiraController::executarMenu(const Ncpf& cpf) {
     int opcao;
     
@@ -33,6 +57,16 @@ void CarteiraController::executarMenu(const Ncpf& cpf) {
     }
 }
 
+/**
+ * @brief Exibe o menu de opções de carteiras
+ * 
+ * @details Apresenta uma interface textual com as opções disponíveis
+ * para gerenciamento de carteiras. O menu inclui:
+ * - Cabeçalho formatado
+ * - Lista numerada de opções
+ * - Separador visual
+ * - Prompt para entrada do usuário
+ */
 void CarteiraController::exibirMenu() {
     telaUtils::exibirCabecalho("MENU DE CARTEIRAS");
     std::cout << "1. Criar carteira" << std::endl;
@@ -44,6 +78,30 @@ void CarteiraController::exibirMenu() {
     std::cout << "Escolha uma opção: ";
 }
 
+/**
+ * @brief Cria uma nova carteira de investimento
+ * 
+ * @param cpf CPF do usuário que está criando a carteira
+ * 
+ * @details Implementa o fluxo completo de criação de carteira:
+ * 
+ * 1. Verifica o limite de carteiras (máximo 5 por usuário)
+ * 2. Solicita e valida o código da carteira (5 dígitos)
+ * 3. Solicita e valida o nome da carteira (até 20 caracteres)
+ * 4. Solicita e valida o tipo de perfil (Conservador/Moderado/Agressivo)
+ * 5. Exibe resumo dos dados para confirmação
+ * 6. Cria a carteira através do serviço
+ * 
+ * Validações implementadas:
+ * - Limite máximo de 5 carteiras por usuário
+ * - Código deve ser único no sistema
+ * - Formato do código: exatamente 5 dígitos numéricos
+ * - Nome: até 20 caracteres (letras, números e espaços)
+ * - Perfil: deve ser um dos três tipos válidos
+ * 
+ * @note O usuário pode cancelar a operação a qualquer momento digitando '0'
+ * @note A carteira é criada com saldo inicial zero
+ */
 void CarteiraController::criarCarteira(const Ncpf& cpf) {
     telaUtils::exibirCabecalho("CRIACAO DE NOVA CARTEIRA");
     std::cout << "(Digite '0' a qualquer momento para cancelar)" << std::endl;
@@ -196,6 +254,30 @@ void CarteiraController::criarCarteira(const Ncpf& cpf) {
     std::cin.get();
 }
 
+/**
+ * @brief Lista e permite consulta detalhada das carteiras do usuário
+ * 
+ * @param cpf CPF do usuário para filtrar as carteiras
+ * 
+ * @details Implementa um sistema de listagem interativo que:
+ * 
+ * 1. Exibe todas as carteiras do usuário em formato tabular
+ * 2. Permite selecionar uma carteira específica para ver detalhes
+ * 3. Mostra o saldo atual da carteira (calculado a partir das ordens)
+ * 4. Lista todas as ordens associadas à carteira
+ * 5. Oferece opções para editar ou excluir a carteira selecionada
+ * 
+ * Se o usuário não possui carteiras, oferece a opção de criar uma nova.
+ * 
+ * Funcionalidades específicas:
+ * - Exibição do saldo total da carteira
+ * - Listagem de todas as ordens associadas
+ * - Acesso rápido às operações de edição e exclusão
+ * - Validação de códigos de carteira
+ * 
+ * @note O saldo é calculado dinamicamente a partir das ordens de investimento
+ * @note Apenas carteiras do usuário autenticado são exibidas
+ */
 void CarteiraController::listarCarteiras(const Ncpf& cpf) {
     while (true) {
         telaUtils::exibirCabecalho("LISTA DE CARTEIRAS");
@@ -325,6 +407,23 @@ void CarteiraController::listarCarteiras(const Ncpf& cpf) {
     }
 }
 
+/**
+ * @brief Exibe a lista de carteiras em formato tabular
+ * 
+ * @param carteiras Lista de carteiras a ser exibida
+ * 
+ * @details Cria uma tabela formatada com as seguintes colunas:
+ * - Código: identificador único da carteira
+ * - Nome: nome descritivo da carteira
+ * - Perfil: tipo de perfil de investimento
+ * 
+ * A tabela inclui:
+ * - Cabeçalho com títulos das colunas
+ * - Separadores visuais
+ * - Contador total de carteiras
+ * 
+ * @note A formatação utiliza std::setw para alinhamento das colunas
+ */
 void CarteiraController::exibirListaCarteiras(const std::list<Carteira>& carteiras) {
     std::cout << "\n=== SUAS CARTEIRAS ===" << std::endl;
     std::cout << std::left << std::setw(8) << "Codigo" 
@@ -341,6 +440,23 @@ void CarteiraController::exibirListaCarteiras(const std::list<Carteira>& carteir
     std::cout << "Total de carteiras: " << carteiras.size() << std::endl;
 }
 
+/**
+ * @brief Exibe detalhes completos de uma carteira específica
+ * 
+ * @param carteira Carteira cujos detalhes serão exibidos
+ * @param saldo Saldo atual da carteira
+ * 
+ * @details Apresenta uma visualização detalhada da carteira incluindo:
+ * - Código da carteira
+ * - Nome da carteira
+ * - Tipo de perfil
+ * - Saldo total atual
+ * 
+ * A exibição é formatada com separadores visuais para melhor legibilidade.
+ * 
+ * @note O saldo é fornecido como parâmetro separado pois é calculado
+ * dinamicamente a partir das ordens de investimento
+ */
 void CarteiraController::exibirDetalhesCarteira(const Carteira& carteira, const Dinheiro& saldo) {
     std::cout << "\n==============================" << std::endl;
     std::cout << "    DETALHES DA CARTEIRA" << std::endl;
@@ -352,6 +468,26 @@ void CarteiraController::exibirDetalhesCarteira(const Carteira& carteira, const 
     std::cout << "==============================" << std::endl;
 }
 
+/**
+ * @brief Inicia o processo de edição de carteira
+ * 
+ * @param cpf CPF do usuário autenticado
+ * 
+ * @details Implementa o fluxo de seleção e edição de carteira:
+ * 
+ * 1. Lista todas as carteiras do usuário
+ * 2. Solicita o código da carteira a ser editada
+ * 3. Valida a existência da carteira
+ * 4. Chama o método de edição específica
+ * 
+ * Validações:
+ * - Verifica se o usuário possui carteiras
+ * - Valida o formato do código (5 dígitos)
+ * - Confirma a existência da carteira no sistema
+ * 
+ * @note O usuário pode cancelar a operação digitando '0'
+ * @note Apenas carteiras do usuário autenticado podem ser editadas
+ */
 void CarteiraController::editarCarteira(const Ncpf& cpf) {
     telaUtils::exibirCabecalho("EDICAO DE CARTEIRA");
     
@@ -399,6 +535,31 @@ void CarteiraController::editarCarteira(const Ncpf& cpf) {
     editarCarteiraEspecifica(cpf, carteiraAtual);
 }
 
+/**
+ * @brief Edita uma carteira específica
+ * 
+ * @param cpf CPF do usuário autenticado
+ * @param carteiraAtual Carteira que será editada
+ * 
+ * @details Implementa a edição interativa de uma carteira específica:
+ * 
+ * 1. Exibe os dados atuais da carteira
+ * 2. Permite edição do nome (opcional)
+ * 3. Permite alteração do tipo de perfil (opcional)
+ * 4. Exibe resumo das alterações
+ * 5. Confirma e salva as alterações
+ * 
+ * Campos editáveis:
+ * - Nome: pode ser mantido (ENTER) ou alterado
+ * - Perfil: pode ser mantido ou alterado para um dos três tipos válidos
+ * 
+ * Validações:
+ * - Nome: até 20 caracteres (letras, números e espaços)
+ * - Perfil: deve ser Conservador, Moderado ou Agressivo
+ * 
+ * @note O código da carteira não pode ser alterado
+ * @note O usuário pode cancelar a operação a qualquer momento
+ */
 void CarteiraController::editarCarteiraEspecifica(const Ncpf& cpf, const Carteira& carteiraAtual) {
     std::cout << "\n--- Edicao Rapida da Carteira ---" << std::endl;
     
@@ -506,6 +667,26 @@ void CarteiraController::editarCarteiraEspecifica(const Ncpf& cpf, const Carteir
     std::cin.get();
 }
 
+/**
+ * @brief Inicia o processo de exclusão de carteira
+ * 
+ * @param cpf CPF do usuário autenticado
+ * 
+ * @details Implementa o fluxo de seleção e exclusão de carteira:
+ * 
+ * 1. Lista todas as carteiras do usuário
+ * 2. Solicita o código da carteira a ser excluída
+ * 3. Valida a existência da carteira
+ * 4. Chama o método de exclusão específica
+ * 
+ * Validações:
+ * - Verifica se o usuário possui carteiras
+ * - Valida o formato do código (5 dígitos)
+ * - Confirma a existência da carteira no sistema
+ * 
+ * @note O usuário pode cancelar a operação digitando '0'
+ * @note Apenas carteiras do usuário autenticado podem ser excluídas
+ */
 void CarteiraController::excluirCarteira(const Ncpf& cpf) {
     telaUtils::exibirCabecalho("EXCLUSAO DE CARTEIRA");
     
@@ -553,6 +734,37 @@ void CarteiraController::excluirCarteira(const Ncpf& cpf) {
     excluirCarteiraEspecifica(cpf, carteiraParaExcluir);
 }
 
+/**
+ * @brief Exclui uma carteira específica com validações de integridade
+ * 
+ * @param cpf CPF do usuário autenticado
+ * @param carteiraAtual Carteira que será excluída
+ * @return bool true se a exclusão foi bem-sucedida, false caso contrário
+ * 
+ * @details Implementa a exclusão segura de uma carteira com as seguintes etapas:
+ * 
+ * 1. Exibe detalhes da carteira a ser excluída
+ * 2. Adverte sobre a natureza permanente da operação
+ * 3. Solicita confirmação explícita do usuário
+ * 4. Executa a exclusão através do serviço
+ * 5. Informa o resultado da operação
+ * 
+ * Validações de integridade referencial:
+ * - A carteira só pode ser excluída se não possuir ordens associadas
+ * - O sistema verifica automaticamente a existência de ordens
+ * - Se houver ordens, a exclusão é bloqueada e orientações são fornecidas
+ * 
+ * Confirmação de segurança:
+ * - O usuário deve digitar 'sim' (ou variações) para confirmar
+ * - A operação é cancelada para qualquer outra entrada
+ * 
+ * @note A exclusão é permanente e não pode ser desfeita
+ * @note Todas as ordens da carteira devem ser excluídas primeiro
+ * @note O sistema fornece orientações claras em caso de erro
+ * 
+ * @return true se a carteira foi excluída com sucesso
+ * @return false se a exclusão falhou (ordens existentes ou erro do sistema)
+ */
 bool CarteiraController::excluirCarteiraEspecifica(const Ncpf& cpf, const Carteira& carteiraAtual) {
     std::cout << "\n--- Exclusao da Carteira ---" << std::endl;
     

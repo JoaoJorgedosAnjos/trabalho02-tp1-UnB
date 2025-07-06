@@ -21,13 +21,11 @@ private:
     std::string dbPath;
     bool connected;
 
-    // Métodos auxiliares privados
     bool executarSQL(const std::string& sql);
     bool prepararStatement(const std::string& sql, sqlite3_stmt** stmt);
     void finalizarStatement(sqlite3_stmt* stmt);
     std::string escaparString(const std::string& str);
 
-    // Métodos auxiliares para validação de integridade referencial
     bool carteiraTemOrdens(const Codigo& codigoCarteira);
     bool contaTemCarteiras(const Ncpf& cpf);
 
@@ -43,10 +41,6 @@ public:
      */
     ~DatabaseManager();
 
-    // ============================================
-    // MÉTODOS DE CONEXÃO E INICIALIZAÇÃO
-    // ============================================
-    
     /**
      * @brief Conecta ao banco de dados SQLite
      * @return true se conectou com sucesso, false caso contrário
@@ -70,10 +64,6 @@ public:
      */
     bool estaConectado() const { return connected; }
 
-    // ============================================
-    // MÉTODOS PARA CONTAS
-    // ============================================
-    
     /**
      * @brief Insere uma nova conta no banco
      * @param conta Objeto Conta a ser inserido
@@ -111,10 +101,6 @@ public:
      */
     bool autenticarUsuario(const Ncpf& cpf, const Senha& senha);
 
-    // ============================================
-    // MÉTODOS PARA CARTEIRAS
-    // ============================================
-    
     /**
      * @brief Insere uma nova carteira no banco
      * @param carteira Objeto Carteira a ser inserido
@@ -153,10 +139,6 @@ public:
      */
     bool excluirCarteira(const Codigo& codigo);
 
-    // ============================================
-    // MÉTODOS PARA ORDENS
-    // ============================================
-    
     /**
      * @brief Insere uma nova ordem no banco
      * @param ordem Objeto Ordem a ser inserido
@@ -196,10 +178,6 @@ public:
      */
     bool calcularSaldoCarteira(const Codigo& codigoCarteira, Dinheiro* saldo);
 
-    // ============================================
-    // MÉTODOS UTILITÁRIOS
-    // ============================================
-    
     /**
      * @brief Limpa todas as tabelas (usado para testes)
      * @return true se limpou com sucesso, false caso contrário

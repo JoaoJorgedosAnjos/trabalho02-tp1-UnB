@@ -2,10 +2,27 @@
 #include "InputValidator.hpp"
 #include <limits>
 
+/**
+ * @brief Construtor da controladora de ordens
+ * @param servico Ponteiro para o serviço de investimento
+ * @details Inicializa a controladora com uma referência ao serviço de investimento
+ *          necessário para realizar operações de persistência de ordens.
+ */
 OrdemController::OrdemController(IServicoInvestimento* servico) 
     : servicoInvestimento(servico) {
 }
 
+/**
+ * @brief Executa o menu principal de gerenciamento de ordens
+ * @param codigoCarteira Código da carteira para gerenciar ordens
+ * @details Apresenta um menu interativo com opções para criar, listar e excluir ordens.
+ *          Valida a existência da carteira antes de exibir o menu e atualiza o saldo
+ *          automaticamente após operações que afetam o valor da carteira.
+ * @see exibirMenu()
+ * @see criarOrdem()
+ * @see listarOrdens()
+ * @see excluirOrdem()
+ */
 void OrdemController::executarMenu(const Codigo& codigoCarteira) {
     Carteira carteiraAtual;
     Dinheiro saldoAtual;
@@ -44,6 +61,13 @@ void OrdemController::executarMenu(const Codigo& codigoCarteira) {
     }
 }
 
+/**
+ * @brief Exibe o menu de opções para gerenciamento de ordens
+ * @param carteiraAtual Dados da carteira atual
+ * @param saldoAtual Saldo atual da carteira
+ * @details Apresenta uma interface formatada com informações da carteira e opções
+ *          disponíveis para gerenciamento de ordens. Inclui nome, código e saldo da carteira.
+ */
 void OrdemController::exibirMenu(const Carteira& carteiraAtual, const Dinheiro& saldoAtual) {
     telaUtils::exibirCabecalho("MENU DE ORDENS");
     std::cout << "Carteira: " << carteiraAtual.getNome().getValor() 
@@ -58,6 +82,20 @@ void OrdemController::exibirMenu(const Carteira& carteiraAtual, const Dinheiro& 
     std::cout << "Escolha uma opção: ";
 }
 
+/**
+ * @brief Cria uma nova ordem de investimento
+ * @param codigoCarteira Código da carteira onde a ordem será criada
+ * @details Processo interativo completo para criação de ordens incluindo:
+ *          - Validação da carteira
+ *          - Coleta de dados da ordem (código, papel, data, quantidade)
+ *          - Validação contra dados históricos da B3
+ *          - Confirmação do usuário
+ *          - Criação da ordem com cálculo automático do valor
+ * @see solicitarCodigoOrdem()
+ * @see solicitarCodigoNegociacao()
+ * @see solicitarDataOrdem()
+ * @see solicitarQuantidade()
+ */
 void OrdemController::criarOrdem(const Codigo& codigoCarteira) {
     telaUtils::exibirCabecalho("CRIACAO DE NOVA ORDEM");
     
@@ -169,6 +207,13 @@ void OrdemController::criarOrdem(const Codigo& codigoCarteira) {
     std::cin.get();
 }
 
+/**
+ * @brief Exibe informações detalhadas da carteira selecionada
+ * @param carteiraAtual Dados da carteira a ser exibida
+ * @param saldoAtual Saldo atual da carteira
+ * @details Apresenta uma tabela formatada com código, nome, perfil e saldo da carteira.
+ *          Utilizada durante o processo de criação de ordens para contexto do usuário.
+ */
 void OrdemController::exibirInfoCarteira(const Carteira& carteiraAtual, const Dinheiro& saldoAtual) {
     std::cout << "\n═══════════════════════════════════════════════════════════════" << std::endl;
     std::cout << "                    CARTEIRA SELECIONADA" << std::endl;
@@ -180,6 +225,12 @@ void OrdemController::exibirInfoCarteira(const Carteira& carteiraAtual, const Di
     std::cout << "═══════════════════════════════════════════════════════════════" << std::endl;
 }
 
+/**
+ * @brief Exibe tabela formatada com ordens existentes na carteira
+ * @param ordensExistentes Lista de ordens a serem exibidas
+ * @details Apresenta uma tabela com colunas para código, papel, data, valor e quantidade.
+ *          Formata datas no padrão brasileiro e remove espaços dos códigos de negociação.
+ */
 void OrdemController::exibirOrdensExistentes(const std::list<Ordem>& ordensExistentes) {
     std::cout << "\n═══════════════════════════════════════════════════════════════" << std::endl;
     std::cout << "                    ORDENS EXISTENTES NA CARTEIRA" << std::endl;
@@ -214,6 +265,11 @@ void OrdemController::exibirOrdensExistentes(const std::list<Ordem>& ordensExist
     std::cout << "═══════════════════════════════════════════════════════════════" << std::endl;
 }
 
+/**
+ * @brief Exibe instruções detalhadas para criação de ordens
+ * @details Apresenta um guia passo-a-passo explicando todos os campos necessários
+ *          para criar uma ordem, incluindo formatos esperados e validações realizadas.
+ */
 void OrdemController::exibirInstrucoesCriacao() {
     std::cout << "\n📋 COMO CRIAR UMA ORDEM:" << std::endl;
     std::cout << "   Para criar uma ordem, você precisa fornecer:" << std::endl;
@@ -223,6 +279,14 @@ void OrdemController::exibirInstrucoesCriacao() {
     std::cout << "   💡 DICA: O sistema validará se a combinação código+data existe no arquivo B3." << std::endl;
 }
 
+/**
+ * @brief Solicita e valida o código da ordem ao usuário
+ * @param codigoOrdem Referência para armazenar o código válido
+ * @return true se o código foi inserido com sucesso, false se cancelado
+ * @details Processo interativo para coleta do código da ordem com validação
+ *          automática. Permite cancelamento digitando '0' e fornece feedback
+ *          detalhado sobre erros de validação.
+ */
 bool OrdemController::solicitarCodigoOrdem(Codigo& codigoOrdem) {
     std::cout << "\n🔢 1. CÓDIGO DA ORDEM     - ID único de 5 dígitos (ex: 30001, 30002)" << std::endl;
     std::cout << "   💡 DICA: Use códigos únicos que não existam no sistema" << std::endl;
@@ -252,6 +316,16 @@ bool OrdemController::solicitarCodigoOrdem(Codigo& codigoOrdem) {
     }
 }
 
+/**
+ * @brief Solicita e valida o código de negociação ao usuário
+ * @param codigoNegociacao Referência para armazenar o código válido
+ * @return true se o código foi inserido com sucesso, false se cancelado
+ * @details Processo interativo para coleta do código de negociação com:
+ *          - Validação de tamanho (até 12 caracteres)
+ *          - Suporte a extração de códigos de linhas B3 completas
+ *          - Formatação automática para 12 caracteres
+ *          - Opção de cancelamento
+ */
 bool OrdemController::solicitarCodigoNegociacao(CodigoNeg& codigoNegociacao) {
     std::cout << "\n📈 2. CÓDIGO DE NEGOCIAÇÃO - Código do ativo (ex: JBSS3, JALL3) - até 12 caracteres" << std::endl;
     std::cout << "   💡 DICA: Digite o código do ativo que deseja negociar" << std::endl;
@@ -302,6 +376,17 @@ bool OrdemController::solicitarCodigoNegociacao(CodigoNeg& codigoNegociacao) {
     }
 }
 
+/**
+ * @brief Solicita e valida a data da ordem ao usuário
+ * @param dataOrdem Referência para armazenar a data válida
+ * @param codigoNegociacao Código de negociação para validação cruzada
+ * @return true se a data foi inserida com sucesso, false se cancelado
+ * @details Processo interativo para coleta da data com validação contra dados históricos:
+ *          - Formato AAAAMMDD obrigatório
+ *          - Validação de existência da combinação código+data no arquivo B3
+ *          - Feedback específico sobre disponibilidade dos dados
+ *          - Opção de cancelamento
+ */
 bool OrdemController::solicitarDataOrdem(Data& dataOrdem, const CodigoNeg& codigoNegociacao) {
     std::cout << "\n📄 3. DATA               - Data da operação (ex: 20250110)" << std::endl;
     std::cout << "   💡 DICA: O sistema validará se a combinação código+data existe no arquivo B3" << std::endl;
@@ -349,6 +434,13 @@ bool OrdemController::solicitarDataOrdem(Data& dataOrdem, const CodigoNeg& codig
     }
 }
 
+/**
+ * @brief Solicita e valida a quantidade de papéis ao usuário
+ * @param quantidadeOrdem Referência para armazenar a quantidade válida
+ * @return true se a quantidade foi inserida com sucesso, false se cancelado
+ * @details Processo interativo para coleta da quantidade com validação automática
+ *          do domínio Quantidade. Suporta formatação com pontos para milhares.
+ */
 bool OrdemController::solicitarQuantidade(Quantidade& quantidadeOrdem) {
     std::cout << "\n🔢 4. QUANTIDADE         - Quantos papéis (ex: 100, 1.000)" << std::endl;
     std::cout << "   💡 DICA: Digite números inteiros (ex: 1000 ou 1.000, 5000 ou 5.000)" << std::endl;
@@ -417,6 +509,16 @@ void OrdemController::exibirDetalhesOrdemCriada(const Codigo& codigoOrdem, const
     }
 }
 
+/**
+ * @brief Lista todas as ordens de uma carteira específica
+ * @param codigoCarteira Código da carteira para listar ordens
+ * @details Apresenta uma listagem completa das ordens da carteira incluindo:
+ *          - Informações da carteira (nome, código, perfil, saldo)
+ *          - Tabela formatada com todas as ordens
+ *          - Saldo consolidado da carteira
+ *          - Informações explicativas sobre o sistema
+ * @see exibirListaOrdens()
+ */
 void OrdemController::listarOrdens(const Codigo& codigoCarteira) {
     telaUtils::exibirCabecalho("LISTA DE ORDENS DA CARTEIRA");
     
@@ -491,6 +593,17 @@ void OrdemController::exibirListaOrdens(const std::list<Ordem>& ordensCarteira, 
     std::cout << "==============================" << std::endl;
 }
 
+/**
+ * @brief Exclui uma ordem específica da carteira
+ * @param codigoCarteira Código da carteira que contém a ordem
+ * @details Processo interativo para exclusão segura de ordens incluindo:
+ *          - Validação da existência da carteira e ordens
+ *          - Listagem das ordens disponíveis para exclusão
+ *          - Confirmação de segurança com detalhes da ordem
+ *          - Exclusão permanente e recálculo automático do saldo
+ * @see exibirOrdensParaExclusao()
+ * @see solicitarCodigoExclusao()
+ */
 void OrdemController::excluirOrdem(const Codigo& codigoCarteira) {
     telaUtils::exibirCabecalho("EXCLUSAO DE ORDEM");
     

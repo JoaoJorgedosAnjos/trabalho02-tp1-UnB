@@ -7,9 +7,6 @@
 #include <list>
 #include <regex>
 
-// =================================================================================================
-// FUNÇÕES AUXILIARES PARA CONVERSÃO DE DINHEIRO COM PRECISÃO
-// =================================================================================================
 
 /**
  * @brief Converte um objeto Dinheiro (formato "1.234,56") para um total de centavos (123456).
@@ -17,10 +14,8 @@
 long long DatabaseManager::dinheiroParaCentavos(const Dinheiro& dinheiro) {
     std::string valor = dinheiro.getValor();
     
-    // Remove todos os pontos (separadores de milhares)
     valor.erase(std::remove(valor.begin(), valor.end(), '.'), valor.end());
     
-    // Localiza a vírgula (separador decimal)
     size_t posVirgula = valor.find(',');
     if (posVirgula == std::string::npos) {
         // Se não há vírgula, assume que são apenas reais inteiros
@@ -30,11 +25,9 @@ long long DatabaseManager::dinheiroParaCentavos(const Dinheiro& dinheiro) {
     std::string parteInteira = valor.substr(0, posVirgula);
     std::string parteDecimal = valor.substr(posVirgula + 1);
     
-    // Garante que a parte decimal tenha exatamente 2 dígitos
     if (parteDecimal.length() > 2) {
         parteDecimal = parteDecimal.substr(0, 2); // Trunca se tiver mais de 2
     } else if (parteDecimal.length() < 2) {
-        parteDecimal.append(2 - parteDecimal.length(), '0'); // Adiciona zeros se tiver menos de 2
     }
     
     long long reais = parteInteira.empty() ? 0 : std::stoll(parteInteira);
@@ -54,13 +47,11 @@ std::string DatabaseManager::centavosParaDinheiro(long long totalCentavos) {
     
     std::string parteReais = std::to_string(reais);
     
-    // Adiciona separadores de milhares (pontos) usando regex
     if (parteReais.length() > 3) {
         std::regex pattern(R"((\d)(?=(\d{3})+$))");
         parteReais = std::regex_replace(parteReais, pattern, "$1.");
     }
     
-    // Formata os centavos com 2 dígitos
     std::string parteCentavos;
     if (centavos < 10) {
         parteCentavos = "0" + std::to_string(centavos);
@@ -175,7 +166,6 @@ bool DatabaseManager::inserirConta(const Conta& conta) {
         return false;
     }
     
-    // Capturar os valores em variáveis locais para evitar problemas de referência temporária
     std::string cpfValor = conta.getNcpf().getValor();
     std::string nomeValor = conta.getNome().getValor();
     std::string senhaValor = conta.getSenha().getValor();
@@ -254,7 +244,6 @@ bool DatabaseManager::autenticarUsuario(const Ncpf& cpf, const Senha& senha) {
         return false;
     }
     
-    // Capturar os valores em variáveis locais para evitar problemas de referência temporária
     std::string cpfValor = cpf.getValor();
     std::string senhaValor = senha.getValor();
     
@@ -283,7 +272,6 @@ bool DatabaseManager::inserirCarteira(const Carteira& carteira, const Ncpf& cpfP
         return false;
     }
     
-    // Capturar valores em variáveis locais para evitar problemas de memória
     std::string codigoValor = carteira.getCodigo().getValor();
     std::string nomeValor = carteira.getNome().getValor();
     std::string tipoPerfilValor = carteira.getTipoPerfil().getValor();
@@ -402,7 +390,7 @@ bool DatabaseManager::inserirOrdem(const Ordem& ordem, const Codigo& codigoCarte
         return false;
     }
     
-    // Capturar valores em variáveis locais para evitar problemas de memória
+    
     std::string codigoValor = ordem.getCodigo().getValor();
     std::string codigoNegValor = ordem.getCodigoNeg().getValor();
     std::string dataValor = ordem.getData().getValor();
@@ -499,9 +487,8 @@ bool DatabaseManager::excluirCarteira(const Codigo& codigo) {
         return false;
     }
     
-    // VALIDAÇÃO: Verificar se a carteira possui ordens associadas
     if (carteiraTemOrdens(codigo)) {
-        return false; // Não pode excluir carteira que possui ordens
+        return false; 
     }
     
     std::string sql = "DELETE FROM carteiras WHERE codigo = ?";
@@ -528,12 +515,10 @@ bool DatabaseManager::calcularSaldoCarteira(const Codigo& codigoCarteira, Dinhei
     std::list<Ordem> ordens;
     bool resultadoListar = listarOrdens(codigoCarteira, &ordens);
     
-    // Se não conseguiu listar por erro do banco, retorna false
     if (!resultadoListar) {
         return false;
     }
     
-    // Se não há ordens (lista vazia), isso é normal e saldo deve ser 0,01 (mínimo permitido pela classe Dinheiro)
     if (ordens.empty()) {
         try {
             saldo->setValor("0,01");
@@ -543,22 +528,19 @@ bool DatabaseManager::calcularSaldoCarteira(const Codigo& codigoCarteira, Dinhei
         }
     }
     
-    // Usar long long para evitar erros de arredondamento
+    // Usar long lon para evitar erros de arredondamento
     long long saldoTotalCentavos = 0;
     
     for (const auto& ordem : ordens) {
         try {
-            // Converter cada valor de ordem para centavos usando a nova função
             long long valorOrdemCentavos = DatabaseManager::dinheiroParaCentavos(ordem.getDinheiro());
             saldoTotalCentavos += valorOrdemCentavos;
         } catch (const std::exception& e) {
-            // Se houver erro na conversão de uma ordem, ignora e continua
             std::cerr << "Erro ao converter valor da ordem: " << e.what() << std::endl;
         }
     }
     
     try {
-        // Converter de volta para formato brasileiro
         std::string saldoFormatado = DatabaseManager::centavosParaDinheiro(saldoTotalCentavos);
         saldo->setValor(saldoFormatado);
         return true;
@@ -567,7 +549,6 @@ bool DatabaseManager::calcularSaldoCarteira(const Codigo& codigoCarteira, Dinhei
     }
 }
 
-// Implementações simples para métodos não utilizados ainda
 bool DatabaseManager::atualizarConta(const Conta& conta) {
     if (!connected) {
         return false;
@@ -585,7 +566,6 @@ bool DatabaseManager::atualizarConta(const Conta& conta) {
         return false;
     }
     
-    // Capturar os valores em variáveis locais para evitar problemas de referência temporária
     std::string nomeValor = conta.getNome().getValor();
     std::string senhaValor = conta.getSenha().getValor();
     std::string cpfValor = conta.getNcpf().getValor();
@@ -617,9 +597,8 @@ bool DatabaseManager::excluirConta(const Ncpf& cpf) {
         return false;
     }
     
-    // VALIDAÇÃO: Verificar se a conta possui carteiras associadas
     if (contaTemCarteiras(cpf)) {
-        return false; // Não pode excluir conta que possui carteiras
+        return false;
     }
     
     std::string sql = "DELETE FROM contas WHERE cpf = ?";
@@ -655,7 +634,6 @@ bool DatabaseManager::atualizarCarteira(const Carteira& carteira) {
         return false;
     }
     
-    // Capturar os valores em variáveis locais para evitar problemas de referência temporária
     std::string nomeValor = carteira.getNome().getValor();
     std::string tipoPerfilValor = carteira.getTipoPerfil().getValor();
     std::string codigoValor = carteira.getCodigo().getValor();
@@ -750,8 +728,6 @@ std::string DatabaseManager::escaparString(const std::string& str) {
     return escaped;
 }
 
-
-
 std::string DatabaseManager::obterEstatisticas() {
     if (!connected) {
         return "Não conectado ao banco";
@@ -774,7 +750,6 @@ bool DatabaseManager::limparTodasTabelas() {
     return executarSQL(sql);
 }
 
-// Implementação dos métodos auxiliares para validação de integridade referencial
 bool DatabaseManager::carteiraTemOrdens(const Codigo& codigoCarteira) {
     if (!connected) {
         return false;
@@ -799,7 +774,7 @@ bool DatabaseManager::carteiraTemOrdens(const Codigo& codigoCarteira) {
     
     sqlite3_finalize(stmt);
     
-    return count > 0; // Retorna true se há ordens associadas
+    return count > 0; 
 }
 
 bool DatabaseManager::contaTemCarteiras(const Ncpf& cpf) {
@@ -826,5 +801,5 @@ bool DatabaseManager::contaTemCarteiras(const Ncpf& cpf) {
     
     sqlite3_finalize(stmt);
     
-    return count > 0; // Retorna true se há carteiras associadas
+    return count > 0; 
 }

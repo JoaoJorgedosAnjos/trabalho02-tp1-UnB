@@ -61,10 +61,15 @@ std::string formatarCPF(const std::string& entrada) {
     return cpfFormatado;
 }
 
-// =================================================================================================
-// ControladoraApresentacaoAutenticacao
-// =================================================================================================
 
+/**
+ * @brief Define a controladora de serviço para autenticação
+ * 
+ * @param cntrServicoAutenticacao Ponteiro para a interface de serviço de autenticação
+ * 
+ * @details Estabelece a conexão com a camada de serviço que será utilizada
+ * para realizar as operações de autenticação no banco de dados.
+ */
 void ControladoraApresentacaoAutenticacao::setControladoraServico(IServicoAutenticacao* cntrServicoAutenticacao) {
     this->cntrServicoAutenticacao = cntrServicoAutenticacao;
 }
@@ -144,14 +149,36 @@ bool ControladoraApresentacaoAutenticacao::autenticar(Ncpf* cpf) {
     return cntrServicoAutenticacao->autenticar(*cpf, senha);
 }
 
-// =================================================================================================
-// ControladoraApresentacaoUsuario
-// =================================================================================================
-
+/**
+ * @brief Define a controladora de serviço para gerenciamento de usuários
+ * 
+ * @param cntrServicoUsuario Ponteiro para a interface de serviço de usuário
+ * 
+ * @details Estabelece a conexão com a camada de serviço que será utilizada
+ * para realizar operações de cadastro, consulta, edição e exclusão de contas.
+ */
 void ControladoraApresentacaoUsuario::setControladoraServico(IServicoUsuario* cntrServicoUsuario) {
     this->cntrServicoUsuario = cntrServicoUsuario;
 }
 
+/**
+ * @brief Executa o menu de gerenciamento de conta do usuário
+ * 
+ * @param cpf CPF do usuário autenticado
+ * @return bool true se a conta foi excluída (logout forçado), false caso contrário
+ * 
+ * @details Apresenta um menu interativo com as seguintes opções:
+ * - 1: Consultar dados da conta (CPF, nome, saldo total)
+ * - 2: Editar dados da conta (nome e/ou senha)
+ * - 3: Excluir conta permanentemente
+ * - 0: Voltar ao menu principal
+ * 
+ * O menu é executado em loop até que o usuário escolha voltar (0) ou
+ * até que a conta seja excluída (retorna true para forçar logout).
+ * 
+ * @note Se a conta for excluída, o método retorna true para sinalizar
+ * que o usuário deve ser deslogado do sistema
+ */
 bool ControladoraApresentacaoUsuario::executar(const Ncpf& cpf) {
     int opcao = -1;
     while (opcao != 0) {
@@ -346,6 +373,32 @@ void ControladoraApresentacaoUsuario::cadastrar() {
     }
 }
 
+/**
+ * @brief Consulta e exibe os dados da conta do usuário
+ * 
+ * @param cpf CPF do usuário a ser consultado
+ * @return bool true se a conta foi excluída (logout forçado), false caso contrário
+ * 
+ * @details Implementa a funcionalidade de consulta de conta com:
+ * 
+ * 1. Recuperação dos dados da conta (CPF, nome)
+ * 2. Cálculo do saldo total (soma de todas as carteiras)
+ * 3. Exibição formatada dos dados
+ * 4. Menu de ações rápidas após consulta
+ * 
+ * Informações exibidas:
+ * - CPF do usuário
+ * - Nome do usuário
+ * - Saldo total consolidado de todas as carteiras
+ * 
+ * Ações disponíveis após consulta:
+ * - Editar dados da conta
+ * - Excluir conta permanentemente
+ * - Voltar ao menu anterior
+ * 
+ * @note O saldo total é calculado dinamicamente a partir de todas as carteiras
+ * @note Se a conta for excluída, retorna true para forçar logout
+ */
 bool ControladoraApresentacaoUsuario::consultarConta(const Ncpf& cpf) {
     Conta conta;
     Dinheiro saldo;
@@ -380,14 +433,43 @@ bool ControladoraApresentacaoUsuario::consultarConta(const Ncpf& cpf) {
                 std::cout << "Opcao invalida!" << std::endl;
                 telaUtils::pausar();
         }
-            } else {
-            std::cout << "\nErro ao consultar conta." << std::endl;
-            telaUtils::pausar();
-        }
+    } else {
+        std::cout << "\nErro ao consultar conta." << std::endl;
+        telaUtils::pausar();
+    }
     
     return false; 
 }
 
+/**
+ * @brief Edita os dados da conta do usuário
+ * 
+ * @param cpf CPF do usuário cuja conta será editada
+ * 
+ * @details Implementa a funcionalidade de edição de conta com:
+ * 
+ * 1. Consulta dos dados atuais da conta
+ * 2. Apresentação das opções de edição
+ * 3. Validação dos novos dados
+ * 4. Atualização no banco de dados
+ * 
+ * Campos editáveis:
+ * - Nome: até 20 caracteres (letras, números e espaços)
+ * - Senha: 6 caracteres com regras específicas
+ * 
+ * Opções de edição:
+ * - 1: Editar apenas o nome
+ * - 2: Editar apenas a senha
+ * - 3: Editar nome e senha
+ * - 0: Cancelar operação
+ * 
+ * Validações aplicadas:
+ * - Nome: máximo 20 caracteres, sem espaços duplos
+ * - Senha: 6 caracteres com 1 maiúscula, 1 minúscula, 1 número e 1 símbolo
+ * 
+ * @note O usuário pode cancelar a operação a qualquer momento digitando '0'
+ * @note O CPF não pode ser alterado após o cadastro
+ */
 void ControladoraApresentacaoUsuario::editarConta(const Ncpf& cpf) {
     std::cout << "\n--- Edicao de Conta ---" << std::endl;
     
@@ -464,6 +546,40 @@ void ControladoraApresentacaoUsuario::editarConta(const Ncpf& cpf) {
     std::cin.get();
 }
 
+/**
+ * @brief Exclui permanentemente a conta do usuário
+ * 
+ * @param cpf CPF do usuário cuja conta será excluída
+ * @return bool true se a conta foi excluída com sucesso, false caso contrário
+ * 
+ * @details Implementa a exclusão segura de conta com:
+ * 
+ * 1. Aviso sobre a natureza irreversível da operação
+ * 2. Solicitação de confirmação explícita
+ * 3. Validação de integridade referencial
+ * 4. Exclusão em cascata (se aplicável)
+ * 
+ * Validações de integridade:
+ * - Verifica se existem carteiras associadas à conta
+ * - Bloqueia a exclusão se houver dependências
+ * - Fornece orientações claras sobre como proceder
+ * 
+ * Confirmação de segurança:
+ * - Usuário deve digitar 's' ou 'S' para confirmar
+ * - Qualquer outra entrada cancela a operação
+ * 
+ * Comportamento após exclusão:
+ * - Exibe mensagem de sucesso
+ * - Força logout do sistema (retorna true)
+ * - Agradece pela utilização do sistema
+ * 
+ * @note A exclusão é permanente e não pode ser desfeita
+ * @note Todas as carteiras e ordens devem ser excluídas primeiro
+ * @note O retorno true força o logout do usuário
+ * 
+ * @return true se a conta foi excluída (força logout)
+ * @return false se a exclusão falhou ou foi cancelada
+ */
 bool ControladoraApresentacaoUsuario::excluirConta(const Ncpf& cpf) {
     std::cout << "\n--- Exclusao de Conta ---" << std::endl;
     std::cout << "ATENCAO: Esta operacao e irreversivel!" << std::endl;
@@ -495,10 +611,6 @@ bool ControladoraApresentacaoUsuario::excluirConta(const Ncpf& cpf) {
     return false; 
 }
 
-// =================================================================================================
-// ControladoraApresentacaoInvestimento (REFATORADA)
-// =================================================================================================
-
 /**
  * @brief Construtor da controladora de apresentação de investimentos
  */
@@ -522,7 +634,6 @@ ControladoraApresentacaoInvestimento::~ControladoraApresentacaoInvestimento() {
 void ControladoraApresentacaoInvestimento::setControladoraServico(IServicoInvestimento* cntrServicoInvestimento) {
     this->cntrServicoInvestimento = cntrServicoInvestimento;
     
-    // Inicializa os controladores especializados
     if (carteiraController) {
         delete carteiraController;
     }
@@ -538,6 +649,39 @@ void ControladoraApresentacaoInvestimento::setControladoraServico(IServicoInvest
  * @brief Executa o menu principal de investimentos
  * 
  * @param cpf CPF do usuário autenticado
+ */
+/**
+ * @brief Executa o menu principal de investimentos
+ * 
+ * @param cpf CPF do usuário autenticado
+ * 
+ * @details Implementa o menu central de investimentos com duas opções principais:
+ * 
+ * 1. **Gerenciar Carteiras**: Acesso direto ao CarteiraController
+ *    - Criar novas carteiras
+ *    - Listar e consultar carteiras existentes
+ *    - Editar carteiras
+ *    - Excluir carteiras
+ * 
+ * 2. **Gerenciar Ordens**: Seleção de carteira seguida de OrdemController
+ *    - Lista todas as carteiras do usuário
+ *    - Permite seleção por código
+ *    - Redireciona para o gerenciamento de ordens da carteira selecionada
+ * 
+ * Fluxo de gerenciamento de ordens:
+ * - Verifica se o usuário possui carteiras
+ * - Exibe lista de carteiras disponíveis
+ * - Solicita código da carteira desejada
+ * - Valida o código informado
+ * - Executa o menu de ordens para a carteira selecionada
+ * 
+ * Validações implementadas:
+ * - Verifica existência de carteiras antes de permitir gerenciamento de ordens
+ * - Valida formato do código da carteira (5 dígitos)
+ * - Trata erros de entrada com mensagens informativas
+ * 
+ * @note O menu é executado em loop até que o usuário escolha sair (opção 0)
+ * @note Utiliza controladores especializados para cada tipo de operação
  */
 void ControladoraApresentacaoInvestimento::executar(const Ncpf& cpf) {
     int opcao;
@@ -603,9 +747,6 @@ void ControladoraApresentacaoInvestimento::executar(const Ncpf& cpf) {
     }
 }
 
-// =================================================================================================
-// InterfaceManager
-// =================================================================================================
 
 /**
  * @brief Construtor do gerenciador de interface
@@ -738,6 +879,40 @@ void InterfaceManager::fazerLogout() {
 
 /**
  * @brief Executa o loop principal do sistema
+ */
+/**
+ * @brief Executa o loop principal do sistema
+ * 
+ * @details Implementa a máquina de estados principal do sistema, controlando
+ * o fluxo de navegação entre diferentes telas e funcionalidades.
+ * 
+ * Estados do sistema:
+ * - **MENU_INICIAL**: Tela de entrada com opções de login e cadastro
+ * - **LOGIN**: Processo de autenticação do usuário
+ * - **CADASTRO**: Processo de criação de nova conta
+ * - **MENU_PRINCIPAL**: Menu principal para usuários autenticados
+ * - **GERENCIAR_CONTA**: Funcionalidades de gerenciamento de conta
+ * - **GERENCIAR_INVESTIMENTOS**: Funcionalidades de investimento
+ * - **SAIR**: Encerramento do sistema
+ * 
+ * Fluxo de autenticação:
+ * - Sucesso: redireciona para MENU_PRINCIPAL
+ * - Falha: retorna para MENU_INICIAL
+ * - Feedback visual para o usuário
+ * 
+ * Controle de sessão:
+ * - Mantém estado de autenticação
+ * - Armazena CPF do usuário logado
+ * - Gerencia transições entre telas
+ * 
+ * Tratamento de saída:
+ * - Logout automático em caso de exclusão de conta
+ * - Mensagem de despedida ao encerrar
+ * - Limpeza de recursos
+ * 
+ * @note O loop continua até que telaAtual seja definida como SAIR
+ * @note Cada estado é processado por métodos específicos
+ * @note O sistema mantém consistência de estado durante toda a execução
  */
 void InterfaceManager::executar() {
     while (telaAtual != TelaAtual::SAIR) {
