@@ -1,20 +1,18 @@
 #include "telaUtils.hpp"
 #include <iostream>
-#include <cstdlib> // Para system()
-#include <limits>  // Para numeric_limits
+#include <cstdlib> 
+#include <limits>  
 
 void telaUtils::limparTela() {
 #ifdef _WIN32
     system("cls");
 #else
-    // Assume sistemas POSIX (Linux, macOS)
     system("clear");
 #endif
 }
 
 void telaUtils::pausar(const std::string& mensagem) {
     std::cout << "\n" << mensagem << std::endl;
-    // Limpa o buffer de entrada antes de esperar pelo get()
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cin.get();
 }
