@@ -200,7 +200,7 @@ void CarteiraController::criarCarteira(const Ncpf& cpf) {
                     valorPerfil = "Agressivo";
                     break;
                 default:
-                    std::cout << "Opcao invalida! Escolha entre 1 e 3, ou 0 para cancelar." << std::endl;
+                    std::cout << "Opção invalida! Escolha entre 1 e 3, ou 0 para cancelar." << std::endl;
                     continue;
             }
             
@@ -227,7 +227,7 @@ void CarteiraController::criarCarteira(const Ncpf& cpf) {
     std::cin >> confirmacao;
     
     if (confirmacao != 's' && confirmacao != 'S') {
-        std::cout << "\nCriacao da carteira cancelada pelo usuario." << std::endl;
+        std::cout << "\nCriação da carteira cancelada pelo usuario." << std::endl;
         std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
         std::cin.ignore();
         std::cin.get();
@@ -286,10 +286,10 @@ void CarteiraController::listarCarteiras(const Ncpf& cpf) {
         
         if (!servicoInvestimento->listarCarteiras(cpf, &carteiras) || carteiras.empty()) {
             std::cout << "\nVoce ainda nao possui carteiras." << std::endl;
-            std::cout << "\n=== OPCOES ===" << std::endl;
+            std::cout << "\n=== OPÇÕES ===" << std::endl;
             std::cout << "1. Criar nova carteira" << std::endl;
             std::cout << "0. Voltar ao menu anterior" << std::endl;
-            std::cout << "Escolha uma opcao: ";
+            std::cout << "Escolha uma opção: ";
             
             int opcao;
             std::cin >> opcao;
@@ -301,7 +301,7 @@ void CarteiraController::listarCarteiras(const Ncpf& cpf) {
                 case 0:
                     return;
                 default:
-                    std::cout << "Opcao invalida!" << std::endl;
+                    std::cout << "Opção invalida!" << std::endl;
                     std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
                     std::cin.ignore();
                     std::cin.get();
@@ -311,7 +311,7 @@ void CarteiraController::listarCarteiras(const Ncpf& cpf) {
         
         exibirListaCarteiras(carteiras);
         
-        std::cout << "\n>>> OPCOES <<<" << std::endl;
+        std::cout << "\n>>> OPÇÕES <<<" << std::endl;
         std::cout << "- Digite o CODIGO de uma carteira para ver detalhes" << std::endl;
         std::cout << "- Digite 0 para voltar ao menu anterior" << std::endl;
         std::cout << "Escolha: ";
@@ -494,7 +494,7 @@ void CarteiraController::editarCarteira(const Ncpf& cpf) {
     std::list<Carteira> carteiras;
     if (!servicoInvestimento->listarCarteiras(cpf, &carteiras) || carteiras.empty()) {
         std::cout << "\nVoce ainda nao possui carteiras para editar." << std::endl;
-        std::cout << "Use a opcao 'Criar carteira' primeiro!" << std::endl;
+        std::cout << "Use a opção 'Criar carteira' primeiro!" << std::endl;
         std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
         std::cin.ignore();
         std::cin.get();
@@ -629,7 +629,7 @@ void CarteiraController::editarCarteiraEspecifica(const Ncpf& cpf, const Carteir
                     case 1: valorPerfil = "Conservador"; break;
                     case 2: valorPerfil = "Moderado"; break;
                     case 3: valorPerfil = "Agressivo"; break;
-                    default: std::cout << "Opcao invalida! Mantendo perfil atual." << std::endl; break;
+                    default: std::cout << "Opção invalida! Mantendo perfil atual." << std::endl; break;
                 }
                 
                 if (!valorPerfil.empty()) {
@@ -693,7 +693,7 @@ void CarteiraController::excluirCarteira(const Ncpf& cpf) {
     std::list<Carteira> carteiras;
     if (!servicoInvestimento->listarCarteiras(cpf, &carteiras) || carteiras.empty()) {
         std::cout << "\nVoce ainda nao possui carteiras para excluir." << std::endl;
-        std::cout << "Use a opcao 'Criar carteira' primeiro!" << std::endl;
+        std::cout << "Use a opção 'Criar carteira' primeiro!" << std::endl;
         std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
         std::cin.ignore();
         std::cin.get();
