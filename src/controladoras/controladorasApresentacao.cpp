@@ -3,11 +3,14 @@
 #include <cctype>
 #include <limits>
 #include <fstream>
+#include <cstdlib>
 #include "controladorasApresentacao.hpp"
 
 // =================================================================================================
-// FUNÇÕES AUXILIARES PARA FORMATAÇÃO DE ENTRADA
+// FUNÇÕES AUXILIARES PARA FORMATAÇÃO DE ENTRADA E INTERFACE
 // =================================================================================================
+
+
 
 /**
  * @brief Formata uma string de números para o padrão de CPF brasileiro
@@ -2166,4 +2169,167 @@ void ControladoraApresentacaoInvestimento::excluirOrdem(const Codigo& codigoCart
     std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
     std::cin.ignore();
     std::cin.get();
+}
+
+// =================================================================================================
+// INTERFACE MANAGER - GERENCIADOR CENTRAL DE INTERFACE
+// =================================================================================================
+
+InterfaceManager::InterfaceManager(
+    ControladoraApresentacaoAutenticacao* cntrApresentacaoAutenticacao,
+    ControladoraApresentacaoUsuario* cntrApresentacaoUsuario,
+    ControladoraApresentacaoInvestimento* cntrApresentacaoInvestimento
+) : cntrApresentacaoAutenticacao(cntrApresentacaoAutenticacao),
+    cntrApresentacaoUsuario(cntrApresentacaoUsuario),
+    cntrApresentacaoInvestimento(cntrApresentacaoInvestimento),
+    telaAtual(TelaAtual::MENU_INICIAL),
+    usuarioAutenticado(false) {
+}
+
+void InterfaceManager::limparTela() {
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+}
+
+void InterfaceManager::mostrarMenuInicial() {
+    limparTela();
+    std::cout << "\n=== GERENCIAMENTO DE CONTA ===" << std::endl;
+    std::cout << "1. Login" << std::endl;
+    std::cout << "2. Cadastrar nova conta" << std::endl;
+    std::cout << "0. Sair" << std::endl;
+    std::cout << "Escolha uma opção: ";
+}
+
+void InterfaceManager::mostrarMenuPrincipal() {
+    limparTela();
+    std::cout << "\n=== MENU PRINCIPAL ===" << std::endl;
+    std::cout << "Usuário: " << cpfAutenticado.getValor() << std::endl;
+    std::cout << "=======================" << std::endl;
+    std::cout << "1. Gerenciar Conta" << std::endl;
+    std::cout << "2. Gerenciar Investimentos" << std::endl;
+    std::cout << "0. Logout" << std::endl;
+    std::cout << "Escolha uma opção: ";
+}
+
+void InterfaceManager::processarMenuInicial() {
+    int opcao;
+    std::cin >> opcao;
+    
+    switch (opcao) {
+        case 1:
+            telaAtual = TelaAtual::LOGIN;
+            break;
+        case 2:
+            telaAtual = TelaAtual::CADASTRO;
+            break;
+        case 0:
+            telaAtual = TelaAtual::SAIR;
+            break;
+        default:
+            std::cout << "Opção inválida!" << std::endl;
+            std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
+            std::cin.ignore();
+            std::cin.get();
+    }
+}
+
+void InterfaceManager::processarMenuPrincipal() {
+    int opcao;
+    std::cin >> opcao;
+    
+    switch (opcao) {
+        case 1:
+            telaAtual = TelaAtual::GERENCIAR_CONTA;
+            break;
+        case 2:
+            telaAtual = TelaAtual::GERENCIAR_INVESTIMENTOS;
+            break;
+        case 0:
+            fazerLogout();
+            break;
+        default:
+            std::cout << "Opção inválida!" << std::endl;
+            std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
+            std::cin.ignore();
+            std::cin.get();
+    }
+}
+
+void InterfaceManager::processarGerenciarConta() {
+    if (cntrApresentacaoUsuario->executar(cpfAutenticado)) {
+        // Conta foi excluída, fazer logout automático
+        fazerLogout();
+    } else {
+        telaAtual = TelaAtual::MENU_PRINCIPAL;
+    }
+}
+
+void InterfaceManager::processarGerenciarInvestimentos() {
+    cntrApresentacaoInvestimento->executar(cpfAutenticado);
+    telaAtual = TelaAtual::MENU_PRINCIPAL;
+}
+
+void InterfaceManager::fazerLogout() {
+    std::cout << "Logout realizado com sucesso!" << std::endl;
+    usuarioAutenticado = false;
+    telaAtual = TelaAtual::MENU_INICIAL;
+}
+
+void InterfaceManager::executar() {
+    while (telaAtual != TelaAtual::SAIR) {
+        switch (telaAtual) {
+            case TelaAtual::MENU_INICIAL:
+                mostrarMenuInicial();
+                processarMenuInicial();
+                break;
+                
+            case TelaAtual::LOGIN:
+                limparTela();
+                if (cntrApresentacaoAutenticacao->autenticar(&cpfAutenticado)) {
+                    std::cout << "\n>>> Autenticação realizada com sucesso <<<" << std::endl;
+                    std::cout << "Usuário autenticado: " << cpfAutenticado.getValor() << std::endl;
+                    std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
+                    std::cin.ignore();
+                    std::cin.get();
+                    usuarioAutenticado = true;
+                    telaAtual = TelaAtual::MENU_PRINCIPAL;
+                } else {
+                    std::cout << "\n>>> Falha na autenticação. CPF ou senha inválidos. <<<" << std::endl;
+                    std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
+                    std::cin.ignore();
+                    std::cin.get();
+                    telaAtual = TelaAtual::MENU_INICIAL;
+                }
+                break;
+                
+            case TelaAtual::CADASTRO:
+                cntrApresentacaoUsuario->cadastrar();
+                std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
+                std::cin.ignore();
+                std::cin.get();
+                telaAtual = TelaAtual::MENU_INICIAL;
+                break;
+                
+            case TelaAtual::MENU_PRINCIPAL:
+                mostrarMenuPrincipal();
+                processarMenuPrincipal();
+                break;
+                
+            case TelaAtual::GERENCIAR_CONTA:
+                processarGerenciarConta();
+                break;
+                
+            case TelaAtual::GERENCIAR_INVESTIMENTOS:
+                processarGerenciarInvestimentos();
+                break;
+                
+            case TelaAtual::SAIR:
+                break;
+        }
+    }
+    
+    std::cout << "Obrigado por utilizar nosso sistema!" << std::endl;
 }

@@ -74,6 +74,58 @@ private:
     void excluirOrdem(const Codigo& codigoCarteira);
 };
 
+// =================================================================================================
+/**
+ * @class InterfaceManager
+ * @brief Gerenciador central de interface do usuário
+ * @details Responsável por controlar o fluxo de navegação entre telas,
+ * limpeza automática do console e apresentação consistente das interfaces.
+ */
+class InterfaceManager {
+private:
+    ControladoraApresentacaoAutenticacao* cntrApresentacaoAutenticacao;
+    ControladoraApresentacaoUsuario* cntrApresentacaoUsuario;
+    ControladoraApresentacaoInvestimento* cntrApresentacaoInvestimento;
+    
+    // Estados de navegação
+    enum class TelaAtual {
+        MENU_INICIAL,
+        LOGIN,
+        CADASTRO,
+        MENU_PRINCIPAL,
+        GERENCIAR_CONTA,
+        GERENCIAR_INVESTIMENTOS,
+        MENU_CARTEIRAS,
+        MENU_ORDENS,
+        SAIR
+    };
+    
+    TelaAtual telaAtual;
+    Ncpf cpfAutenticado;
+    bool usuarioAutenticado;
+    
+    // Métodos auxiliares
+    void limparTela();
+    void mostrarMenuInicial();
+    void mostrarMenuPrincipal();
+    void processarMenuInicial();
+    void processarMenuPrincipal();
+    void processarGerenciarConta();
+    void processarGerenciarInvestimentos();
+    void processarMenuCarteiras();
+    void processarMenuOrdens();
+    void fazerLogout();
+
+public:
+    InterfaceManager(
+        ControladoraApresentacaoAutenticacao* cntrApresentacaoAutenticacao,
+        ControladoraApresentacaoUsuario* cntrApresentacaoUsuario,
+        ControladoraApresentacaoInvestimento* cntrApresentacaoInvestimento
+    );
+    
+    void executar();
+};
+
 // As outras controladoras de apresentação virão aqui depois...
 
 #endif // CONTROLADORASAPRESENTACAO_HPP_INCLUDED
