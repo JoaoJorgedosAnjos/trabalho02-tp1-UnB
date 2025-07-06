@@ -129,6 +129,78 @@ T2_TP1_241004686/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/T2_TP1_241004686.dir/build.make CMakeFiles/T2_TP1_241004686.dir/build
 .PHONY : T2_TP1_241004686/fast
 
+src/controladoras/CarteiraController.o: src/controladoras/CarteiraController.cpp.o
+.PHONY : src/controladoras/CarteiraController.o
+
+# target to build an object file
+src/controladoras/CarteiraController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/T2_TP1_241004686.dir/build.make CMakeFiles/T2_TP1_241004686.dir/src/controladoras/CarteiraController.cpp.o
+.PHONY : src/controladoras/CarteiraController.cpp.o
+
+src/controladoras/CarteiraController.i: src/controladoras/CarteiraController.cpp.i
+.PHONY : src/controladoras/CarteiraController.i
+
+# target to preprocess a source file
+src/controladoras/CarteiraController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/T2_TP1_241004686.dir/build.make CMakeFiles/T2_TP1_241004686.dir/src/controladoras/CarteiraController.cpp.i
+.PHONY : src/controladoras/CarteiraController.cpp.i
+
+src/controladoras/CarteiraController.s: src/controladoras/CarteiraController.cpp.s
+.PHONY : src/controladoras/CarteiraController.s
+
+# target to generate assembly for a file
+src/controladoras/CarteiraController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/T2_TP1_241004686.dir/build.make CMakeFiles/T2_TP1_241004686.dir/src/controladoras/CarteiraController.cpp.s
+.PHONY : src/controladoras/CarteiraController.cpp.s
+
+src/controladoras/InputValidator.o: src/controladoras/InputValidator.cpp.o
+.PHONY : src/controladoras/InputValidator.o
+
+# target to build an object file
+src/controladoras/InputValidator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/T2_TP1_241004686.dir/build.make CMakeFiles/T2_TP1_241004686.dir/src/controladoras/InputValidator.cpp.o
+.PHONY : src/controladoras/InputValidator.cpp.o
+
+src/controladoras/InputValidator.i: src/controladoras/InputValidator.cpp.i
+.PHONY : src/controladoras/InputValidator.i
+
+# target to preprocess a source file
+src/controladoras/InputValidator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/T2_TP1_241004686.dir/build.make CMakeFiles/T2_TP1_241004686.dir/src/controladoras/InputValidator.cpp.i
+.PHONY : src/controladoras/InputValidator.cpp.i
+
+src/controladoras/InputValidator.s: src/controladoras/InputValidator.cpp.s
+.PHONY : src/controladoras/InputValidator.s
+
+# target to generate assembly for a file
+src/controladoras/InputValidator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/T2_TP1_241004686.dir/build.make CMakeFiles/T2_TP1_241004686.dir/src/controladoras/InputValidator.cpp.s
+.PHONY : src/controladoras/InputValidator.cpp.s
+
+src/controladoras/OrdemController.o: src/controladoras/OrdemController.cpp.o
+.PHONY : src/controladoras/OrdemController.o
+
+# target to build an object file
+src/controladoras/OrdemController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/T2_TP1_241004686.dir/build.make CMakeFiles/T2_TP1_241004686.dir/src/controladoras/OrdemController.cpp.o
+.PHONY : src/controladoras/OrdemController.cpp.o
+
+src/controladoras/OrdemController.i: src/controladoras/OrdemController.cpp.i
+.PHONY : src/controladoras/OrdemController.i
+
+# target to preprocess a source file
+src/controladoras/OrdemController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/T2_TP1_241004686.dir/build.make CMakeFiles/T2_TP1_241004686.dir/src/controladoras/OrdemController.cpp.i
+.PHONY : src/controladoras/OrdemController.cpp.i
+
+src/controladoras/OrdemController.s: src/controladoras/OrdemController.cpp.s
+.PHONY : src/controladoras/OrdemController.s
+
+# target to generate assembly for a file
+src/controladoras/OrdemController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/T2_TP1_241004686.dir/build.make CMakeFiles/T2_TP1_241004686.dir/src/controladoras/OrdemController.cpp.s
+.PHONY : src/controladoras/OrdemController.cpp.s
+
 src/controladoras/controladorasApresentacao.o: src/controladoras/controladorasApresentacao.cpp.o
 .PHONY : src/controladoras/controladorasApresentacao.o
 
@@ -354,6 +426,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... T2_TP1_241004686"
+	@echo "... src/controladoras/CarteiraController.o"
+	@echo "... src/controladoras/CarteiraController.i"
+	@echo "... src/controladoras/CarteiraController.s"
+	@echo "... src/controladoras/InputValidator.o"
+	@echo "... src/controladoras/InputValidator.i"
+	@echo "... src/controladoras/InputValidator.s"
+	@echo "... src/controladoras/OrdemController.o"
+	@echo "... src/controladoras/OrdemController.i"
+	@echo "... src/controladoras/OrdemController.s"
 	@echo "... src/controladoras/controladorasApresentacao.o"
 	@echo "... src/controladoras/controladorasApresentacao.i"
 	@echo "... src/controladoras/controladorasApresentacao.s"

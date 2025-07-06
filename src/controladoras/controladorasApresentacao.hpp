@@ -3,6 +3,10 @@
 
 #include "interfaces.hpp"
 
+// Forward declarations das classes refatoradas
+class CarteiraController;
+class OrdemController;
+
 // =================================================================================================
 /**
  * @class ControladoraApresentacaoAutenticacao
@@ -49,29 +53,14 @@ private:
 class ControladoraApresentacaoInvestimento : public IApresentacaoInvestimento {
 private:
     IServicoInvestimento* cntrServicoInvestimento; // Ponteiro para a camada de serviço
+    CarteiraController* carteiraController;
+    OrdemController* ordemController;
 
 public:
+    ControladoraApresentacaoInvestimento();
+    ~ControladoraApresentacaoInvestimento();
     void executar(const Ncpf& cpf) override;
     void setControladoraServico(IServicoInvestimento* cntrServicoInvestimento) override;
-
-private:
-    // Métodos auxiliares para gerenciamento de carteiras
-    void menuCarteiras(const Ncpf& cpf);
-    void criarCarteira(const Ncpf& cpf);
-    void listarCarteiras(const Ncpf& cpf);
-    void consultarCarteira(const Ncpf& cpf);
-    void editarCarteira(const Ncpf& cpf);
-    void excluirCarteira(const Ncpf& cpf);
-    
-    // Métodos auxiliares para ações específicas de carteira (chamados dentro da listagem)
-    void editarCarteiraEspecifica(const Ncpf& cpf, const Carteira& carteiraAtual);
-    bool excluirCarteiraEspecifica(const Ncpf& cpf, const Carteira& carteiraAtual);
-    
-    // Métodos auxiliares para gerenciamento de ordens
-    void menuOrdens(const Codigo& codigoCarteira);
-    void criarOrdem(const Codigo& codigoCarteira);
-    void listarOrdens(const Codigo& codigoCarteira);
-    void excluirOrdem(const Codigo& codigoCarteira);
 };
 
 

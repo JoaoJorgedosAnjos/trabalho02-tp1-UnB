@@ -69,10 +69,52 @@ include CMakeFiles/T2_TP1_241004686.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/T2_TP1_241004686.dir/flags.make
 
+CMakeFiles/T2_TP1_241004686.dir/src/controladoras/CarteiraController.cpp.o: CMakeFiles/T2_TP1_241004686.dir/flags.make
+CMakeFiles/T2_TP1_241004686.dir/src/controladoras/CarteiraController.cpp.o: ../src/controladoras/CarteiraController.cpp
+CMakeFiles/T2_TP1_241004686.dir/src/controladoras/CarteiraController.cpp.o: CMakeFiles/T2_TP1_241004686.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/T2_TP1_241004686.dir/src/controladoras/CarteiraController.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/T2_TP1_241004686.dir/src/controladoras/CarteiraController.cpp.o -MF CMakeFiles/T2_TP1_241004686.dir/src/controladoras/CarteiraController.cpp.o.d -o CMakeFiles/T2_TP1_241004686.dir/src/controladoras/CarteiraController.cpp.o -c /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/CarteiraController.cpp
+
+CMakeFiles/T2_TP1_241004686.dir/src/controladoras/CarteiraController.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/T2_TP1_241004686.dir/src/controladoras/CarteiraController.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/CarteiraController.cpp > CMakeFiles/T2_TP1_241004686.dir/src/controladoras/CarteiraController.cpp.i
+
+CMakeFiles/T2_TP1_241004686.dir/src/controladoras/CarteiraController.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/T2_TP1_241004686.dir/src/controladoras/CarteiraController.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/CarteiraController.cpp -o CMakeFiles/T2_TP1_241004686.dir/src/controladoras/CarteiraController.cpp.s
+
+CMakeFiles/T2_TP1_241004686.dir/src/controladoras/InputValidator.cpp.o: CMakeFiles/T2_TP1_241004686.dir/flags.make
+CMakeFiles/T2_TP1_241004686.dir/src/controladoras/InputValidator.cpp.o: ../src/controladoras/InputValidator.cpp
+CMakeFiles/T2_TP1_241004686.dir/src/controladoras/InputValidator.cpp.o: CMakeFiles/T2_TP1_241004686.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/T2_TP1_241004686.dir/src/controladoras/InputValidator.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/T2_TP1_241004686.dir/src/controladoras/InputValidator.cpp.o -MF CMakeFiles/T2_TP1_241004686.dir/src/controladoras/InputValidator.cpp.o.d -o CMakeFiles/T2_TP1_241004686.dir/src/controladoras/InputValidator.cpp.o -c /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/InputValidator.cpp
+
+CMakeFiles/T2_TP1_241004686.dir/src/controladoras/InputValidator.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/T2_TP1_241004686.dir/src/controladoras/InputValidator.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/InputValidator.cpp > CMakeFiles/T2_TP1_241004686.dir/src/controladoras/InputValidator.cpp.i
+
+CMakeFiles/T2_TP1_241004686.dir/src/controladoras/InputValidator.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/T2_TP1_241004686.dir/src/controladoras/InputValidator.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/InputValidator.cpp -o CMakeFiles/T2_TP1_241004686.dir/src/controladoras/InputValidator.cpp.s
+
+CMakeFiles/T2_TP1_241004686.dir/src/controladoras/OrdemController.cpp.o: CMakeFiles/T2_TP1_241004686.dir/flags.make
+CMakeFiles/T2_TP1_241004686.dir/src/controladoras/OrdemController.cpp.o: ../src/controladoras/OrdemController.cpp
+CMakeFiles/T2_TP1_241004686.dir/src/controladoras/OrdemController.cpp.o: CMakeFiles/T2_TP1_241004686.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/T2_TP1_241004686.dir/src/controladoras/OrdemController.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/T2_TP1_241004686.dir/src/controladoras/OrdemController.cpp.o -MF CMakeFiles/T2_TP1_241004686.dir/src/controladoras/OrdemController.cpp.o.d -o CMakeFiles/T2_TP1_241004686.dir/src/controladoras/OrdemController.cpp.o -c /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/OrdemController.cpp
+
+CMakeFiles/T2_TP1_241004686.dir/src/controladoras/OrdemController.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/T2_TP1_241004686.dir/src/controladoras/OrdemController.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/OrdemController.cpp > CMakeFiles/T2_TP1_241004686.dir/src/controladoras/OrdemController.cpp.i
+
+CMakeFiles/T2_TP1_241004686.dir/src/controladoras/OrdemController.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/T2_TP1_241004686.dir/src/controladoras/OrdemController.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/OrdemController.cpp -o CMakeFiles/T2_TP1_241004686.dir/src/controladoras/OrdemController.cpp.s
+
 CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.o: CMakeFiles/T2_TP1_241004686.dir/flags.make
 CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.o: ../src/controladoras/controladorasApresentacao.cpp
 CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.o: CMakeFiles/T2_TP1_241004686.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.o -MF CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.o.d -o CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.o -c /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/controladorasApresentacao.cpp
 
 CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.i: cmake_force
@@ -86,7 +128,7 @@ CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.
 CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.o: CMakeFiles/T2_TP1_241004686.dir/flags.make
 CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.o: ../src/controladoras/controladorasServico.cpp
 CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.o: CMakeFiles/T2_TP1_241004686.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.o -MF CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.o.d -o CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.o -c /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/controladorasServico.cpp
 
 CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.i: cmake_force
@@ -100,7 +142,7 @@ CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.s: cm
 CMakeFiles/T2_TP1_241004686.dir/src/controladoras/telaUtils.cpp.o: CMakeFiles/T2_TP1_241004686.dir/flags.make
 CMakeFiles/T2_TP1_241004686.dir/src/controladoras/telaUtils.cpp.o: ../src/controladoras/telaUtils.cpp
 CMakeFiles/T2_TP1_241004686.dir/src/controladoras/telaUtils.cpp.o: CMakeFiles/T2_TP1_241004686.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/T2_TP1_241004686.dir/src/controladoras/telaUtils.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/T2_TP1_241004686.dir/src/controladoras/telaUtils.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/T2_TP1_241004686.dir/src/controladoras/telaUtils.cpp.o -MF CMakeFiles/T2_TP1_241004686.dir/src/controladoras/telaUtils.cpp.o.d -o CMakeFiles/T2_TP1_241004686.dir/src/controladoras/telaUtils.cpp.o -c /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/telaUtils.cpp
 
 CMakeFiles/T2_TP1_241004686.dir/src/controladoras/telaUtils.cpp.i: cmake_force
@@ -114,7 +156,7 @@ CMakeFiles/T2_TP1_241004686.dir/src/controladoras/telaUtils.cpp.s: cmake_force
 CMakeFiles/T2_TP1_241004686.dir/src/database/DatabaseManager.cpp.o: CMakeFiles/T2_TP1_241004686.dir/flags.make
 CMakeFiles/T2_TP1_241004686.dir/src/database/DatabaseManager.cpp.o: ../src/database/DatabaseManager.cpp
 CMakeFiles/T2_TP1_241004686.dir/src/database/DatabaseManager.cpp.o: CMakeFiles/T2_TP1_241004686.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/T2_TP1_241004686.dir/src/database/DatabaseManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/T2_TP1_241004686.dir/src/database/DatabaseManager.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/T2_TP1_241004686.dir/src/database/DatabaseManager.cpp.o -MF CMakeFiles/T2_TP1_241004686.dir/src/database/DatabaseManager.cpp.o.d -o CMakeFiles/T2_TP1_241004686.dir/src/database/DatabaseManager.cpp.o -c /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/database/DatabaseManager.cpp
 
 CMakeFiles/T2_TP1_241004686.dir/src/database/DatabaseManager.cpp.i: cmake_force
@@ -128,7 +170,7 @@ CMakeFiles/T2_TP1_241004686.dir/src/database/DatabaseManager.cpp.s: cmake_force
 CMakeFiles/T2_TP1_241004686.dir/src/dominios/dominios.cpp.o: CMakeFiles/T2_TP1_241004686.dir/flags.make
 CMakeFiles/T2_TP1_241004686.dir/src/dominios/dominios.cpp.o: ../src/dominios/dominios.cpp
 CMakeFiles/T2_TP1_241004686.dir/src/dominios/dominios.cpp.o: CMakeFiles/T2_TP1_241004686.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/T2_TP1_241004686.dir/src/dominios/dominios.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/T2_TP1_241004686.dir/src/dominios/dominios.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/T2_TP1_241004686.dir/src/dominios/dominios.cpp.o -MF CMakeFiles/T2_TP1_241004686.dir/src/dominios/dominios.cpp.o.d -o CMakeFiles/T2_TP1_241004686.dir/src/dominios/dominios.cpp.o -c /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/dominios/dominios.cpp
 
 CMakeFiles/T2_TP1_241004686.dir/src/dominios/dominios.cpp.i: cmake_force
@@ -142,7 +184,7 @@ CMakeFiles/T2_TP1_241004686.dir/src/dominios/dominios.cpp.s: cmake_force
 CMakeFiles/T2_TP1_241004686.dir/src/entidades/entidades.cpp.o: CMakeFiles/T2_TP1_241004686.dir/flags.make
 CMakeFiles/T2_TP1_241004686.dir/src/entidades/entidades.cpp.o: ../src/entidades/entidades.cpp
 CMakeFiles/T2_TP1_241004686.dir/src/entidades/entidades.cpp.o: CMakeFiles/T2_TP1_241004686.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/T2_TP1_241004686.dir/src/entidades/entidades.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/T2_TP1_241004686.dir/src/entidades/entidades.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/T2_TP1_241004686.dir/src/entidades/entidades.cpp.o -MF CMakeFiles/T2_TP1_241004686.dir/src/entidades/entidades.cpp.o.d -o CMakeFiles/T2_TP1_241004686.dir/src/entidades/entidades.cpp.o -c /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/entidades/entidades.cpp
 
 CMakeFiles/T2_TP1_241004686.dir/src/entidades/entidades.cpp.i: cmake_force
@@ -156,7 +198,7 @@ CMakeFiles/T2_TP1_241004686.dir/src/entidades/entidades.cpp.s: cmake_force
 CMakeFiles/T2_TP1_241004686.dir/src/main.cpp.o: CMakeFiles/T2_TP1_241004686.dir/flags.make
 CMakeFiles/T2_TP1_241004686.dir/src/main.cpp.o: ../src/main.cpp
 CMakeFiles/T2_TP1_241004686.dir/src/main.cpp.o: CMakeFiles/T2_TP1_241004686.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/T2_TP1_241004686.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/T2_TP1_241004686.dir/src/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/T2_TP1_241004686.dir/src/main.cpp.o -MF CMakeFiles/T2_TP1_241004686.dir/src/main.cpp.o.d -o CMakeFiles/T2_TP1_241004686.dir/src/main.cpp.o -c /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/main.cpp
 
 CMakeFiles/T2_TP1_241004686.dir/src/main.cpp.i: cmake_force
@@ -170,7 +212,7 @@ CMakeFiles/T2_TP1_241004686.dir/src/main.cpp.s: cmake_force
 CMakeFiles/T2_TP1_241004686.dir/src/tests/testesDominios.cpp.o: CMakeFiles/T2_TP1_241004686.dir/flags.make
 CMakeFiles/T2_TP1_241004686.dir/src/tests/testesDominios.cpp.o: ../src/tests/testesDominios.cpp
 CMakeFiles/T2_TP1_241004686.dir/src/tests/testesDominios.cpp.o: CMakeFiles/T2_TP1_241004686.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/T2_TP1_241004686.dir/src/tests/testesDominios.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/T2_TP1_241004686.dir/src/tests/testesDominios.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/T2_TP1_241004686.dir/src/tests/testesDominios.cpp.o -MF CMakeFiles/T2_TP1_241004686.dir/src/tests/testesDominios.cpp.o.d -o CMakeFiles/T2_TP1_241004686.dir/src/tests/testesDominios.cpp.o -c /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/tests/testesDominios.cpp
 
 CMakeFiles/T2_TP1_241004686.dir/src/tests/testesDominios.cpp.i: cmake_force
@@ -184,7 +226,7 @@ CMakeFiles/T2_TP1_241004686.dir/src/tests/testesDominios.cpp.s: cmake_force
 CMakeFiles/T2_TP1_241004686.dir/src/tests/testesEntidades.cpp.o: CMakeFiles/T2_TP1_241004686.dir/flags.make
 CMakeFiles/T2_TP1_241004686.dir/src/tests/testesEntidades.cpp.o: ../src/tests/testesEntidades.cpp
 CMakeFiles/T2_TP1_241004686.dir/src/tests/testesEntidades.cpp.o: CMakeFiles/T2_TP1_241004686.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/T2_TP1_241004686.dir/src/tests/testesEntidades.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/T2_TP1_241004686.dir/src/tests/testesEntidades.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/T2_TP1_241004686.dir/src/tests/testesEntidades.cpp.o -MF CMakeFiles/T2_TP1_241004686.dir/src/tests/testesEntidades.cpp.o.d -o CMakeFiles/T2_TP1_241004686.dir/src/tests/testesEntidades.cpp.o -c /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/tests/testesEntidades.cpp
 
 CMakeFiles/T2_TP1_241004686.dir/src/tests/testesEntidades.cpp.i: cmake_force
@@ -197,6 +239,9 @@ CMakeFiles/T2_TP1_241004686.dir/src/tests/testesEntidades.cpp.s: cmake_force
 
 # Object files for target T2_TP1_241004686
 T2_TP1_241004686_OBJECTS = \
+"CMakeFiles/T2_TP1_241004686.dir/src/controladoras/CarteiraController.cpp.o" \
+"CMakeFiles/T2_TP1_241004686.dir/src/controladoras/InputValidator.cpp.o" \
+"CMakeFiles/T2_TP1_241004686.dir/src/controladoras/OrdemController.cpp.o" \
 "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.o" \
 "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.o" \
 "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/telaUtils.cpp.o" \
@@ -210,6 +255,9 @@ T2_TP1_241004686_OBJECTS = \
 # External object files for target T2_TP1_241004686
 T2_TP1_241004686_EXTERNAL_OBJECTS =
 
+T2_TP1_241004686: CMakeFiles/T2_TP1_241004686.dir/src/controladoras/CarteiraController.cpp.o
+T2_TP1_241004686: CMakeFiles/T2_TP1_241004686.dir/src/controladoras/InputValidator.cpp.o
+T2_TP1_241004686: CMakeFiles/T2_TP1_241004686.dir/src/controladoras/OrdemController.cpp.o
 T2_TP1_241004686: CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.o
 T2_TP1_241004686: CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.o
 T2_TP1_241004686: CMakeFiles/T2_TP1_241004686.dir/src/controladoras/telaUtils.cpp.o
@@ -221,7 +269,7 @@ T2_TP1_241004686: CMakeFiles/T2_TP1_241004686.dir/src/tests/testesDominios.cpp.o
 T2_TP1_241004686: CMakeFiles/T2_TP1_241004686.dir/src/tests/testesEntidades.cpp.o
 T2_TP1_241004686: CMakeFiles/T2_TP1_241004686.dir/build.make
 T2_TP1_241004686: CMakeFiles/T2_TP1_241004686.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable T2_TP1_241004686"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable T2_TP1_241004686"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/T2_TP1_241004686.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

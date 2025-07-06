@@ -1,4 +1,10 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/CarteiraController.cpp.o"
+  "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/CarteiraController.cpp.o.d"
+  "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/InputValidator.cpp.o"
+  "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/InputValidator.cpp.o.d"
+  "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/OrdemController.cpp.o"
+  "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/OrdemController.cpp.o.d"
   "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.o"
   "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.o.d"
   "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.o"

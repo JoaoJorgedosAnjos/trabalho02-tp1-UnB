@@ -8,6 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/CarteiraController.cpp" "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/CarteiraController.cpp.o" "gcc" "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/CarteiraController.cpp.o.d"
+  "/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/InputValidator.cpp" "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/InputValidator.cpp.o" "gcc" "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/InputValidator.cpp.o.d"
+  "/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/OrdemController.cpp" "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/OrdemController.cpp.o" "gcc" "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/OrdemController.cpp.o.d"
   "/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/controladorasApresentacao.cpp" "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.o" "gcc" "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.o.d"
   "/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/controladorasServico.cpp" "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.o" "gcc" "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.o.d"
   "/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/telaUtils.cpp" "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/telaUtils.cpp.o" "gcc" "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/telaUtils.cpp.o.d"
