@@ -162,7 +162,13 @@ CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.
  /usr/include/c++/11/fstream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
- /usr/include/c++/11/bits/fstream.tcc \
+ /usr/include/c++/11/bits/fstream.tcc /usr/include/c++/11/set \
+ /usr/include/c++/11/bits/stl_tree.h \
+ /usr/include/c++/11/ext/aligned_buffer.h \
+ /usr/include/c++/11/bits/node_handle.h \
+ /usr/include/c++/11/bits/stl_set.h \
+ /usr/include/c++/11/bits/stl_multiset.h \
+ /usr/include/c++/11/bits/erase_if.h \
  /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/controladorasApresentacao.hpp \
  /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/interfaces/interfaces.hpp \
  /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/dominios/dominios.hpp \
@@ -175,14 +181,10 @@ CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.
  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
  /usr/include/c++/11/functional /usr/include/c++/11/bits/refwrap.h \
  /usr/include/c++/11/bits/std_function.h \
- /usr/include/c++/11/unordered_map \
- /usr/include/c++/11/ext/aligned_buffer.h \
- /usr/include/c++/11/bits/hashtable.h \
+ /usr/include/c++/11/unordered_map /usr/include/c++/11/bits/hashtable.h \
  /usr/include/c++/11/bits/hashtable_policy.h \
  /usr/include/c++/11/bits/enable_special_members.h \
- /usr/include/c++/11/bits/node_handle.h \
- /usr/include/c++/11/bits/unordered_map.h \
- /usr/include/c++/11/bits/erase_if.h /usr/include/c++/11/vector \
+ /usr/include/c++/11/bits/unordered_map.h /usr/include/c++/11/vector \
  /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
@@ -203,8 +205,7 @@ CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.
  /usr/include/c++/11/pstl/glue_memory_defs.h /usr/include/c++/11/stack \
  /usr/include/c++/11/deque /usr/include/c++/11/bits/stl_deque.h \
  /usr/include/c++/11/bits/deque.tcc /usr/include/c++/11/bits/stl_stack.h \
- /usr/include/c++/11/map /usr/include/c++/11/bits/stl_tree.h \
- /usr/include/c++/11/bits/stl_map.h \
+ /usr/include/c++/11/map /usr/include/c++/11/bits/stl_map.h \
  /usr/include/c++/11/bits/stl_multimap.h /usr/include/c++/11/cstring \
  /usr/include/string.h /usr/include/strings.h \
  /usr/include/c++/11/bits/regex_constants.h \
@@ -217,10 +218,9 @@ CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.
  /usr/include/c++/11/bits/regex_compiler.tcc \
  /usr/include/c++/11/bits/regex.h /usr/include/c++/11/bits/regex.tcc \
  /usr/include/c++/11/bits/regex_executor.h \
- /usr/include/c++/11/bits/regex_executor.tcc /usr/include/c++/11/set \
- /usr/include/c++/11/bits/stl_set.h \
- /usr/include/c++/11/bits/stl_multiset.h \
+ /usr/include/c++/11/bits/regex_executor.tcc \
  /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/entidades/entidades.hpp \
  /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/entidades/../dominios/dominios.hpp \
  /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
- /usr/include/c++/11/bits/list.tcc
+ /usr/include/c++/11/bits/list.tcc \
+ /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/telaUtils.hpp

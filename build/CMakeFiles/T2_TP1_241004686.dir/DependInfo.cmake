@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/controladorasApresentacao.cpp" "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.o" "gcc" "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.o.d"
   "/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/controladorasServico.cpp" "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.o" "gcc" "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.o.d"
+  "/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/controladoras/telaUtils.cpp" "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/telaUtils.cpp.o" "gcc" "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/telaUtils.cpp.o.d"
   "/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/database/DatabaseManager.cpp" "CMakeFiles/T2_TP1_241004686.dir/src/database/DatabaseManager.cpp.o" "gcc" "CMakeFiles/T2_TP1_241004686.dir/src/database/DatabaseManager.cpp.o.d"
   "/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/dominios/dominios.cpp" "CMakeFiles/T2_TP1_241004686.dir/src/dominios/dominios.cpp.o" "gcc" "CMakeFiles/T2_TP1_241004686.dir/src/dominios/dominios.cpp.o.d"
   "/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/src/entidades/entidades.cpp" "CMakeFiles/T2_TP1_241004686.dir/src/entidades/entidades.cpp.o" "gcc" "CMakeFiles/T2_TP1_241004686.dir/src/entidades/entidades.cpp.o.d"

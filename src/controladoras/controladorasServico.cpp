@@ -7,6 +7,15 @@
 #include <sstream>
 #include <vector>
 
+// Função utilitária para remover espaços em branco do início e fim de uma string
+std::string trim(const std::string& str) {
+    const std::string WHITESPACE = " \n\r\t\f\v";
+    size_t first = str.find_first_not_of(WHITESPACE);
+    if (first == std::string::npos) return "";
+    size_t last = str.find_last_not_of(WHITESPACE);
+    return str.substr(first, (last - first + 1));
+}
+
 // =================================================================================================
 // IMPLEMENTAÇÃO DA CONTROLADORA COM SQLITE
 // =================================================================================================
@@ -210,127 +219,106 @@ bool ControladoraServico::criarOrdem(const Codigo& codigoCarteira, const Ordem& 
         std::cout << "Erro: Já existe uma ordem com este código!" << std::endl;
         return false;
     }
-    
-    // 3. Buscar preço histórico no arquivo DADOS_HISTORICOS.txt
+
+    // --- NOVA LÓGICA DE LEITURA DO ARQUIVO DE DADOS HISTÓRICOS (PADRÃO PROFESSOR) ---
     std::ifstream arquivo("../data/DADOS_HISTORICOS.txt");
     if (!arquivo.is_open()) {
         std::cout << "Erro: Não foi possível abrir o arquivo ../data/DADOS_HISTORICOS.txt!" << std::endl;
-        return false; // Não foi possível abrir o arquivo de dados históricos
+        return false;
     }
-    
-    std::string linha;
-    std::string precoMedio;
-    bool encontrouDados = false;
-    
-    // Preparar strings para comparação (remover espaços em branco)
-    std::string codigoNegBusca = ordem.getCodigoNeg().getValor();
-    std::string dataBusca = ordem.getData().getValor();
-    
-    // Remove espaços do código de negociação para comparação
-    size_t posFimCodigo = codigoNegBusca.find_last_not_of(' ');
-    if (posFimCodigo != std::string::npos) {
-        codigoNegBusca = codigoNegBusca.substr(0, posFimCodigo + 1);
-    }
-    
 
-    
+    std::string linha;
+    double precoMedioArquivo = 0.0;
+    bool encontrouPapel = false;
+
+    // Preparar strings para comparação (remover espaços em branco)
+    std::string codigoNegociacao = trim(ordem.getCodigoNeg().getValor());
+    std::string dataNegociacao = trim(ordem.getData().getValor());
+
     while (std::getline(arquivo, linha)) {
-        // Ignora linhas de comentário
-        if (linha.empty() || linha[0] == '#') {
+        // Garante que a linha tem o comprimento mínimo para evitar erros de substr
+        if (linha.length() < 126) {
             continue;
         }
+
+        // Extrai os dados da linha usando substr e "limpa" eles
+        std::string dataArquivo = trim(linha.substr(2, 8));
+        std::string codigoPapelArquivo = trim(linha.substr(12, 12));
         
-        // Separa os campos usando '|' como delimitador
-        std::vector<std::string> campos;
-        std::stringstream ss(linha);
-        std::string campo;
-        
-        while (std::getline(ss, campo, '|')) {
-            campos.push_back(campo);
-        }
-        
-        // Verifica se a linha tem o formato correto (3 campos: CodigoNegociacao|Data|PrecoMedio)
-        if (campos.size() != 3) {
-            continue;
-        }
-        
-        // Remove espaços em branco dos campos
-        std::string codigoNegArquivo = campos[0];
-        size_t posFimCodigoArq = codigoNegArquivo.find_last_not_of(' ');
-        if (posFimCodigoArq != std::string::npos) {
-            codigoNegArquivo = codigoNegArquivo.substr(0, posFimCodigoArq + 1);
-        }
-        
-        std::string dataArquivo = campos[1];
-        
-        // Verifica se encontrou o papel e a data
-        if (codigoNegArquivo == codigoNegBusca && dataArquivo == dataBusca) {
-            precoMedio = campos[2]; // PrecoMedio está na posição 2
-            encontrouDados = true;
-            break;
+        // Compara os dados limpos
+        if (codigoPapelArquivo == codigoNegociacao && dataArquivo == dataNegociacao) {
+            try {
+                // Pega a string do preço, converte para número e divide por 100
+                std::string precoStr = linha.substr(113, 13);
+                precoMedioArquivo = std::stod(precoStr) / 100.0;
+                encontrouPapel = true;
+                break; // Encontrou, pode sair do loop
+            } catch (const std::exception& e) {
+                std::cerr << "Erro ao converter preco da linha: " << linha << std::endl;
+                encontrouPapel = false;
+                break;
+            }
         }
     }
-    
     arquivo.close();
-    
-    if (!encontrouDados) {
-        std::cout << "=== ERRO: DADOS HISTÓRICOS NÃO ENCONTRADOS ===" << std::endl;
-        std::cout << "Papel: " << codigoNegBusca << " | Data: " << dataBusca << std::endl;
-        std::cout << std::endl;
-        std::cout << "OBSERVAÇÃO IMPORTANTE:" << std::endl;
-        std::cout << "- A data " << dataBusca << " é VÁLIDA no calendário" << std::endl;
-        std::cout << "- Porém, não há dados históricos disponíveis para essa data" << std::endl;
-        std::cout << "- Isso é uma limitação dos dados históricos, não um erro de validação" << std::endl;
-        std::cout << std::endl;
-        std::cout << "DATAS DISPONÍVEIS NO ARQUIVO:" << std::endl;
-        std::cout << "- 20240315 (15/03/2024)" << std::endl;
-        std::cout << "- 20240316 (16/03/2024)" << std::endl;
-        std::cout << "- 20240317 (17/03/2024)" << std::endl;
-        std::cout << "- 20240318 (18/03/2024)" << std::endl;
-        std::cout << "- 20240319 (19/03/2024)" << std::endl;
-        std::cout << "- 20240320 (20/03/2024)" << std::endl;
-        std::cout << "=============================================" << std::endl;
-        return false; // Não encontrou dados históricos para o papel na data especificada
+
+    if (!encontrouPapel) {
+        std::cout << "Erro: Papel ou data não encontrados no arquivo de dados históricos!" << std::endl;
+        return false;
     }
-    
-    // 4. Calcular o preço da ordem (preço médio × quantidade)
+
+    // --- CÁLCULO DO PREÇO E CRIAÇÃO DA ORDEM ---
     try {
-        // Converter preço médio para centavos
-        Dinheiro precoMedioObj;
-        precoMedioObj.setValor(precoMedio);
-        long long precoMedioCentavos = DatabaseManager::dinheiroParaCentavos(precoMedioObj);
-        
         // Converter quantidade para número
         std::string quantidadeStr = ordem.getQuantidade().getValor();
-        
-        // Remove pontos da quantidade (formato brasileiro: 1.000 = 1000)
         std::string quantidadeLimpa;
         for (char c : quantidadeStr) {
             if (c != '.') {
                 quantidadeLimpa += c;
             }
         }
-        
         long long quantidade = std::stoll(quantidadeLimpa);
-        
+
         // Calcula preço final da ordem
-        long long precoFinalCentavos = precoMedioCentavos * quantidade;
+        double precoFinal = precoMedioArquivo * quantidade;
+
+        // Converte para string no formato brasileiro (ex: 1234.56 -> "1.234,56")
+        std::ostringstream oss;
+        oss.precision(2);
+        oss << std::fixed << precoFinal;
+        std::string precoFinalStr = oss.str();
         
-        // Converte de volta para formato brasileiro
-        std::string precoFinalFormatado = DatabaseManager::centavosParaDinheiro(precoFinalCentavos);
+        // Troca ponto por vírgula para formato brasileiro
+        size_t ponto = precoFinalStr.find('.');
+        if (ponto != std::string::npos) {
+            precoFinalStr[ponto] = ',';
+        }
         
-        // 5. Criar nova ordem com o preço calculado
+        // Adiciona separadores de milhar (pontos) no formato brasileiro
+        // Ex: "40469,00" -> "40.469,00"
+        if (precoFinalStr.length() > 6) { // Se tem mais de 6 caracteres (incluindo vírgula e decimais)
+            std::string parteInteira = precoFinalStr.substr(0, ponto);
+            std::string parteDecimal = precoFinalStr.substr(ponto);
+            
+            // Adiciona pontos a cada 3 dígitos da direita para a esquerda
+            for (int i = parteInteira.length() - 3; i > 0; i -= 3) {
+                parteInteira.insert(i, ".");
+            }
+            
+            precoFinalStr = parteInteira + parteDecimal;
+        }
+
+        // Criar nova ordem com o preço calculado
         Ordem novaOrdem = ordem; // Copia todos os dados
-        Dinheiro precoFinal;
-        precoFinal.setValor(precoFinalFormatado);
-        novaOrdem.setDinheiro(precoFinal);
-        
-        // 6. Salvar a ordem no banco de dados
+        Dinheiro precoFinalObj;
+        precoFinalObj.setValor(precoFinalStr);
+        novaOrdem.setDinheiro(precoFinalObj);
+
+        // Salvar a ordem no banco de dados
         return dbManager->inserirOrdem(novaOrdem, codigoCarteira);
-        
     } catch (const std::exception& e) {
         std::cout << "Erro no cálculo do preço: " << e.what() << std::endl;
-        return false; // Erro no cálculo ou conversão
+        return false;
     }
 }
 

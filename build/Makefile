@@ -177,6 +177,30 @@ src/controladoras/controladorasServico.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/T2_TP1_241004686.dir/build.make CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.s
 .PHONY : src/controladoras/controladorasServico.cpp.s
 
+src/controladoras/telaUtils.o: src/controladoras/telaUtils.cpp.o
+.PHONY : src/controladoras/telaUtils.o
+
+# target to build an object file
+src/controladoras/telaUtils.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/T2_TP1_241004686.dir/build.make CMakeFiles/T2_TP1_241004686.dir/src/controladoras/telaUtils.cpp.o
+.PHONY : src/controladoras/telaUtils.cpp.o
+
+src/controladoras/telaUtils.i: src/controladoras/telaUtils.cpp.i
+.PHONY : src/controladoras/telaUtils.i
+
+# target to preprocess a source file
+src/controladoras/telaUtils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/T2_TP1_241004686.dir/build.make CMakeFiles/T2_TP1_241004686.dir/src/controladoras/telaUtils.cpp.i
+.PHONY : src/controladoras/telaUtils.cpp.i
+
+src/controladoras/telaUtils.s: src/controladoras/telaUtils.cpp.s
+.PHONY : src/controladoras/telaUtils.s
+
+# target to generate assembly for a file
+src/controladoras/telaUtils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/T2_TP1_241004686.dir/build.make CMakeFiles/T2_TP1_241004686.dir/src/controladoras/telaUtils.cpp.s
+.PHONY : src/controladoras/telaUtils.cpp.s
+
 src/database/DatabaseManager.o: src/database/DatabaseManager.cpp.o
 .PHONY : src/database/DatabaseManager.o
 
@@ -336,6 +360,9 @@ help:
 	@echo "... src/controladoras/controladorasServico.o"
 	@echo "... src/controladoras/controladorasServico.i"
 	@echo "... src/controladoras/controladorasServico.s"
+	@echo "... src/controladoras/telaUtils.o"
+	@echo "... src/controladoras/telaUtils.i"
+	@echo "... src/controladoras/telaUtils.s"
 	@echo "... src/database/DatabaseManager.o"
 	@echo "... src/database/DatabaseManager.i"
 	@echo "... src/database/DatabaseManager.s"

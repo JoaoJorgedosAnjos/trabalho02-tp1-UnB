@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasApresentacao.cpp.o.d"
   "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.o"
   "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/controladorasServico.cpp.o.d"
+  "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/telaUtils.cpp.o"
+  "CMakeFiles/T2_TP1_241004686.dir/src/controladoras/telaUtils.cpp.o.d"
   "CMakeFiles/T2_TP1_241004686.dir/src/database/DatabaseManager.cpp.o"
   "CMakeFiles/T2_TP1_241004686.dir/src/database/DatabaseManager.cpp.o.d"
   "CMakeFiles/T2_TP1_241004686.dir/src/dominios/dominios.cpp.o"

@@ -74,6 +74,8 @@ private:
     void excluirOrdem(const Codigo& codigoCarteira);
 };
 
+
+
 // =================================================================================================
 /**
  * @class InterfaceManager
