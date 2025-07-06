@@ -873,6 +873,10 @@ void InterfaceManager::processarGerenciarInvestimentos() {
 void InterfaceManager::fazerLogout() {
     telaUtils::exibirCabecalho("GERENCIAMENTO DE CONTA");
     std::cout << "Logout realizado com sucesso!" << std::endl;
+    std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
+    std::cin.ignore();
+    std::cin.get();
+    telaUtils::limparTela();
     usuarioAutenticado = false;
     telaAtual = TelaAtual::MENU_INICIAL;
 }
@@ -929,6 +933,7 @@ void InterfaceManager::executar() {
                     std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
                     std::cin.ignore();
                     std::cin.get();
+                    telaUtils::limparTela();
                     usuarioAutenticado = true;
                     telaAtual = TelaAtual::MENU_PRINCIPAL;
                 } else {
@@ -936,6 +941,7 @@ void InterfaceManager::executar() {
                     std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
                     std::cin.ignore();
                     std::cin.get();
+                    telaUtils::limparTela();
                     telaAtual = TelaAtual::MENU_INICIAL;
                 }
                 break;
@@ -945,6 +951,7 @@ void InterfaceManager::executar() {
                 std::cout << "\nPressione qualquer tecla para continuar..." << std::endl;
                 std::cin.ignore();
                 std::cin.get();
+                telaUtils::limparTela();
                 telaAtual = TelaAtual::MENU_INICIAL;
                 break;
                 

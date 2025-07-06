@@ -393,8 +393,7 @@ bool ControladoraServico::criarOrdem(const Codigo& codigoCarteira, const Ordem& 
         size_t ponto = precoFinalStr.find('.');
         if (ponto != std::string::npos) {
             precoFinalStr[ponto] = ',';
-        }
-        
+            
             std::string parteInteira = precoFinalStr.substr(0, ponto);
             std::string parteDecimal = precoFinalStr.substr(ponto);
             
