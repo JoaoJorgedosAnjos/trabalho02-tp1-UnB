@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['data_0',['Data',['../class_data.html',1,'']]],
-  ['dinheiro_1',['Dinheiro',['../class_dinheiro.html',1,'']]]
+  ['data_0',['Data',['../classData.html',1,'']]],
+  ['databasemanager_1',['DatabaseManager',['../classDatabaseManager.html',1,'']]],
+  ['dinheiro_2',['Dinheiro',['../classDinheiro.html',1,'']]]
 ];

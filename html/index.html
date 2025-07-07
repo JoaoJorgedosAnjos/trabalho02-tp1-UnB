@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>T1-TP1: Main Page</title>
+<title>My Project: Sistema de Investimentos - Trabalho 02 TP1 UnB</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">T1-TP1
+   <div id="projectname">My Project
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -101,10 +101,65 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">T1-TP1 Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">Sistema de Investimentos - Trabalho 02 TP1 UnB </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p><a class="anchor" id="md_README"></a></p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Descrição</h1>
+<p>Sistema de gerenciamento de investimentos desenvolvido em C++ moderno, com interface de usuário via console. O projeto foi construído seguindo uma arquitetura em camadas (Apresentação, Serviço, Persistência) com persistência de dados em SQLite e lógica de negócio desacoplada por meio de interfaces.</p>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Características Principais</h1>
+<ul>
+<li>✅ <b>Arquitetura Profissional:</b> Design em camadas (Apresentação, Serviço, Persistência) com interfaces para desacoplamento, garantindo um código limpo e de fácil manutenção.</li>
+<li>✅ <b>Persistência de Dados:</b> Uso do SQLite para armazenamento de dados, garantindo que as informações dos usuários, carteiras e ordens persistam entre as sessões.</li>
+<li>✅ <b>Precisão Financeira:</b> Cálculos monetários realizados com <code>long long</code> (representando centavos) para eliminar erros de arredondamento de ponto flutuante.</li>
+<li>✅ <b>Lógica de Negócio Realista:</b> Criação de ordens com cálculo de preço baseado em dados de um arquivo histórico externo no formato da B3.</li>
+<li>✅ <b>Interface de Usuário Robusta:</b> Sistema de menus multinível com validação de entrada em tempo real e mensagens de ajuda contextuais.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Estrutura do Projeto</h1>
+<div class="fragment"><div class="line">trabalho02-tp1-UnB/</div>
+<div class="line">├── src/                    # Código fonte (.cpp, .hpp)</div>
+<div class="line">├── data/                   # Dados externos</div>
+<div class="line">│   └── DADOS_HISTORICOS.txt</div>
+<div class="line">├── database/               # Banco de dados</div>
+<div class="line">│   ├── schema.sql</div>
+<div class="line">│   └── sistema_investimentos.db (criado automaticamente aqui)</div>
+<div class="line">├── build/                  # Apenas arquivos de compilação</div>
+<div class="line">│   └── T2_TP1_241004686    # Executável final</div>
+<div class="line">└── CMakeLists.txt          # Script de build</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md4"></a>
+Compilação e Execução</h1>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Pré-requisitos</h2>
+<ul>
+<li>CMake (versão 3.15 ou superior)</li>
+<li>Um compilador C++17 (g++, Clang, etc.)</li>
+<li>Ninja Build (<code>sudo apt install ninja-build</code>) ou make (<code>sudo apt install make</code>)</li>
+<li>Biblioteca de desenvolvimento do SQLite3 (<code>sudo apt install libsqlite3-dev</code>)</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Comandos</h2>
+<p>Execute os seguintes comandos a partir do diretório raiz do projeto:</p>
+<div class="fragment"><div class="line"># 1. Crie e acesse o diretório de build</div>
+<div class="line">mkdir -p build &amp;&amp; cd build</div>
+<div class="line"> </div>
+<div class="line"># 2. Configure o projeto com CMake</div>
+<div class="line">cmake ..</div>
+<div class="line"> </div>
+<div class="line"># 3. Compile o projeto com Ninja</div>
+<div class="line">ninja</div>
+<div class="line"> </div>
+<div class="line"># 4. Execute o programa (ainda de dentro da pasta &#39;build&#39;)</div>
+<div class="line">./T2_TP1_241004686</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md7"></a>
+Autores</h1>
+<ul>
+<li><b>João Jorge</b> - Matrícula: 241004686 </li>
+</ul>
+</div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,0 +1,103 @@
+\doxysection{Ncpf Class Reference}
+\hypertarget{classNcpf}{}\label{classNcpf}\index{Ncpf@{Ncpf}}
+
+
+Classe que representa uma sequencia unica de identificacao, com exatamente 14 caracteres no formato XXX.\+XXX.\+XXX-\/XX.  
+
+
+
+
+{\ttfamily \#include $<$dominios.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classNcpf_a5a9638e7c9562e48a2ec755b71db314b}{set\+Valor}} (const string \&)
+\begin{DoxyCompactList}\small\item\em Metodo publico que atribui um CPF ao objeto apos validar seu conteudo. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classNcpf_ac9a692881029c6649d7ae8cb65c34037}{get\+Valor}} () const
+\begin{DoxyCompactList}\small\item\em Metodo publico que retorna o CPF armazenado. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que representa uma sequencia unica de identificacao, com exatamente 14 caracteres no formato XXX.\+XXX.\+XXX-\/XX. 
+
+\DoxyHorRuler{0}
+
+
+Esta classe e utilizada para representar um CPF (Cadastro de Pessoa Fisica) no sistema de investimentos, conforme as regras de formatacao estabelecidas pela Receita Federal do Brasil. O CPF pode estar associado, por exemplo, a contas de usuario.
+
+O valor deve seguir rigorosamente o formato padrao\+: tres blocos de tres digitos separados por pontos, seguidos por um bloco de dois digitos separado por hifen.
+
+A classe {\ttfamily \doxylink{classNcpf}{Ncpf}} e responsavel por armazenar e validar um numero de CPF, garantindo que o valor interno esteja em conformidade com o formato e que os digitos verificadores sejam validos conforme regras oficiais.
+
+Regras de validacao\+:
+\begin{DoxyItemize}
+\item Deve conter exatamente 14 caracteres no formato XXX.\+XXX.\+XXX-\/XX.
+\item Apenas caracteres numericos, pontos e hifens sao permitidos nas posicoes corretas.
+\item Os digitos verificadores (os dois ultimos) devem ser validos de acordo com o algoritmo oficial do CPF.
+\item CPFs com todos os digitos iguais sao invalidos (ex\+: "{}111.\+111.\+111-\/11"{}).
+\end{DoxyItemize}
+
+Metodos disponiveis\+:
+\begin{DoxyItemize}
+\item {\ttfamily set\+Valor}\+: Metodo publico que atribui um novo valor ao CPF, apos validacao.
+\item {\ttfamily get\+Valor}\+: Metodo publico que retorna o valor atual do CPF armazenado.
+\end{DoxyItemize}
+
+Lanca {\ttfamily std\+::invalid\+\_\+argument} em caso de formato incorreto ou CPF invalido. \begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classNcpf_ac9a692881029c6649d7ae8cb65c34037}\index{Ncpf@{Ncpf}!getValor@{getValor}}
+\index{getValor@{getValor}!Ncpf@{Ncpf}}
+\doxysubsubsection{\texorpdfstring{getValor()}{getValor()}}
+{\footnotesize\ttfamily \label{classNcpf_ac9a692881029c6649d7ae8cb65c34037} 
+string Ncpf\+::get\+Valor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que retorna o CPF armazenado. 
+
+Implementacao inline do metodo que retorna o valor do CPF.
+
+\begin{DoxyReturn}{Returns}
+string com o CPF armazenado no formato XXX.\+XXX.\+XXX-\/XX.
+
+string CPF armazenado, no formato XXX.\+XXX.\+XXX-\/XX. 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+\Hypertarget{classNcpf_a5a9638e7c9562e48a2ec755b71db314b}\index{Ncpf@{Ncpf}!setValor@{setValor}}
+\index{setValor@{setValor}!Ncpf@{Ncpf}}
+\doxysubsubsection{\texorpdfstring{setValor()}{setValor()}}
+{\footnotesize\ttfamily \label{classNcpf_a5a9638e7c9562e48a2ec755b71db314b} 
+void Ncpf\+::set\+Valor (\begin{DoxyParamCaption}\item[{const string \&}]{valor}{}\end{DoxyParamCaption})}
+
+
+
+Metodo publico que atribui um CPF ao objeto apos validar seu conteudo. 
+
+Chama internamente o metodo {\ttfamily validar()} para garantir a conformidade do valor com o formato e regras do CPF.
+
+
+\begin{DoxyParams}{Parameters}
+{\em valor} & CPF no formato XXX.\+XXX.\+XXX-\/XX. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & Se o CPF for invalido. \\
+\hline
+\end{DoxyExceptions}
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/dominios/\mbox{\hyperlink{dominios_8hpp}{dominios.\+hpp}}\item 
+src/dominios/\mbox{\hyperlink{dominios_8cpp}{dominios.\+cpp}}\end{DoxyCompactItemize}

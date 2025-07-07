@@ -1,20 +1,8 @@
 var searchData=
 [
-  ['testesdominios_2ecpp_0',['testesDominios.cpp',['../testes_dominios_8cpp.html',1,'']]],
-  ['testesdominios_2ehpp_1',['testesDominios.hpp',['../testes_dominios_8hpp.html',1,'']]],
-  ['testesentidades_2ecpp_2',['testesEntidades.cpp',['../testes_entidades_8cpp.html',1,'']]],
-  ['testesentidades_2ehpp_3',['testesEntidades.hpp',['../testes_entidades_8hpp.html',1,'']]],
-  ['tipoperfil_4',['TipoPerfil',['../class_tipo_perfil.html',1,'']]],
-  ['tucarteira_5',['TUCarteira',['../class_t_u_carteira.html',1,'']]],
-  ['tucodigo_6',['TUCodigo',['../class_t_u_codigo.html',1,'']]],
-  ['tucodigoneg_7',['TUCodigoNeg',['../class_t_u_codigo_neg.html',1,'']]],
-  ['tuconta_8',['TUConta',['../class_t_u_conta.html',1,'']]],
-  ['tudata_9',['TUData',['../class_t_u_data.html',1,'']]],
-  ['tudinheiro_10',['TUDinheiro',['../class_t_u_dinheiro.html',1,'']]],
-  ['tuncpf_11',['TUNcpf',['../class_t_u_ncpf.html',1,'']]],
-  ['tunome_12',['TUNome',['../class_t_u_nome.html',1,'']]],
-  ['tuordem_13',['TUOrdem',['../class_t_u_ordem.html',1,'']]],
-  ['tuquantidade_14',['TUQuantidade',['../class_t_u_quantidade.html',1,'']]],
-  ['tusenha_15',['TUSenha',['../class_t_u_senha.html',1,'']]],
-  ['tutipoperfil_16',['TUTipoPerfil',['../class_t_u_tipo_perfil.html',1,'']]]
+  ['obterestatisticas_0',['obterEstatisticas',['../classDatabaseManager.html#a44be591e987cc7a30ea3695d4cd4273a',1,'DatabaseManager']]],
+  ['ordem_1',['Ordem',['../classOrdem.html',1,'']]],
+  ['ordemcontroller_2',['OrdemController',['../classOrdemController.html',1,'OrdemController'],['../classOrdemController.html#a5c958f297bc9a1cb16fdea38410410bb',1,'OrdemController::OrdemController()']]],
+  ['ordemcontroller_2ecpp_3',['OrdemController.cpp',['../OrdemController_8cpp.html',1,'']]],
+  ['ordemcontroller_2ehpp_4',['OrdemController.hpp',['../OrdemController_8hpp.html',1,'']]]
 ];

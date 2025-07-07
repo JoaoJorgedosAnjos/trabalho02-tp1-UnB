@@ -1,0 +1,113 @@
+\doxysection{IApresentacao\+Investimento Class Reference}
+\hypertarget{classIApresentacaoInvestimento}{}\label{classIApresentacaoInvestimento}\index{IApresentacaoInvestimento@{IApresentacaoInvestimento}}
+
+
+Interface para os serviços de gerenciamento de investimentos na camada de apresentação.  
+
+
+
+
+{\ttfamily \#include $<$interfaces.\+hpp$>$}
+
+Inheritance diagram for IApresentacao\+Investimento\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classIApresentacaoInvestimento}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classIApresentacaoInvestimento_a5b961c289049a13b821713b401ce0fda}{executar}} (const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf)=0
+\begin{DoxyCompactList}\small\item\em Executa o menu de gerenciamento de investimentos. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classIApresentacaoInvestimento_ad997e6894097ae2f529500a98bb32329}{set\+Controladora\+Servico}} (\mbox{\hyperlink{classIServicoInvestimento}{IServico\+Investimento}} \texorpdfstring{$\ast$}{*}cntr\+Servico\+Investimento)=0
+\begin{DoxyCompactList}\small\item\em Define a controladora de serviço para investimentos. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classIApresentacaoInvestimento_a084f3f2e7873cba65d0d75bf5224cb51}{\texorpdfstring{$\sim$}{\string~}\+IApresentacao\+Investimento}} ()
+\begin{DoxyCompactList}\small\item\em Destrutor virtual para permitir herança. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface para os serviços de gerenciamento de investimentos na camada de apresentação. 
+
+Esta interface define os contratos para a camada de apresentação relacionada ao gerenciamento de carteiras e ordens de investimento. Responsável por fornecer interface para criação, consulta, edição e exclusão de carteiras e ordens de compra/venda.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classIServicoInvestimento}{IServico\+Investimento} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classIApresentacaoInvestimento_a084f3f2e7873cba65d0d75bf5224cb51}\index{IApresentacaoInvestimento@{IApresentacaoInvestimento}!````~IApresentacaoInvestimento@{\texorpdfstring{$\sim$}{\string~}IApresentacaoInvestimento}}
+\index{````~IApresentacaoInvestimento@{\texorpdfstring{$\sim$}{\string~}IApresentacaoInvestimento}!IApresentacaoInvestimento@{IApresentacaoInvestimento}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}IApresentacaoInvestimento()}{\string~IApresentacaoInvestimento()}}
+{\footnotesize\ttfamily \label{classIApresentacaoInvestimento_a084f3f2e7873cba65d0d75bf5224cb51} 
+virtual IApresentacao\+Investimento\+::\texorpdfstring{$\sim$}{\string~}\+IApresentacao\+Investimento (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destrutor virtual para permitir herança. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIApresentacaoInvestimento_a5b961c289049a13b821713b401ce0fda}\index{IApresentacaoInvestimento@{IApresentacaoInvestimento}!executar@{executar}}
+\index{executar@{executar}!IApresentacaoInvestimento@{IApresentacaoInvestimento}}
+\doxysubsubsection{\texorpdfstring{executar()}{executar()}}
+{\footnotesize\ttfamily \label{classIApresentacaoInvestimento_a5b961c289049a13b821713b401ce0fda} 
+virtual void IApresentacao\+Investimento\+::executar (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Executa o menu de gerenciamento de investimentos. 
+
+Apresenta as opções disponíveis para gerenciamento de carteiras e ordens do usuário identificado pelo CPF fornecido, incluindo criação, listagem, consulta, edição e exclusão de carteiras e ordens.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em cpf} & CPF do usuário cujos investimentos serão gerenciados\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Deve verificar se o usuário possui carteiras antes de permitir operações 
+
+Deve solicitar confirmação para operações destrutivas 
+
+Deve exibir mensagens apropriadas para cada operação 
+
+Deve limpar a tela após conclusão das operações 
+\end{DoxyNote}
+
+
+Implemented in \mbox{\hyperlink{classControladoraApresentacaoInvestimento_aeeb3905f39cbd169789b59ac3c984d69}{Controladora\+Apresentacao\+Investimento}}.
+
+\Hypertarget{classIApresentacaoInvestimento_ad997e6894097ae2f529500a98bb32329}\index{IApresentacaoInvestimento@{IApresentacaoInvestimento}!setControladoraServico@{setControladoraServico}}
+\index{setControladoraServico@{setControladoraServico}!IApresentacaoInvestimento@{IApresentacaoInvestimento}}
+\doxysubsubsection{\texorpdfstring{setControladoraServico()}{setControladoraServico()}}
+{\footnotesize\ttfamily \label{classIApresentacaoInvestimento_ad997e6894097ae2f529500a98bb32329} 
+virtual void IApresentacao\+Investimento\+::set\+Controladora\+Servico (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIServicoInvestimento}{IServico\+Investimento}} \texorpdfstring{$\ast$}{*}}]{cntr\+Servico\+Investimento}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Define a controladora de serviço para investimentos. 
+
+Estabelece a conexão entre a camada de apresentação e a camada de serviço, permitindo que a apresentação delegue operações de gerenciamento de investimentos.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em cntr\+Servico\+Investimento} & Ponteiro para a controladora de serviço\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Deve ser chamado antes de usar o método \doxylink{classIApresentacaoInvestimento_a5b961c289049a13b821713b401ce0fda}{executar()} 
+
+A responsabilidade de gerenciar o ciclo de vida do ponteiro é da classe cliente 
+\end{DoxyNote}
+
+
+Implemented in \mbox{\hyperlink{classControladoraApresentacaoInvestimento_aafbc842c529651a6027154c52de79749}{Controladora\+Apresentacao\+Investimento}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/interfaces/\mbox{\hyperlink{interfaces_8hpp}{interfaces.\+hpp}}\end{DoxyCompactItemize}

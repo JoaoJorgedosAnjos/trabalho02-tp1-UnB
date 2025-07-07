@@ -1,0 +1,190 @@
+\doxysection{Controladora\+Apresentacao\+Investimento Class Reference}
+\hypertarget{classControladoraApresentacaoInvestimento}{}\label{classControladoraApresentacaoInvestimento}\index{ControladoraApresentacaoInvestimento@{ControladoraApresentacaoInvestimento}}
+
+
+Implementação concreta da interface de apresentação para gerenciamento de investimentos.  
+
+
+
+
+{\ttfamily \#include $<$controladoras\+Apresentacao.\+hpp$>$}
+
+Inheritance diagram for Controladora\+Apresentacao\+Investimento\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classControladoraApresentacaoInvestimento}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classControladoraApresentacaoInvestimento_a43de8f443f4449d4a628f4a762306e25}{Controladora\+Apresentacao\+Investimento}} ()
+\begin{DoxyCompactList}\small\item\em Construtor da controladora de apresentação de investimentos. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classControladoraApresentacaoInvestimento_a034e725325daaca4de4099f0eced704a}{\texorpdfstring{$\sim$}{\string~}\+Controladora\+Apresentacao\+Investimento}} ()
+\begin{DoxyCompactList}\small\item\em Destrutor da controladora de apresentação de investimentos. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classControladoraApresentacaoInvestimento_aeeb3905f39cbd169789b59ac3c984d69}{executar}} (const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf) override
+\begin{DoxyCompactList}\small\item\em Executa o menu principal de investimentos. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classControladoraApresentacaoInvestimento_aafbc842c529651a6027154c52de79749}{set\+Controladora\+Servico}} (\mbox{\hyperlink{classIServicoInvestimento}{IServico\+Investimento}} \texorpdfstring{$\ast$}{*}cntr\+Servico\+Investimento) override
+\begin{DoxyCompactList}\small\item\em Define a controladora de serviço para investimentos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIApresentacaoInvestimento}{IApresentacao\+Investimento}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classIApresentacaoInvestimento_a084f3f2e7873cba65d0d75bf5224cb51}{\texorpdfstring{$\sim$}{\string~}\+IApresentacao\+Investimento}} ()
+\begin{DoxyCompactList}\small\item\em Destrutor virtual para permitir herança. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementação concreta da interface de apresentação para gerenciamento de investimentos. 
+
+Responsável por exibir os menus de carteiras e ordens de investimento. Utiliza controladores especializados para cada tipo de operação. \begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classControladoraApresentacaoInvestimento_a43de8f443f4449d4a628f4a762306e25}\index{ControladoraApresentacaoInvestimento@{ControladoraApresentacaoInvestimento}!ControladoraApresentacaoInvestimento@{ControladoraApresentacaoInvestimento}}
+\index{ControladoraApresentacaoInvestimento@{ControladoraApresentacaoInvestimento}!ControladoraApresentacaoInvestimento@{ControladoraApresentacaoInvestimento}}
+\doxysubsubsection{\texorpdfstring{ControladoraApresentacaoInvestimento()}{ControladoraApresentacaoInvestimento()}}
+{\footnotesize\ttfamily \label{classControladoraApresentacaoInvestimento_a43de8f443f4449d4a628f4a762306e25} 
+Controladora\+Apresentacao\+Investimento\+::\+Controladora\+Apresentacao\+Investimento (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Construtor da controladora de apresentação de investimentos. 
+
+Inicializa os ponteiros como nullptr. Os controladores especializados são criados quando o serviço é definido através de \doxylink{classControladoraApresentacaoInvestimento_aafbc842c529651a6027154c52de79749}{set\+Controladora\+Servico()}. \begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+\Hypertarget{classControladoraApresentacaoInvestimento_a034e725325daaca4de4099f0eced704a}\index{ControladoraApresentacaoInvestimento@{ControladoraApresentacaoInvestimento}!````~ControladoraApresentacaoInvestimento@{\texorpdfstring{$\sim$}{\string~}ControladoraApresentacaoInvestimento}}
+\index{````~ControladoraApresentacaoInvestimento@{\texorpdfstring{$\sim$}{\string~}ControladoraApresentacaoInvestimento}!ControladoraApresentacaoInvestimento@{ControladoraApresentacaoInvestimento}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ControladoraApresentacaoInvestimento()}{\string~ControladoraApresentacaoInvestimento()}}
+{\footnotesize\ttfamily \label{classControladoraApresentacaoInvestimento_a034e725325daaca4de4099f0eced704a} 
+Controladora\+Apresentacao\+Investimento\+::\texorpdfstring{$\sim$}{\string~}\+Controladora\+Apresentacao\+Investimento (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destrutor da controladora de apresentação de investimentos. 
+
+Libera a memória dos controladores especializados para evitar vazamentos. \begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classControladoraApresentacaoInvestimento_aeeb3905f39cbd169789b59ac3c984d69}\index{ControladoraApresentacaoInvestimento@{ControladoraApresentacaoInvestimento}!executar@{executar}}
+\index{executar@{executar}!ControladoraApresentacaoInvestimento@{ControladoraApresentacaoInvestimento}}
+\doxysubsubsection{\texorpdfstring{executar()}{executar()}}
+{\footnotesize\ttfamily \label{classControladoraApresentacaoInvestimento_aeeb3905f39cbd169789b59ac3c984d69} 
+void Controladora\+Apresentacao\+Investimento\+::executar (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Executa o menu principal de investimentos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF do usuário autenticado\\
+\hline
+\end{DoxyParams}
+Apresenta menu com duas opções principais\+:
+\begin{DoxyItemize}
+\item Gerenciar Carteiras\+: acesso direto ao \doxylink{classCarteiraController}{Carteira\+Controller}
+\item Gerenciar Ordens\+: seleção de carteira + \doxylink{classOrdemController}{Ordem\+Controller}
+\end{DoxyItemize}
+
+Inclui validações e tratamento de erros para cada fluxo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF do usuário autenticado\\
+\hline
+\end{DoxyParams}
+Executa o menu principal de investimentos
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF do usuário autenticado\\
+\hline
+\end{DoxyParams}
+Implementa o menu central de investimentos com duas opções principais\+:
+
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Gerenciar Carteiras}}\+: Acesso direto ao \doxylink{classCarteiraController}{Carteira\+Controller}
+\begin{DoxyItemize}
+\item Criar novas carteiras
+\item Listar e consultar carteiras existentes
+\item Editar carteiras
+\item Excluir carteiras
+\end{DoxyItemize}
+\item {\bfseries{Gerenciar Ordens}}\+: Seleção de carteira seguida de \doxylink{classOrdemController}{Ordem\+Controller}
+\begin{DoxyItemize}
+\item Lista todas as carteiras do usuário
+\item Permite seleção por código
+\item Redireciona para o gerenciamento de ordens da carteira selecionada
+\end{DoxyItemize}
+\end{DoxyEnumerate}
+
+Fluxo de gerenciamento de ordens\+:
+\begin{DoxyItemize}
+\item Verifica se o usuário possui carteiras
+\item Exibe lista de carteiras disponíveis
+\item Solicita código da carteira desejada
+\item Valida o código informado
+\item Executa o menu de ordens para a carteira selecionada
+\end{DoxyItemize}
+
+Validações implementadas\+:
+\begin{DoxyItemize}
+\item Verifica existência de carteiras antes de permitir gerenciamento de ordens
+\item Valida formato do código da carteira (5 dígitos)
+\item Trata erros de entrada com mensagens informativas
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+O menu é executado em loop até que o usuário escolha sair (opção 0) 
+
+Utiliza controladores especializados para cada tipo de operação 
+\end{DoxyNote}
+
+
+Implements \mbox{\hyperlink{classIApresentacaoInvestimento_a5b961c289049a13b821713b401ce0fda}{IApresentacao\+Investimento}}.
+
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+\Hypertarget{classControladoraApresentacaoInvestimento_aafbc842c529651a6027154c52de79749}\index{ControladoraApresentacaoInvestimento@{ControladoraApresentacaoInvestimento}!setControladoraServico@{setControladoraServico}}
+\index{setControladoraServico@{setControladoraServico}!ControladoraApresentacaoInvestimento@{ControladoraApresentacaoInvestimento}}
+\doxysubsubsection{\texorpdfstring{setControladoraServico()}{setControladoraServico()}}
+{\footnotesize\ttfamily \label{classControladoraApresentacaoInvestimento_aafbc842c529651a6027154c52de79749} 
+void Controladora\+Apresentacao\+Investimento\+::set\+Controladora\+Servico (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIServicoInvestimento}{IServico\+Investimento}} \texorpdfstring{$\ast$}{*}}]{cntr\+Servico\+Investimento}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Define a controladora de serviço para investimentos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cntr\+Servico\+Investimento} & Ponteiro para a interface de serviço de investimentos\\
+\hline
+\end{DoxyParams}
+Estabelece a conexão com a camada de serviço e inicializa os controladores especializados (\doxylink{classCarteiraController}{Carteira\+Controller} e \doxylink{classOrdemController}{Ordem\+Controller}).
+
+
+\begin{DoxyParams}{Parameters}
+{\em cntr\+Servico\+Investimento} & Ponteiro para a interface de serviço de investimentos \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classIApresentacaoInvestimento_ad997e6894097ae2f529500a98bb32329}{IApresentacao\+Investimento}}.
+
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/controladoras/\mbox{\hyperlink{controladorasApresentacao_8hpp}{controladoras\+Apresentacao.\+hpp}}\item 
+src/controladoras/\mbox{\hyperlink{controladorasApresentacao_8cpp}{controladoras\+Apresentacao.\+cpp}}\end{DoxyCompactItemize}

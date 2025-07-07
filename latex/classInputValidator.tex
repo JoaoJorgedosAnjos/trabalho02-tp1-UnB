@@ -1,0 +1,326 @@
+\doxysection{Input\+Validator Class Reference}
+\hypertarget{classInputValidator}{}\label{classInputValidator}\index{InputValidator@{InputValidator}}
+
+
+Validador especializado para entradas do usuário.  
+
+
+
+
+{\ttfamily \#include $<$Input\+Validator.\+hpp$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classInputValidator_a7588524a16110bb3a8a6310a5715ae9d}{validar\+Combinacao\+B3}} (const \mbox{\hyperlink{classCodigoNeg}{Codigo\+Neg}} \&codigo\+Negociacao, const std\+::string \&data)
+\begin{DoxyCompactList}\small\item\em Valida se uma combinação código+data existe no arquivo B3. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classInputValidator_a6452fd3e140a9ed3b13b5fddcd39220a}{buscar\+Datas\+Disponiveis}} (const \mbox{\hyperlink{classCodigoNeg}{Codigo\+Neg}} \&codigo\+Negociacao, std\+::set$<$ std\+::string $>$ \&datas\+Disponiveis)
+\begin{DoxyCompactList}\small\item\em Busca datas disponíveis para um código de negociação. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classInputValidator_ad666e8e194e9e27b55eb49c51b2a13fc}{extrair\+Codigo\+B3}} (const std\+::string \&linha\+B3)
+\begin{DoxyCompactList}\small\item\em Extrai código de negociação de uma linha B3. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classInputValidator_ad4eb667f7274ec40dcd206f1fe34dc7b}{extrair\+Data\+B3}} (const std\+::string \&linha\+B3)
+\begin{DoxyCompactList}\small\item\em Extrai data de uma linha B3. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classInputValidator_a99af6e6d5ab1824231f60aef2da26528}{extrair\+Preco\+B3}} (const std\+::string \&linha\+B3)
+\begin{DoxyCompactList}\small\item\em Extrai preço de uma linha B3. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classInputValidator_a15a38a9056fba783255b49e2a1d7f04b}{formatar\+Codigo\+Negociacao}} (const std\+::string \&codigo)
+\begin{DoxyCompactList}\small\item\em Formata código de negociação para 12 caracteres. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classInputValidator_a09e843ed665273f818045bcda9cdf292}{remover\+Espacos\+Finais}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Remove espaços em branco do final de uma string. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classInputValidator_aa753fe4cf058fe78f82c3e04cc72c6f9}{contem\+Apenas\+Digitos}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Valida se uma string contém apenas dígitos. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classInputValidator_a1bfd7cb840fe4f825f510e052e880b7d}{formatar\+Valor\+Monetario}} (const std\+::string \&valor)
+\begin{DoxyCompactList}\small\item\em Formata valor monetário com separadores de milhares. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Validador especializado para entradas do usuário. 
+
+Esta classe é responsável por validar e processar entradas do usuário, incluindo validação de dados B3, formatação de códigos e validação de combinações. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classInputValidator_a6452fd3e140a9ed3b13b5fddcd39220a}\index{InputValidator@{InputValidator}!buscarDatasDisponiveis@{buscarDatasDisponiveis}}
+\index{buscarDatasDisponiveis@{buscarDatasDisponiveis}!InputValidator@{InputValidator}}
+\doxysubsubsection{\texorpdfstring{buscarDatasDisponiveis()}{buscarDatasDisponiveis()}}
+{\footnotesize\ttfamily \label{classInputValidator_a6452fd3e140a9ed3b13b5fddcd39220a} 
+bool Input\+Validator\+::buscar\+Datas\+Disponiveis (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCodigoNeg}{Codigo\+Neg}} \&}]{codigo\+Negociacao}{, }\item[{std\+::set$<$ std\+::string $>$ \&}]{datas\+Disponiveis}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Busca datas disponíveis para um código de negociação. 
+
+Busca todas as datas disponíveis para um código de negociação específico.
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo\+Negociacao} & Código de negociação \\
+\hline
+{\em datas\+Disponiveis} & Set para armazenar as datas encontradas \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool true se encontrou datas
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em codigo\+Negociacao} & Código de negociação para buscar datas \\
+\hline
+{\em datas\+Disponiveis} & Conjunto onde serão armazenadas as datas encontradas \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se encontrou pelo menos uma data, false caso contrário
+\end{DoxyReturn}
+Percorre o arquivo de dados históricos da B3 e coleta todas as datas disponíveis para o código de negociação fornecido. As datas são armazenadas em um conjunto para evitar duplicatas. \begin{DoxySeeAlso}{See also}
+CAMINHO\+\_\+\+ARQUIVO\+\_\+\+B3 
+
+\doxylink{classInputValidator_ad666e8e194e9e27b55eb49c51b2a13fc}{extrair\+Codigo\+B3()} 
+
+\doxylink{classInputValidator_ad4eb667f7274ec40dcd206f1fe34dc7b}{extrair\+Data\+B3()} 
+\end{DoxySeeAlso}
+\Hypertarget{classInputValidator_aa753fe4cf058fe78f82c3e04cc72c6f9}\index{InputValidator@{InputValidator}!contemApenasDigitos@{contemApenasDigitos}}
+\index{contemApenasDigitos@{contemApenasDigitos}!InputValidator@{InputValidator}}
+\doxysubsubsection{\texorpdfstring{contemApenasDigitos()}{contemApenasDigitos()}}
+{\footnotesize\ttfamily \label{classInputValidator_aa753fe4cf058fe78f82c3e04cc72c6f9} 
+bool Input\+Validator\+::contem\+Apenas\+Digitos (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Valida se uma string contém apenas dígitos. 
+
+Verifica se uma string contém apenas dígitos numéricos.
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & String a ser validada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool true se contém apenas dígitos
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em str} & String a ser verificada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se contém apenas dígitos, false caso contrário
+\end{DoxyReturn}
+Utiliza std\+::all\+\_\+of com \+::isdigit para verificar se todos os caracteres da string são dígitos numéricos (0-\/9). Útil para validação de entrada de dados numéricos. \Hypertarget{classInputValidator_ad666e8e194e9e27b55eb49c51b2a13fc}\index{InputValidator@{InputValidator}!extrairCodigoB3@{extrairCodigoB3}}
+\index{extrairCodigoB3@{extrairCodigoB3}!InputValidator@{InputValidator}}
+\doxysubsubsection{\texorpdfstring{extrairCodigoB3()}{extrairCodigoB3()}}
+{\footnotesize\ttfamily \label{classInputValidator_ad666e8e194e9e27b55eb49c51b2a13fc} 
+std\+::string Input\+Validator\+::extrair\+Codigo\+B3 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{linha\+B3}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Extrai código de negociação de uma linha B3. 
+
+Extrai o código de negociação de uma linha do arquivo B3.
+
+
+\begin{DoxyParams}{Parameters}
+{\em linha\+B3} & Linha completa do arquivo B3 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string Código extraído
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em linha\+B3} & Linha completa do arquivo de dados históricos \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Código de negociação extraído e limpo, ou string vazia se inválido
+\end{DoxyReturn}
+Extrai o código de negociação da posição 12-\/23 da linha (12 caracteres) e remove espaços em branco no final. Valida se a linha tem tamanho suficiente. \begin{DoxySeeAlso}{See also}
+\doxylink{classInputValidator_a09e843ed665273f818045bcda9cdf292}{remover\+Espacos\+Finais()} 
+\end{DoxySeeAlso}
+\Hypertarget{classInputValidator_ad4eb667f7274ec40dcd206f1fe34dc7b}\index{InputValidator@{InputValidator}!extrairDataB3@{extrairDataB3}}
+\index{extrairDataB3@{extrairDataB3}!InputValidator@{InputValidator}}
+\doxysubsubsection{\texorpdfstring{extrairDataB3()}{extrairDataB3()}}
+{\footnotesize\ttfamily \label{classInputValidator_ad4eb667f7274ec40dcd206f1fe34dc7b} 
+std\+::string Input\+Validator\+::extrair\+Data\+B3 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{linha\+B3}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Extrai data de uma linha B3. 
+
+Extrai a data de uma linha do arquivo B3.
+
+
+\begin{DoxyParams}{Parameters}
+{\em linha\+B3} & Linha completa do arquivo B3 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string \doxylink{classData}{Data} extraída
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em linha\+B3} & Linha completa do arquivo de dados históricos \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classData}{Data} extraída no formato AAAAMMDD, ou string vazia se inválido
+\end{DoxyReturn}
+Extrai a data da posição 2-\/9 da linha (8 caracteres) no formato AAAAMMDD. Valida se a linha tem tamanho suficiente antes da extração. \Hypertarget{classInputValidator_a99af6e6d5ab1824231f60aef2da26528}\index{InputValidator@{InputValidator}!extrairPrecoB3@{extrairPrecoB3}}
+\index{extrairPrecoB3@{extrairPrecoB3}!InputValidator@{InputValidator}}
+\doxysubsubsection{\texorpdfstring{extrairPrecoB3()}{extrairPrecoB3()}}
+{\footnotesize\ttfamily \label{classInputValidator_a99af6e6d5ab1824231f60aef2da26528} 
+std\+::string Input\+Validator\+::extrair\+Preco\+B3 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{linha\+B3}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Extrai preço de uma linha B3. 
+
+Extrai o preço de uma linha do arquivo B3.
+
+
+\begin{DoxyParams}{Parameters}
+{\em linha\+B3} & Linha completa do arquivo B3 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string Preço extraído
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em linha\+B3} & Linha completa do arquivo de dados históricos \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Preço extraído e limpo, ou string vazia se inválido
+\end{DoxyReturn}
+Extrai o preço da posição 24-\/33 da linha (10 caracteres) e remove espaços em branco no final. Valida se a linha tem tamanho suficiente. \begin{DoxySeeAlso}{See also}
+\doxylink{classInputValidator_a09e843ed665273f818045bcda9cdf292}{remover\+Espacos\+Finais()} 
+\end{DoxySeeAlso}
+\Hypertarget{classInputValidator_a15a38a9056fba783255b49e2a1d7f04b}\index{InputValidator@{InputValidator}!formatarCodigoNegociacao@{formatarCodigoNegociacao}}
+\index{formatarCodigoNegociacao@{formatarCodigoNegociacao}!InputValidator@{InputValidator}}
+\doxysubsubsection{\texorpdfstring{formatarCodigoNegociacao()}{formatarCodigoNegociacao()}}
+{\footnotesize\ttfamily \label{classInputValidator_a15a38a9056fba783255b49e2a1d7f04b} 
+std\+::string Input\+Validator\+::formatar\+Codigo\+Negociacao (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{codigo}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Formata código de negociação para 12 caracteres. 
+
+Formata um código de negociação para ter exatamente 12 caracteres.
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Código original \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string Código formatado
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Código de negociação a ser formatado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Código formatado com 12 caracteres, preenchido com espaços se necessário
+\end{DoxyReturn}
+Garante que o código de negociação tenha exatamente 12 caracteres, preenchendo com espaços em branco no final se necessário. Usado para padronizar códigos antes de comparações. \Hypertarget{classInputValidator_a1bfd7cb840fe4f825f510e052e880b7d}\index{InputValidator@{InputValidator}!formatarValorMonetario@{formatarValorMonetario}}
+\index{formatarValorMonetario@{formatarValorMonetario}!InputValidator@{InputValidator}}
+\doxysubsubsection{\texorpdfstring{formatarValorMonetario()}{formatarValorMonetario()}}
+{\footnotesize\ttfamily \label{classInputValidator_a1bfd7cb840fe4f825f510e052e880b7d} 
+std\+::string Input\+Validator\+::formatar\+Valor\+Monetario (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{valor}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Formata valor monetário com separadores de milhares. 
+
+Formata um valor monetário para o padrão brasileiro.
+
+
+\begin{DoxyParams}{Parameters}
+{\em valor} & Valor numérico como string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string Valor formatado
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em valor} & String contendo valor monetário a ser formatado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Valor formatado no padrão brasileiro (ex\+: "{}1.\+234,56"{})
+\end{DoxyReturn}
+Processa uma string removendo caracteres não numéricos, garante pelo menos 3 dígitos (para centavos), separa reais e centavos, e formata com pontos para milhares e vírgula para decimais. Retorna "{}0,00"{} se o valor estiver vazio. \Hypertarget{classInputValidator_a09e843ed665273f818045bcda9cdf292}\index{InputValidator@{InputValidator}!removerEspacosFinais@{removerEspacosFinais}}
+\index{removerEspacosFinais@{removerEspacosFinais}!InputValidator@{InputValidator}}
+\doxysubsubsection{\texorpdfstring{removerEspacosFinais()}{removerEspacosFinais()}}
+{\footnotesize\ttfamily \label{classInputValidator_a09e843ed665273f818045bcda9cdf292} 
+std\+::string Input\+Validator\+::remover\+Espacos\+Finais (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Remove espaços em branco do final de uma string. 
+
+Remove espaços em branco no final de uma string.
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & String original \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string String sem espaços finais
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em str} & String a ser processada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String sem espaços em branco no final
+\end{DoxyReturn}
+Função utilitária que remove todos os espaços em branco no final de uma string, preservando espaços no início e no meio. Usado para limpar dados extraídos do arquivo B3. \Hypertarget{classInputValidator_a7588524a16110bb3a8a6310a5715ae9d}\index{InputValidator@{InputValidator}!validarCombinacaoB3@{validarCombinacaoB3}}
+\index{validarCombinacaoB3@{validarCombinacaoB3}!InputValidator@{InputValidator}}
+\doxysubsubsection{\texorpdfstring{validarCombinacaoB3()}{validarCombinacaoB3()}}
+{\footnotesize\ttfamily \label{classInputValidator_a7588524a16110bb3a8a6310a5715ae9d} 
+bool Input\+Validator\+::validar\+Combinacao\+B3 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCodigoNeg}{Codigo\+Neg}} \&}]{codigo\+Negociacao}{, }\item[{const std\+::string \&}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Valida se uma combinação código+data existe no arquivo B3. 
+
+Valida se uma combinação de código de negociação e data existe nos dados históricos da B3.
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo\+Negociacao} & Código de negociação \\
+\hline
+{\em data} & \doxylink{classData}{Data} da ordem \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool true se a combinação existe
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em codigo\+Negociacao} & Código de negociação a ser validado \\
+\hline
+{\em data} & \doxylink{classData}{Data} no formato AAAAMMDD a ser validada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a combinação existe nos dados históricos, false caso contrário
+\end{DoxyReturn}
+Abre o arquivo de dados históricos da B3 e verifica se existe uma entrada correspondente ao código de negociação e data fornecidos. Ignora linhas vazias e comentários iniciados com \textquotesingle{}\#\textquotesingle{}. \begin{DoxySeeAlso}{See also}
+CAMINHO\+\_\+\+ARQUIVO\+\_\+\+B3 
+
+\doxylink{classInputValidator_ad666e8e194e9e27b55eb49c51b2a13fc}{extrair\+Codigo\+B3()} 
+
+\doxylink{classInputValidator_ad4eb667f7274ec40dcd206f1fe34dc7b}{extrair\+Data\+B3()} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/controladoras/\mbox{\hyperlink{InputValidator_8hpp}{Input\+Validator.\+hpp}}\item 
+src/controladoras/\mbox{\hyperlink{InputValidator_8cpp}{Input\+Validator.\+cpp}}\end{DoxyCompactItemize}

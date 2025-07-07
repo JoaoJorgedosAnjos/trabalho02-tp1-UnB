@@ -401,11 +401,11 @@ function initNavTree(toroot,relpath) {
   }
 
   const showSyncOff = function(n,relpath) {
-    n.html('<img libTrabalho01="'+relpath+'sync_off.png" title="'+SYNCOFFMSG+'"/>');
+    n.html('<img src="'+relpath+'sync_off.png" title="'+SYNCOFFMSG+'"/>');
   }
 
   const showSyncOn = function(n,relpath) {
-    n.html('<img libTrabalho01="'+relpath+'sync_on.png" title="'+SYNCONMSG+'"/>');
+    n.html('<img src="'+relpath+'sync_on.png" title="'+SYNCONMSG+'"/>');
   }
 
   const o = {

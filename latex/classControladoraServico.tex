@@ -1,0 +1,670 @@
+\doxysection{Controladora\+Servico Class Reference}
+\hypertarget{classControladoraServico}{}\label{classControladoraServico}\index{ControladoraServico@{ControladoraServico}}
+
+
+Implementação concreta das interfaces de serviço com persistência SQLite.  
+
+
+
+
+{\ttfamily \#include $<$controladoras\+Servico.\+hpp$>$}
+
+Inheritance diagram for Controladora\+Servico\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classControladoraServico}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classControladoraServico_a41ac11ca9ab0da6253e83bc3b87dc7f9}{Controladora\+Servico}} ()
+\begin{DoxyCompactList}\small\item\em Construtor da controladora de serviço. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classControladoraServico_a5b6a36c509d41a70841986d5686937e8}{\texorpdfstring{$\sim$}{\string~}\+Controladora\+Servico}} ()
+\begin{DoxyCompactList}\small\item\em Destrutor da controladora de serviço. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classControladoraServico_aa4499659855c0f6fa26e7b1a082b3f45}{inicializar}} ()
+\begin{DoxyCompactList}\small\item\em Inicializa o banco de dados. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classControladoraServico_a2e09ee54f12f55ff14b765bc8bebf2c3}{autenticar}} (const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf, const \mbox{\hyperlink{classSenha}{Senha}} \&senha) override
+\begin{DoxyCompactList}\small\item\em Autentica um usuário no sistema. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classControladoraServico_a199e6826c93a1dff384c6ac6982d9248}{cadastrar\+Conta}} (const \mbox{\hyperlink{classConta}{Conta}} \&conta) override
+\begin{DoxyCompactList}\small\item\em Cadastra uma nova conta no sistema. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classControladoraServico_a61dfec50428bf6d71e613c08a2b8ef3c}{consultar\+Conta}} (const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf, \mbox{\hyperlink{classConta}{Conta}} \texorpdfstring{$\ast$}{*}conta, \mbox{\hyperlink{classDinheiro}{Dinheiro}} \texorpdfstring{$\ast$}{*}saldo) override
+\begin{DoxyCompactList}\small\item\em Consulta dados de uma conta e calcula saldo total. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classControladoraServico_ae68b1c59d37e3d9407a448ab65a54d36}{editar\+Conta}} (const \mbox{\hyperlink{classConta}{Conta}} \&conta) override
+\begin{DoxyCompactList}\small\item\em Edita os dados de uma conta existente. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classControladoraServico_a254c87b7f8047ba6e08778f0a609f1d8}{excluir\+Conta}} (const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf) override
+\begin{DoxyCompactList}\small\item\em Exclui uma conta do sistema. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classControladoraServico_a3d4442e713e97a7ba5d16aca686f8b47}{criar\+Carteira}} (const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf, const \mbox{\hyperlink{classCarteira}{Carteira}} \&carteira) override
+\begin{DoxyCompactList}\small\item\em Cria uma nova carteira para um usuário. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classControladoraServico_aca702aa2ddf241f781e910435904708c}{listar\+Carteiras}} (const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf, std\+::list$<$ \mbox{\hyperlink{classCarteira}{Carteira}} $>$ \texorpdfstring{$\ast$}{*}lista\+Carteiras) override
+\begin{DoxyCompactList}\small\item\em Lista todas as carteiras de um usuário. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classControladoraServico_a0d9d7714c974e1a78ffa4af0ee56c365}{consultar\+Carteira}} (const \mbox{\hyperlink{classCodigo}{Codigo}} \&codigo, \mbox{\hyperlink{classCarteira}{Carteira}} \texorpdfstring{$\ast$}{*}carteira, \mbox{\hyperlink{classDinheiro}{Dinheiro}} \texorpdfstring{$\ast$}{*}saldo) override
+\begin{DoxyCompactList}\small\item\em Consulta dados de uma carteira e calcula seu saldo. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classControladoraServico_aaa4a33a114b96b7dd915c7a6ef611cba}{editar\+Carteira}} (const \mbox{\hyperlink{classCarteira}{Carteira}} \&carteira) override
+\begin{DoxyCompactList}\small\item\em Edita os dados de uma carteira existente. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classControladoraServico_ac6c0ff971bae21c8ed8b5d1414831af1}{excluir\+Carteira}} (const \mbox{\hyperlink{classCodigo}{Codigo}} \&codigo) override
+\begin{DoxyCompactList}\small\item\em Exclui uma carteira do sistema. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classControladoraServico_ac3190bdd09c60d1eabab2e8f46b80157}{criar\+Ordem}} (const \mbox{\hyperlink{classCodigo}{Codigo}} \&codigo\+Carteira, const \mbox{\hyperlink{classOrdem}{Ordem}} \&ordem) override
+\begin{DoxyCompactList}\small\item\em Cria uma nova ordem de investimento. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classControladoraServico_abe7260d0e5def6a1415a6cd0fbd13f0d}{listar\+Ordens}} (const \mbox{\hyperlink{classCodigo}{Codigo}} \&codigo\+Carteira, std\+::list$<$ \mbox{\hyperlink{classOrdem}{Ordem}} $>$ \texorpdfstring{$\ast$}{*}lista\+Ordens) override
+\begin{DoxyCompactList}\small\item\em Lista todas as ordens de uma carteira. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classControladoraServico_a395894fb2889ad5907f4a4f62990b871}{excluir\+Ordem}} (const \mbox{\hyperlink{classCodigo}{Codigo}} \&codigo) override
+\begin{DoxyCompactList}\small\item\em Exclui uma ordem do sistema. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIServicoAutenticacao}{IServico\+Autenticacao}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classIServicoAutenticacao_aa2f9ad33148b3b12a205e992079e4368}{\texorpdfstring{$\sim$}{\string~}\+IServico\+Autenticacao}} ()
+\begin{DoxyCompactList}\small\item\em Destrutor virtual para permitir herança. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classIServicoUsuario_a5dcc8309a3929de1166af43db7bba05d}{\texorpdfstring{$\sim$}{\string~}\+IServico\+Usuario}} ()
+\begin{DoxyCompactList}\small\item\em Destrutor virtual para permitir herança. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIServicoInvestimento}{IServico\+Investimento}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classIServicoInvestimento_a84f820111bf759baa130c202dcca6e62}{\texorpdfstring{$\sim$}{\string~}\+IServico\+Investimento}} ()
+\begin{DoxyCompactList}\small\item\em Destrutor virtual para permitir herança. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementação concreta das interfaces de serviço com persistência SQLite. 
+
+Esta classe centraliza a lógica de negócio e utiliza SQLite para persistência, implementando as interfaces \doxylink{classIServicoAutenticacao}{IServico\+Autenticacao}, \doxylink{classIServicoUsuario}{IServico\+Usuario} e \doxylink{classIServicoInvestimento}{IServico\+Investimento}. Atua como camada de serviço no padrão arquitetural MVC, processando regras de negócio e validações antes de persistir os dados. \begin{DoxySeeAlso}{See also}
+\doxylink{classIServicoAutenticacao}{IServico\+Autenticacao} 
+
+\doxylink{classIServicoUsuario}{IServico\+Usuario} 
+
+\doxylink{classIServicoInvestimento}{IServico\+Investimento} 
+
+\doxylink{classDatabaseManager}{Database\+Manager} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classControladoraServico_a41ac11ca9ab0da6253e83bc3b87dc7f9}\index{ControladoraServico@{ControladoraServico}!ControladoraServico@{ControladoraServico}}
+\index{ControladoraServico@{ControladoraServico}!ControladoraServico@{ControladoraServico}}
+\doxysubsubsection{\texorpdfstring{ControladoraServico()}{ControladoraServico()}}
+{\footnotesize\ttfamily \label{classControladoraServico_a41ac11ca9ab0da6253e83bc3b87dc7f9} 
+Controladora\+Servico\+::\+Controladora\+Servico (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Construtor da controladora de serviço. 
+
+Inicializa o sistema com banco de dados SQLite usando smart pointer para gerenciamento automático de memória.
+
+Inicializa o gerenciador de banco de dados com o caminho padrão do arquivo SQLite. Utiliza smart pointer para gerenciamento automático de memória. \Hypertarget{classControladoraServico_a5b6a36c509d41a70841986d5686937e8}\index{ControladoraServico@{ControladoraServico}!````~ControladoraServico@{\texorpdfstring{$\sim$}{\string~}ControladoraServico}}
+\index{````~ControladoraServico@{\texorpdfstring{$\sim$}{\string~}ControladoraServico}!ControladoraServico@{ControladoraServico}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ControladoraServico()}{\string~ControladoraServico()}}
+{\footnotesize\ttfamily \label{classControladoraServico_a5b6a36c509d41a70841986d5686937e8} 
+Controladora\+Servico\+::\texorpdfstring{$\sim$}{\string~}\+Controladora\+Servico (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destrutor da controladora de serviço. 
+
+Destrutor padrão que garante limpeza automática dos recursos.
+
+Destrutor padrão que garante a limpeza automática dos recursos através do smart pointer. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classControladoraServico_a2e09ee54f12f55ff14b765bc8bebf2c3}\index{ControladoraServico@{ControladoraServico}!autenticar@{autenticar}}
+\index{autenticar@{autenticar}!ControladoraServico@{ControladoraServico}}
+\doxysubsubsection{\texorpdfstring{autenticar()}{autenticar()}}
+{\footnotesize\ttfamily \label{classControladoraServico_a2e09ee54f12f55ff14b765bc8bebf2c3} 
+bool Controladora\+Servico\+::autenticar (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf}{, }\item[{const \mbox{\hyperlink{classSenha}{Senha}} \&}]{senha}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Autentica um usuário no sistema. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF do usuário para autenticação \\
+\hline
+{\em senha} & \doxylink{classSenha}{Senha} do usuário para autenticação \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a autenticação foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Implementação da interface \doxylink{classIServicoAutenticacao}{IServico\+Autenticacao}. Verifica se as credenciais fornecidas correspondem a um usuário válido cadastrado no sistema. \begin{DoxySeeAlso}{See also}
+\doxylink{classIServicoAutenticacao_af561fb6693fe74412369bcc06f005035}{IServico\+Autenticacao\+::autenticar()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF do usuário para autenticação \\
+\hline
+{\em senha} & \doxylink{classSenha}{Senha} do usuário para autenticação \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a autenticação foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Verifica se as credenciais fornecidas correspondem a um usuário válido no sistema. Requer conexão ativa com o banco de dados. \begin{DoxySeeAlso}{See also}
+\doxylink{classDatabaseManager_a2aeb74eff715732d0f48adcc4b21486d}{Database\+Manager\+::autenticar\+Usuario()} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classIServicoAutenticacao_af561fb6693fe74412369bcc06f005035}{IServico\+Autenticacao}}.
+
+\Hypertarget{classControladoraServico_a199e6826c93a1dff384c6ac6982d9248}\index{ControladoraServico@{ControladoraServico}!cadastrarConta@{cadastrarConta}}
+\index{cadastrarConta@{cadastrarConta}!ControladoraServico@{ControladoraServico}}
+\doxysubsubsection{\texorpdfstring{cadastrarConta()}{cadastrarConta()}}
+{\footnotesize\ttfamily \label{classControladoraServico_a199e6826c93a1dff384c6ac6982d9248} 
+bool Controladora\+Servico\+::cadastrar\+Conta (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classConta}{Conta}} \&}]{conta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Cadastra uma nova conta no sistema. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em conta} & Objeto conta com os dados a serem cadastrados \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se o cadastro foi bem-\/sucedido, false caso contrário
+\end{DoxyReturn}
+Implementação da interface \doxylink{classIServicoUsuario}{IServico\+Usuario}. Valida unicidade do CPF antes de inserir a nova conta no banco de dados. \begin{DoxySeeAlso}{See also}
+\doxylink{classIServicoUsuario_a910d672da7b256532f640e79fc79b0ff}{IServico\+Usuario\+::cadastrar\+Conta()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em conta} & Objeto conta com os dados a serem cadastrados \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se o cadastro foi bem-\/sucedido, false caso contrário
+\end{DoxyReturn}
+Verifica se já existe uma conta com o mesmo CPF antes de inserir. Implementa validação de unicidade do CPF no sistema. \begin{DoxySeeAlso}{See also}
+\doxylink{classDatabaseManager_ab3c54af72bd930db9adc1ffc4ebc901f}{Database\+Manager\+::buscar\+Conta()} 
+
+\doxylink{classDatabaseManager_ad74c763b3e09b3eb3f30d35f4822d10a}{Database\+Manager\+::inserir\+Conta()} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classIServicoUsuario_a910d672da7b256532f640e79fc79b0ff}{IServico\+Usuario}}.
+
+\Hypertarget{classControladoraServico_a0d9d7714c974e1a78ffa4af0ee56c365}\index{ControladoraServico@{ControladoraServico}!consultarCarteira@{consultarCarteira}}
+\index{consultarCarteira@{consultarCarteira}!ControladoraServico@{ControladoraServico}}
+\doxysubsubsection{\texorpdfstring{consultarCarteira()}{consultarCarteira()}}
+{\footnotesize\ttfamily \label{classControladoraServico_a0d9d7714c974e1a78ffa4af0ee56c365} 
+bool Controladora\+Servico\+::consultar\+Carteira (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCodigo}{Codigo}} \&}]{codigo}{, }\item[{\mbox{\hyperlink{classCarteira}{Carteira}} \texorpdfstring{$\ast$}{*}}]{carteira}{, }\item[{\mbox{\hyperlink{classDinheiro}{Dinheiro}} \texorpdfstring{$\ast$}{*}}]{saldo}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Consulta dados de uma carteira e calcula seu saldo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Código da carteira a ser consultada \\
+\hline
+{\em carteira} & Ponteiro para objeto onde serão armazenados os dados da carteira \\
+\hline
+{\em saldo} & Ponteiro para objeto onde será armazenado o saldo calculado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a consulta foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Implementação da interface \doxylink{classIServicoInvestimento}{IServico\+Investimento}. Busca os dados da carteira e calcula o saldo baseado nas ordens associadas. \begin{DoxySeeAlso}{See also}
+\doxylink{classIServicoInvestimento_a4cea5937ac0bf31cb149d427c304eae3}{IServico\+Investimento\+::consultar\+Carteira()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Código da carteira a ser consultada \\
+\hline
+{\em carteira} & Ponteiro para objeto onde serão armazenados os dados da carteira \\
+\hline
+{\em saldo} & Ponteiro para objeto onde será armazenado o saldo calculado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a consulta foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Busca os dados da carteira e calcula o saldo baseado nas ordens associadas. \begin{DoxySeeAlso}{See also}
+\doxylink{classDatabaseManager_a5fadc7d35ac54b8c38ab11db6f981c81}{Database\+Manager\+::buscar\+Carteira()} 
+
+\doxylink{classDatabaseManager_a6a7a6175397b6ebefe59ec6e39cc634e}{Database\+Manager\+::calcular\+Saldo\+Carteira()} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classIServicoInvestimento_a4cea5937ac0bf31cb149d427c304eae3}{IServico\+Investimento}}.
+
+\Hypertarget{classControladoraServico_a61dfec50428bf6d71e613c08a2b8ef3c}\index{ControladoraServico@{ControladoraServico}!consultarConta@{consultarConta}}
+\index{consultarConta@{consultarConta}!ControladoraServico@{ControladoraServico}}
+\doxysubsubsection{\texorpdfstring{consultarConta()}{consultarConta()}}
+{\footnotesize\ttfamily \label{classControladoraServico_a61dfec50428bf6d71e613c08a2b8ef3c} 
+bool Controladora\+Servico\+::consultar\+Conta (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf}{, }\item[{\mbox{\hyperlink{classConta}{Conta}} \texorpdfstring{$\ast$}{*}}]{conta}{, }\item[{\mbox{\hyperlink{classDinheiro}{Dinheiro}} \texorpdfstring{$\ast$}{*}}]{saldo}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Consulta dados de uma conta e calcula saldo total. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF da conta a ser consultada \\
+\hline
+{\em conta} & Ponteiro para objeto onde serão armazenados os dados da conta \\
+\hline
+{\em saldo} & Ponteiro para objeto onde será armazenado o saldo total calculado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a consulta foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Implementação da interface \doxylink{classIServicoUsuario}{IServico\+Usuario}. Busca dados da conta e calcula o saldo total somando os saldos de todas as carteiras associadas. \begin{DoxySeeAlso}{See also}
+\doxylink{classIServicoUsuario_a897520400539edca506550141531d09a}{IServico\+Usuario\+::consultar\+Conta()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF da conta a ser consultada \\
+\hline
+{\em conta} & Ponteiro para objeto onde serão armazenados os dados da conta \\
+\hline
+{\em saldo} & Ponteiro para objeto onde será armazenado o saldo total calculado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a consulta foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Busca os dados da conta e calcula o saldo total somando os saldos de todas as carteiras. O saldo é calculado em centavos para precisão e convertido para formato monetário. \begin{DoxySeeAlso}{See also}
+\doxylink{classDatabaseManager_ab3c54af72bd930db9adc1ffc4ebc901f}{Database\+Manager\+::buscar\+Conta()} 
+
+\doxylink{classDatabaseManager_af6e9e31e1d538417a8ea273fcc2c5437}{Database\+Manager\+::listar\+Carteiras()} 
+
+\doxylink{classDatabaseManager_a6a7a6175397b6ebefe59ec6e39cc634e}{Database\+Manager\+::calcular\+Saldo\+Carteira()} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classIServicoUsuario_a897520400539edca506550141531d09a}{IServico\+Usuario}}.
+
+\Hypertarget{classControladoraServico_a3d4442e713e97a7ba5d16aca686f8b47}\index{ControladoraServico@{ControladoraServico}!criarCarteira@{criarCarteira}}
+\index{criarCarteira@{criarCarteira}!ControladoraServico@{ControladoraServico}}
+\doxysubsubsection{\texorpdfstring{criarCarteira()}{criarCarteira()}}
+{\footnotesize\ttfamily \label{classControladoraServico_a3d4442e713e97a7ba5d16aca686f8b47} 
+bool Controladora\+Servico\+::criar\+Carteira (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf}{, }\item[{const \mbox{\hyperlink{classCarteira}{Carteira}} \&}]{carteira}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Cria uma nova carteira para um usuário. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF do usuário proprietário da carteira \\
+\hline
+{\em carteira} & Objeto carteira com os dados a serem cadastrados \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a criação foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Implementação da interface \doxylink{classIServicoInvestimento}{IServico\+Investimento}. Valida a existência da conta e a unicidade do código da carteira antes de inserir. \begin{DoxySeeAlso}{See also}
+\doxylink{classIServicoInvestimento_a2393e6b5c5f87bc653dc00d5cbb14a8d}{IServico\+Investimento\+::criar\+Carteira()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF do usuário proprietário da carteira \\
+\hline
+{\em carteira} & Objeto carteira com os dados a serem cadastrados \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a criação foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Verifica se a conta existe e se o código da carteira é único antes de inserir. Implementa validações de integridade referencial e unicidade. \begin{DoxySeeAlso}{See also}
+\doxylink{classDatabaseManager_ab3c54af72bd930db9adc1ffc4ebc901f}{Database\+Manager\+::buscar\+Conta()} 
+
+\doxylink{classDatabaseManager_a5fadc7d35ac54b8c38ab11db6f981c81}{Database\+Manager\+::buscar\+Carteira()} 
+
+\doxylink{classDatabaseManager_aa0b88e69d778b4eb4c91763e09738b6c}{Database\+Manager\+::inserir\+Carteira()} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classIServicoInvestimento_a2393e6b5c5f87bc653dc00d5cbb14a8d}{IServico\+Investimento}}.
+
+\Hypertarget{classControladoraServico_ac3190bdd09c60d1eabab2e8f46b80157}\index{ControladoraServico@{ControladoraServico}!criarOrdem@{criarOrdem}}
+\index{criarOrdem@{criarOrdem}!ControladoraServico@{ControladoraServico}}
+\doxysubsubsection{\texorpdfstring{criarOrdem()}{criarOrdem()}}
+{\footnotesize\ttfamily \label{classControladoraServico_ac3190bdd09c60d1eabab2e8f46b80157} 
+bool Controladora\+Servico\+::criar\+Ordem (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCodigo}{Codigo}} \&}]{codigo\+Carteira}{, }\item[{const \mbox{\hyperlink{classOrdem}{Ordem}} \&}]{ordem}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Cria uma nova ordem de investimento. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo\+Carteira} & Código da carteira onde a ordem será criada \\
+\hline
+{\em ordem} & Objeto ordem com os dados a serem cadastrados \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a criação foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Implementação da interface \doxylink{classIServicoInvestimento}{IServico\+Investimento}. Processo complexo que inclui validação da carteira, consulta a dados históricos, cálculo de preços e formatação monetária antes da inserção. \begin{DoxySeeAlso}{See also}
+\doxylink{classIServicoInvestimento_a07cd4a8e9163f0061f4c2c92bd6fb5a7}{IServico\+Investimento\+::criar\+Ordem()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em codigo\+Carteira} & Código da carteira onde a ordem será criada \\
+\hline
+{\em ordem} & Objeto ordem com os dados a serem cadastrados \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a criação foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Processo complexo que inclui\+:
+\begin{DoxyItemize}
+\item Validação da existência da carteira
+\item Verificação de unicidade do código da ordem
+\item Consulta ao arquivo de dados históricos para obter preço
+\item Cálculo do valor total da ordem baseado na quantidade e preço histórico
+\item Formatação monetária do valor calculado
+\item Inserção da ordem no banco de dados \begin{DoxySeeAlso}{See also}
+\doxylink{classDatabaseManager_a5fadc7d35ac54b8c38ab11db6f981c81}{Database\+Manager\+::buscar\+Carteira()} 
+
+\doxylink{classDatabaseManager_acef3e62873ee8f8046c5640c271be016}{Database\+Manager\+::buscar\+Ordem()} 
+
+\doxylink{classDatabaseManager_af1f7da9adc5e172aeda6c4dfeee3f40e}{Database\+Manager\+::inserir\+Ordem()} 
+\end{DoxySeeAlso}
+
+\end{DoxyItemize}
+
+Implements \mbox{\hyperlink{classIServicoInvestimento_a07cd4a8e9163f0061f4c2c92bd6fb5a7}{IServico\+Investimento}}.
+
+\Hypertarget{classControladoraServico_aaa4a33a114b96b7dd915c7a6ef611cba}\index{ControladoraServico@{ControladoraServico}!editarCarteira@{editarCarteira}}
+\index{editarCarteira@{editarCarteira}!ControladoraServico@{ControladoraServico}}
+\doxysubsubsection{\texorpdfstring{editarCarteira()}{editarCarteira()}}
+{\footnotesize\ttfamily \label{classControladoraServico_aaa4a33a114b96b7dd915c7a6ef611cba} 
+bool Controladora\+Servico\+::editar\+Carteira (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCarteira}{Carteira}} \&}]{carteira}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Edita os dados de uma carteira existente. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em carteira} & Objeto carteira com os novos dados \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a edição foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Implementação da interface \doxylink{classIServicoInvestimento}{IServico\+Investimento}. Atualiza os dados da carteira no banco de dados. O código não pode ser alterado. \begin{DoxySeeAlso}{See also}
+\doxylink{classIServicoInvestimento_ac8339085c84ac985298031d7160e0ff8}{IServico\+Investimento\+::editar\+Carteira()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em carteira} & Objeto carteira com os novos dados \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a edição foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Atualiza os dados da carteira no banco de dados. O código não pode ser alterado. \begin{DoxySeeAlso}{See also}
+\doxylink{classDatabaseManager_a4c546fcadd207fbba44848244a266004}{Database\+Manager\+::atualizar\+Carteira()} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classIServicoInvestimento_ac8339085c84ac985298031d7160e0ff8}{IServico\+Investimento}}.
+
+\Hypertarget{classControladoraServico_ae68b1c59d37e3d9407a448ab65a54d36}\index{ControladoraServico@{ControladoraServico}!editarConta@{editarConta}}
+\index{editarConta@{editarConta}!ControladoraServico@{ControladoraServico}}
+\doxysubsubsection{\texorpdfstring{editarConta()}{editarConta()}}
+{\footnotesize\ttfamily \label{classControladoraServico_ae68b1c59d37e3d9407a448ab65a54d36} 
+bool Controladora\+Servico\+::editar\+Conta (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classConta}{Conta}} \&}]{conta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Edita os dados de uma conta existente. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em conta} & Objeto conta com os novos dados \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a edição foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Implementação da interface \doxylink{classIServicoUsuario}{IServico\+Usuario}. Atualiza os dados da conta no banco de dados. O CPF não pode ser alterado. \begin{DoxySeeAlso}{See also}
+\doxylink{classIServicoUsuario_afbe101e611a210b2c571d7fee3ba9335}{IServico\+Usuario\+::editar\+Conta()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em conta} & Objeto conta com os novos dados \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a edição foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Atualiza os dados da conta no banco de dados. O CPF não pode ser alterado. \begin{DoxySeeAlso}{See also}
+\doxylink{classDatabaseManager_a7851c336f359b715d81b3428dc187dfd}{Database\+Manager\+::atualizar\+Conta()} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classIServicoUsuario_afbe101e611a210b2c571d7fee3ba9335}{IServico\+Usuario}}.
+
+\Hypertarget{classControladoraServico_ac6c0ff971bae21c8ed8b5d1414831af1}\index{ControladoraServico@{ControladoraServico}!excluirCarteira@{excluirCarteira}}
+\index{excluirCarteira@{excluirCarteira}!ControladoraServico@{ControladoraServico}}
+\doxysubsubsection{\texorpdfstring{excluirCarteira()}{excluirCarteira()}}
+{\footnotesize\ttfamily \label{classControladoraServico_ac6c0ff971bae21c8ed8b5d1414831af1} 
+bool Controladora\+Servico\+::excluir\+Carteira (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCodigo}{Codigo}} \&}]{codigo}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Exclui uma carteira do sistema. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Código da carteira a ser excluída \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a exclusão foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Implementação da interface \doxylink{classIServicoInvestimento}{IServico\+Investimento}. Remove a carteira e todas as ordens associadas respeitando integridade referencial. \begin{DoxySeeAlso}{See also}
+\doxylink{classIServicoInvestimento_aaf48e5256aadf9e78d4028af578cbb76}{IServico\+Investimento\+::excluir\+Carteira()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Código da carteira a ser excluída \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a exclusão foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Remove a carteira e todas as ordens associadas. Implementa integridade referencial através de cascata. \begin{DoxySeeAlso}{See also}
+\doxylink{classDatabaseManager_aeaa110570f9596093a4400a342ac8346}{Database\+Manager\+::excluir\+Carteira()} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classIServicoInvestimento_aaf48e5256aadf9e78d4028af578cbb76}{IServico\+Investimento}}.
+
+\Hypertarget{classControladoraServico_a254c87b7f8047ba6e08778f0a609f1d8}\index{ControladoraServico@{ControladoraServico}!excluirConta@{excluirConta}}
+\index{excluirConta@{excluirConta}!ControladoraServico@{ControladoraServico}}
+\doxysubsubsection{\texorpdfstring{excluirConta()}{excluirConta()}}
+{\footnotesize\ttfamily \label{classControladoraServico_a254c87b7f8047ba6e08778f0a609f1d8} 
+bool Controladora\+Servico\+::excluir\+Conta (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Exclui uma conta do sistema. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF da conta a ser excluída \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a exclusão foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Implementação da interface \doxylink{classIServicoUsuario}{IServico\+Usuario}. Remove a conta e todos os dados relacionados (carteiras e ordens) respeitando integridade referencial. \begin{DoxySeeAlso}{See also}
+\doxylink{classIServicoUsuario_a5bb7e438865f9d2f4ce9e511128ae9af}{IServico\+Usuario\+::excluir\+Conta()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF da conta a ser excluída \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a exclusão foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Remove a conta e todos os dados relacionados (carteiras e ordens). Implementa integridade referencial através de cascata. \begin{DoxySeeAlso}{See also}
+\doxylink{classDatabaseManager_adb3b5621377fcdb6e83042e15e51a199}{Database\+Manager\+::excluir\+Conta()} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classIServicoUsuario_a5bb7e438865f9d2f4ce9e511128ae9af}{IServico\+Usuario}}.
+
+\Hypertarget{classControladoraServico_a395894fb2889ad5907f4a4f62990b871}\index{ControladoraServico@{ControladoraServico}!excluirOrdem@{excluirOrdem}}
+\index{excluirOrdem@{excluirOrdem}!ControladoraServico@{ControladoraServico}}
+\doxysubsubsection{\texorpdfstring{excluirOrdem()}{excluirOrdem()}}
+{\footnotesize\ttfamily \label{classControladoraServico_a395894fb2889ad5907f4a4f62990b871} 
+bool Controladora\+Servico\+::excluir\+Ordem (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCodigo}{Codigo}} \&}]{codigo}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Exclui uma ordem do sistema. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Código da ordem a ser excluída \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a exclusão foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Implementação da interface \doxylink{classIServicoInvestimento}{IServico\+Investimento}. Remove a ordem do banco de dados, afetando o cálculo do saldo da carteira. \begin{DoxySeeAlso}{See also}
+\doxylink{classIServicoInvestimento_a2e9b23c543187d6615d2c0f9d45a6b68}{IServico\+Investimento\+::excluir\+Ordem()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Código da ordem a ser excluída \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a exclusão foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Remove a ordem do banco de dados. A exclusão afeta o cálculo do saldo da carteira. \begin{DoxySeeAlso}{See also}
+\doxylink{classDatabaseManager_a5b7eedad0ec80c5a7c90743cb0491cdf}{Database\+Manager\+::excluir\+Ordem()} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classIServicoInvestimento_a2e9b23c543187d6615d2c0f9d45a6b68}{IServico\+Investimento}}.
+
+\Hypertarget{classControladoraServico_aa4499659855c0f6fa26e7b1a082b3f45}\index{ControladoraServico@{ControladoraServico}!inicializar@{inicializar}}
+\index{inicializar@{inicializar}!ControladoraServico@{ControladoraServico}}
+\doxysubsubsection{\texorpdfstring{inicializar()}{inicializar()}}
+{\footnotesize\ttfamily \label{classControladoraServico_aa4499659855c0f6fa26e7b1a082b3f45} 
+bool Controladora\+Servico\+::inicializar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Inicializa o banco de dados. 
+
+Inicializa o sistema de banco de dados.
+
+\begin{DoxyReturn}{Returns}
+true se inicializou com sucesso, false caso contrário
+\end{DoxyReturn}
+Estabelece conexão com o banco de dados SQLite e executa a inicialização das tabelas necessárias. Deve ser chamado antes de qualquer operação.
+
+\begin{DoxyReturn}{Returns}
+true se a inicialização foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Estabelece conexão com o banco de dados e executa a inicialização das tabelas. Este método deve ser chamado antes de qualquer operação no sistema. \begin{DoxySeeAlso}{See also}
+\doxylink{classDatabaseManager_aa34b73b2c7dd4fc4c41bcde5c043cd04}{Database\+Manager\+::conectar()} 
+
+\doxylink{classDatabaseManager_abd7b3f0f8264e1a8c451194a2adc67bf}{Database\+Manager\+::inicializar\+Banco()} 
+\end{DoxySeeAlso}
+\Hypertarget{classControladoraServico_aca702aa2ddf241f781e910435904708c}\index{ControladoraServico@{ControladoraServico}!listarCarteiras@{listarCarteiras}}
+\index{listarCarteiras@{listarCarteiras}!ControladoraServico@{ControladoraServico}}
+\doxysubsubsection{\texorpdfstring{listarCarteiras()}{listarCarteiras()}}
+{\footnotesize\ttfamily \label{classControladoraServico_aca702aa2ddf241f781e910435904708c} 
+bool Controladora\+Servico\+::listar\+Carteiras (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf}{, }\item[{std\+::list$<$ \mbox{\hyperlink{classCarteira}{Carteira}} $>$ \texorpdfstring{$\ast$}{*}}]{lista\+Carteiras}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Lista todas as carteiras de um usuário. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF do usuário \\
+\hline
+{\em lista\+Carteiras} & Ponteiro para lista onde serão armazenadas as carteiras \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a listagem foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Implementação da interface \doxylink{classIServicoInvestimento}{IServico\+Investimento}. Recupera todas as carteiras associadas ao CPF fornecido. \begin{DoxySeeAlso}{See also}
+\doxylink{classIServicoInvestimento_a716a2e31304977c0fcd13da79d6a3bd5}{IServico\+Investimento\+::listar\+Carteiras()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF do usuário \\
+\hline
+{\em lista\+Carteiras} & Ponteiro para lista onde serão armazenadas as carteiras \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a listagem foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Recupera todas as carteiras associadas ao CPF fornecido. \begin{DoxySeeAlso}{See also}
+\doxylink{classDatabaseManager_af6e9e31e1d538417a8ea273fcc2c5437}{Database\+Manager\+::listar\+Carteiras()} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classIServicoInvestimento_a716a2e31304977c0fcd13da79d6a3bd5}{IServico\+Investimento}}.
+
+\Hypertarget{classControladoraServico_abe7260d0e5def6a1415a6cd0fbd13f0d}\index{ControladoraServico@{ControladoraServico}!listarOrdens@{listarOrdens}}
+\index{listarOrdens@{listarOrdens}!ControladoraServico@{ControladoraServico}}
+\doxysubsubsection{\texorpdfstring{listarOrdens()}{listarOrdens()}}
+{\footnotesize\ttfamily \label{classControladoraServico_abe7260d0e5def6a1415a6cd0fbd13f0d} 
+bool Controladora\+Servico\+::listar\+Ordens (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCodigo}{Codigo}} \&}]{codigo\+Carteira}{, }\item[{std\+::list$<$ \mbox{\hyperlink{classOrdem}{Ordem}} $>$ \texorpdfstring{$\ast$}{*}}]{lista\+Ordens}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Lista todas as ordens de uma carteira. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo\+Carteira} & Código da carteira \\
+\hline
+{\em lista\+Ordens} & Ponteiro para lista onde serão armazenadas as ordens \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a listagem foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Implementação da interface \doxylink{classIServicoInvestimento}{IServico\+Investimento}. Recupera todas as ordens associadas ao código da carteira fornecido. \begin{DoxySeeAlso}{See also}
+\doxylink{classIServicoInvestimento_ae4ca458b935710afc453036c884b7cbf}{IServico\+Investimento\+::listar\+Ordens()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em codigo\+Carteira} & Código da carteira \\
+\hline
+{\em lista\+Ordens} & Ponteiro para lista onde serão armazenadas as ordens \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a listagem foi bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Recupera todas as ordens associadas ao código da carteira fornecido. \begin{DoxySeeAlso}{See also}
+\doxylink{classDatabaseManager_ab2fa89cecc1760db8175e3a9b841cd9e}{Database\+Manager\+::listar\+Ordens()} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classIServicoInvestimento_ae4ca458b935710afc453036c884b7cbf}{IServico\+Investimento}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/controladoras/\mbox{\hyperlink{controladorasServico_8hpp}{controladoras\+Servico.\+hpp}}\item 
+src/controladoras/\mbox{\hyperlink{controladorasServico_8cpp}{controladoras\+Servico.\+cpp}}\end{DoxyCompactItemize}

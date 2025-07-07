@@ -1,0 +1,141 @@
+\doxysection{IApresentacao\+Usuario Class Reference}
+\hypertarget{classIApresentacaoUsuario}{}\label{classIApresentacaoUsuario}\index{IApresentacaoUsuario@{IApresentacaoUsuario}}
+
+
+Interface para os serviços de gerenciamento de usuário na camada de apresentação.  
+
+
+
+
+{\ttfamily \#include $<$interfaces.\+hpp$>$}
+
+Inheritance diagram for IApresentacao\+Usuario\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classIApresentacaoUsuario}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{classIApresentacaoUsuario_aa67a6204e32fcc2c34b7adc048fff300}{executar}} (const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf)=0
+\begin{DoxyCompactList}\small\item\em Executa o menu de gerenciamento de usuário. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classIApresentacaoUsuario_afa952785f0a9e44b1b5cd925df4791d9}{cadastrar}} ()=0
+\begin{DoxyCompactList}\small\item\em Executa o processo de cadastro de nova conta. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classIApresentacaoUsuario_a09344c8c79699a3614454b0f8a0951c7}{set\+Controladora\+Servico}} (\mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}} \texorpdfstring{$\ast$}{*}cntr\+Servico\+Usuario)=0
+\begin{DoxyCompactList}\small\item\em Define a controladora de serviço para usuário. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classIApresentacaoUsuario_aa224b8ee9930600a828f3c0feb673c1f}{\texorpdfstring{$\sim$}{\string~}\+IApresentacao\+Usuario}} ()
+\begin{DoxyCompactList}\small\item\em Destrutor virtual para permitir herança. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface para os serviços de gerenciamento de usuário na camada de apresentação. 
+
+Esta interface define os contratos para a camada de apresentação relacionada ao gerenciamento de contas de usuários. Responsável por fornecer interface para cadastro, consulta, edição e exclusão de contas.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classIServicoUsuario}{IServico\+Usuario} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classIApresentacaoUsuario_aa224b8ee9930600a828f3c0feb673c1f}\index{IApresentacaoUsuario@{IApresentacaoUsuario}!````~IApresentacaoUsuario@{\texorpdfstring{$\sim$}{\string~}IApresentacaoUsuario}}
+\index{````~IApresentacaoUsuario@{\texorpdfstring{$\sim$}{\string~}IApresentacaoUsuario}!IApresentacaoUsuario@{IApresentacaoUsuario}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}IApresentacaoUsuario()}{\string~IApresentacaoUsuario()}}
+{\footnotesize\ttfamily \label{classIApresentacaoUsuario_aa224b8ee9930600a828f3c0feb673c1f} 
+virtual IApresentacao\+Usuario\+::\texorpdfstring{$\sim$}{\string~}\+IApresentacao\+Usuario (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destrutor virtual para permitir herança. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIApresentacaoUsuario_afa952785f0a9e44b1b5cd925df4791d9}\index{IApresentacaoUsuario@{IApresentacaoUsuario}!cadastrar@{cadastrar}}
+\index{cadastrar@{cadastrar}!IApresentacaoUsuario@{IApresentacaoUsuario}}
+\doxysubsubsection{\texorpdfstring{cadastrar()}{cadastrar()}}
+{\footnotesize\ttfamily \label{classIApresentacaoUsuario_afa952785f0a9e44b1b5cd925df4791d9} 
+virtual void IApresentacao\+Usuario\+::cadastrar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Executa o processo de cadastro de nova conta. 
+
+Solicita e valida os dados necessários para criação de uma nova conta de usuário, incluindo CPF, nome, senha e tipo de perfil.
+
+\begin{DoxyNote}{Note}
+Deve validar se o CPF já não está cadastrado 
+
+Deve solicitar confirmação da senha 
+
+Deve exibir mensagem de sucesso ou erro apropriada 
+
+Deve limpar a tela após conclusão da operação 
+\end{DoxyNote}
+
+
+Implemented in \mbox{\hyperlink{classControladoraApresentacaoUsuario_ad3ff4b91e95ddbf6b8999e113a5bbf45}{Controladora\+Apresentacao\+Usuario}}.
+
+\Hypertarget{classIApresentacaoUsuario_aa67a6204e32fcc2c34b7adc048fff300}\index{IApresentacaoUsuario@{IApresentacaoUsuario}!executar@{executar}}
+\index{executar@{executar}!IApresentacaoUsuario@{IApresentacaoUsuario}}
+\doxysubsubsection{\texorpdfstring{executar()}{executar()}}
+{\footnotesize\ttfamily \label{classIApresentacaoUsuario_aa67a6204e32fcc2c34b7adc048fff300} 
+virtual bool IApresentacao\+Usuario\+::executar (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Executa o menu de gerenciamento de usuário. 
+
+Apresenta as opções disponíveis para gerenciamento de conta do usuário identificado pelo CPF fornecido, incluindo consulta, edição e exclusão.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em cpf} & CPF do usuário cuja conta será gerenciada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a operação foi concluída com sucesso, false caso contrário
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Deve verificar se a conta existe antes de permitir operações 
+
+Deve solicitar confirmação para operações destrutivas 
+
+Deve exibir mensagens apropriadas para cada operação 
+\end{DoxyNote}
+
+
+Implemented in \mbox{\hyperlink{classControladoraApresentacaoUsuario_a885ddce6f703af180ff097f77852307d}{Controladora\+Apresentacao\+Usuario}}.
+
+\Hypertarget{classIApresentacaoUsuario_a09344c8c79699a3614454b0f8a0951c7}\index{IApresentacaoUsuario@{IApresentacaoUsuario}!setControladoraServico@{setControladoraServico}}
+\index{setControladoraServico@{setControladoraServico}!IApresentacaoUsuario@{IApresentacaoUsuario}}
+\doxysubsubsection{\texorpdfstring{setControladoraServico()}{setControladoraServico()}}
+{\footnotesize\ttfamily \label{classIApresentacaoUsuario_a09344c8c79699a3614454b0f8a0951c7} 
+virtual void IApresentacao\+Usuario\+::set\+Controladora\+Servico (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}} \texorpdfstring{$\ast$}{*}}]{cntr\+Servico\+Usuario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Define a controladora de serviço para usuário. 
+
+Estabelece a conexão entre a camada de apresentação e a camada de serviço, permitindo que a apresentação delegue operações de gerenciamento de usuário.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em cntr\+Servico\+Usuario} & Ponteiro para a controladora de serviço\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Deve ser chamado antes de usar os métodos \doxylink{classIApresentacaoUsuario_aa67a6204e32fcc2c34b7adc048fff300}{executar()} ou \doxylink{classIApresentacaoUsuario_afa952785f0a9e44b1b5cd925df4791d9}{cadastrar()} 
+
+A responsabilidade de gerenciar o ciclo de vida do ponteiro é da classe cliente 
+\end{DoxyNote}
+
+
+Implemented in \mbox{\hyperlink{classControladoraApresentacaoUsuario_a75e8ad32494259e0d8b33a3697df56c0}{Controladora\+Apresentacao\+Usuario}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/interfaces/\mbox{\hyperlink{interfaces_8hpp}{interfaces.\+hpp}}\end{DoxyCompactItemize}

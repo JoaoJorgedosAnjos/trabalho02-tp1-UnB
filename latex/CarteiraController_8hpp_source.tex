@@ -1,0 +1,45 @@
+\doxysection{Carteira\+Controller.\+hpp}
+\hypertarget{CarteiraController_8hpp_source}{}\label{CarteiraController_8hpp_source}\index{src/controladoras/CarteiraController.hpp@{src/controladoras/CarteiraController.hpp}}
+\mbox{\hyperlink{CarteiraController_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CARTEIRACONTROLLER\_HPP\_INCLUDED}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CARTEIRACONTROLLER\_HPP\_INCLUDED}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{interfaces_8hpp}{interfaces.hpp}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{telaUtils_8hpp}{telaUtils.hpp}}"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCarteiraController_ab83d39265a73d26a828e6aa2f578f10e}{CarteiraController}}\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{classIServicoInvestimento}{IServicoInvestimento}}*\ servicoInvestimento;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{classCarteiraController_ab83d39265a73d26a828e6aa2f578f10e}{CarteiraController}}(\mbox{\hyperlink{classIServicoInvestimento}{IServicoInvestimento}}*\ servico);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCarteiraController_a5f298e29e8c331ec5e2f3ef23ebba863}{executarMenu}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCarteiraController_a0baada268ded341f80f8df481950d61b}{criarCarteira}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCarteiraController_aa24d418e85cb975b71ad388e2f08901d}{listarCarteiras}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCarteiraController_ad470425f1bde593ad3de3f9e68634ea0}{editarCarteira}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCarteiraController_af49ea6c71149d67a94f3087b41904561}{excluirCarteira}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ exibirMenu();}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ exibirListaCarteiras(\textcolor{keyword}{const}\ std::list<Carteira>\&\ carteiras);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ exibirDetalhesCarteira(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCarteira}{Carteira}}\&\ carteira,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classDinheiro}{Dinheiro}}\&\ saldo);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ editarCarteiraEspecifica(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classCarteira}{Carteira}}\&\ carteiraAtual);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{bool}\ excluirCarteiraEspecifica(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classCarteira}{Carteira}}\&\ carteiraAtual);}
+\DoxyCodeLine{00101\ \};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CARTEIRACONTROLLER\_HPP\_INCLUDED\ }}
+
+\end{DoxyCode}

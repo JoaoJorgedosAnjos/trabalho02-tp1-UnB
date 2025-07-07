@@ -1,8 +1,8 @@
 #ifndef CONTROLADORASSERVICO_HPP_INCLUDED
 #define CONTROLADORASSERVICO_HPP_INCLUDED
 
-#include "interfaces.hpp"
 #include "database/DatabaseManager.hpp"
+#include "interfaces.hpp"
 #include <memory>
 
 /**

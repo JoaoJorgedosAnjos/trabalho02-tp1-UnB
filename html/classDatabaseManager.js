@@ -1,0 +1,26 @@
+var classDatabaseManager =
+[
+    [ "DatabaseManager", "classDatabaseManager.html#a994baccc2ff50fecda3cb3597ef5143b", null ],
+    [ "~DatabaseManager", "classDatabaseManager.html#ae9b3a5da1e04fbb00faf8a034da1d063", null ],
+    [ "atualizarCarteira", "classDatabaseManager.html#a4c546fcadd207fbba44848244a266004", null ],
+    [ "atualizarConta", "classDatabaseManager.html#a7851c336f359b715d81b3428dc187dfd", null ],
+    [ "autenticarUsuario", "classDatabaseManager.html#a2aeb74eff715732d0f48adcc4b21486d", null ],
+    [ "buscarCarteira", "classDatabaseManager.html#a5fadc7d35ac54b8c38ab11db6f981c81", null ],
+    [ "buscarConta", "classDatabaseManager.html#ab3c54af72bd930db9adc1ffc4ebc901f", null ],
+    [ "buscarOrdem", "classDatabaseManager.html#acef3e62873ee8f8046c5640c271be016", null ],
+    [ "calcularSaldoCarteira", "classDatabaseManager.html#a6a7a6175397b6ebefe59ec6e39cc634e", null ],
+    [ "conectar", "classDatabaseManager.html#aa34b73b2c7dd4fc4c41bcde5c043cd04", null ],
+    [ "desconectar", "classDatabaseManager.html#a432f91fd4ea52b834dd5bcab69e6e693", null ],
+    [ "estaConectado", "classDatabaseManager.html#a31ce681e47e60321acee37684fcc9162", null ],
+    [ "excluirCarteira", "classDatabaseManager.html#aeaa110570f9596093a4400a342ac8346", null ],
+    [ "excluirConta", "classDatabaseManager.html#adb3b5621377fcdb6e83042e15e51a199", null ],
+    [ "excluirOrdem", "classDatabaseManager.html#a5b7eedad0ec80c5a7c90743cb0491cdf", null ],
+    [ "inicializarBanco", "classDatabaseManager.html#abd7b3f0f8264e1a8c451194a2adc67bf", null ],
+    [ "inserirCarteira", "classDatabaseManager.html#aa0b88e69d778b4eb4c91763e09738b6c", null ],
+    [ "inserirConta", "classDatabaseManager.html#ad74c763b3e09b3eb3f30d35f4822d10a", null ],
+    [ "inserirOrdem", "classDatabaseManager.html#af1f7da9adc5e172aeda6c4dfeee3f40e", null ],
+    [ "limparTodasTabelas", "classDatabaseManager.html#a21073136948bacea1708c89da2658bfe", null ],
+    [ "listarCarteiras", "classDatabaseManager.html#af6e9e31e1d538417a8ea273fcc2c5437", null ],
+    [ "listarOrdens", "classDatabaseManager.html#ab2fa89cecc1760db8175e3a9b841cd9e", null ],
+    [ "obterEstatisticas", "classDatabaseManager.html#a44be591e987cc7a30ea3695d4cd4273a", null ]
+];

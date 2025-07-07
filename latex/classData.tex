@@ -1,0 +1,97 @@
+\doxysection{Data Class Reference}
+\hypertarget{classData}{}\label{classData}\index{Data@{Data}}
+
+
+Classe que representa uma abstracao de tempo por meio de uma sequencia de 8 digitos numericos no formato AAAAMMDD.  
+
+
+
+
+{\ttfamily \#include $<$dominios.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classData_adf3a4897a9909a07f7956506ed27ae61}{set\+Valor}} (const string \&)
+\begin{DoxyCompactList}\small\item\em Metodo publico que define o valor da data, validando antes de armazenar. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classData_a2d040be2799c23a0a3f745613a70bb43}{get\+Valor}} () const
+\begin{DoxyCompactList}\small\item\em Metodo publico que retorna a data armazenada no formato AAAAMMDD. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que representa uma abstracao de tempo por meio de uma sequencia de 8 digitos numericos no formato AAAAMMDD. 
+
+\DoxyHorRuler{0}
+
+
+Esta classe e utilizada para representar uma data relevante para operacoes no sistema de investimentos, correspondendo ao calendario gregoriano,e composta por ano, mes e dia, conforme as regras de formatacao estabelecidas. Ela e usada para registrar eventos como\+: data de transacoes (compra/venda), vencimentos de aplicacoes, agendamentos futuros, entre outros.
+
+A classe {\ttfamily \doxylink{classData}{Data}} e responsavel por armazenar uma data em formato numerico (string com 8 digitos) e garantir que essa data seja valida de acordo com as regras do calendario gregoriano. A data e representada no formato "{}\+AAAAMMDD"{}, onde\+:
+\begin{DoxyItemize}
+\item AAAA\+: ano (quatro digitos)
+\item MM\+: mes (01 a 12)
+\item DD\+: dia (dependendo do mes e se o ano e bissexto)
+\end{DoxyItemize}
+
+Regras de validacao\+:
+\begin{DoxyItemize}
+\item Verificacao se a string possui exatamente 8 caracteres numericos.
+\item Validacao do intervalo valido para ano, mes e dia.
+\item Validacao do numero de dias permitido para o mes especifico.
+\item Verificacao de ano bissexto em fevereiro.
+\end{DoxyItemize}
+
+Metodos disponiveis\+:
+\begin{DoxyItemize}
+\item {\ttfamily set\+Valor}\+: Metodo publico que define o valor da data apos validar.
+\item {\ttfamily get\+Valor}\+: Metodo publico que retorna a data armazenada como string.
+\end{DoxyItemize}
+
+Em caso de valor invalido, lanca {\ttfamily std\+::invalid\+\_\+argument}. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classData_a2d040be2799c23a0a3f745613a70bb43}\index{Data@{Data}!getValor@{getValor}}
+\index{getValor@{getValor}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{getValor()}{getValor()}}
+{\footnotesize\ttfamily \label{classData_a2d040be2799c23a0a3f745613a70bb43} 
+string Data\+::get\+Valor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que retorna a data armazenada no formato AAAAMMDD. 
+
+Implementacao inline do metodo que retorna o valor data.
+
+\begin{DoxyReturn}{Returns}
+string representando a data.
+
+string data armazenada, no formato AAAAMMDD 
+\end{DoxyReturn}
+\Hypertarget{classData_adf3a4897a9909a07f7956506ed27ae61}\index{Data@{Data}!setValor@{setValor}}
+\index{setValor@{setValor}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{setValor()}{setValor()}}
+{\footnotesize\ttfamily \label{classData_adf3a4897a9909a07f7956506ed27ae61} 
+void Data\+::set\+Valor (\begin{DoxyParamCaption}\item[{const string \&}]{valor}{}\end{DoxyParamCaption})}
+
+
+
+Metodo publico que define o valor da data, validando antes de armazenar. 
+
+Utiliza o metodo {\ttfamily validar()} para garantir que a data esteja dentro dos criterios exigidos. Armazena o valor apenas se a validacao for bem-\/sucedida.
+
+
+\begin{DoxyParams}{Parameters}
+{\em valor} & String com a data no formato AAAAMMDD. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & Se o valor nao representar uma data valida. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/dominios/\mbox{\hyperlink{dominios_8hpp}{dominios.\+hpp}}\item 
+src/dominios/\mbox{\hyperlink{dominios_8cpp}{dominios.\+cpp}}\end{DoxyCompactItemize}

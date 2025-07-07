@@ -1,0 +1,112 @@
+\doxysection{controladoras\+Apresentacao.\+hpp}
+\hypertarget{controladorasApresentacao_8hpp_source}{}\label{controladorasApresentacao_8hpp_source}\index{src/controladoras/controladorasApresentacao.hpp@{src/controladoras/controladorasApresentacao.hpp}}
+\mbox{\hyperlink{controladorasApresentacao_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CONTROLADORASAPRESENTACAO\_HPP\_INCLUDED}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CONTROLADORASAPRESENTACAO\_HPP\_INCLUDED}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{interfaces_8hpp}{interfaces.hpp}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCarteiraController}{CarteiraController}};}
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classOrdemController}{OrdemController}};}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classControladoraApresentacaoAutenticacao}{ControladoraApresentacaoAutenticacao}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIApresentacaoAutenticacao}{IApresentacaoAutenticacao}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{classIServicoAutenticacao}{IServicoAutenticacao}}*\ cntrServicoAutenticacao;\ }
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classControladoraApresentacaoAutenticacao_aa7d344def6022c5493cc4519a54edc9b}{autenticar}}(\mbox{\hyperlink{classNcpf}{Ncpf}}*\ cpf)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00032\ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classControladoraApresentacaoAutenticacao_af242fa3aac61d97df947b63cf7c24d04}{setControladoraServico}}(\mbox{\hyperlink{classIServicoAutenticacao}{IServicoAutenticacao}}*\ cntrServicoAutenticacao)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00042\ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{comment}{//\ =================================================================================================}}
+\DoxyCodeLine{00051\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classControladoraApresentacaoUsuario}{ControladoraApresentacaoUsuario}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIApresentacaoUsuario}{IApresentacaoUsuario}}\ \{}
+\DoxyCodeLine{00052\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{classIServicoUsuario}{IServicoUsuario}}*\ cntrServicoUsuario;\ }
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classControladoraApresentacaoUsuario_a885ddce6f703af180ff097f77852307d}{executar}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00069\ \ \ \ \ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classControladoraApresentacaoUsuario_ad3ff4b91e95ddbf6b8999e113a5bbf45}{cadastrar}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00081\ \ \ \ \ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classControladoraApresentacaoUsuario_a75e8ad32494259e0d8b33a3697df56c0}{setControladoraServico}}(\mbox{\hyperlink{classIServicoUsuario}{IServicoUsuario}}*\ cntrServicoUsuario)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{bool}\ consultarConta(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf);}
+\DoxyCodeLine{00106\ \ \ \ \ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{void}\ editarConta(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf);}
+\DoxyCodeLine{00120\ \ \ \ \ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{bool}\ excluirConta(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf);}
+\DoxyCodeLine{00134\ \};}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00142\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classControladoraApresentacaoInvestimento_a43de8f443f4449d4a628f4a762306e25}{ControladoraApresentacaoInvestimento}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIApresentacaoInvestimento}{IApresentacaoInvestimento}}\ \{}
+\DoxyCodeLine{00143\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00144\ \ \ \ \ \mbox{\hyperlink{classIServicoInvestimento}{IServicoInvestimento}}*\ cntrServicoInvestimento;\ }
+\DoxyCodeLine{00145\ \ \ \ \ \mbox{\hyperlink{classCarteiraController}{CarteiraController}}*\ carteiraController;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00146\ \ \ \ \ \mbox{\hyperlink{classOrdemController}{OrdemController}}*\ ordemController;\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00155\ \ \ \ \ \mbox{\hyperlink{classControladoraApresentacaoInvestimento_a43de8f443f4449d4a628f4a762306e25}{ControladoraApresentacaoInvestimento}}();}
+\DoxyCodeLine{00156\ \ \ \ \ }
+\DoxyCodeLine{00162\ \ \ \ \ \mbox{\hyperlink{classControladoraApresentacaoInvestimento_a034e725325daaca4de4099f0eced704a}{\string~ControladoraApresentacaoInvestimento}}();}
+\DoxyCodeLine{00163\ \ \ \ \ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classControladoraApresentacaoInvestimento_aeeb3905f39cbd169789b59ac3c984d69}{executar}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00176\ \ \ \ \ }
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classControladoraApresentacaoInvestimento_aafbc842c529651a6027154c52de79749}{setControladoraServico}}(\mbox{\hyperlink{classIServicoInvestimento}{IServicoInvestimento}}*\ cntrServicoInvestimento)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00186\ \};}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00195\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classInterfaceManager_a83b46799fad1dd51451a78a61e6388a7}{InterfaceManager}}\ \{}
+\DoxyCodeLine{00196\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00197\ \ \ \ \ \mbox{\hyperlink{classControladoraApresentacaoAutenticacao}{ControladoraApresentacaoAutenticacao}}*\ cntrApresentacaoAutenticacao;\ }
+\DoxyCodeLine{00198\ \ \ \ \ \mbox{\hyperlink{classControladoraApresentacaoUsuario}{ControladoraApresentacaoUsuario}}*\ cntrApresentacaoUsuario;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00199\ \ \ \ \ \mbox{\hyperlink{classControladoraApresentacaoInvestimento}{ControladoraApresentacaoInvestimento}}*\ cntrApresentacaoInvestimento;\ }
+\DoxyCodeLine{00200\ \ \ \ \ }
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keyword}{enum\ class}\ TelaAtual\ \{}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ MENU\_INICIAL,}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ LOGIN,}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ CADASTRO,}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ MENU\_PRINCIPAL,}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ GERENCIAR\_CONTA,}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ GERENCIAR\_INVESTIMENTOS,}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ MENU\_CARTEIRAS,}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ MENU\_ORDENS,}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ SAIR}
+\DoxyCodeLine{00226\ \ \ \ \ \};}
+\DoxyCodeLine{00227\ \ \ \ \ }
+\DoxyCodeLine{00228\ \ \ \ \ TelaAtual\ telaAtual;\ \ \ \ \ \ }
+\DoxyCodeLine{00229\ \ \ \ \ \mbox{\hyperlink{classNcpf}{Ncpf}}\ cpfAutenticado;\ \ \ \ \ \ }
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{keywordtype}{bool}\ usuarioAutenticado;\ \ }
+\DoxyCodeLine{00231\ \ \ \ \ }
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keywordtype}{void}\ limparTela();}
+\DoxyCodeLine{00238\ \ \ \ \ }
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{keywordtype}{void}\ mostrarMenuInicial();}
+\DoxyCodeLine{00248\ \ \ \ \ }
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keywordtype}{void}\ mostrarMenuPrincipal();}
+\DoxyCodeLine{00259\ \ \ \ \ }
+\DoxyCodeLine{00269\ \ \ \ \ \textcolor{keywordtype}{void}\ processarMenuInicial();}
+\DoxyCodeLine{00270\ \ \ \ \ }
+\DoxyCodeLine{00280\ \ \ \ \ \textcolor{keywordtype}{void}\ processarMenuPrincipal();}
+\DoxyCodeLine{00281\ \ \ \ \ }
+\DoxyCodeLine{00289\ \ \ \ \ \textcolor{keywordtype}{void}\ processarGerenciarConta();}
+\DoxyCodeLine{00290\ \ \ \ \ }
+\DoxyCodeLine{00297\ \ \ \ \ \textcolor{keywordtype}{void}\ processarGerenciarInvestimentos();}
+\DoxyCodeLine{00298\ \ \ \ \ }
+\DoxyCodeLine{00305\ \ \ \ \ \textcolor{keywordtype}{void}\ processarMenuCarteiras();}
+\DoxyCodeLine{00306\ \ \ \ \ }
+\DoxyCodeLine{00313\ \ \ \ \ \textcolor{keywordtype}{void}\ processarMenuOrdens();}
+\DoxyCodeLine{00314\ \ \ \ \ }
+\DoxyCodeLine{00323\ \ \ \ \ \textcolor{keywordtype}{void}\ fazerLogout();}
+\DoxyCodeLine{00324\ }
+\DoxyCodeLine{00325\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00336\ \ \ \ \ \mbox{\hyperlink{classInterfaceManager_a83b46799fad1dd51451a78a61e6388a7}{InterfaceManager}}(}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classControladoraApresentacaoAutenticacao}{ControladoraApresentacaoAutenticacao}}*\ cntrApresentacaoAutenticacao,}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classControladoraApresentacaoUsuario}{ControladoraApresentacaoUsuario}}*\ cntrApresentacaoUsuario,}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classControladoraApresentacaoInvestimento}{ControladoraApresentacaoInvestimento}}*\ cntrApresentacaoInvestimento}
+\DoxyCodeLine{00340\ \ \ \ \ );}
+\DoxyCodeLine{00341\ \ \ \ \ }
+\DoxyCodeLine{00360\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classInterfaceManager_a9757f673e258d66b7b666a46802652dc}{executar}}();}
+\DoxyCodeLine{00361\ \};}
+\DoxyCodeLine{00362\ }
+\DoxyCodeLine{00363\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CONTROLADORASAPRESENTACAO\_HPP\_INCLUDED}}
+
+\end{DoxyCode}

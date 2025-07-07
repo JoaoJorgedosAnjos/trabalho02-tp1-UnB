@@ -1,0 +1,340 @@
+\doxysection{IServico\+Investimento Class Reference}
+\hypertarget{classIServicoInvestimento}{}\label{classIServicoInvestimento}\index{IServicoInvestimento@{IServicoInvestimento}}
+
+
+Interface para os serviços de gerenciamento de investimentos providos pela camada de serviço.  
+
+
+
+
+{\ttfamily \#include $<$interfaces.\+hpp$>$}
+
+Inheritance diagram for IServico\+Investimento\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classIServicoInvestimento}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{classIServicoInvestimento_a2393e6b5c5f87bc653dc00d5cbb14a8d}{criar\+Carteira}} (const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf, const \mbox{\hyperlink{classCarteira}{Carteira}} \&carteira)=0
+\begin{DoxyCompactList}\small\item\em Cria uma nova carteira de investimentos. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classIServicoInvestimento_a716a2e31304977c0fcd13da79d6a3bd5}{listar\+Carteiras}} (const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf, std\+::list$<$ \mbox{\hyperlink{classCarteira}{Carteira}} $>$ \texorpdfstring{$\ast$}{*}lista\+Carteiras)=0
+\begin{DoxyCompactList}\small\item\em Lista todas as carteiras de um usuário. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classIServicoInvestimento_a4cea5937ac0bf31cb149d427c304eae3}{consultar\+Carteira}} (const \mbox{\hyperlink{classCodigo}{Codigo}} \&codigo, \mbox{\hyperlink{classCarteira}{Carteira}} \texorpdfstring{$\ast$}{*}carteira, \mbox{\hyperlink{classDinheiro}{Dinheiro}} \texorpdfstring{$\ast$}{*}saldo)=0
+\begin{DoxyCompactList}\small\item\em Consulta os dados de uma carteira específica. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classIServicoInvestimento_ac8339085c84ac985298031d7160e0ff8}{editar\+Carteira}} (const \mbox{\hyperlink{classCarteira}{Carteira}} \&carteira)=0
+\begin{DoxyCompactList}\small\item\em Edita os dados de uma carteira existente. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classIServicoInvestimento_aaf48e5256aadf9e78d4028af578cbb76}{excluir\+Carteira}} (const \mbox{\hyperlink{classCodigo}{Codigo}} \&codigo)=0
+\begin{DoxyCompactList}\small\item\em Exclui uma carteira do sistema. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classIServicoInvestimento_a07cd4a8e9163f0061f4c2c92bd6fb5a7}{criar\+Ordem}} (const \mbox{\hyperlink{classCodigo}{Codigo}} \&codigo\+Carteira, const \mbox{\hyperlink{classOrdem}{Ordem}} \&ordem)=0
+\begin{DoxyCompactList}\small\item\em Cria uma nova ordem de investimento. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classIServicoInvestimento_ae4ca458b935710afc453036c884b7cbf}{listar\+Ordens}} (const \mbox{\hyperlink{classCodigo}{Codigo}} \&codigo\+Carteira, std\+::list$<$ \mbox{\hyperlink{classOrdem}{Ordem}} $>$ \texorpdfstring{$\ast$}{*}lista\+Ordens)=0
+\begin{DoxyCompactList}\small\item\em Lista todas as ordens de uma carteira. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classIServicoInvestimento_a2e9b23c543187d6615d2c0f9d45a6b68}{excluir\+Ordem}} (const \mbox{\hyperlink{classCodigo}{Codigo}} \&codigo)=0
+\begin{DoxyCompactList}\small\item\em Exclui uma ordem do sistema. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classIServicoInvestimento_a84f820111bf759baa130c202dcca6e62}{\texorpdfstring{$\sim$}{\string~}\+IServico\+Investimento}} ()
+\begin{DoxyCompactList}\small\item\em Destrutor virtual para permitir herança. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface para os serviços de gerenciamento de investimentos providos pela camada de serviço. 
+
+Esta interface define os contratos para a camada de serviço relacionada ao gerenciamento de carteiras e ordens de investimento. Responsável por operações de persistência e validação de dados de investimento.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classIApresentacaoInvestimento}{IApresentacao\+Investimento} 
+\end{DoxySeeAlso}
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classIServicoInvestimento_a84f820111bf759baa130c202dcca6e62}\index{IServicoInvestimento@{IServicoInvestimento}!````~IServicoInvestimento@{\texorpdfstring{$\sim$}{\string~}IServicoInvestimento}}
+\index{````~IServicoInvestimento@{\texorpdfstring{$\sim$}{\string~}IServicoInvestimento}!IServicoInvestimento@{IServicoInvestimento}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}IServicoInvestimento()}{\string~IServicoInvestimento()}}
+{\footnotesize\ttfamily \label{classIServicoInvestimento_a84f820111bf759baa130c202dcca6e62} 
+virtual IServico\+Investimento\+::\texorpdfstring{$\sim$}{\string~}\+IServico\+Investimento (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destrutor virtual para permitir herança. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIServicoInvestimento_a4cea5937ac0bf31cb149d427c304eae3}\index{IServicoInvestimento@{IServicoInvestimento}!consultarCarteira@{consultarCarteira}}
+\index{consultarCarteira@{consultarCarteira}!IServicoInvestimento@{IServicoInvestimento}}
+\doxysubsubsection{\texorpdfstring{consultarCarteira()}{consultarCarteira()}}
+{\footnotesize\ttfamily \label{classIServicoInvestimento_a4cea5937ac0bf31cb149d427c304eae3} 
+virtual bool IServico\+Investimento\+::consultar\+Carteira (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCodigo}{Codigo}} \&}]{codigo}{, }\item[{\mbox{\hyperlink{classCarteira}{Carteira}} \texorpdfstring{$\ast$}{*}}]{carteira}{, }\item[{\mbox{\hyperlink{classDinheiro}{Dinheiro}} \texorpdfstring{$\ast$}{*}}]{saldo}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Consulta os dados de uma carteira específica. 
+
+Busca no banco de dados os dados da carteira associada ao código fornecido, retornando os dados da carteira e o saldo atual calculado.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em codigo} & Código da carteira a ser consultada \\
+\hline
+\mbox{\texttt{ out}}  & {\em carteira} & Ponteiro para armazenar os dados da carteira encontrada \\
+\hline
+\mbox{\texttt{ out}}  & {\em saldo} & Ponteiro para armazenar o saldo atual da carteira \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a carteira foi encontrada, false caso contrário
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Deve validar o formato do código antes da consulta 
+
+Deve calcular o saldo baseado nas ordens executadas 
+
+Deve retornar false se a carteira não existir 
+
+Os parâmetros de saída só devem ser preenchidos se a carteira for encontrada 
+\end{DoxyNote}
+
+
+Implemented in \mbox{\hyperlink{classControladoraServico_a0d9d7714c974e1a78ffa4af0ee56c365}{Controladora\+Servico}}.
+
+\Hypertarget{classIServicoInvestimento_a2393e6b5c5f87bc653dc00d5cbb14a8d}\index{IServicoInvestimento@{IServicoInvestimento}!criarCarteira@{criarCarteira}}
+\index{criarCarteira@{criarCarteira}!IServicoInvestimento@{IServicoInvestimento}}
+\doxysubsubsection{\texorpdfstring{criarCarteira()}{criarCarteira()}}
+{\footnotesize\ttfamily \label{classIServicoInvestimento_a2393e6b5c5f87bc653dc00d5cbb14a8d} 
+virtual bool IServico\+Investimento\+::criar\+Carteira (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf}{, }\item[{const \mbox{\hyperlink{classCarteira}{Carteira}} \&}]{carteira}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Cria uma nova carteira de investimentos. 
+
+Valida e persiste os dados da carteira fornecida no banco de dados, associando-\/a ao usuário identificado pelo CPF.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em cpf} & CPF do usuário proprietário da carteira \\
+\hline
+\mbox{\texttt{ in}}  & {\em carteira} & Objeto \doxylink{classCarteira}{Carteira} contendo os dados da carteira \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a carteira foi criada com sucesso, false caso contrário
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Deve validar todos os campos da carteira antes da persistência 
+
+Deve verificar se o usuário existe antes de criar a carteira 
+
+Deve verificar se o código da carteira não está duplicado 
+
+Deve retornar false se houver erro de validação ou persistência 
+\end{DoxyNote}
+
+
+Implemented in \mbox{\hyperlink{classControladoraServico_a3d4442e713e97a7ba5d16aca686f8b47}{Controladora\+Servico}}.
+
+\Hypertarget{classIServicoInvestimento_a07cd4a8e9163f0061f4c2c92bd6fb5a7}\index{IServicoInvestimento@{IServicoInvestimento}!criarOrdem@{criarOrdem}}
+\index{criarOrdem@{criarOrdem}!IServicoInvestimento@{IServicoInvestimento}}
+\doxysubsubsection{\texorpdfstring{criarOrdem()}{criarOrdem()}}
+{\footnotesize\ttfamily \label{classIServicoInvestimento_a07cd4a8e9163f0061f4c2c92bd6fb5a7} 
+virtual bool IServico\+Investimento\+::criar\+Ordem (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCodigo}{Codigo}} \&}]{codigo\+Carteira}{, }\item[{const \mbox{\hyperlink{classOrdem}{Ordem}} \&}]{ordem}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Cria uma nova ordem de investimento. 
+
+Valida e persiste os dados da ordem fornecida no banco de dados, associando-\/a à carteira identificada pelo código.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em codigo\+Carteira} & Código da carteira que receberá a ordem \\
+\hline
+\mbox{\texttt{ in}}  & {\em ordem} & Objeto \doxylink{classOrdem}{Ordem} contendo os dados da ordem \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a ordem foi criada com sucesso, false caso contrário
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Deve validar todos os campos da ordem antes da persistência 
+
+Deve verificar se a carteira existe antes de criar a ordem 
+
+Deve verificar se o código da ordem não está duplicado 
+
+Deve retornar false se houver erro de validação ou persistência 
+\end{DoxyNote}
+
+
+Implemented in \mbox{\hyperlink{classControladoraServico_ac3190bdd09c60d1eabab2e8f46b80157}{Controladora\+Servico}}.
+
+\Hypertarget{classIServicoInvestimento_ac8339085c84ac985298031d7160e0ff8}\index{IServicoInvestimento@{IServicoInvestimento}!editarCarteira@{editarCarteira}}
+\index{editarCarteira@{editarCarteira}!IServicoInvestimento@{IServicoInvestimento}}
+\doxysubsubsection{\texorpdfstring{editarCarteira()}{editarCarteira()}}
+{\footnotesize\ttfamily \label{classIServicoInvestimento_ac8339085c84ac985298031d7160e0ff8} 
+virtual bool IServico\+Investimento\+::editar\+Carteira (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCarteira}{Carteira}} \&}]{carteira}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Edita os dados de uma carteira existente. 
+
+Atualiza os dados da carteira no banco de dados, mantendo o código inalterado e validando todos os outros campos antes da persistência.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em carteira} & Objeto \doxylink{classCarteira}{Carteira} contendo os dados atualizados \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a edição foi realizada com sucesso, false caso contrário
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Deve validar todos os campos antes da atualização 
+
+Deve verificar se a carteira existe antes de tentar editar 
+
+Deve retornar false se houver erro de validação ou persistência 
+\end{DoxyNote}
+
+
+Implemented in \mbox{\hyperlink{classControladoraServico_aaa4a33a114b96b7dd915c7a6ef611cba}{Controladora\+Servico}}.
+
+\Hypertarget{classIServicoInvestimento_aaf48e5256aadf9e78d4028af578cbb76}\index{IServicoInvestimento@{IServicoInvestimento}!excluirCarteira@{excluirCarteira}}
+\index{excluirCarteira@{excluirCarteira}!IServicoInvestimento@{IServicoInvestimento}}
+\doxysubsubsection{\texorpdfstring{excluirCarteira()}{excluirCarteira()}}
+{\footnotesize\ttfamily \label{classIServicoInvestimento_aaf48e5256aadf9e78d4028af578cbb76} 
+virtual bool IServico\+Investimento\+::excluir\+Carteira (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCodigo}{Codigo}} \&}]{codigo}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Exclui uma carteira do sistema. 
+
+Remove a carteira associada ao código fornecido do banco de dados, verificando se não há ordens associadas antes da exclusão.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em codigo} & Código da carteira a ser excluída \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a exclusão foi realizada com sucesso, false caso contrário
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Deve validar o formato do código antes da exclusão 
+
+Deve verificar se a carteira existe antes de tentar excluir 
+
+Deve verificar se não há ordens associadas à carteira 
+
+Deve retornar false se houver ordens associadas ou erro de persistência 
+\end{DoxyNote}
+
+
+Implemented in \mbox{\hyperlink{classControladoraServico_ac6c0ff971bae21c8ed8b5d1414831af1}{Controladora\+Servico}}.
+
+\Hypertarget{classIServicoInvestimento_a2e9b23c543187d6615d2c0f9d45a6b68}\index{IServicoInvestimento@{IServicoInvestimento}!excluirOrdem@{excluirOrdem}}
+\index{excluirOrdem@{excluirOrdem}!IServicoInvestimento@{IServicoInvestimento}}
+\doxysubsubsection{\texorpdfstring{excluirOrdem()}{excluirOrdem()}}
+{\footnotesize\ttfamily \label{classIServicoInvestimento_a2e9b23c543187d6615d2c0f9d45a6b68} 
+virtual bool IServico\+Investimento\+::excluir\+Ordem (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCodigo}{Codigo}} \&}]{codigo}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Exclui uma ordem do sistema. 
+
+Remove a ordem associada ao código fornecido do banco de dados.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em codigo} & Código da ordem a ser excluída \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a exclusão foi realizada com sucesso, false caso contrário
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Deve validar o formato do código antes da exclusão 
+
+Deve verificar se a ordem existe antes de tentar excluir 
+
+Deve retornar false se houver erro de persistência 
+\end{DoxyNote}
+
+
+Implemented in \mbox{\hyperlink{classControladoraServico_a395894fb2889ad5907f4a4f62990b871}{Controladora\+Servico}}.
+
+\Hypertarget{classIServicoInvestimento_a716a2e31304977c0fcd13da79d6a3bd5}\index{IServicoInvestimento@{IServicoInvestimento}!listarCarteiras@{listarCarteiras}}
+\index{listarCarteiras@{listarCarteiras}!IServicoInvestimento@{IServicoInvestimento}}
+\doxysubsubsection{\texorpdfstring{listarCarteiras()}{listarCarteiras()}}
+{\footnotesize\ttfamily \label{classIServicoInvestimento_a716a2e31304977c0fcd13da79d6a3bd5} 
+virtual bool IServico\+Investimento\+::listar\+Carteiras (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf}{, }\item[{std\+::list$<$ \mbox{\hyperlink{classCarteira}{Carteira}} $>$ \texorpdfstring{$\ast$}{*}}]{lista\+Carteiras}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Lista todas as carteiras de um usuário. 
+
+Busca no banco de dados todas as carteiras associadas ao CPF fornecido, retornando uma lista com os dados de cada carteira.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em cpf} & CPF do usuário cujas carteiras serão listadas \\
+\hline
+\mbox{\texttt{ out}}  & {\em lista\+Carteiras} & Ponteiro para lista que armazenará as carteiras \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a consulta foi realizada com sucesso, false caso contrário
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Deve validar o formato do CPF antes da consulta 
+
+Deve retornar lista vazia se o usuário não possuir carteiras 
+
+Deve retornar false apenas em caso de erro de banco de dados 
+\end{DoxyNote}
+
+
+Implemented in \mbox{\hyperlink{classControladoraServico_aca702aa2ddf241f781e910435904708c}{Controladora\+Servico}}.
+
+\Hypertarget{classIServicoInvestimento_ae4ca458b935710afc453036c884b7cbf}\index{IServicoInvestimento@{IServicoInvestimento}!listarOrdens@{listarOrdens}}
+\index{listarOrdens@{listarOrdens}!IServicoInvestimento@{IServicoInvestimento}}
+\doxysubsubsection{\texorpdfstring{listarOrdens()}{listarOrdens()}}
+{\footnotesize\ttfamily \label{classIServicoInvestimento_ae4ca458b935710afc453036c884b7cbf} 
+virtual bool IServico\+Investimento\+::listar\+Ordens (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCodigo}{Codigo}} \&}]{codigo\+Carteira}{, }\item[{std\+::list$<$ \mbox{\hyperlink{classOrdem}{Ordem}} $>$ \texorpdfstring{$\ast$}{*}}]{lista\+Ordens}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Lista todas as ordens de uma carteira. 
+
+Busca no banco de dados todas as ordens associadas ao código da carteira fornecido, retornando uma lista com os dados de cada ordem.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em codigo\+Carteira} & Código da carteira cujas ordens serão listadas \\
+\hline
+\mbox{\texttt{ out}}  & {\em lista\+Ordens} & Ponteiro para lista que armazenará as ordens \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a consulta foi realizada com sucesso, false caso contrário
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Deve validar o formato do código antes da consulta 
+
+Deve retornar lista vazia se a carteira não possuir ordens 
+
+Deve retornar false apenas em caso de erro de banco de dados 
+\end{DoxyNote}
+
+
+Implemented in \mbox{\hyperlink{classControladoraServico_abe7260d0e5def6a1415a6cd0fbd13f0d}{Controladora\+Servico}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/interfaces/\mbox{\hyperlink{interfaces_8hpp}{interfaces.\+hpp}}\end{DoxyCompactItemize}

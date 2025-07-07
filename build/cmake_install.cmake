@@ -1,4 +1,4 @@
-# Install script for directory: /home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB
+# Install script for directory: /home/joaojorge/Documents/UnB/03_semestre/tp1/teste/trabalho02-tp1-UnB
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/joaojorge/Documentos/UnB/trabalho02-tp1-UnB/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/joaojorge/Documents/UnB/03_semestre/tp1/teste/trabalho02-tp1-UnB/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

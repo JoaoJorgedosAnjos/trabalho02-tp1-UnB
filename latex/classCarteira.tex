@@ -1,0 +1,171 @@
+\doxysection{Carteira Class Reference}
+\hypertarget{classCarteira}{}\label{classCarteira}\index{Carteira@{Carteira}}
+
+
+Classe que representa a estrutura ou composicao dos diferentes ativos de investimentos (como acoes, titulos publicos, fundos, imoveis, etc.) pertencentes a um investidor no sistema.  
+
+
+
+
+{\ttfamily \#include $<$entidades.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classCarteira_a0d97fcf16c43e8773d3fc84aa74d6d3b}{set\+Codigo}} (\mbox{\hyperlink{classCodigo}{Codigo}})
+\begin{DoxyCompactList}\small\item\em Metodo publico que define o codigo da carteira. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCodigo}{Codigo}} \mbox{\hyperlink{classCarteira_a847fff1e04d680ac8d82d57e35f5a9ec}{get\+Codigo}} () const
+\begin{DoxyCompactList}\small\item\em Metodo publico que retorna o codigo da carteira. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCarteira_a8bde314fc9cfc2dbe7758a046e45b8be}{set\+Nome}} (\mbox{\hyperlink{classNome}{Nome}})
+\begin{DoxyCompactList}\small\item\em Metodo publico que define o nome da carteira. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classNome}{Nome}} \mbox{\hyperlink{classCarteira_a6b5b193b73f1c00e190bc753e2eeda30}{get\+Nome}} () const
+\begin{DoxyCompactList}\small\item\em Metodo publico que retorna o nome da carteira. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCarteira_a87469aeed76056c80ecb3aa576cb622b}{set\+Tipo\+Perfil}} (\mbox{\hyperlink{classTipoPerfil}{Tipo\+Perfil}})
+\begin{DoxyCompactList}\small\item\em Metodo publico que define o tipo de perfil do investidor associado a carteira. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTipoPerfil}{Tipo\+Perfil}} \mbox{\hyperlink{classCarteira_a6e956e7602b37a84fe7141889b35a482}{get\+Tipo\+Perfil}} () const
+\begin{DoxyCompactList}\small\item\em Metodo publico que retorna o tipo de perfil associado a carteira. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que representa a estrutura ou composicao dos diferentes ativos de investimentos (como acoes, titulos publicos, fundos, imoveis, etc.) pertencentes a um investidor no sistema. 
+
+\DoxyHorRuler{0}
+
+
+A classe {\ttfamily \doxylink{classCarteira}{Carteira}} encapsula os dados relacionados a uma carteira de investimentos, sendo ela uma instancia que agrupa produtos ou aplicacoes financeiras sob um perfil de investidor especifico.
+
+Esta entidade e essencial para controlar, organizar, acompanhar e gerenciar aplicacoes das carteiras criadas pelos usuarios, conforme seu perfil de risco e objetivos financeiros. Permite identificar sua designacao, codigo e o tipo de perfil ao qual se relaciona.
+
+Atributos\+:
+\begin{DoxyItemize}
+\item {\ttfamily codigo}\+: \doxylink{classCodigo}{Codigo} identificador unico da carteira (dominio {\ttfamily \doxylink{classCodigo}{Codigo}}).
+\item {\ttfamily nome}\+: \doxylink{classNome}{Nome} ou designacao da carteira (dominio {\ttfamily \doxylink{classNome}{Nome}}).
+\item {\ttfamily perfil}\+: Tipo de perfil do investidor associado (dominio {\ttfamily \doxylink{classTipoPerfil}{Tipo\+Perfil}}).
+\end{DoxyItemize}
+
+Metodos publicos\+:
+\begin{DoxyItemize}
+\item {\ttfamily \doxylink{classCarteira_a0d97fcf16c43e8773d3fc84aa74d6d3b}{set\+Codigo(\+Codigo)}}\+: Define o codigo da carteira.
+\item {\ttfamily \doxylink{classCarteira_a847fff1e04d680ac8d82d57e35f5a9ec}{get\+Codigo()}}\+: Retorna o codigo armazenado.
+\item {\ttfamily \doxylink{classCarteira_a8bde314fc9cfc2dbe7758a046e45b8be}{set\+Nome(\+Nome)}}\+: Define o nome da carteira.
+\item {\ttfamily \doxylink{classCarteira_a6b5b193b73f1c00e190bc753e2eeda30}{get\+Nome()}}\+: Retorna o nome armazenado.
+\item {\ttfamily \doxylink{classCarteira_a87469aeed76056c80ecb3aa576cb622b}{set\+Tipo\+Perfil(\+Tipo\+Perfil)}}\+: Define o tipo de perfil associado.
+\item {\ttfamily \doxylink{classCarteira_a6e956e7602b37a84fe7141889b35a482}{get\+Tipo\+Perfil()}}\+: Retorna o tipo de perfil associado. 
+\end{DoxyItemize}
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCarteira_a847fff1e04d680ac8d82d57e35f5a9ec}\index{Carteira@{Carteira}!getCodigo@{getCodigo}}
+\index{getCodigo@{getCodigo}!Carteira@{Carteira}}
+\doxysubsubsection{\texorpdfstring{getCodigo()}{getCodigo()}}
+{\footnotesize\ttfamily \label{classCarteira_a847fff1e04d680ac8d82d57e35f5a9ec} 
+\mbox{\hyperlink{classCodigo}{Codigo}} Carteira\+::get\+Codigo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que retorna o codigo da carteira. 
+
+Retorna o codigo da carteira.
+
+\begin{DoxyReturn}{Returns}
+Objeto {\ttfamily \doxylink{classCodigo}{Codigo}} com o valor atribuido.
+
+Objeto {\ttfamily \doxylink{classCodigo}{Codigo}}. 
+\end{DoxyReturn}
+\Hypertarget{classCarteira_a6b5b193b73f1c00e190bc753e2eeda30}\index{Carteira@{Carteira}!getNome@{getNome}}
+\index{getNome@{getNome}!Carteira@{Carteira}}
+\doxysubsubsection{\texorpdfstring{getNome()}{getNome()}}
+{\footnotesize\ttfamily \label{classCarteira_a6b5b193b73f1c00e190bc753e2eeda30} 
+\mbox{\hyperlink{classNome}{Nome}} Carteira\+::get\+Nome (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que retorna o nome da carteira. 
+
+Retorna o nome da carteira.
+
+\begin{DoxyReturn}{Returns}
+Objeto {\ttfamily \doxylink{classNome}{Nome}} com o valor atribuido.
+
+Objeto {\ttfamily \doxylink{classNome}{Nome}}. 
+\end{DoxyReturn}
+\Hypertarget{classCarteira_a6e956e7602b37a84fe7141889b35a482}\index{Carteira@{Carteira}!getTipoPerfil@{getTipoPerfil}}
+\index{getTipoPerfil@{getTipoPerfil}!Carteira@{Carteira}}
+\doxysubsubsection{\texorpdfstring{getTipoPerfil()}{getTipoPerfil()}}
+{\footnotesize\ttfamily \label{classCarteira_a6e956e7602b37a84fe7141889b35a482} 
+\mbox{\hyperlink{classTipoPerfil}{Tipo\+Perfil}} Carteira\+::get\+Tipo\+Perfil (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que retorna o tipo de perfil associado a carteira. 
+
+Retorna o tipo de perfil da carteira.
+
+\begin{DoxyReturn}{Returns}
+Objeto {\ttfamily \doxylink{classTipoPerfil}{Tipo\+Perfil}} com o valor atribuido.
+
+Objeto {\ttfamily \doxylink{classTipoPerfil}{Tipo\+Perfil}}. 
+\end{DoxyReturn}
+\Hypertarget{classCarteira_a0d97fcf16c43e8773d3fc84aa74d6d3b}\index{Carteira@{Carteira}!setCodigo@{setCodigo}}
+\index{setCodigo@{setCodigo}!Carteira@{Carteira}}
+\doxysubsubsection{\texorpdfstring{setCodigo()}{setCodigo()}}
+{\footnotesize\ttfamily \label{classCarteira_a0d97fcf16c43e8773d3fc84aa74d6d3b} 
+void Carteira\+::set\+Codigo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCodigo}{Codigo}}}]{codigo}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que define o codigo da carteira. 
+
+Atribui um objeto {\ttfamily \doxylink{classCodigo}{Codigo}} ao atributo {\ttfamily codigo}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Objeto {\ttfamily \doxylink{classCodigo}{Codigo}} a ser atribuido.\\
+\hline
+{\em codigo} & Objeto do dominio {\ttfamily \doxylink{classCodigo}{Codigo}}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCarteira_a8bde314fc9cfc2dbe7758a046e45b8be}\index{Carteira@{Carteira}!setNome@{setNome}}
+\index{setNome@{setNome}!Carteira@{Carteira}}
+\doxysubsubsection{\texorpdfstring{setNome()}{setNome()}}
+{\footnotesize\ttfamily \label{classCarteira_a8bde314fc9cfc2dbe7758a046e45b8be} 
+void Carteira\+::set\+Nome (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNome}{Nome}}}]{nome}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que define o nome da carteira. 
+
+Retorna o codigo da carteira.
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome} & Objeto {\ttfamily \doxylink{classNome}{Nome}} a ser atribuido.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Objeto {\ttfamily \doxylink{classCodigo}{Codigo}}. 
+\end{DoxyReturn}
+\Hypertarget{classCarteira_a87469aeed76056c80ecb3aa576cb622b}\index{Carteira@{Carteira}!setTipoPerfil@{setTipoPerfil}}
+\index{setTipoPerfil@{setTipoPerfil}!Carteira@{Carteira}}
+\doxysubsubsection{\texorpdfstring{setTipoPerfil()}{setTipoPerfil()}}
+{\footnotesize\ttfamily \label{classCarteira_a87469aeed76056c80ecb3aa576cb622b} 
+void Carteira\+::set\+Tipo\+Perfil (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTipoPerfil}{Tipo\+Perfil}}}]{perfil}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que define o tipo de perfil do investidor associado a carteira. 
+
+Retorna o nome da carteira.
+
+
+\begin{DoxyParams}{Parameters}
+{\em perfil} & Objeto {\ttfamily \doxylink{classTipoPerfil}{Tipo\+Perfil}} a ser atribuido.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Objeto {\ttfamily \doxylink{classNome}{Nome}}. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/entidades/\mbox{\hyperlink{entidades_8hpp}{entidades.\+hpp}}\end{DoxyCompactItemize}

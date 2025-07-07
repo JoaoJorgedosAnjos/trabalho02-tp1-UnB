@@ -1,0 +1,97 @@
+\doxysection{Nome Class Reference}
+\hypertarget{classNome}{}\label{classNome}\index{Nome@{Nome}}
+
+
+Classe que representa a identificacao textual de uma pessoa, objeto ou entidade. Pode ser composta por um ou mais componentes, com ate 20 caracteres alfanumericos e espacos.  
+
+
+
+
+{\ttfamily \#include $<$dominios.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classNome_ae66ac378b7363a69061bec2356451512}{set\+Valor}} (const string \&)
+\begin{DoxyCompactList}\small\item\em Metodo publico que define o valor do nome apos validacao. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classNome_ac8881234a0e2d0ddff4fb689ceb256eb}{get\+Valor}} () const
+\begin{DoxyCompactList}\small\item\em Metodo publico que retorna o valor atual do nome. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que representa a identificacao textual de uma pessoa, objeto ou entidade. Pode ser composta por um ou mais componentes, com ate 20 caracteres alfanumericos e espacos. 
+
+\DoxyHorRuler{0}
+
+
+Esta classe e utilizada para representar nomes de usuarios ou clientes no sistema de investimentos, responsaveis por transacoes ou beneficiarios. Ela garante que o nome informado siga um padrao estabelecido que assegura legibilidade e integridade nos registros.
+
+A classe {\ttfamily \doxylink{classNome}{Nome}} e responsavel por armazenar uma sequencia de caracteres alfanumericos (e espacos simples), com um limite de ate 20 caracteres. O nome pode conter letras, numeros e espacos, desde que obedeca as restricoes de formatacao.
+
+Regras de validacao\+:
+\begin{DoxyItemize}
+\item O nome deve conter no maximo 20 caracteres.
+\item So sao permitidos caracteres alfanumericos (letras e digitos) e espacos.
+\item Nao sao permitidos dois espacos consecutivos.
+\end{DoxyItemize}
+
+Metodos disponiveis\+:
+\begin{DoxyItemize}
+\item {\ttfamily set\+Valor}\+: Metodo publico que define o valor do nome apos validar.
+\item {\ttfamily get\+Valor}\+: Metodo publico que retorna o nome armazenado como string.
+\end{DoxyItemize}
+
+Em caso de valor invalido, lanca {\ttfamily std\+::invalid\+\_\+argument}. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classNome_ac8881234a0e2d0ddff4fb689ceb256eb}\index{Nome@{Nome}!getValor@{getValor}}
+\index{getValor@{getValor}!Nome@{Nome}}
+\doxysubsubsection{\texorpdfstring{getValor()}{getValor()}}
+{\footnotesize\ttfamily \label{classNome_ac8881234a0e2d0ddff4fb689ceb256eb} 
+string Nome\+::get\+Valor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que retorna o valor atual do nome. 
+
+Implementacao inline do metodo que retorna o valor do nome.
+
+\begin{DoxyReturn}{Returns}
+std\+::string Valor do nome armazenado.
+
+std\+::string \doxylink{classNome}{Nome} armazenado, com ate 20 caracteres. 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+\Hypertarget{classNome_ae66ac378b7363a69061bec2356451512}\index{Nome@{Nome}!setValor@{setValor}}
+\index{setValor@{setValor}!Nome@{Nome}}
+\doxysubsubsection{\texorpdfstring{setValor()}{setValor()}}
+{\footnotesize\ttfamily \label{classNome_ae66ac378b7363a69061bec2356451512} 
+void Nome\+::set\+Valor (\begin{DoxyParamCaption}\item[{const string \&}]{valor}{}\end{DoxyParamCaption})}
+
+
+
+Metodo publico que define o valor do nome apos validacao. 
+
+Utiliza o metodo {\ttfamily validar()} para garantir que o nome esteja dentro dos criterios exigidos. Armazena o valor apenas se a validacao for bem-\/sucedida.
+
+
+\begin{DoxyParams}{Parameters}
+{\em valor} & \doxylink{classNome}{Nome} a ser definido. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & Se o nome nao atender aos criterios de validacao. \\
+\hline
+\end{DoxyExceptions}
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/dominios/\mbox{\hyperlink{dominios_8hpp}{dominios.\+hpp}}\item 
+src/dominios/\mbox{\hyperlink{dominios_8cpp}{dominios.\+cpp}}\end{DoxyCompactItemize}

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['quantidade_0',['Quantidade',['../class_quantidade.html',1,'']]]
+  ['ordem_0',['Ordem',['../classOrdem.html',1,'']]],
+  ['ordemcontroller_1',['OrdemController',['../classOrdemController.html',1,'']]]
 ];

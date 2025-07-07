@@ -1,0 +1,198 @@
+\doxysection{IServico\+Usuario Class Reference}
+\hypertarget{classIServicoUsuario}{}\label{classIServicoUsuario}\index{IServicoUsuario@{IServicoUsuario}}
+
+
+Interface para os serviços de gerenciamento de usuário providos pela camada de serviço.  
+
+
+
+
+{\ttfamily \#include $<$interfaces.\+hpp$>$}
+
+Inheritance diagram for IServico\+Usuario\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classIServicoUsuario}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{classIServicoUsuario_a910d672da7b256532f640e79fc79b0ff}{cadastrar\+Conta}} (const \mbox{\hyperlink{classConta}{Conta}} \&conta)=0
+\begin{DoxyCompactList}\small\item\em Cadastra uma nova conta de usuário no sistema. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classIServicoUsuario_a897520400539edca506550141531d09a}{consultar\+Conta}} (const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf, \mbox{\hyperlink{classConta}{Conta}} \texorpdfstring{$\ast$}{*}conta, \mbox{\hyperlink{classDinheiro}{Dinheiro}} \texorpdfstring{$\ast$}{*}saldo)=0
+\begin{DoxyCompactList}\small\item\em Consulta os dados de uma conta de usuário. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classIServicoUsuario_afbe101e611a210b2c571d7fee3ba9335}{editar\+Conta}} (const \mbox{\hyperlink{classConta}{Conta}} \&conta)=0
+\begin{DoxyCompactList}\small\item\em Edita os dados de uma conta de usuário existente. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classIServicoUsuario_a5bb7e438865f9d2f4ce9e511128ae9af}{excluir\+Conta}} (const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf)=0
+\begin{DoxyCompactList}\small\item\em Exclui uma conta de usuário do sistema. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classIServicoUsuario_a5dcc8309a3929de1166af43db7bba05d}{\texorpdfstring{$\sim$}{\string~}\+IServico\+Usuario}} ()
+\begin{DoxyCompactList}\small\item\em Destrutor virtual para permitir herança. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface para os serviços de gerenciamento de usuário providos pela camada de serviço. 
+
+Esta interface define os contratos para a camada de serviço relacionada ao gerenciamento de contas de usuários. Responsável por operações de persistência e validação de dados de usuário.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classIApresentacaoUsuario}{IApresentacao\+Usuario} 
+\end{DoxySeeAlso}
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classIServicoUsuario_a5dcc8309a3929de1166af43db7bba05d}\index{IServicoUsuario@{IServicoUsuario}!````~IServicoUsuario@{\texorpdfstring{$\sim$}{\string~}IServicoUsuario}}
+\index{````~IServicoUsuario@{\texorpdfstring{$\sim$}{\string~}IServicoUsuario}!IServicoUsuario@{IServicoUsuario}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}IServicoUsuario()}{\string~IServicoUsuario()}}
+{\footnotesize\ttfamily \label{classIServicoUsuario_a5dcc8309a3929de1166af43db7bba05d} 
+virtual IServico\+Usuario\+::\texorpdfstring{$\sim$}{\string~}\+IServico\+Usuario (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destrutor virtual para permitir herança. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIServicoUsuario_a910d672da7b256532f640e79fc79b0ff}\index{IServicoUsuario@{IServicoUsuario}!cadastrarConta@{cadastrarConta}}
+\index{cadastrarConta@{cadastrarConta}!IServicoUsuario@{IServicoUsuario}}
+\doxysubsubsection{\texorpdfstring{cadastrarConta()}{cadastrarConta()}}
+{\footnotesize\ttfamily \label{classIServicoUsuario_a910d672da7b256532f640e79fc79b0ff} 
+virtual bool IServico\+Usuario\+::cadastrar\+Conta (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classConta}{Conta}} \&}]{conta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Cadastra uma nova conta de usuário no sistema. 
+
+Valida e persiste os dados da conta fornecida no banco de dados, verificando se o CPF não está duplicado e se todos os dados são válidos.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em conta} & Objeto \doxylink{classConta}{Conta} contendo os dados do usuário \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se o cadastro foi realizado com sucesso, false caso contrário
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Deve validar todos os campos da conta antes da persistência 
+
+Deve verificar se o CPF já não está cadastrado 
+
+Deve criptografar a senha antes de armazenar 
+
+Deve retornar false se houver erro de validação ou persistência 
+\end{DoxyNote}
+
+
+Implemented in \mbox{\hyperlink{classControladoraServico_a199e6826c93a1dff384c6ac6982d9248}{Controladora\+Servico}}.
+
+\Hypertarget{classIServicoUsuario_a897520400539edca506550141531d09a}\index{IServicoUsuario@{IServicoUsuario}!consultarConta@{consultarConta}}
+\index{consultarConta@{consultarConta}!IServicoUsuario@{IServicoUsuario}}
+\doxysubsubsection{\texorpdfstring{consultarConta()}{consultarConta()}}
+{\footnotesize\ttfamily \label{classIServicoUsuario_a897520400539edca506550141531d09a} 
+virtual bool IServico\+Usuario\+::consultar\+Conta (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf}{, }\item[{\mbox{\hyperlink{classConta}{Conta}} \texorpdfstring{$\ast$}{*}}]{conta}{, }\item[{\mbox{\hyperlink{classDinheiro}{Dinheiro}} \texorpdfstring{$\ast$}{*}}]{saldo}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Consulta os dados de uma conta de usuário. 
+
+Busca no banco de dados os dados da conta associada ao CPF fornecido, retornando os dados da conta e o saldo atual.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em cpf} & CPF do usuário cuja conta será consultada \\
+\hline
+\mbox{\texttt{ out}}  & {\em conta} & Ponteiro para armazenar os dados da conta encontrada \\
+\hline
+\mbox{\texttt{ out}}  & {\em saldo} & Ponteiro para armazenar o saldo atual da conta \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a conta foi encontrada, false caso contrário
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Deve validar o formato do CPF antes da consulta 
+
+Deve retornar false se a conta não existir 
+
+Os parâmetros de saída só devem ser preenchidos se a conta for encontrada 
+\end{DoxyNote}
+
+
+Implemented in \mbox{\hyperlink{classControladoraServico_a61dfec50428bf6d71e613c08a2b8ef3c}{Controladora\+Servico}}.
+
+\Hypertarget{classIServicoUsuario_afbe101e611a210b2c571d7fee3ba9335}\index{IServicoUsuario@{IServicoUsuario}!editarConta@{editarConta}}
+\index{editarConta@{editarConta}!IServicoUsuario@{IServicoUsuario}}
+\doxysubsubsection{\texorpdfstring{editarConta()}{editarConta()}}
+{\footnotesize\ttfamily \label{classIServicoUsuario_afbe101e611a210b2c571d7fee3ba9335} 
+virtual bool IServico\+Usuario\+::editar\+Conta (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classConta}{Conta}} \&}]{conta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Edita os dados de uma conta de usuário existente. 
+
+Atualiza os dados da conta no banco de dados, mantendo o CPF inalterado e validando todos os outros campos antes da persistência.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em conta} & Objeto \doxylink{classConta}{Conta} contendo os dados atualizados \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a edição foi realizada com sucesso, false caso contrário
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Deve validar todos os campos antes da atualização 
+
+Deve verificar se a conta existe antes de tentar editar 
+
+Deve criptografar a senha se ela foi alterada 
+
+Deve retornar false se houver erro de validação ou persistência 
+\end{DoxyNote}
+
+
+Implemented in \mbox{\hyperlink{classControladoraServico_ae68b1c59d37e3d9407a448ab65a54d36}{Controladora\+Servico}}.
+
+\Hypertarget{classIServicoUsuario_a5bb7e438865f9d2f4ce9e511128ae9af}\index{IServicoUsuario@{IServicoUsuario}!excluirConta@{excluirConta}}
+\index{excluirConta@{excluirConta}!IServicoUsuario@{IServicoUsuario}}
+\doxysubsubsection{\texorpdfstring{excluirConta()}{excluirConta()}}
+{\footnotesize\ttfamily \label{classIServicoUsuario_a5bb7e438865f9d2f4ce9e511128ae9af} 
+virtual bool IServico\+Usuario\+::excluir\+Conta (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Exclui uma conta de usuário do sistema. 
+
+Remove a conta associada ao CPF fornecido do banco de dados, verificando se não há carteiras associadas antes da exclusão.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em cpf} & CPF do usuário cuja conta será excluída \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a exclusão foi realizada com sucesso, false caso contrário
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Deve validar o formato do CPF antes da exclusão 
+
+Deve verificar se a conta existe antes de tentar excluir 
+
+Deve verificar se não há carteiras associadas à conta 
+
+Deve retornar false se houver carteiras associadas ou erro de persistência 
+\end{DoxyNote}
+
+
+Implemented in \mbox{\hyperlink{classControladoraServico_a254c87b7f8047ba6e08778f0a609f1d8}{Controladora\+Servico}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/interfaces/\mbox{\hyperlink{interfaces_8hpp}{interfaces.\+hpp}}\end{DoxyCompactItemize}

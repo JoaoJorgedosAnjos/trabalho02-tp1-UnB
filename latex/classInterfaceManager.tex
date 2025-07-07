@@ -1,0 +1,138 @@
+\doxysection{Interface\+Manager Class Reference}
+\hypertarget{classInterfaceManager}{}\label{classInterfaceManager}\index{InterfaceManager@{InterfaceManager}}
+
+
+Gerenciador central de interface do usuário.  
+
+
+
+
+{\ttfamily \#include $<$controladoras\+Apresentacao.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classInterfaceManager_a83b46799fad1dd51451a78a61e6388a7}{Interface\+Manager}} (\mbox{\hyperlink{classControladoraApresentacaoAutenticacao}{Controladora\+Apresentacao\+Autenticacao}} \texorpdfstring{$\ast$}{*}cntr\+Apresentacao\+Autenticacao, \mbox{\hyperlink{classControladoraApresentacaoUsuario}{Controladora\+Apresentacao\+Usuario}} \texorpdfstring{$\ast$}{*}cntr\+Apresentacao\+Usuario, \mbox{\hyperlink{classControladoraApresentacaoInvestimento}{Controladora\+Apresentacao\+Investimento}} \texorpdfstring{$\ast$}{*}cntr\+Apresentacao\+Investimento)
+\begin{DoxyCompactList}\small\item\em Construtor do gerenciador de interface. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classInterfaceManager_a9757f673e258d66b7b666a46802652dc}{executar}} ()
+\begin{DoxyCompactList}\small\item\em Executa o loop principal do sistema. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gerenciador central de interface do usuário. 
+
+Responsável por controlar o fluxo de navegação entre telas, limpeza automática do console e apresentação consistente das interfaces. Implementa uma máquina de estados para controlar o fluxo da aplicação. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classInterfaceManager_a83b46799fad1dd51451a78a61e6388a7}\index{InterfaceManager@{InterfaceManager}!InterfaceManager@{InterfaceManager}}
+\index{InterfaceManager@{InterfaceManager}!InterfaceManager@{InterfaceManager}}
+\doxysubsubsection{\texorpdfstring{InterfaceManager()}{InterfaceManager()}}
+{\footnotesize\ttfamily \label{classInterfaceManager_a83b46799fad1dd51451a78a61e6388a7} 
+Interface\+Manager\+::\+Interface\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classControladoraApresentacaoAutenticacao}{Controladora\+Apresentacao\+Autenticacao}} \texorpdfstring{$\ast$}{*}}]{cntr\+Apresentacao\+Autenticacao}{, }\item[{\mbox{\hyperlink{classControladoraApresentacaoUsuario}{Controladora\+Apresentacao\+Usuario}} \texorpdfstring{$\ast$}{*}}]{cntr\+Apresentacao\+Usuario}{, }\item[{\mbox{\hyperlink{classControladoraApresentacaoInvestimento}{Controladora\+Apresentacao\+Investimento}} \texorpdfstring{$\ast$}{*}}]{cntr\+Apresentacao\+Investimento}{}\end{DoxyParamCaption})}
+
+
+
+Construtor do gerenciador de interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cntr\+Apresentacao\+Autenticacao} & Controladora de apresentação de autenticação \\
+\hline
+{\em cntr\+Apresentacao\+Usuario} & Controladora de apresentação de usuário \\
+\hline
+{\em cntr\+Apresentacao\+Investimento} & Controladora de apresentação de investimentos\\
+\hline
+\end{DoxyParams}
+Inicializa o gerenciador com as controladoras necessárias e define o estado inicial como MENU\+\_\+\+INICIAL com usuário não autenticado.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cntr\+Apresentacao\+Autenticacao} & Controladora de apresentação de autenticação \\
+\hline
+{\em cntr\+Apresentacao\+Usuario} & Controladora de apresentação de usuário \\
+\hline
+{\em cntr\+Apresentacao\+Investimento} & Controladora de apresentação de investimentos \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classInterfaceManager_a9757f673e258d66b7b666a46802652dc}\index{InterfaceManager@{InterfaceManager}!executar@{executar}}
+\index{executar@{executar}!InterfaceManager@{InterfaceManager}}
+\doxysubsubsection{\texorpdfstring{executar()}{executar()}}
+{\footnotesize\ttfamily \label{classInterfaceManager_a9757f673e258d66b7b666a46802652dc} 
+void Interface\+Manager\+::executar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Executa o loop principal do sistema. 
+
+Implementa a máquina de estados principal, controlando o fluxo de navegação entre diferentes telas e funcionalidades.
+
+O loop continua até que tela\+Atual seja definida como SAIR. Cada estado é processado por métodos específicos que podem alterar o estado para controlar o fluxo da aplicação.
+
+Estados suportados\+:
+\begin{DoxyItemize}
+\item MENU\+\_\+\+INICIAL → LOGIN/\+CADASTRO/\+SAIR
+\item LOGIN → MENU\+\_\+\+PRINCIPAL/\+MENU\+\_\+\+INICIAL
+\item CADASTRO → MENU\+\_\+\+INICIAL
+\item MENU\+\_\+\+PRINCIPAL → GERENCIAR\+\_\+\+CONTA/\+GERENCIAR\+\_\+\+INVESTIMENTOS/\+MENU\+\_\+\+INICIAL
+\item GERENCIAR\+\_\+\+CONTA → MENU\+\_\+\+PRINCIPAL/\+MENU\+\_\+\+INICIAL (se conta excluída)
+\item GERENCIAR\+\_\+\+INVESTIMENTOS → MENU\+\_\+\+PRINCIPAL
+\end{DoxyItemize}
+
+Executa o loop principal do sistema
+
+Implementa a máquina de estados principal do sistema, controlando o fluxo de navegação entre diferentes telas e funcionalidades.
+
+Estados do sistema\+:
+\begin{DoxyItemize}
+\item {\bfseries{MENU\+\_\+\+INICIAL}}\+: Tela de entrada com opções de login e cadastro
+\item {\bfseries{LOGIN}}\+: Processo de autenticação do usuário
+\item {\bfseries{CADASTRO}}\+: Processo de criação de nova conta
+\item {\bfseries{MENU\+\_\+\+PRINCIPAL}}\+: Menu principal para usuários autenticados
+\item {\bfseries{GERENCIAR\+\_\+\+CONTA}}\+: Funcionalidades de gerenciamento de conta
+\item {\bfseries{GERENCIAR\+\_\+\+INVESTIMENTOS}}\+: Funcionalidades de investimento
+\item {\bfseries{SAIR}}\+: Encerramento do sistema
+\end{DoxyItemize}
+
+Fluxo de autenticação\+:
+\begin{DoxyItemize}
+\item Sucesso\+: redireciona para MENU\+\_\+\+PRINCIPAL
+\item Falha\+: retorna para MENU\+\_\+\+INICIAL
+\item Feedback visual para o usuário
+\end{DoxyItemize}
+
+Controle de sessão\+:
+\begin{DoxyItemize}
+\item Mantém estado de autenticação
+\item Armazena CPF do usuário logado
+\item Gerencia transições entre telas
+\end{DoxyItemize}
+
+Tratamento de saída\+:
+\begin{DoxyItemize}
+\item Logout automático em caso de exclusão de conta
+\item Mensagem de despedida ao encerrar
+\item Limpeza de recursos
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+O loop continua até que tela\+Atual seja definida como SAIR 
+
+Cada estado é processado por métodos específicos 
+
+O sistema mantém consistência de estado durante toda a execução 
+\end{DoxyNote}
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/controladoras/\mbox{\hyperlink{controladorasApresentacao_8hpp}{controladoras\+Apresentacao.\+hpp}}\item 
+src/controladoras/\mbox{\hyperlink{controladorasApresentacao_8cpp}{controladoras\+Apresentacao.\+cpp}}\end{DoxyCompactItemize}

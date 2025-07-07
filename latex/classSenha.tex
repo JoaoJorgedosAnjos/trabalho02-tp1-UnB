@@ -1,0 +1,99 @@
+\doxysection{Senha Class Reference}
+\hypertarget{classSenha}{}\label{classSenha}\index{Senha@{Senha}}
+
+
+Classe que representa um conjunto de caracteres usado para autenticar a identidade de um usuario no sistema de investimentos.  
+
+
+
+
+{\ttfamily \#include $<$dominios.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classSenha_a004b67b8e8c8dbfac70e08fece395ed6}{set\+Valor}} (const string \&)
+\begin{DoxyCompactList}\small\item\em Metodo publico que define o valor da senha apos validacao. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classSenha_ae0b4d9dfac80da4dc9c4965a9648e6b5}{get\+Valor}} () const
+\begin{DoxyCompactList}\small\item\em Metodo publico que retorna o valor da senha armazenada. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que representa um conjunto de caracteres usado para autenticar a identidade de um usuario no sistema de investimentos. 
+
+\DoxyHorRuler{0}
+
+
+A classe {\ttfamily \doxylink{classSenha}{Senha}} e utilizada para armazenar e validar uma senha segura composta exatamente por 6 caracteres. O objetivo e garantir a seguranca de autenticacao, assegurando que a senha atenda aos requisitos minimos de complexidade definidos pelo sistema.
+
+Regras de validacao\+:
+\begin{DoxyItemize}
+\item A senha deve conter exatamente 6 caracteres.
+\item Deve incluir pelo menos\+:
+\begin{DoxyItemize}
+\item 1 letra maiuscula
+\item 1 letra minuscula
+\item 1 digito numerico
+\item 1 caractere especial permitido\+: {\ttfamily \#}, {\ttfamily \$}, {\ttfamily \%}, {\ttfamily \&}
+\end{DoxyItemize}
+\item Todos os caracteres devem ser distintos (sem repeticao).
+\item Apenas caracteres alfanumericos e os especiais acima sao permitidos.
+\end{DoxyItemize}
+
+Metodos disponiveis\+:
+\begin{DoxyItemize}
+\item {\ttfamily set\+Valor}\+: Metodo publico que define a senha apos validacao.
+\item {\ttfamily get\+Valor}\+: Metodo publico que retorna a senha armazenada como string.
+\end{DoxyItemize}
+
+Em caso de valor invalido, lanca {\ttfamily std\+::invalid\+\_\+argument}. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSenha_ae0b4d9dfac80da4dc9c4965a9648e6b5}\index{Senha@{Senha}!getValor@{getValor}}
+\index{getValor@{getValor}!Senha@{Senha}}
+\doxysubsubsection{\texorpdfstring{getValor()}{getValor()}}
+{\footnotesize\ttfamily \label{classSenha_ae0b4d9dfac80da4dc9c4965a9648e6b5} 
+string Senha\+::get\+Valor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que retorna o valor da senha armazenada. 
+
+Implementacao inline do metodo que retorna o valor da senha.
+
+\begin{DoxyReturn}{Returns}
+std\+::string \doxylink{classSenha}{Senha} atualmente armazenada.
+
+std\+::string \doxylink{classSenha}{Senha} armazenada. 
+\end{DoxyReturn}
+\Hypertarget{classSenha_a004b67b8e8c8dbfac70e08fece395ed6}\index{Senha@{Senha}!setValor@{setValor}}
+\index{setValor@{setValor}!Senha@{Senha}}
+\doxysubsubsection{\texorpdfstring{setValor()}{setValor()}}
+{\footnotesize\ttfamily \label{classSenha_a004b67b8e8c8dbfac70e08fece395ed6} 
+void Senha\+::set\+Valor (\begin{DoxyParamCaption}\item[{const string \&}]{valor}{}\end{DoxyParamCaption})}
+
+
+
+Metodo publico que define o valor da senha apos validacao. 
+
+Chama o metodo {\ttfamily validar()} para garantir que a senha esta em conformidade com os criterios de seguranca. Armazena a senha apenas se a validacao for bem-\/sucedida.
+
+
+\begin{DoxyParams}{Parameters}
+{\em valor} & String contendo a senha a ser definida. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & Se a senha for invalida. \\
+\hline
+\end{DoxyExceptions}
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/dominios/\mbox{\hyperlink{dominios_8hpp}{dominios.\+hpp}}\item 
+src/dominios/\mbox{\hyperlink{dominios_8cpp}{dominios.\+cpp}}\end{DoxyCompactItemize}

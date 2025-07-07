@@ -1,0 +1,39 @@
+\doxysection{Input\+Validator.\+hpp}
+\hypertarget{InputValidator_8hpp_source}{}\label{InputValidator_8hpp_source}\index{src/controladoras/InputValidator.hpp@{src/controladoras/InputValidator.hpp}}
+\mbox{\hyperlink{InputValidator_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ INPUTVALIDATOR\_HPP\_INCLUDED}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ INPUTVALIDATOR\_HPP\_INCLUDED}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{dominios_8hpp}{dominios/dominios.hpp}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classInputValidator}{InputValidator}}\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classInputValidator_a7588524a16110bb3a8a6310a5715ae9d}{validarCombinacaoB3}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCodigoNeg}{CodigoNeg}}\&\ codigoNegociacao,\ \textcolor{keyword}{const}\ std::string\&\ data);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classInputValidator_a6452fd3e140a9ed3b13b5fddcd39220a}{buscarDatasDisponiveis}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCodigoNeg}{CodigoNeg}}\&\ codigoNegociacao,\ std::set<std::string>\&\ datasDisponiveis);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{classInputValidator_ad666e8e194e9e27b55eb49c51b2a13fc}{extrairCodigoB3}}(\textcolor{keyword}{const}\ std::string\&\ linhaB3);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{classInputValidator_ad4eb667f7274ec40dcd206f1fe34dc7b}{extrairDataB3}}(\textcolor{keyword}{const}\ std::string\&\ linhaB3);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{classInputValidator_a99af6e6d5ab1824231f60aef2da26528}{extrairPrecoB3}}(\textcolor{keyword}{const}\ std::string\&\ linhaB3);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{classInputValidator_a15a38a9056fba783255b49e2a1d7f04b}{formatarCodigoNegociacao}}(\textcolor{keyword}{const}\ std::string\&\ codigo);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{classInputValidator_a09e843ed665273f818045bcda9cdf292}{removerEspacosFinais}}(\textcolor{keyword}{const}\ std::string\&\ str);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classInputValidator_aa753fe4cf058fe78f82c3e04cc72c6f9}{contemApenasDigitos}}(\textcolor{keyword}{const}\ std::string\&\ str);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{classInputValidator_a1bfd7cb840fe4f825f510e052e880b7d}{formatarValorMonetario}}(\textcolor{keyword}{const}\ std::string\&\ valor);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ CAMINHO\_ARQUIVO\_B3;}
+\DoxyCodeLine{00097\ \};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ INPUTVALIDATOR\_HPP\_INCLUDED\ }}
+
+\end{DoxyCode}

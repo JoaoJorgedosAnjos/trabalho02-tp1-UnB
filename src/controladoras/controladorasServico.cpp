@@ -1,24 +1,10 @@
-/**
- * @file controladorasServico.cpp
- * @brief Implementação das controladoras de serviço do sistema de investimentos
- * @details Este arquivo contém a implementação das classes responsáveis pela camada de serviço,
- *          incluindo todas as operações de negócio relacionadas a contas, carteiras e ordens.
- *          A camada de serviço atua como intermediária entre a apresentação e o banco de dados,
- *          implementando validações de negócio e cálculos específicos do domínio.
- * @author Sistema de Investimentos
- * @version 1.0
- * @date 2024
- * @see controladorasServico.hpp
- * @see DatabaseManager.hpp
- */
-
 #include "controladorasServico.hpp"
 #include "../database/DatabaseManager.hpp"
-#include <string>
-#include <iostream>
 #include <algorithm>
 #include <fstream>
+#include <iostream>
 #include <sstream>
+#include <string>
 #include <vector>
 
 /**
@@ -28,10 +14,12 @@
  * @details Função utilitária para limpeza de strings, removendo caracteres de espaçamento
  *          incluindo espaços, quebras de linha, tabs e outros caracteres de formatação.
  */
-std::string trim(const std::string& str) {
+std::string trim(const std::string &str)
+{
     const std::string WHITESPACE = " \n\r\t\f\v";
     size_t first = str.find_first_not_of(WHITESPACE);
-    if (first == std::string::npos) return "";
+    if (first == std::string::npos)
+        return "";
     size_t last = str.find_last_not_of(WHITESPACE);
     return str.substr(first, (last - first + 1));
 }
@@ -41,7 +29,8 @@ std::string trim(const std::string& str) {
  * @details Inicializa o gerenciador de banco de dados com o caminho padrão do arquivo SQLite.
  *          Utiliza smart pointer para gerenciamento automático de memória.
  */
-ControladoraServico::ControladoraServico() {
+ControladoraServico::ControladoraServico()
+{
     dbManager = std::make_unique<DatabaseManager>("../database/sistema_investimentos.db");
 }
 
@@ -49,7 +38,8 @@ ControladoraServico::ControladoraServico() {
  * @brief Destrutor da controladora de serviço
  * @details Destrutor padrão que garante a limpeza automática dos recursos através do smart pointer.
  */
-ControladoraServico::~ControladoraServico() {
+ControladoraServico::~ControladoraServico()
+{
 }
 
 /**
@@ -60,17 +50,19 @@ ControladoraServico::~ControladoraServico() {
  * @see DatabaseManager::conectar()
  * @see DatabaseManager::inicializarBanco()
  */
-bool ControladoraServico::inicializar() {
-    if (!dbManager->conectar()) {
+bool ControladoraServico::inicializar()
+{
+    if (!dbManager->conectar())
+    {
         std::cerr << "Erro: Não foi possível conectar ao banco de dados!" << std::endl;
         return false;
     }
-    
-    if (!dbManager->inicializarBanco()) {
+
+    if (!dbManager->inicializarBanco())
+    {
         std::cerr << "Erro: Não foi possível inicializar o banco de dados!" << std::endl;
         return false;
     }
-    
 
     return true;
 }
@@ -84,11 +76,13 @@ bool ControladoraServico::inicializar() {
  *          Requer conexão ativa com o banco de dados.
  * @see DatabaseManager::autenticarUsuario()
  */
-bool ControladoraServico::autenticar(const Ncpf& cpf, const Senha& senha) {
-    if (!dbManager->estaConectado()) {
+bool ControladoraServico::autenticar(const Ncpf &cpf, const Senha &senha)
+{
+    if (!dbManager->estaConectado())
+    {
         return false;
     }
-    
+
     return dbManager->autenticarUsuario(cpf, senha);
 }
 
@@ -101,17 +95,20 @@ bool ControladoraServico::autenticar(const Ncpf& cpf, const Senha& senha) {
  * @see DatabaseManager::buscarConta()
  * @see DatabaseManager::inserirConta()
  */
-bool ControladoraServico::cadastrarConta(const Conta& conta) {
-    if (!dbManager->estaConectado()) {
+bool ControladoraServico::cadastrarConta(const Conta &conta)
+{
+    if (!dbManager->estaConectado())
+    {
         return false;
     }
-    
+
     Conta contaExistente;
-    if (dbManager->buscarConta(conta.getNcpf(), &contaExistente)) {
+    if (dbManager->buscarConta(conta.getNcpf(), &contaExistente))
+    {
         std::cout << "Erro: Conta com este CPF já existe!" << std::endl;
         return false;
     }
-    
+
     return dbManager->inserirConta(conta);
 }
 
@@ -127,43 +124,58 @@ bool ControladoraServico::cadastrarConta(const Conta& conta) {
  * @see DatabaseManager::listarCarteiras()
  * @see DatabaseManager::calcularSaldoCarteira()
  */
-bool ControladoraServico::consultarConta(const Ncpf& cpf, Conta* conta, Dinheiro* saldo) {
-    if (!dbManager->estaConectado() || !conta || !saldo) {
+bool ControladoraServico::consultarConta(const Ncpf &cpf, Conta *conta, Dinheiro *saldo)
+{
+    if (!dbManager->estaConectado() || !conta || !saldo)
+    {
         return false;
     }
-    
-    if (!dbManager->buscarConta(cpf, conta)) {
+
+    if (!dbManager->buscarConta(cpf, conta))
+    {
         return false;
     }
-    
+
     std::list<Carteira> carteiras;
-    if (!dbManager->listarCarteiras(cpf, &carteiras)) {
-        try {
+    if (!dbManager->listarCarteiras(cpf, &carteiras))
+    {
+        try
+        {
             saldo->setValor("0,01");
             return true;
-        } catch (const std::exception& e) {
+        }
+        catch (const std::exception &e)
+        {
             return false;
         }
     }
-    
+
     long long saldoTotalCentavos = 0;
-    
-    for (const auto& carteira : carteiras) {
+
+    for (const auto &carteira : carteiras)
+    {
         Dinheiro saldoCarteira;
-        if (dbManager->calcularSaldoCarteira(carteira.getCodigo(), &saldoCarteira)) {
-            try {
+        if (dbManager->calcularSaldoCarteira(carteira.getCodigo(), &saldoCarteira))
+        {
+            try
+            {
                 long long saldoCarteiraCentavos = DatabaseManager::dinheiroParaCentavos(saldoCarteira);
                 saldoTotalCentavos += saldoCarteiraCentavos;
-            } catch (const std::exception& e) {
+            }
+            catch (const std::exception &e)
+            {
             }
         }
     }
-    
-    try {
+
+    try
+    {
         std::string saldoFormatado = DatabaseManager::centavosParaDinheiro(saldoTotalCentavos);
         saldo->setValor(saldoFormatado);
         return true;
-    } catch (const std::exception& e) {
+    }
+    catch (const std::exception &e)
+    {
         return false;
     }
 }
@@ -175,11 +187,13 @@ bool ControladoraServico::consultarConta(const Ncpf& cpf, Conta* conta, Dinheiro
  * @details Atualiza os dados da conta no banco de dados. O CPF não pode ser alterado.
  * @see DatabaseManager::atualizarConta()
  */
-bool ControladoraServico::editarConta(const Conta& conta) {
-    if (!dbManager->estaConectado()) {
+bool ControladoraServico::editarConta(const Conta &conta)
+{
+    if (!dbManager->estaConectado())
+    {
         return false;
     }
-    
+
     return dbManager->atualizarConta(conta);
 }
 
@@ -191,11 +205,13 @@ bool ControladoraServico::editarConta(const Conta& conta) {
  *          Implementa integridade referencial através de cascata.
  * @see DatabaseManager::excluirConta()
  */
-bool ControladoraServico::excluirConta(const Ncpf& cpf) {
-    if (!dbManager->estaConectado()) {
+bool ControladoraServico::excluirConta(const Ncpf &cpf)
+{
+    if (!dbManager->estaConectado())
+    {
         return false;
     }
-    
+
     return dbManager->excluirConta(cpf);
 }
 
@@ -210,23 +226,27 @@ bool ControladoraServico::excluirConta(const Ncpf& cpf) {
  * @see DatabaseManager::buscarCarteira()
  * @see DatabaseManager::inserirCarteira()
  */
-bool ControladoraServico::criarCarteira(const Ncpf& cpf, const Carteira& carteira) {
-    if (!dbManager->estaConectado()) {
+bool ControladoraServico::criarCarteira(const Ncpf &cpf, const Carteira &carteira)
+{
+    if (!dbManager->estaConectado())
+    {
         return false;
     }
-    
+
     Conta conta;
-    if (!dbManager->buscarConta(cpf, &conta)) {
+    if (!dbManager->buscarConta(cpf, &conta))
+    {
         std::cout << "Erro: Conta não encontrada!" << std::endl;
         return false;
     }
-    
+
     Carteira carteiraExistente;
-    if (dbManager->buscarCarteira(carteira.getCodigo(), &carteiraExistente)) {
+    if (dbManager->buscarCarteira(carteira.getCodigo(), &carteiraExistente))
+    {
         std::cout << "Erro: Já existe uma carteira com este código!" << std::endl;
         return false;
     }
-    
+
     return dbManager->inserirCarteira(carteira, cpf);
 }
 
@@ -238,11 +258,13 @@ bool ControladoraServico::criarCarteira(const Ncpf& cpf, const Carteira& carteir
  * @details Recupera todas as carteiras associadas ao CPF fornecido.
  * @see DatabaseManager::listarCarteiras()
  */
-bool ControladoraServico::listarCarteiras(const Ncpf& cpf, std::list<Carteira>* listaCarteiras) {
-    if (!dbManager->estaConectado() || !listaCarteiras) {
+bool ControladoraServico::listarCarteiras(const Ncpf &cpf, std::list<Carteira> *listaCarteiras)
+{
+    if (!dbManager->estaConectado() || !listaCarteiras)
+    {
         return false;
     }
-    
+
     return dbManager->listarCarteiras(cpf, listaCarteiras);
 }
 
@@ -256,15 +278,18 @@ bool ControladoraServico::listarCarteiras(const Ncpf& cpf, std::list<Carteira>* 
  * @see DatabaseManager::buscarCarteira()
  * @see DatabaseManager::calcularSaldoCarteira()
  */
-bool ControladoraServico::consultarCarteira(const Codigo& codigo, Carteira* carteira, Dinheiro* saldo) {
-    if (!dbManager->estaConectado() || !carteira || !saldo) {
+bool ControladoraServico::consultarCarteira(const Codigo &codigo, Carteira *carteira, Dinheiro *saldo)
+{
+    if (!dbManager->estaConectado() || !carteira || !saldo)
+    {
         return false;
     }
-    
-    if (!dbManager->buscarCarteira(codigo, carteira)) {
+
+    if (!dbManager->buscarCarteira(codigo, carteira))
+    {
         return false;
     }
-    
+
     return dbManager->calcularSaldoCarteira(codigo, saldo);
 }
 
@@ -275,11 +300,13 @@ bool ControladoraServico::consultarCarteira(const Codigo& codigo, Carteira* cart
  * @details Atualiza os dados da carteira no banco de dados. O código não pode ser alterado.
  * @see DatabaseManager::atualizarCarteira()
  */
-bool ControladoraServico::editarCarteira(const Carteira& carteira) {
-    if (!dbManager->estaConectado()) {
+bool ControladoraServico::editarCarteira(const Carteira &carteira)
+{
+    if (!dbManager->estaConectado())
+    {
         return false;
     }
-    
+
     return dbManager->atualizarCarteira(carteira);
 }
 
@@ -291,11 +318,13 @@ bool ControladoraServico::editarCarteira(const Carteira& carteira) {
  *          Implementa integridade referencial através de cascata.
  * @see DatabaseManager::excluirCarteira()
  */
-bool ControladoraServico::excluirCarteira(const Codigo& codigo) {
-    if (!dbManager->estaConectado()) {
+bool ControladoraServico::excluirCarteira(const Codigo &codigo)
+{
+    if (!dbManager->estaConectado())
+    {
         return false;
     }
-    
+
     return dbManager->excluirCarteira(codigo);
 }
 
@@ -315,25 +344,30 @@ bool ControladoraServico::excluirCarteira(const Codigo& codigo) {
  * @see DatabaseManager::buscarOrdem()
  * @see DatabaseManager::inserirOrdem()
  */
-bool ControladoraServico::criarOrdem(const Codigo& codigoCarteira, const Ordem& ordem) {
-    if (!dbManager->estaConectado()) {
+bool ControladoraServico::criarOrdem(const Codigo &codigoCarteira, const Ordem &ordem)
+{
+    if (!dbManager->estaConectado())
+    {
         return false;
     }
-    
+
     Carteira carteira;
-    if (!dbManager->buscarCarteira(codigoCarteira, &carteira)) {
+    if (!dbManager->buscarCarteira(codigoCarteira, &carteira))
+    {
         std::cout << "Erro: Carteira não encontrada!" << std::endl;
         return false;
     }
-    
+
     Ordem ordemExistente;
-    if (dbManager->buscarOrdem(ordem.getCodigo(), &ordemExistente)) {
+    if (dbManager->buscarOrdem(ordem.getCodigo(), &ordemExistente))
+    {
         std::cout << "Erro: Já existe uma ordem com este código!" << std::endl;
         return false;
     }
 
     std::ifstream arquivo("../data/DADOS_HISTORICOS.txt");
-    if (!arquivo.is_open()) {
+    if (!arquivo.is_open())
+    {
         std::cout << "Erro: Não foi possível abrir o arquivo ../data/DADOS_HISTORICOS.txt!" << std::endl;
         return false;
     }
@@ -345,21 +379,27 @@ bool ControladoraServico::criarOrdem(const Codigo& codigoCarteira, const Ordem& 
     std::string codigoNegociacao = trim(ordem.getCodigoNeg().getValor());
     std::string dataNegociacao = trim(ordem.getData().getValor());
 
-    while (std::getline(arquivo, linha)) {
-        if (linha.length() < 126) {
+    while (std::getline(arquivo, linha))
+    {
+        if (linha.length() < 126)
+        {
             continue;
         }
 
         std::string dataArquivo = trim(linha.substr(2, 8));
         std::string codigoPapelArquivo = trim(linha.substr(12, 12));
-        
-        if (codigoPapelArquivo == codigoNegociacao && dataArquivo == dataNegociacao) {
-            try {
+
+        if (codigoPapelArquivo == codigoNegociacao && dataArquivo == dataNegociacao)
+        {
+            try
+            {
                 std::string precoStr = linha.substr(113, 13);
                 precoMedioArquivo = std::stod(precoStr) / 100.0;
                 encontrouPapel = true;
                 break;
-            } catch (const std::exception& e) {
+            }
+            catch (const std::exception &e)
+            {
                 std::cerr << "Erro ao converter preco da linha: " << linha << std::endl;
                 encontrouPapel = false;
                 break;
@@ -368,16 +408,20 @@ bool ControladoraServico::criarOrdem(const Codigo& codigoCarteira, const Ordem& 
     }
     arquivo.close();
 
-    if (!encontrouPapel) {
+    if (!encontrouPapel)
+    {
         std::cout << "Erro: Papel ou data não encontrados no arquivo de dados históricos!" << std::endl;
         return false;
     }
 
-    try {
+    try
+    {
         std::string quantidadeStr = ordem.getQuantidade().getValor();
         std::string quantidadeLimpa;
-        for (char c : quantidadeStr) {
-            if (c != '.') {
+        for (char c : quantidadeStr)
+        {
+            if (c != '.')
+            {
                 quantidadeLimpa += c;
             }
         }
@@ -389,28 +433,32 @@ bool ControladoraServico::criarOrdem(const Codigo& codigoCarteira, const Ordem& 
         oss.precision(2);
         oss << std::fixed << precoFinal;
         std::string precoFinalStr = oss.str();
-        
+
         size_t ponto = precoFinalStr.find('.');
-        if (ponto != std::string::npos) {
+        if (ponto != std::string::npos)
+        {
             precoFinalStr[ponto] = ',';
-            
+
             std::string parteInteira = precoFinalStr.substr(0, ponto);
             std::string parteDecimal = precoFinalStr.substr(ponto);
-            
-            for (int i = parteInteira.length() - 3; i > 0; i -= 3) {
+
+            for (int i = parteInteira.length() - 3; i > 0; i -= 3)
+            {
                 parteInteira.insert(i, ".");
             }
-            
+
             precoFinalStr = parteInteira + parteDecimal;
         }
 
-        Ordem novaOrdem = ordem; 
+        Ordem novaOrdem = ordem;
         Dinheiro precoFinalObj;
         precoFinalObj.setValor(precoFinalStr);
         novaOrdem.setDinheiro(precoFinalObj);
 
         return dbManager->inserirOrdem(novaOrdem, codigoCarteira);
-    } catch (const std::exception& e) {
+    }
+    catch (const std::exception &e)
+    {
         std::cout << "Erro no cálculo do preço: " << e.what() << std::endl;
         return false;
     }
@@ -424,11 +472,13 @@ bool ControladoraServico::criarOrdem(const Codigo& codigoCarteira, const Ordem& 
  * @details Recupera todas as ordens associadas ao código da carteira fornecido.
  * @see DatabaseManager::listarOrdens()
  */
-bool ControladoraServico::listarOrdens(const Codigo& codigoCarteira, std::list<Ordem>* listaOrdens) {
-    if (!dbManager->estaConectado() || !listaOrdens) {
+bool ControladoraServico::listarOrdens(const Codigo &codigoCarteira, std::list<Ordem> *listaOrdens)
+{
+    if (!dbManager->estaConectado() || !listaOrdens)
+    {
         return false;
     }
-    
+
     return dbManager->listarOrdens(codigoCarteira, listaOrdens);
 }
 
@@ -439,10 +489,12 @@ bool ControladoraServico::listarOrdens(const Codigo& codigoCarteira, std::list<O
  * @details Remove a ordem do banco de dados. A exclusão afeta o cálculo do saldo da carteira.
  * @see DatabaseManager::excluirOrdem()
  */
-bool ControladoraServico::excluirOrdem(const Codigo& codigo) {
-    if (!dbManager->estaConectado()) {
+bool ControladoraServico::excluirOrdem(const Codigo &codigo)
+{
+    if (!dbManager->estaConectado())
+    {
         return false;
     }
-    
+
     return dbManager->excluirOrdem(codigo);
 }

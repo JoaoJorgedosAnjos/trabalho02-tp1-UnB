@@ -1,0 +1,61 @@
+\doxysection{src/controladoras/controladoras\+Servico.cpp File Reference}
+\hypertarget{controladorasServico_8cpp}{}\label{controladorasServico_8cpp}\index{src/controladoras/controladorasServico.cpp@{src/controladoras/controladorasServico.cpp}}
+
+
+Implementação das controladoras de serviço do sistema de investimentos.  
+
+
+{\ttfamily \#include "{}controladoras\+Servico.\+hpp"{}}\newline
+{\ttfamily \#include "{}../database/\+Database\+Manager.\+hpp"{}}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{controladorasServico_8cpp_a5a01f705cc7b4a7317a57f6bf41aef25}{trim}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Remove espaços em branco do início e fim de uma string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementação das controladoras de serviço do sistema de investimentos. 
+
+Este arquivo contém a implementação das classes responsáveis pela camada de serviço, incluindo todas as operações de negócio relacionadas a contas, carteiras e ordens. A camada de serviço atua como intermediária entre a apresentação e o banco de dados, implementando validações de negócio e cálculos específicos do domínio. \begin{DoxyAuthor}{Author}
+Sistema de Investimentos 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024 
+\end{DoxyDate}
+\begin{DoxySeeAlso}{See also}
+\doxylink{controladorasServico_8hpp}{controladoras\+Servico.\+hpp} 
+
+\doxylink{DatabaseManager_8hpp}{Database\+Manager.\+hpp} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{controladorasServico_8cpp_a5a01f705cc7b4a7317a57f6bf41aef25}\index{controladorasServico.cpp@{controladorasServico.cpp}!trim@{trim}}
+\index{trim@{trim}!controladorasServico.cpp@{controladorasServico.cpp}}
+\doxysubsubsection{\texorpdfstring{trim()}{trim()}}
+{\footnotesize\ttfamily \label{controladorasServico_8cpp_a5a01f705cc7b4a7317a57f6bf41aef25} 
+std\+::string trim (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Remove espaços em branco do início e fim de uma string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & String a ser processada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String sem espaços em branco nas extremidades
+\end{DoxyReturn}
+Função utilitária para limpeza de strings, removendo caracteres de espaçamento incluindo espaços, quebras de linha, tabs e outros caracteres de formatação. 

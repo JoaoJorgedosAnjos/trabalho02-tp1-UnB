@@ -1,0 +1,90 @@
+\doxysection{interfaces.\+hpp}
+\hypertarget{interfaces_8hpp_source}{}\label{interfaces_8hpp_source}\index{src/interfaces/interfaces.hpp@{src/interfaces/interfaces.hpp}}
+\mbox{\hyperlink{interfaces_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ INTERFACES\_H\_INCLUDED}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ INTERFACES\_H\_INCLUDED}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{dominios_8hpp}{dominios.hpp}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{entidades_8hpp}{entidades.hpp}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIServicoAutenticacao}{IServicoAutenticacao}};}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIServicoUsuario}{IServicoUsuario}};}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIServicoInvestimento}{IServicoInvestimento}};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIApresentacaoAutenticacao}{IApresentacaoAutenticacao}}\ \{}
+\DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIApresentacaoAutenticacao_a9e9f0d31faa3e04138409bef160fe16f}{autenticar}}(\mbox{\hyperlink{classNcpf}{Ncpf}}*\ cpf)\ =\ 0;}
+\DoxyCodeLine{00039\ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoAutenticacao_a93af8a2aa0c33683a7e8cdffe7446668}{setControladoraServico}}(\mbox{\hyperlink{classIServicoAutenticacao}{IServicoAutenticacao}}*\ cntrServicoAutenticacao)\ =\ 0;}
+\DoxyCodeLine{00052\ \ \ \ \ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classIApresentacaoAutenticacao_abf1863be8e6fa8b487e8e4c5f978aa59}{\string~IApresentacaoAutenticacao}}()\ \{\}}
+\DoxyCodeLine{00057\ \};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00068\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIApresentacaoUsuario}{IApresentacaoUsuario}}\ \{}
+\DoxyCodeLine{00069\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIApresentacaoUsuario_aa67a6204e32fcc2c34b7adc048fff300}{executar}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf)\ =\ 0;}
+\DoxyCodeLine{00084\ \ \ \ \ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoUsuario_afa952785f0a9e44b1b5cd925df4791d9}{cadastrar}}()\ =\ 0;}
+\DoxyCodeLine{00097\ \ \ \ \ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoUsuario_a09344c8c79699a3614454b0f8a0951c7}{setControladoraServico}}(\mbox{\hyperlink{classIServicoUsuario}{IServicoUsuario}}*\ cntrServicoUsuario)\ =\ 0;}
+\DoxyCodeLine{00110\ \ \ \ \ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classIApresentacaoUsuario_aa224b8ee9930600a828f3c0feb673c1f}{\string~IApresentacaoUsuario}}()\ \{\}}
+\DoxyCodeLine{00115\ \};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00127\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIApresentacaoInvestimento}{IApresentacaoInvestimento}}\ \{}
+\DoxyCodeLine{00128\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoInvestimento_a5b961c289049a13b821713b401ce0fda}{executar}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf)\ =\ 0;}
+\DoxyCodeLine{00144\ \ \ \ \ }
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoInvestimento_ad997e6894097ae2f529500a98bb32329}{setControladoraServico}}(\mbox{\hyperlink{classIServicoInvestimento}{IServicoInvestimento}}*\ cntrServicoInvestimento)\ =\ 0;}
+\DoxyCodeLine{00157\ \ \ \ \ }
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classIApresentacaoInvestimento_a084f3f2e7873cba65d0d75bf5224cb51}{\string~IApresentacaoInvestimento}}()\ \{\}}
+\DoxyCodeLine{00162\ \};}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00173\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIServicoAutenticacao}{IServicoAutenticacao}}\ \{}
+\DoxyCodeLine{00174\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoAutenticacao_af561fb6693fe74412369bcc06f005035}{autenticar}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSenha}{Senha}}\&\ senha)\ =\ 0;}
+\DoxyCodeLine{00190\ \ \ \ \ }
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classIServicoAutenticacao_aa2f9ad33148b3b12a205e992079e4368}{\string~IServicoAutenticacao}}()\ \{\}}
+\DoxyCodeLine{00195\ \};}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00206\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIServicoUsuario}{IServicoUsuario}}\ \{}
+\DoxyCodeLine{00207\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoUsuario_a910d672da7b256532f640e79fc79b0ff}{cadastrarConta}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classConta}{Conta}}\&\ conta)\ =\ 0;}
+\DoxyCodeLine{00223\ \ \ \ \ }
+\DoxyCodeLine{00239\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoUsuario_a897520400539edca506550141531d09a}{consultarConta}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf,\ \mbox{\hyperlink{classConta}{Conta}}*\ conta,\ \mbox{\hyperlink{classDinheiro}{Dinheiro}}*\ saldo)\ =\ 0;}
+\DoxyCodeLine{00240\ \ \ \ \ }
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoUsuario_afbe101e611a210b2c571d7fee3ba9335}{editarConta}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classConta}{Conta}}\&\ conta)\ =\ 0;}
+\DoxyCodeLine{00256\ \ \ \ \ }
+\DoxyCodeLine{00271\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoUsuario_a5bb7e438865f9d2f4ce9e511128ae9af}{excluirConta}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf)\ =\ 0;}
+\DoxyCodeLine{00272\ \ \ \ \ }
+\DoxyCodeLine{00276\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classIServicoUsuario_a5dcc8309a3929de1166af43db7bba05d}{\string~IServicoUsuario}}()\ \{\}}
+\DoxyCodeLine{00277\ \};}
+\DoxyCodeLine{00278\ }
+\DoxyCodeLine{00288\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIServicoInvestimento}{IServicoInvestimento}}\ \{}
+\DoxyCodeLine{00289\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00305\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoInvestimento_a2393e6b5c5f87bc653dc00d5cbb14a8d}{criarCarteira}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classCarteira}{Carteira}}\&\ carteira)\ =\ 0;}
+\DoxyCodeLine{00306\ \ \ \ \ }
+\DoxyCodeLine{00321\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoInvestimento_a716a2e31304977c0fcd13da79d6a3bd5}{listarCarteiras}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf,\ std::list<Carteira>*\ listaCarteiras)\ =\ 0;}
+\DoxyCodeLine{00322\ \ \ \ \ }
+\DoxyCodeLine{00339\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoInvestimento_a4cea5937ac0bf31cb149d427c304eae3}{consultarCarteira}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCodigo}{Codigo}}\&\ codigo,\ \mbox{\hyperlink{classCarteira}{Carteira}}*\ carteira,\ \mbox{\hyperlink{classDinheiro}{Dinheiro}}*\ saldo)\ =\ 0;}
+\DoxyCodeLine{00340\ \ \ \ \ }
+\DoxyCodeLine{00354\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoInvestimento_ac8339085c84ac985298031d7160e0ff8}{editarCarteira}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCarteira}{Carteira}}\&\ carteira)\ =\ 0;}
+\DoxyCodeLine{00355\ \ \ \ \ }
+\DoxyCodeLine{00370\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoInvestimento_aaf48e5256aadf9e78d4028af578cbb76}{excluirCarteira}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCodigo}{Codigo}}\&\ codigo)\ =\ 0;}
+\DoxyCodeLine{00371\ \ \ \ \ }
+\DoxyCodeLine{00387\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoInvestimento_a07cd4a8e9163f0061f4c2c92bd6fb5a7}{criarOrdem}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCodigo}{Codigo}}\&\ codigoCarteira,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classOrdem}{Ordem}}\&\ ordem)\ =\ 0;}
+\DoxyCodeLine{00388\ \ \ \ \ }
+\DoxyCodeLine{00403\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoInvestimento_ae4ca458b935710afc453036c884b7cbf}{listarOrdens}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCodigo}{Codigo}}\&\ codigoCarteira,\ std::list<Ordem>*\ listaOrdens)\ =\ 0;}
+\DoxyCodeLine{00404\ \ \ \ \ }
+\DoxyCodeLine{00417\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoInvestimento_a2e9b23c543187d6615d2c0f9d45a6b68}{excluirOrdem}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCodigo}{Codigo}}\&\ codigo)\ =\ 0;}
+\DoxyCodeLine{00418\ \ \ \ \ }
+\DoxyCodeLine{00422\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classIServicoInvestimento_a84f820111bf759baa130c202dcca6e62}{\string~IServicoInvestimento}}()\ \{\}}
+\DoxyCodeLine{00423\ \};}
+\DoxyCodeLine{00424\ }
+\DoxyCodeLine{00425\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ INTERFACES\_H\_INCLUDED}}
+
+\end{DoxyCode}

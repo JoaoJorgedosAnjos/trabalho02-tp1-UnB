@@ -33,7 +33,7 @@
 using namespace std;
 
 ///---------------------------------------------------------------------
-//Entidade: Conta   (Responsavel: Maria 231021431)
+// Entidade: Conta   (Responsavel: Maria 231021431)
 /**
  * @class Conta
  * @brief Classe que representa um conjunto de dados que identifica um usuario no sistema de investimentos financeiros.
@@ -60,59 +60,60 @@ using namespace std;
  * - `setSenha(Senha)`: Define a senha do usuario apos validacao.
  * - `getSenha()`: Retorna a senha armazenada.
  */
-class Conta {
-    private:
-        /**
-         * @brief Objeto do dominio `Ncpf` representando o CPF do usuario.
-         */
-        Ncpf cpf;
+class Conta
+{
+  private:
+    /**
+     * @brief Objeto do dominio `Ncpf` representando o CPF do usuario.
+     */
+    Ncpf cpf;
 
-        /**
-         * @brief Objeto do dominio `Nome` representando o nome do usuario.
-         */
-        Nome nome;
+    /**
+     * @brief Objeto do dominio `Nome` representando o nome do usuario.
+     */
+    Nome nome;
 
-        /**
-         * @brief Objeto do dominio `Senha` representando a senha do usuario.
-         */
-        Senha senha;
+    /**
+     * @brief Objeto do dominio `Senha` representando a senha do usuario.
+     */
+    Senha senha;
 
-    public:
-        /**
-         * @brief Metodo publico que define o CPF da conta.
-         * @param cpf Objeto `Ncpf` contendo o CPF a ser atribuido.
-         */
-        void setNcpf(Ncpf);
+  public:
+    /**
+     * @brief Metodo publico que define o CPF da conta.
+     * @param cpf Objeto `Ncpf` contendo o CPF a ser atribuido.
+     */
+    void setNcpf(Ncpf);
 
-        /**
-         * @brief Metodo publico que retorna o CPF armazenado na conta.
-         * @return Objeto `Ncpf` com o CPF do usuario.
-         */
-        Ncpf getNcpf() const;
+    /**
+     * @brief Metodo publico que retorna o CPF armazenado na conta.
+     * @return Objeto `Ncpf` com o CPF do usuario.
+     */
+    Ncpf getNcpf() const;
 
-        /**
-         * @brief Metodo publico que define o nome do titular da conta.
-         * @param nome Objeto `Nome` contendo o nome a ser atribuido.
-         */
-        void setNome(Nome);
+    /**
+     * @brief Metodo publico que define o nome do titular da conta.
+     * @param nome Objeto `Nome` contendo o nome a ser atribuido.
+     */
+    void setNome(Nome);
 
-        /**
-         * @brief Metodo publico que retorna o nome do titular da conta.
-         * @return Objeto `Nome` com o nome do usuario.
-         */
-        Nome getNome() const;
+    /**
+     * @brief Metodo publico que retorna o nome do titular da conta.
+     * @return Objeto `Nome` com o nome do usuario.
+     */
+    Nome getNome() const;
 
-        /**
-         * @brief Metodo publico que define a senha da conta.
-         * @param senha Objeto `Senha` contendo a senha a ser atribuida.
-         */
-        void setSenha(Senha);
+    /**
+     * @brief Metodo publico que define a senha da conta.
+     * @param senha Objeto `Senha` contendo a senha a ser atribuida.
+     */
+    void setSenha(Senha);
 
-        /**
-         * @brief Metodo publico que retorna a senha armazenada na conta.
-         * @return Objeto `Senha` com a senha do usuario.
-         */
-        Senha getSenha() const;
+    /**
+     * @brief Metodo publico que retorna a senha armazenada na conta.
+     * @return Objeto `Senha` com a senha do usuario.
+     */
+    Senha getSenha() const;
 };
 //---------------------------------------------------------------------
 
@@ -122,45 +123,63 @@ class Conta {
  * @brief Atribui um objeto `Ncpf` ao atributo `cpf`.
  * @param cpf Objeto do dominio `Ncpf`.
  */
-inline void Conta::setNcpf(Ncpf cpf){ this->cpf = cpf; }
+inline void Conta::setNcpf(Ncpf cpf)
+{
+    this->cpf = cpf;
+}
 
 //---------------------------------------------------------------------
 /**
  * @brief Retorna o CPF da conta.
  * @return Objeto `Ncpf`.
  */
-inline Ncpf Conta::getNcpf() const { return cpf; }
+inline Ncpf Conta::getNcpf() const
+{
+    return cpf;
+}
 
 //---------------------------------------------------------------------
 /**
  * @brief Atribui um objeto `Nome` ao atributo `nome`.
  * @param nome Objeto do dominio `Nome`.
  */
-inline void Conta::setNome(Nome nome){ this->nome = nome; }
+inline void Conta::setNome(Nome nome)
+{
+    this->nome = nome;
+}
 
 //---------------------------------------------------------------------
 /**
  * @brief Retorna o nome da conta.
  * @return Objeto `Nome`.
  */
-inline Nome Conta::getNome() const { return nome; }
+inline Nome Conta::getNome() const
+{
+    return nome;
+}
 
 //---------------------------------------------------------------------
 /**
  * @brief Atribui um objeto `Senha` ao atributo `senha`.
  * @param senha Objeto do dominio `Senha`.
  */
-inline void Conta::setSenha(Senha senha){ this->senha = senha; }
+inline void Conta::setSenha(Senha senha)
+{
+    this->senha = senha;
+}
 
 //---------------------------------------------------------------------
 /**
  * @brief Retorna a senha da conta.
  * @return Objeto `Senha`.
  */
-inline Senha Conta::getSenha() const { return senha; }
+inline Senha Conta::getSenha() const
+{
+    return senha;
+}
 
 ///---------------------------------------------------------------------
-//Entidade: Carteira   (Responsavel: Bruno 241022460)
+// Entidade: Carteira   (Responsavel: Bruno 241022460)
 /**
  * @class Carteira
  * @brief Classe que representa a estrutura ou composicao dos diferentes ativos de investimentos (como acoes,
@@ -187,59 +206,60 @@ inline Senha Conta::getSenha() const { return senha; }
  * - `setTipoPerfil(TipoPerfil)`: Define o tipo de perfil associado.
  * - `getTipoPerfil()`: Retorna o tipo de perfil associado.
  */
-class Carteira {
-    private:
-        /**
-         * @brief Objeto do dominio `Codigo` representando o codigo da carteira.
-         */
-        Codigo codigo;
+class Carteira
+{
+  private:
+    /**
+     * @brief Objeto do dominio `Codigo` representando o codigo da carteira.
+     */
+    Codigo codigo;
 
-        /**
-         * @brief Objeto do dominio `Nome` representando o nome da carteira.
-         */
-        Nome nome;
+    /**
+     * @brief Objeto do dominio `Nome` representando o nome da carteira.
+     */
+    Nome nome;
 
-        /**
-         * @brief Objeto do dominio `TipoPerfil` representando o perfil de investidor da carteira.
-         */
-        TipoPerfil perfil;
+    /**
+     * @brief Objeto do dominio `TipoPerfil` representando o perfil de investidor da carteira.
+     */
+    TipoPerfil perfil;
 
-    public:
-        /**
-         * @brief Metodo publico que define o codigo da carteira.
-         * @param codigo Objeto `Codigo` a ser atribuido.
-         */
-        void setCodigo(Codigo);
+  public:
+    /**
+     * @brief Metodo publico que define o codigo da carteira.
+     * @param codigo Objeto `Codigo` a ser atribuido.
+     */
+    void setCodigo(Codigo);
 
-        /**
-         * @brief Metodo publico que retorna o codigo da carteira.
-         * @return Objeto `Codigo` com o valor atribuido.
-         */
-        Codigo getCodigo() const;
+    /**
+     * @brief Metodo publico que retorna o codigo da carteira.
+     * @return Objeto `Codigo` com o valor atribuido.
+     */
+    Codigo getCodigo() const;
 
-        /**
-         * @brief Metodo publico que define o nome da carteira.
-         * @param nome Objeto `Nome` a ser atribuido.
-         */
-        void setNome(Nome);
+    /**
+     * @brief Metodo publico que define o nome da carteira.
+     * @param nome Objeto `Nome` a ser atribuido.
+     */
+    void setNome(Nome);
 
-        /**
-         * @brief Metodo publico que retorna o nome da carteira.
-         * @return Objeto `Nome` com o valor atribuido.
-         */
-        Nome getNome() const;
+    /**
+     * @brief Metodo publico que retorna o nome da carteira.
+     * @return Objeto `Nome` com o valor atribuido.
+     */
+    Nome getNome() const;
 
-        /**
-         * @brief Metodo publico que define o tipo de perfil do investidor associado a carteira.
-         * @param perfil Objeto `TipoPerfil` a ser atribuido.
-         */
-        void setTipoPerfil(TipoPerfil);
+    /**
+     * @brief Metodo publico que define o tipo de perfil do investidor associado a carteira.
+     * @param perfil Objeto `TipoPerfil` a ser atribuido.
+     */
+    void setTipoPerfil(TipoPerfil);
 
-        /**
-         * @brief Metodo publico que retorna o tipo de perfil associado a carteira.
-         * @return Objeto `TipoPerfil` com o valor atribuido.
-         */
-        TipoPerfil getTipoPerfil() const;
+    /**
+     * @brief Metodo publico que retorna o tipo de perfil associado a carteira.
+     * @return Objeto `TipoPerfil` com o valor atribuido.
+     */
+    TipoPerfil getTipoPerfil() const;
 };
 //---------------------------------------------------------------------
 
@@ -249,45 +269,63 @@ class Carteira {
  * @brief Atribui um objeto `Codigo` ao atributo `codigo`.
  * @param codigo Objeto do dominio `Codigo`.
  */
-inline void Carteira::setCodigo(Codigo codigo){ this->codigo = codigo; }
+inline void Carteira::setCodigo(Codigo codigo)
+{
+    this->codigo = codigo;
+}
 
 //---------------------------------------------------------------------
 /**
  * @brief Retorna o codigo da carteira.
  * @return Objeto `Codigo`.
  */
-inline Codigo Carteira::getCodigo() const { return codigo; }
+inline Codigo Carteira::getCodigo() const
+{
+    return codigo;
+}
 
 //---------------------------------------------------------------------
 /**
  * @brief Retorna o codigo da carteira.
  * @return Objeto `Codigo`.
  */
-inline void Carteira::setNome(Nome nome){ this->nome = nome; }
+inline void Carteira::setNome(Nome nome)
+{
+    this->nome = nome;
+}
 
 //---------------------------------------------------------------------
 /**
  * @brief Retorna o nome da carteira.
  * @return Objeto `Nome`.
  */
-inline Nome Carteira::getNome() const { return nome; }
+inline Nome Carteira::getNome() const
+{
+    return nome;
+}
 
 //---------------------------------------------------------------------
 /**
  * @brief Retorna o nome da carteira.
  * @return Objeto `Nome`.
  */
-inline void Carteira::setTipoPerfil(TipoPerfil perfil){ this->perfil = perfil; }
+inline void Carteira::setTipoPerfil(TipoPerfil perfil)
+{
+    this->perfil = perfil;
+}
 
 //---------------------------------------------------------------------
 /**
  * @brief Retorna o tipo de perfil da carteira.
  * @return Objeto `TipoPerfil`.
  */
-inline TipoPerfil Carteira::getTipoPerfil() const { return perfil; }
+inline TipoPerfil Carteira::getTipoPerfil() const
+{
+    return perfil;
+}
 
 ///---------------------------------------------------------------------
-//Entidade: Ordem   (Responsavel: Karina 231006140)
+// Entidade: Ordem   (Responsavel: Karina 231006140)
 /**
  * @class Ordem
  * @brief Classe que representa uma instrucao formal enviada por um investidor (ou sistema automatizado)
@@ -319,93 +357,94 @@ inline TipoPerfil Carteira::getTipoPerfil() const { return perfil; }
  * - `setQuantidade(Quantidade)`: Define a quantidade de ativos.
  * - `getQuantidade()`: Retorna a quantidade de ativos.
  */
-class Ordem {
-    private:
-        /**
-         * @brief Objeto do dominio `Codigo` representando o codigo da ordem.
-         */
-        Codigo codigo;
+class Ordem
+{
+  private:
+    /**
+     * @brief Objeto do dominio `Codigo` representando o codigo da ordem.
+     */
+    Codigo codigo;
 
-        /**
-         * @brief Objeto do dominio `CodigoNeg` representando o codigo do ativo negociado.
-         */
-        CodigoNeg codigoNeg;
+    /**
+     * @brief Objeto do dominio `CodigoNeg` representando o codigo do ativo negociado.
+     */
+    CodigoNeg codigoNeg;
 
-        /**
-         * @brief Objeto do dominio `Data` representando a data da ordem.
-         */
-        Data data;
+    /**
+     * @brief Objeto do dominio `Data` representando a data da ordem.
+     */
+    Data data;
 
-        /**
-         * @brief Objeto do dominio `Dinheiro` representando o valor financeiro da ordem.
-         */
-        Dinheiro dinheiro;
+    /**
+     * @brief Objeto do dominio `Dinheiro` representando o valor financeiro da ordem.
+     */
+    Dinheiro dinheiro;
 
-        /**
-         * @brief Objeto do dominio `Quantidade` representando a quantidade de ativos.
-         */
-        Quantidade quantidade;
+    /**
+     * @brief Objeto do dominio `Quantidade` representando a quantidade de ativos.
+     */
+    Quantidade quantidade;
 
-    public:
-        /**
-         * @brief Metodo publico que define o codigo da ordem.
-         * @param codigo Objeto `Codigo` a ser atribuido.
-         */
-        void setCodigo(Codigo);
+  public:
+    /**
+     * @brief Metodo publico que define o codigo da ordem.
+     * @param codigo Objeto `Codigo` a ser atribuido.
+     */
+    void setCodigo(Codigo);
 
-         /**
-         * @brief Metodo publico que retorna o codigo da ordem.
-         * @return Objeto `Codigo`.
-         */
-        Codigo getCodigo() const;
+    /**
+     * @brief Metodo publico que retorna o codigo da ordem.
+     * @return Objeto `Codigo`.
+     */
+    Codigo getCodigo() const;
 
-        /**
-         * @brief Metodo publico que define o codigo do ativo negociado.
-         * @param codigoNeg Objeto `CodigoNeg` a ser atribuido.
-         */
-        void setCodigoNeg(CodigoNeg);
+    /**
+     * @brief Metodo publico que define o codigo do ativo negociado.
+     * @param codigoNeg Objeto `CodigoNeg` a ser atribuido.
+     */
+    void setCodigoNeg(CodigoNeg);
 
-        /**
-         * @brief Metodo publico que retorna o codigo do ativo negociado.
-         * @return Objeto `CodigoNeg`.
-         */
-        CodigoNeg getCodigoNeg() const;
+    /**
+     * @brief Metodo publico que retorna o codigo do ativo negociado.
+     * @return Objeto `CodigoNeg`.
+     */
+    CodigoNeg getCodigoNeg() const;
 
-        /**
-         * @brief Metodo publico que define a data da ordem.
-         * @param data Objeto `Data` a ser atribuido.
-         */
-        void setData(Data);
+    /**
+     * @brief Metodo publico que define a data da ordem.
+     * @param data Objeto `Data` a ser atribuido.
+     */
+    void setData(Data);
 
-        /**
-         * @brief Metodo publico que retorna a data da ordem.
-         * @return Objeto `Data`.
-         */
-        Data getData() const;
+    /**
+     * @brief Metodo publico que retorna a data da ordem.
+     * @return Objeto `Data`.
+     */
+    Data getData() const;
 
-        /**
-         * @brief Metodo publico que define o valor financeiro da ordem.
-         * @param dinheiro Objeto `Dinheiro` a ser atribuido.
-         */
-        void setDinheiro(Dinheiro);
+    /**
+     * @brief Metodo publico que define o valor financeiro da ordem.
+     * @param dinheiro Objeto `Dinheiro` a ser atribuido.
+     */
+    void setDinheiro(Dinheiro);
 
-        /**
-         * @brief Metodo publico que retorna o valor financeiro da ordem.
-         * @return Objeto `Dinheiro`.
-         */
-        Dinheiro getDinheiro() const;
+    /**
+     * @brief Metodo publico que retorna o valor financeiro da ordem.
+     * @return Objeto `Dinheiro`.
+     */
+    Dinheiro getDinheiro() const;
 
-         /**
-         * @brief Metodo publico que define a quantidade de ativos negociados.
-         * @param quantidade Objeto `Quantidade` a ser atribuido.
-         */
-        void setQuantidade(Quantidade);
+    /**
+     * @brief Metodo publico que define a quantidade de ativos negociados.
+     * @param quantidade Objeto `Quantidade` a ser atribuido.
+     */
+    void setQuantidade(Quantidade);
 
-        /**
-         * @brief Metodo publico que retorna a quantidade de ativos negociados.
-         * @return Objeto `Quantidade`.
-         */
-        Quantidade getQuantidade() const;
+    /**
+     * @brief Metodo publico que retorna a quantidade de ativos negociados.
+     * @return Objeto `Quantidade`.
+     */
+    Quantidade getQuantidade() const;
 };
 //---------------------------------------------------------------------
 
@@ -415,70 +454,100 @@ class Ordem {
  * @brief Define o codigo da ordem.
  * @param codigo Objeto do dominio Codigo a ser atribuido.
  */
-inline void Ordem::setCodigo(Codigo codigo){ this->codigo = codigo; }
+inline void Ordem::setCodigo(Codigo codigo)
+{
+    this->codigo = codigo;
+}
 
 //---------------------------------------------------------------------
 /**
  * @brief Retorna o codigo da ordem.
  * @return Objeto do dominio Codigo.
  */
-inline Codigo Ordem::getCodigo() const { return codigo; }
+inline Codigo Ordem::getCodigo() const
+{
+    return codigo;
+}
 
 //---------------------------------------------------------------------
 /**
  * @brief Define o codigo do ativo negociado.
  * @param codigoNeg Objeto do dominio CodigoNeg a ser atribuido.
  */
-inline void Ordem::setCodigoNeg(CodigoNeg codigoNeg){ this->codigoNeg = codigoNeg; }
+inline void Ordem::setCodigoNeg(CodigoNeg codigoNeg)
+{
+    this->codigoNeg = codigoNeg;
+}
 
 //---------------------------------------------------------------------
 /**
  * @brief Retorna o codigo do ativo negociado.
  * @return Objeto do dominio CodigoNeg.
  */
-inline CodigoNeg Ordem::getCodigoNeg() const { return codigoNeg; }
+inline CodigoNeg Ordem::getCodigoNeg() const
+{
+    return codigoNeg;
+}
 
 //---------------------------------------------------------------------
 /**
  * @brief Define a data da ordem.
  * @param data Objeto do dominio Data a ser atribuido.
  */
-inline void Ordem::setData(Data data){ this->data = data; }
+inline void Ordem::setData(Data data)
+{
+    this->data = data;
+}
 
 //---------------------------------------------------------------------
 /**
  * @brief Retorna a data da ordem.
  * @return Objeto do dominio Data.
  */
-inline Data Ordem::getData() const { return data; }
+inline Data Ordem::getData() const
+{
+    return data;
+}
 
 //---------------------------------------------------------------------
 /**
  * @brief Define o valor financeiro da ordem.
  * @param dinheiro Objeto do dominio Dinheiro a ser atribuido.
  */
-inline void Ordem::setDinheiro(Dinheiro dinheiro){ this->dinheiro = dinheiro; }
+inline void Ordem::setDinheiro(Dinheiro dinheiro)
+{
+    this->dinheiro = dinheiro;
+}
 
 //---------------------------------------------------------------------
 /**
  * @brief Retorna o valor financeiro da ordem.
  * @return Objeto do dominio Dinheiro.
  */
-inline Dinheiro Ordem::getDinheiro() const { return dinheiro; }
+inline Dinheiro Ordem::getDinheiro() const
+{
+    return dinheiro;
+}
 
 //---------------------------------------------------------------------
 /**
  * @brief Define a quantidade de ativos da ordem.
  * @param quantidade Objeto do dominio Quantidade a ser atribuido.
  */
-inline void Ordem::setQuantidade(Quantidade quantidade){ this->quantidade = quantidade; }
+inline void Ordem::setQuantidade(Quantidade quantidade)
+{
+    this->quantidade = quantidade;
+}
 
 //---------------------------------------------------------------------
 /**
  * @brief Retorna a quantidade de ativos da ordem.
  * @return Objeto do dominio Quantidade.
  */
-inline Quantidade Ordem::getQuantidade() const { return quantidade; }
+inline Quantidade Ordem::getQuantidade() const
+{
+    return quantidade;
+}
 
 ///---------------------------------------------------------------------
 

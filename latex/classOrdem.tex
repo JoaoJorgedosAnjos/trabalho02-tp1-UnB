@@ -1,0 +1,255 @@
+\doxysection{Ordem Class Reference}
+\hypertarget{classOrdem}{}\label{classOrdem}\index{Ordem@{Ordem}}
+
+
+Classe que representa uma instrucao formal enviada por um investidor (ou sistema automatizado) para comprar ou vender ativos financeiros (como acoes, fundos, titulos ou criptomoedas) ma plataforma de negociacao.  
+
+
+
+
+{\ttfamily \#include $<$entidades.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classOrdem_ad1f7e87a3ba21c25ff3943ef2912147c}{set\+Codigo}} (\mbox{\hyperlink{classCodigo}{Codigo}})
+\begin{DoxyCompactList}\small\item\em Metodo publico que define o codigo da ordem. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCodigo}{Codigo}} \mbox{\hyperlink{classOrdem_aef6c8a1dfc9042b22b31c27864b5cffe}{get\+Codigo}} () const
+\begin{DoxyCompactList}\small\item\em Metodo publico que retorna o codigo da ordem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classOrdem_a0399c171079ee75d99970a20311a2349}{set\+Codigo\+Neg}} (\mbox{\hyperlink{classCodigoNeg}{Codigo\+Neg}})
+\begin{DoxyCompactList}\small\item\em Metodo publico que define o codigo do ativo negociado. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCodigoNeg}{Codigo\+Neg}} \mbox{\hyperlink{classOrdem_ab86359229510f77d00a780930bfad9da}{get\+Codigo\+Neg}} () const
+\begin{DoxyCompactList}\small\item\em Metodo publico que retorna o codigo do ativo negociado. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classOrdem_a70090b4f6d58786b42cc1ea98ff856b0}{set\+Data}} (\mbox{\hyperlink{classData}{Data}})
+\begin{DoxyCompactList}\small\item\em Metodo publico que define a data da ordem. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classData}{Data}} \mbox{\hyperlink{classOrdem_ae5b40204857d63270a0800f1b205252d}{get\+Data}} () const
+\begin{DoxyCompactList}\small\item\em Metodo publico que retorna a data da ordem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classOrdem_a1c143fa7f072121b5f993bbfabe0d23a}{set\+Dinheiro}} (\mbox{\hyperlink{classDinheiro}{Dinheiro}})
+\begin{DoxyCompactList}\small\item\em Metodo publico que define o valor financeiro da ordem. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDinheiro}{Dinheiro}} \mbox{\hyperlink{classOrdem_acfa00411f2e081bcfac6b917ab589c11}{get\+Dinheiro}} () const
+\begin{DoxyCompactList}\small\item\em Metodo publico que retorna o valor financeiro da ordem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classOrdem_af4994be1efdf28866adcf8bd6454dc91}{set\+Quantidade}} (\mbox{\hyperlink{classQuantidade}{Quantidade}})
+\begin{DoxyCompactList}\small\item\em Metodo publico que define a quantidade de ativos negociados. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classQuantidade}{Quantidade}} \mbox{\hyperlink{classOrdem_a17e5299751e5c0347d2416c4ca79f9ae}{get\+Quantidade}} () const
+\begin{DoxyCompactList}\small\item\em Metodo publico que retorna a quantidade de ativos negociados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que representa uma instrucao formal enviada por um investidor (ou sistema automatizado) para comprar ou vender ativos financeiros (como acoes, fundos, titulos ou criptomoedas) ma plataforma de negociacao. 
+
+\DoxyHorRuler{0}
+
+
+A classe {\ttfamily \doxylink{classOrdem}{Ordem}} armazena os dados essenciais para registrar uma ordem realizada por um usuario, como o codigo da ordem, o codigo do ativo negociado, a data, o valor financeiro e a quantidade.
+
+Esta entidade e fundamental para o controle de transacoes no sistema, garantindo rastreabilidade e integridade nas operacoes.
+
+Atributos\+:
+\begin{DoxyItemize}
+\item {\ttfamily codigo}\+: \doxylink{classCodigo}{Codigo} identificador unico da ordem (dominio {\ttfamily \doxylink{classCodigo}{Codigo}}).
+\item {\ttfamily codigo\+Neg}\+: \doxylink{classCodigo}{Codigo} do ativo negociado (dominio {\ttfamily \doxylink{classCodigoNeg}{Codigo\+Neg}}).
+\item {\ttfamily data}\+: \doxylink{classData}{Data} da realizacao da ordem (dominio {\ttfamily \doxylink{classData}{Data}}).
+\item {\ttfamily dinheiro}\+: Valor financeiro da ordem (dominio {\ttfamily \doxylink{classDinheiro}{Dinheiro}}).
+\item {\ttfamily quantidade}\+: \doxylink{classQuantidade}{Quantidade} de ativos envolvidos (dominio {\ttfamily \doxylink{classQuantidade}{Quantidade}}).
+\end{DoxyItemize}
+
+Metodos publicos\+:
+\begin{DoxyItemize}
+\item {\ttfamily \doxylink{classOrdem_ad1f7e87a3ba21c25ff3943ef2912147c}{set\+Codigo(\+Codigo)}}\+: Define o codigo da ordem.
+\item {\ttfamily \doxylink{classOrdem_aef6c8a1dfc9042b22b31c27864b5cffe}{get\+Codigo()}}\+: Retorna o codigo da ordem.
+\item {\ttfamily \doxylink{classOrdem_a0399c171079ee75d99970a20311a2349}{set\+Codigo\+Neg(\+Codigo\+Neg)}}\+: Define o codigo do ativo negociado.
+\item {\ttfamily \doxylink{classOrdem_ab86359229510f77d00a780930bfad9da}{get\+Codigo\+Neg()}}\+: Retorna o codigo do ativo negociado.
+\item {\ttfamily \doxylink{classOrdem_a70090b4f6d58786b42cc1ea98ff856b0}{set\+Data(\+Data)}}\+: Define a data da ordem.
+\item {\ttfamily \doxylink{classOrdem_ae5b40204857d63270a0800f1b205252d}{get\+Data()}}\+: Retorna a data da ordem.
+\item {\ttfamily \doxylink{classOrdem_a1c143fa7f072121b5f993bbfabe0d23a}{set\+Dinheiro(\+Dinheiro)}}\+: Define o valor da ordem.
+\item {\ttfamily \doxylink{classOrdem_acfa00411f2e081bcfac6b917ab589c11}{get\+Dinheiro()}}\+: Retorna o valor da ordem.
+\item {\ttfamily \doxylink{classOrdem_af4994be1efdf28866adcf8bd6454dc91}{set\+Quantidade(\+Quantidade)}}\+: Define a quantidade de ativos.
+\item {\ttfamily \doxylink{classOrdem_a17e5299751e5c0347d2416c4ca79f9ae}{get\+Quantidade()}}\+: Retorna a quantidade de ativos. 
+\end{DoxyItemize}
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classOrdem_aef6c8a1dfc9042b22b31c27864b5cffe}\index{Ordem@{Ordem}!getCodigo@{getCodigo}}
+\index{getCodigo@{getCodigo}!Ordem@{Ordem}}
+\doxysubsubsection{\texorpdfstring{getCodigo()}{getCodigo()}}
+{\footnotesize\ttfamily \label{classOrdem_aef6c8a1dfc9042b22b31c27864b5cffe} 
+\mbox{\hyperlink{classCodigo}{Codigo}} Ordem\+::get\+Codigo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que retorna o codigo da ordem. 
+
+Retorna o codigo da ordem.
+
+\begin{DoxyReturn}{Returns}
+Objeto {\ttfamily \doxylink{classCodigo}{Codigo}}.
+
+Objeto do dominio \doxylink{classCodigo}{Codigo}. 
+\end{DoxyReturn}
+\Hypertarget{classOrdem_ab86359229510f77d00a780930bfad9da}\index{Ordem@{Ordem}!getCodigoNeg@{getCodigoNeg}}
+\index{getCodigoNeg@{getCodigoNeg}!Ordem@{Ordem}}
+\doxysubsubsection{\texorpdfstring{getCodigoNeg()}{getCodigoNeg()}}
+{\footnotesize\ttfamily \label{classOrdem_ab86359229510f77d00a780930bfad9da} 
+\mbox{\hyperlink{classCodigoNeg}{Codigo\+Neg}} Ordem\+::get\+Codigo\+Neg (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que retorna o codigo do ativo negociado. 
+
+Retorna o codigo do ativo negociado.
+
+\begin{DoxyReturn}{Returns}
+Objeto {\ttfamily \doxylink{classCodigoNeg}{Codigo\+Neg}}.
+
+Objeto do dominio \doxylink{classCodigoNeg}{Codigo\+Neg}. 
+\end{DoxyReturn}
+\Hypertarget{classOrdem_ae5b40204857d63270a0800f1b205252d}\index{Ordem@{Ordem}!getData@{getData}}
+\index{getData@{getData}!Ordem@{Ordem}}
+\doxysubsubsection{\texorpdfstring{getData()}{getData()}}
+{\footnotesize\ttfamily \label{classOrdem_ae5b40204857d63270a0800f1b205252d} 
+\mbox{\hyperlink{classData}{Data}} Ordem\+::get\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que retorna a data da ordem. 
+
+Retorna a data da ordem.
+
+\begin{DoxyReturn}{Returns}
+Objeto {\ttfamily \doxylink{classData}{Data}}.
+
+Objeto do dominio \doxylink{classData}{Data}. 
+\end{DoxyReturn}
+\Hypertarget{classOrdem_acfa00411f2e081bcfac6b917ab589c11}\index{Ordem@{Ordem}!getDinheiro@{getDinheiro}}
+\index{getDinheiro@{getDinheiro}!Ordem@{Ordem}}
+\doxysubsubsection{\texorpdfstring{getDinheiro()}{getDinheiro()}}
+{\footnotesize\ttfamily \label{classOrdem_acfa00411f2e081bcfac6b917ab589c11} 
+\mbox{\hyperlink{classDinheiro}{Dinheiro}} Ordem\+::get\+Dinheiro (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que retorna o valor financeiro da ordem. 
+
+Retorna o valor financeiro da ordem.
+
+\begin{DoxyReturn}{Returns}
+Objeto {\ttfamily \doxylink{classDinheiro}{Dinheiro}}.
+
+Objeto do dominio \doxylink{classDinheiro}{Dinheiro}. 
+\end{DoxyReturn}
+\Hypertarget{classOrdem_a17e5299751e5c0347d2416c4ca79f9ae}\index{Ordem@{Ordem}!getQuantidade@{getQuantidade}}
+\index{getQuantidade@{getQuantidade}!Ordem@{Ordem}}
+\doxysubsubsection{\texorpdfstring{getQuantidade()}{getQuantidade()}}
+{\footnotesize\ttfamily \label{classOrdem_a17e5299751e5c0347d2416c4ca79f9ae} 
+\mbox{\hyperlink{classQuantidade}{Quantidade}} Ordem\+::get\+Quantidade (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que retorna a quantidade de ativos negociados. 
+
+Retorna a quantidade de ativos da ordem.
+
+\begin{DoxyReturn}{Returns}
+Objeto {\ttfamily \doxylink{classQuantidade}{Quantidade}}.
+
+Objeto do dominio \doxylink{classQuantidade}{Quantidade}. 
+\end{DoxyReturn}
+\Hypertarget{classOrdem_ad1f7e87a3ba21c25ff3943ef2912147c}\index{Ordem@{Ordem}!setCodigo@{setCodigo}}
+\index{setCodigo@{setCodigo}!Ordem@{Ordem}}
+\doxysubsubsection{\texorpdfstring{setCodigo()}{setCodigo()}}
+{\footnotesize\ttfamily \label{classOrdem_ad1f7e87a3ba21c25ff3943ef2912147c} 
+void Ordem\+::set\+Codigo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCodigo}{Codigo}}}]{codigo}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que define o codigo da ordem. 
+
+Define o codigo da ordem.
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Objeto {\ttfamily \doxylink{classCodigo}{Codigo}} a ser atribuido.\\
+\hline
+{\em codigo} & Objeto do dominio \doxylink{classCodigo}{Codigo} a ser atribuido. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classOrdem_a0399c171079ee75d99970a20311a2349}\index{Ordem@{Ordem}!setCodigoNeg@{setCodigoNeg}}
+\index{setCodigoNeg@{setCodigoNeg}!Ordem@{Ordem}}
+\doxysubsubsection{\texorpdfstring{setCodigoNeg()}{setCodigoNeg()}}
+{\footnotesize\ttfamily \label{classOrdem_a0399c171079ee75d99970a20311a2349} 
+void Ordem\+::set\+Codigo\+Neg (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCodigoNeg}{Codigo\+Neg}}}]{codigo\+Neg}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que define o codigo do ativo negociado. 
+
+Define o codigo do ativo negociado.
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo\+Neg} & Objeto {\ttfamily \doxylink{classCodigoNeg}{Codigo\+Neg}} a ser atribuido.\\
+\hline
+{\em codigo\+Neg} & Objeto do dominio \doxylink{classCodigoNeg}{Codigo\+Neg} a ser atribuido. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classOrdem_a70090b4f6d58786b42cc1ea98ff856b0}\index{Ordem@{Ordem}!setData@{setData}}
+\index{setData@{setData}!Ordem@{Ordem}}
+\doxysubsubsection{\texorpdfstring{setData()}{setData()}}
+{\footnotesize\ttfamily \label{classOrdem_a70090b4f6d58786b42cc1ea98ff856b0} 
+void Ordem\+::set\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classData}{Data}}}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que define a data da ordem. 
+
+Define a data da ordem.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Objeto {\ttfamily \doxylink{classData}{Data}} a ser atribuido.\\
+\hline
+{\em data} & Objeto do dominio \doxylink{classData}{Data} a ser atribuido. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classOrdem_a1c143fa7f072121b5f993bbfabe0d23a}\index{Ordem@{Ordem}!setDinheiro@{setDinheiro}}
+\index{setDinheiro@{setDinheiro}!Ordem@{Ordem}}
+\doxysubsubsection{\texorpdfstring{setDinheiro()}{setDinheiro()}}
+{\footnotesize\ttfamily \label{classOrdem_a1c143fa7f072121b5f993bbfabe0d23a} 
+void Ordem\+::set\+Dinheiro (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classDinheiro}{Dinheiro}}}]{dinheiro}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que define o valor financeiro da ordem. 
+
+Define o valor financeiro da ordem.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dinheiro} & Objeto {\ttfamily \doxylink{classDinheiro}{Dinheiro}} a ser atribuido.\\
+\hline
+{\em dinheiro} & Objeto do dominio \doxylink{classDinheiro}{Dinheiro} a ser atribuido. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classOrdem_af4994be1efdf28866adcf8bd6454dc91}\index{Ordem@{Ordem}!setQuantidade@{setQuantidade}}
+\index{setQuantidade@{setQuantidade}!Ordem@{Ordem}}
+\doxysubsubsection{\texorpdfstring{setQuantidade()}{setQuantidade()}}
+{\footnotesize\ttfamily \label{classOrdem_af4994be1efdf28866adcf8bd6454dc91} 
+void Ordem\+::set\+Quantidade (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classQuantidade}{Quantidade}}}]{quantidade}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que define a quantidade de ativos negociados. 
+
+Define a quantidade de ativos da ordem.
+
+
+\begin{DoxyParams}{Parameters}
+{\em quantidade} & Objeto {\ttfamily \doxylink{classQuantidade}{Quantidade}} a ser atribuido.\\
+\hline
+{\em quantidade} & Objeto do dominio \doxylink{classQuantidade}{Quantidade} a ser atribuido. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/entidades/\mbox{\hyperlink{entidades_8hpp}{entidades.\+hpp}}\end{DoxyCompactItemize}

@@ -1,5 +1,5 @@
-\doxysection{dominios.\+hpp File Reference}
-\hypertarget{dominios_8hpp}{}\label{dominios_8hpp}\index{dominios.hpp@{dominios.hpp}}
+\doxysection{src/dominios/dominios.hpp File Reference}
+\hypertarget{dominios_8hpp}{}\label{dominios_8hpp}\index{src/dominios/dominios.hpp@{src/dominios/dominios.hpp}}
 
 
 Biblioteca de dominios do sistema de investimentos financeiros.  
@@ -14,23 +14,23 @@ Biblioteca de dominios do sistema de investimentos financeiros.
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \mbox{\hyperlink{class_codigo}{Codigo}}
+class \mbox{\hyperlink{classCodigo}{Codigo}}
 \begin{DoxyCompactList}\small\item\em Classe que representa uma sequencia numerica unica de identificacao, com exatamente 5 digitos numericos. \end{DoxyCompactList}\item 
-class \mbox{\hyperlink{class_codigo_neg}{Codigo\+Neg}}
+class \mbox{\hyperlink{classCodigoNeg}{Codigo\+Neg}}
 \begin{DoxyCompactList}\small\item\em Classe que representa uma sequencia unica de identificacao, com exatamente 12 caracteres alfanumericos ou espacos. \end{DoxyCompactList}\item 
-class \mbox{\hyperlink{class_ncpf}{Ncpf}}
+class \mbox{\hyperlink{classNcpf}{Ncpf}}
 \begin{DoxyCompactList}\small\item\em Classe que representa uma sequencia unica de identificacao, com exatamente 14 caracteres no formato XXX.\+XXX.\+XXX-\/XX. \end{DoxyCompactList}\item 
-class \mbox{\hyperlink{class_data}{Data}}
+class \mbox{\hyperlink{classData}{Data}}
 \begin{DoxyCompactList}\small\item\em Classe que representa uma abstracao de tempo por meio de uma sequencia de 8 digitos numericos no formato AAAAMMDD. \end{DoxyCompactList}\item 
-class \mbox{\hyperlink{class_nome}{Nome}}
+class \mbox{\hyperlink{classNome}{Nome}}
 \begin{DoxyCompactList}\small\item\em Classe que representa a identificacao textual de uma pessoa, objeto ou entidade. Pode ser composta por um ou mais componentes, com ate 20 caracteres alfanumericos e espacos. \end{DoxyCompactList}\item 
-class \mbox{\hyperlink{class_tipo_perfil}{Tipo\+Perfil}}
+class \mbox{\hyperlink{classTipoPerfil}{Tipo\+Perfil}}
 \begin{DoxyCompactList}\small\item\em Classe que representa o tipo de investidor de um usuario. \end{DoxyCompactList}\item 
-class \mbox{\hyperlink{class_dinheiro}{Dinheiro}}
+class \mbox{\hyperlink{classDinheiro}{Dinheiro}}
 \begin{DoxyCompactList}\small\item\em Classe que representa um valor monetario ou recurso financeiro aplicado, resgatado e movimentado pelos usuarios, em formato textual. \end{DoxyCompactList}\item 
-class \mbox{\hyperlink{class_quantidade}{Quantidade}}
+class \mbox{\hyperlink{classQuantidade}{Quantidade}}
 \begin{DoxyCompactList}\small\item\em Classe que representa o numero inteiro de unidades de um ativo financeiro, adquiridas, utilizadas ou mantidas por um investidor em transacoes financeiras. \end{DoxyCompactList}\item 
-class \mbox{\hyperlink{class_senha}{Senha}}
+class \mbox{\hyperlink{classSenha}{Senha}}
 \begin{DoxyCompactList}\small\item\em Classe que representa um conjunto de caracteres usado para autenticar a identidade de um usuario no sistema de investimentos. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -43,7 +43,7 @@ Cada dominio encapsula um tipo basico (como string) com regras de validacao prop
 
 Os dominios foram projetados para validar automaticamente os valores atribuidos a eles, evitando inconsistencias e entradas invalidas no sistema. Exemplos incluem CPF, nome, senha, codigo de ativos, datas, quantidades, valores monetarios e tipos de perfil.
 
-Estes tipos sao amplamente utilizados nas entidades do sistema, como \doxylink{class_conta}{Conta}, \doxylink{class_carteira}{Carteira} e \doxylink{class_ordem}{Ordem}, promovendo reutilizacao e seguranca de dados nas operacoes financeiras.
+Estes tipos sao amplamente utilizados nas entidades do sistema, como \doxylink{classConta}{Conta}, \doxylink{classCarteira}{Carteira} e \doxylink{classOrdem}{Ordem}, promovendo reutilizacao e seguranca de dados nas operacoes financeiras.
 
 \begin{DoxySeeAlso}{See also}
 \doxylink{entidades_8hpp}{entidades.\+hpp} 

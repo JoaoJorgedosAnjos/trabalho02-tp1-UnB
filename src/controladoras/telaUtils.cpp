@@ -1,9 +1,10 @@
 #include "telaUtils.hpp"
+#include <cstdlib>
 #include <iostream>
-#include <cstdlib> 
-#include <limits>  
+#include <limits>
 
-void telaUtils::limparTela() {
+void telaUtils::limparTela()
+{
 #ifdef _WIN32
     system("cls");
 #else
@@ -11,13 +12,15 @@ void telaUtils::limparTela() {
 #endif
 }
 
-void telaUtils::pausar(const std::string& mensagem) {
+void telaUtils::pausar(const std::string &mensagem)
+{
     std::cout << "\n" << mensagem << std::endl;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cin.get();
 }
 
-void telaUtils::exibirCabecalho(const std::string& titulo) {
+void telaUtils::exibirCabecalho(const std::string &titulo)
+{
     limparTela();
     std::cout << std::string(50, '=') << std::endl;
     std::cout << "          " << titulo << std::endl;
@@ -25,6 +28,7 @@ void telaUtils::exibirCabecalho(const std::string& titulo) {
     std::cout << std::endl;
 }
 
-void telaUtils::exibirSeparador(char caractere, int tamanho) {
+void telaUtils::exibirSeparador(char caractere, int tamanho)
+{
     std::cout << std::string(tamanho, caractere) << std::endl;
-} 
+}

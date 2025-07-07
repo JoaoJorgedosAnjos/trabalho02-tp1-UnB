@@ -1,0 +1,512 @@
+\doxysection{Database\+Manager Class Reference}
+\hypertarget{classDatabaseManager}{}\label{classDatabaseManager}\index{DatabaseManager@{DatabaseManager}}
+
+
+Gerenciador de banco de dados SQLite para o sistema de investimentos.  
+
+
+
+
+{\ttfamily \#include $<$Database\+Manager.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDatabaseManager_a994baccc2ff50fecda3cb3597ef5143b}{Database\+Manager}} (const std\+::string \&caminho\+Banco="{}investimentos.\+db"{})
+\begin{DoxyCompactList}\small\item\em Construtor padrão. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDatabaseManager_ae9b3a5da1e04fbb00faf8a034da1d063}{\texorpdfstring{$\sim$}{\string~}\+Database\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Destrutor -\/ fecha conexão automaticamente. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDatabaseManager_aa34b73b2c7dd4fc4c41bcde5c043cd04}{conectar}} ()
+\begin{DoxyCompactList}\small\item\em Conecta ao banco de dados SQLite. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDatabaseManager_a432f91fd4ea52b834dd5bcab69e6e693}{desconectar}} ()
+\begin{DoxyCompactList}\small\item\em Desconecta do banco de dados. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDatabaseManager_abd7b3f0f8264e1a8c451194a2adc67bf}{inicializar\+Banco}} ()
+\begin{DoxyCompactList}\small\item\em Inicializa o banco criando as tabelas necessárias. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDatabaseManager_a31ce681e47e60321acee37684fcc9162}{esta\+Conectado}} () const
+\begin{DoxyCompactList}\small\item\em Verifica se está conectado ao banco. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDatabaseManager_ad74c763b3e09b3eb3f30d35f4822d10a}{inserir\+Conta}} (const \mbox{\hyperlink{classConta}{Conta}} \&conta)
+\begin{DoxyCompactList}\small\item\em Insere uma nova conta no banco. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDatabaseManager_ab3c54af72bd930db9adc1ffc4ebc901f}{buscar\+Conta}} (const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf, \mbox{\hyperlink{classConta}{Conta}} \texorpdfstring{$\ast$}{*}conta)
+\begin{DoxyCompactList}\small\item\em Busca uma conta pelo CPF. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDatabaseManager_a7851c336f359b715d81b3428dc187dfd}{atualizar\+Conta}} (const \mbox{\hyperlink{classConta}{Conta}} \&conta)
+\begin{DoxyCompactList}\small\item\em Atualiza uma conta existente. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDatabaseManager_adb3b5621377fcdb6e83042e15e51a199}{excluir\+Conta}} (const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf)
+\begin{DoxyCompactList}\small\item\em Exclui uma conta do banco. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDatabaseManager_a2aeb74eff715732d0f48adcc4b21486d}{autenticar\+Usuario}} (const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf, const \mbox{\hyperlink{classSenha}{Senha}} \&senha)
+\begin{DoxyCompactList}\small\item\em Autentica um usuário. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDatabaseManager_aa0b88e69d778b4eb4c91763e09738b6c}{inserir\+Carteira}} (const \mbox{\hyperlink{classCarteira}{Carteira}} \&carteira, const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf\+Proprietario)
+\begin{DoxyCompactList}\small\item\em Insere uma nova carteira no banco. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDatabaseManager_af6e9e31e1d538417a8ea273fcc2c5437}{listar\+Carteiras}} (const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf, std\+::list$<$ \mbox{\hyperlink{classCarteira}{Carteira}} $>$ \texorpdfstring{$\ast$}{*}lista\+Carteiras)
+\begin{DoxyCompactList}\small\item\em Lista todas as carteiras de um usuário. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDatabaseManager_a5fadc7d35ac54b8c38ab11db6f981c81}{buscar\+Carteira}} (const \mbox{\hyperlink{classCodigo}{Codigo}} \&codigo, \mbox{\hyperlink{classCarteira}{Carteira}} \texorpdfstring{$\ast$}{*}carteira)
+\begin{DoxyCompactList}\small\item\em Busca uma carteira pelo código. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDatabaseManager_a4c546fcadd207fbba44848244a266004}{atualizar\+Carteira}} (const \mbox{\hyperlink{classCarteira}{Carteira}} \&carteira)
+\begin{DoxyCompactList}\small\item\em Atualiza uma carteira existente. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDatabaseManager_aeaa110570f9596093a4400a342ac8346}{excluir\+Carteira}} (const \mbox{\hyperlink{classCodigo}{Codigo}} \&codigo)
+\begin{DoxyCompactList}\small\item\em Exclui uma carteira do banco. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDatabaseManager_af1f7da9adc5e172aeda6c4dfeee3f40e}{inserir\+Ordem}} (const \mbox{\hyperlink{classOrdem}{Ordem}} \&ordem, const \mbox{\hyperlink{classCodigo}{Codigo}} \&codigo\+Carteira)
+\begin{DoxyCompactList}\small\item\em Insere uma nova ordem no banco. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDatabaseManager_ab2fa89cecc1760db8175e3a9b841cd9e}{listar\+Ordens}} (const \mbox{\hyperlink{classCodigo}{Codigo}} \&codigo\+Carteira, std\+::list$<$ \mbox{\hyperlink{classOrdem}{Ordem}} $>$ \texorpdfstring{$\ast$}{*}lista\+Ordens)
+\begin{DoxyCompactList}\small\item\em Lista todas as ordens de uma carteira. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDatabaseManager_acef3e62873ee8f8046c5640c271be016}{buscar\+Ordem}} (const \mbox{\hyperlink{classCodigo}{Codigo}} \&codigo, \mbox{\hyperlink{classOrdem}{Ordem}} \texorpdfstring{$\ast$}{*}ordem)
+\begin{DoxyCompactList}\small\item\em Busca uma ordem pelo código. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDatabaseManager_a5b7eedad0ec80c5a7c90743cb0491cdf}{excluir\+Ordem}} (const \mbox{\hyperlink{classCodigo}{Codigo}} \&codigo)
+\begin{DoxyCompactList}\small\item\em Exclui uma ordem do banco. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDatabaseManager_a6a7a6175397b6ebefe59ec6e39cc634e}{calcular\+Saldo\+Carteira}} (const \mbox{\hyperlink{classCodigo}{Codigo}} \&codigo\+Carteira, \mbox{\hyperlink{classDinheiro}{Dinheiro}} \texorpdfstring{$\ast$}{*}saldo)
+\begin{DoxyCompactList}\small\item\em Calcula o saldo total de uma carteira. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDatabaseManager_a21073136948bacea1708c89da2658bfe}{limpar\+Todas\+Tabelas}} ()
+\begin{DoxyCompactList}\small\item\em Limpa todas as tabelas (usado para testes) \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classDatabaseManager_a44be591e987cc7a30ea3695d4cd4273a}{obter\+Estatisticas}} ()
+\begin{DoxyCompactList}\small\item\em Obtém estatísticas do banco. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{classDatabaseManager_a3b8add30c0ac2bd5050c053f5b9f04b4}{centavos\+Para\+Dinheiro}} (long long centavos)
+\begin{DoxyCompactList}\small\item\em Converte centavos para formato brasileiro de dinheiro. \end{DoxyCompactList}\item 
+static long long \mbox{\hyperlink{classDatabaseManager_abbb94623b3482870645ee030eb0357f8}{dinheiro\+Para\+Centavos}} (const \mbox{\hyperlink{classDinheiro}{Dinheiro}} \&dinheiro)
+\begin{DoxyCompactList}\small\item\em Converte um objeto \doxylink{classDinheiro}{Dinheiro} para centavos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gerenciador de banco de dados SQLite para o sistema de investimentos. 
+
+Responsável por todas as operações de persistência, abstraindo o acesso ao SQLite e fornecendo métodos específicos para cada entidade. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classDatabaseManager_a994baccc2ff50fecda3cb3597ef5143b}\index{DatabaseManager@{DatabaseManager}!DatabaseManager@{DatabaseManager}}
+\index{DatabaseManager@{DatabaseManager}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{DatabaseManager()}{DatabaseManager()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_a994baccc2ff50fecda3cb3597ef5143b} 
+Database\+Manager\+::\+Database\+Manager (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{caminho\+Banco}{ = {\ttfamily "{}investimentos.db"{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construtor padrão. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em caminho\+Banco} & Caminho para o arquivo do banco SQLite \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classDatabaseManager_ae9b3a5da1e04fbb00faf8a034da1d063}\index{DatabaseManager@{DatabaseManager}!````~DatabaseManager@{\texorpdfstring{$\sim$}{\string~}DatabaseManager}}
+\index{````~DatabaseManager@{\texorpdfstring{$\sim$}{\string~}DatabaseManager}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}DatabaseManager()}{\string~DatabaseManager()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_ae9b3a5da1e04fbb00faf8a034da1d063} 
+Database\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+Database\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destrutor -\/ fecha conexão automaticamente. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classDatabaseManager_a4c546fcadd207fbba44848244a266004}\index{DatabaseManager@{DatabaseManager}!atualizarCarteira@{atualizarCarteira}}
+\index{atualizarCarteira@{atualizarCarteira}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{atualizarCarteira()}{atualizarCarteira()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_a4c546fcadd207fbba44848244a266004} 
+bool Database\+Manager\+::atualizar\+Carteira (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCarteira}{Carteira}} \&}]{carteira}{}\end{DoxyParamCaption})}
+
+
+
+Atualiza uma carteira existente. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em carteira} & Objeto \doxylink{classCarteira}{Carteira} com dados atualizados \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se atualizou com sucesso, false caso contrário 
+\end{DoxyReturn}
+\Hypertarget{classDatabaseManager_a7851c336f359b715d81b3428dc187dfd}\index{DatabaseManager@{DatabaseManager}!atualizarConta@{atualizarConta}}
+\index{atualizarConta@{atualizarConta}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{atualizarConta()}{atualizarConta()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_a7851c336f359b715d81b3428dc187dfd} 
+bool Database\+Manager\+::atualizar\+Conta (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classConta}{Conta}} \&}]{conta}{}\end{DoxyParamCaption})}
+
+
+
+Atualiza uma conta existente. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em conta} & Objeto \doxylink{classConta}{Conta} com dados atualizados \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se atualizou com sucesso, false caso contrário 
+\end{DoxyReturn}
+\Hypertarget{classDatabaseManager_a2aeb74eff715732d0f48adcc4b21486d}\index{DatabaseManager@{DatabaseManager}!autenticarUsuario@{autenticarUsuario}}
+\index{autenticarUsuario@{autenticarUsuario}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{autenticarUsuario()}{autenticarUsuario()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_a2aeb74eff715732d0f48adcc4b21486d} 
+bool Database\+Manager\+::autenticar\+Usuario (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf}{, }\item[{const \mbox{\hyperlink{classSenha}{Senha}} \&}]{senha}{}\end{DoxyParamCaption})}
+
+
+
+Autentica um usuário. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF do usuário \\
+\hline
+{\em senha} & \doxylink{classSenha}{Senha} do usuário \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se autenticação bem-\/sucedida, false caso contrário 
+\end{DoxyReturn}
+\Hypertarget{classDatabaseManager_a5fadc7d35ac54b8c38ab11db6f981c81}\index{DatabaseManager@{DatabaseManager}!buscarCarteira@{buscarCarteira}}
+\index{buscarCarteira@{buscarCarteira}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{buscarCarteira()}{buscarCarteira()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_a5fadc7d35ac54b8c38ab11db6f981c81} 
+bool Database\+Manager\+::buscar\+Carteira (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCodigo}{Codigo}} \&}]{codigo}{, }\item[{\mbox{\hyperlink{classCarteira}{Carteira}} \texorpdfstring{$\ast$}{*}}]{carteira}{}\end{DoxyParamCaption})}
+
+
+
+Busca uma carteira pelo código. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Código da carteira \\
+\hline
+{\em carteira} & Ponteiro para objeto onde será armazenada a carteira \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se encontrou a carteira, false caso contrário 
+\end{DoxyReturn}
+\Hypertarget{classDatabaseManager_ab3c54af72bd930db9adc1ffc4ebc901f}\index{DatabaseManager@{DatabaseManager}!buscarConta@{buscarConta}}
+\index{buscarConta@{buscarConta}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{buscarConta()}{buscarConta()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_ab3c54af72bd930db9adc1ffc4ebc901f} 
+bool Database\+Manager\+::buscar\+Conta (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf}{, }\item[{\mbox{\hyperlink{classConta}{Conta}} \texorpdfstring{$\ast$}{*}}]{conta}{}\end{DoxyParamCaption})}
+
+
+
+Busca uma conta pelo CPF. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF da conta a ser buscada \\
+\hline
+{\em conta} & Ponteiro para objeto onde será armazenada a conta encontrada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se encontrou a conta, false caso contrário 
+\end{DoxyReturn}
+\Hypertarget{classDatabaseManager_acef3e62873ee8f8046c5640c271be016}\index{DatabaseManager@{DatabaseManager}!buscarOrdem@{buscarOrdem}}
+\index{buscarOrdem@{buscarOrdem}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{buscarOrdem()}{buscarOrdem()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_acef3e62873ee8f8046c5640c271be016} 
+bool Database\+Manager\+::buscar\+Ordem (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCodigo}{Codigo}} \&}]{codigo}{, }\item[{\mbox{\hyperlink{classOrdem}{Ordem}} \texorpdfstring{$\ast$}{*}}]{ordem}{}\end{DoxyParamCaption})}
+
+
+
+Busca uma ordem pelo código. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Código da ordem \\
+\hline
+{\em ordem} & Ponteiro para objeto onde será armazenada a ordem \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se encontrou a ordem, false caso contrário 
+\end{DoxyReturn}
+\Hypertarget{classDatabaseManager_a6a7a6175397b6ebefe59ec6e39cc634e}\index{DatabaseManager@{DatabaseManager}!calcularSaldoCarteira@{calcularSaldoCarteira}}
+\index{calcularSaldoCarteira@{calcularSaldoCarteira}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{calcularSaldoCarteira()}{calcularSaldoCarteira()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_a6a7a6175397b6ebefe59ec6e39cc634e} 
+bool Database\+Manager\+::calcular\+Saldo\+Carteira (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCodigo}{Codigo}} \&}]{codigo\+Carteira}{, }\item[{\mbox{\hyperlink{classDinheiro}{Dinheiro}} \texorpdfstring{$\ast$}{*}}]{saldo}{}\end{DoxyParamCaption})}
+
+
+
+Calcula o saldo total de uma carteira. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo\+Carteira} & Código da carteira \\
+\hline
+{\em saldo} & Ponteiro para objeto onde será armazenado o saldo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se calculou com sucesso, false caso contrário 
+\end{DoxyReturn}
+\Hypertarget{classDatabaseManager_a3b8add30c0ac2bd5050c053f5b9f04b4}\index{DatabaseManager@{DatabaseManager}!centavosParaDinheiro@{centavosParaDinheiro}}
+\index{centavosParaDinheiro@{centavosParaDinheiro}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{centavosParaDinheiro()}{centavosParaDinheiro()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_a3b8add30c0ac2bd5050c053f5b9f04b4} 
+std\+::string Database\+Manager\+::centavos\+Para\+Dinheiro (\begin{DoxyParamCaption}\item[{long long}]{centavos}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Converte centavos para formato brasileiro de dinheiro. 
+
+Converte um total de centavos (123456) para formato brasileiro de dinheiro ("{}1.\+234,56"{}).
+
+
+\begin{DoxyParams}{Parameters}
+{\em centavos} & Valor em centavos \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string formatada no padrão brasileiro (\#.\#\#\#.\#\#\#,\#\#) 
+\end{DoxyReturn}
+\Hypertarget{classDatabaseManager_aa34b73b2c7dd4fc4c41bcde5c043cd04}\index{DatabaseManager@{DatabaseManager}!conectar@{conectar}}
+\index{conectar@{conectar}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{conectar()}{conectar()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_aa34b73b2c7dd4fc4c41bcde5c043cd04} 
+bool Database\+Manager\+::conectar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Conecta ao banco de dados SQLite. 
+
+\begin{DoxyReturn}{Returns}
+true se conectou com sucesso, false caso contrário 
+\end{DoxyReturn}
+\Hypertarget{classDatabaseManager_a432f91fd4ea52b834dd5bcab69e6e693}\index{DatabaseManager@{DatabaseManager}!desconectar@{desconectar}}
+\index{desconectar@{desconectar}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{desconectar()}{desconectar()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_a432f91fd4ea52b834dd5bcab69e6e693} 
+void Database\+Manager\+::desconectar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Desconecta do banco de dados. 
+
+\Hypertarget{classDatabaseManager_abbb94623b3482870645ee030eb0357f8}\index{DatabaseManager@{DatabaseManager}!dinheiroParaCentavos@{dinheiroParaCentavos}}
+\index{dinheiroParaCentavos@{dinheiroParaCentavos}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{dinheiroParaCentavos()}{dinheiroParaCentavos()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_abbb94623b3482870645ee030eb0357f8} 
+long long Database\+Manager\+::dinheiro\+Para\+Centavos (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classDinheiro}{Dinheiro}} \&}]{dinheiro}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Converte um objeto \doxylink{classDinheiro}{Dinheiro} para centavos. 
+
+Converte um objeto \doxylink{classDinheiro}{Dinheiro} (formato "{}1.\+234,56"{}) para um total de centavos (123456).
+
+
+\begin{DoxyParams}{Parameters}
+{\em dinheiro} & Objeto \doxylink{classDinheiro}{Dinheiro} no formato brasileiro \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Valor em centavos como long long 
+\end{DoxyReturn}
+\Hypertarget{classDatabaseManager_a31ce681e47e60321acee37684fcc9162}\index{DatabaseManager@{DatabaseManager}!estaConectado@{estaConectado}}
+\index{estaConectado@{estaConectado}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{estaConectado()}{estaConectado()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_a31ce681e47e60321acee37684fcc9162} 
+bool Database\+Manager\+::esta\+Conectado (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Verifica se está conectado ao banco. 
+
+\begin{DoxyReturn}{Returns}
+true se conectado, false caso contrário 
+\end{DoxyReturn}
+\Hypertarget{classDatabaseManager_aeaa110570f9596093a4400a342ac8346}\index{DatabaseManager@{DatabaseManager}!excluirCarteira@{excluirCarteira}}
+\index{excluirCarteira@{excluirCarteira}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{excluirCarteira()}{excluirCarteira()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_aeaa110570f9596093a4400a342ac8346} 
+bool Database\+Manager\+::excluir\+Carteira (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCodigo}{Codigo}} \&}]{codigo}{}\end{DoxyParamCaption})}
+
+
+
+Exclui uma carteira do banco. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Código da carteira a ser excluída \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se excluiu com sucesso, false caso contrário 
+\end{DoxyReturn}
+\Hypertarget{classDatabaseManager_adb3b5621377fcdb6e83042e15e51a199}\index{DatabaseManager@{DatabaseManager}!excluirConta@{excluirConta}}
+\index{excluirConta@{excluirConta}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{excluirConta()}{excluirConta()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_adb3b5621377fcdb6e83042e15e51a199} 
+bool Database\+Manager\+::excluir\+Conta (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf}{}\end{DoxyParamCaption})}
+
+
+
+Exclui uma conta do banco. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF da conta a ser excluída \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se excluiu com sucesso, false caso contrário 
+\end{DoxyReturn}
+\Hypertarget{classDatabaseManager_a5b7eedad0ec80c5a7c90743cb0491cdf}\index{DatabaseManager@{DatabaseManager}!excluirOrdem@{excluirOrdem}}
+\index{excluirOrdem@{excluirOrdem}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{excluirOrdem()}{excluirOrdem()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_a5b7eedad0ec80c5a7c90743cb0491cdf} 
+bool Database\+Manager\+::excluir\+Ordem (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCodigo}{Codigo}} \&}]{codigo}{}\end{DoxyParamCaption})}
+
+
+
+Exclui uma ordem do banco. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Código da ordem a ser excluída \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se excluiu com sucesso, false caso contrário 
+\end{DoxyReturn}
+\Hypertarget{classDatabaseManager_abd7b3f0f8264e1a8c451194a2adc67bf}\index{DatabaseManager@{DatabaseManager}!inicializarBanco@{inicializarBanco}}
+\index{inicializarBanco@{inicializarBanco}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{inicializarBanco()}{inicializarBanco()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_abd7b3f0f8264e1a8c451194a2adc67bf} 
+bool Database\+Manager\+::inicializar\+Banco (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Inicializa o banco criando as tabelas necessárias. 
+
+\begin{DoxyReturn}{Returns}
+true se inicializou com sucesso, false caso contrário 
+\end{DoxyReturn}
+\Hypertarget{classDatabaseManager_aa0b88e69d778b4eb4c91763e09738b6c}\index{DatabaseManager@{DatabaseManager}!inserirCarteira@{inserirCarteira}}
+\index{inserirCarteira@{inserirCarteira}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{inserirCarteira()}{inserirCarteira()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_aa0b88e69d778b4eb4c91763e09738b6c} 
+bool Database\+Manager\+::inserir\+Carteira (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCarteira}{Carteira}} \&}]{carteira}{, }\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf\+Proprietario}{}\end{DoxyParamCaption})}
+
+
+
+Insere uma nova carteira no banco. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em carteira} & Objeto \doxylink{classCarteira}{Carteira} a ser inserido \\
+\hline
+{\em cpf\+Proprietario} & CPF do proprietário da carteira \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se inseriu com sucesso, false caso contrário 
+\end{DoxyReturn}
+\Hypertarget{classDatabaseManager_ad74c763b3e09b3eb3f30d35f4822d10a}\index{DatabaseManager@{DatabaseManager}!inserirConta@{inserirConta}}
+\index{inserirConta@{inserirConta}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{inserirConta()}{inserirConta()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_ad74c763b3e09b3eb3f30d35f4822d10a} 
+bool Database\+Manager\+::inserir\+Conta (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classConta}{Conta}} \&}]{conta}{}\end{DoxyParamCaption})}
+
+
+
+Insere uma nova conta no banco. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em conta} & Objeto \doxylink{classConta}{Conta} a ser inserido \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se inseriu com sucesso, false caso contrário 
+\end{DoxyReturn}
+\Hypertarget{classDatabaseManager_af1f7da9adc5e172aeda6c4dfeee3f40e}\index{DatabaseManager@{DatabaseManager}!inserirOrdem@{inserirOrdem}}
+\index{inserirOrdem@{inserirOrdem}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{inserirOrdem()}{inserirOrdem()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_af1f7da9adc5e172aeda6c4dfeee3f40e} 
+bool Database\+Manager\+::inserir\+Ordem (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classOrdem}{Ordem}} \&}]{ordem}{, }\item[{const \mbox{\hyperlink{classCodigo}{Codigo}} \&}]{codigo\+Carteira}{}\end{DoxyParamCaption})}
+
+
+
+Insere uma nova ordem no banco. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ordem} & Objeto \doxylink{classOrdem}{Ordem} a ser inserido \\
+\hline
+{\em codigo\+Carteira} & Código da carteira proprietária \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se inseriu com sucesso, false caso contrário 
+\end{DoxyReturn}
+\Hypertarget{classDatabaseManager_a21073136948bacea1708c89da2658bfe}\index{DatabaseManager@{DatabaseManager}!limparTodasTabelas@{limparTodasTabelas}}
+\index{limparTodasTabelas@{limparTodasTabelas}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{limparTodasTabelas()}{limparTodasTabelas()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_a21073136948bacea1708c89da2658bfe} 
+bool Database\+Manager\+::limpar\+Todas\+Tabelas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Limpa todas as tabelas (usado para testes) 
+
+\begin{DoxyReturn}{Returns}
+true se limpou com sucesso, false caso contrário 
+\end{DoxyReturn}
+\Hypertarget{classDatabaseManager_af6e9e31e1d538417a8ea273fcc2c5437}\index{DatabaseManager@{DatabaseManager}!listarCarteiras@{listarCarteiras}}
+\index{listarCarteiras@{listarCarteiras}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{listarCarteiras()}{listarCarteiras()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_af6e9e31e1d538417a8ea273fcc2c5437} 
+bool Database\+Manager\+::listar\+Carteiras (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf}{, }\item[{std\+::list$<$ \mbox{\hyperlink{classCarteira}{Carteira}} $>$ \texorpdfstring{$\ast$}{*}}]{lista\+Carteiras}{}\end{DoxyParamCaption})}
+
+
+
+Lista todas as carteiras de um usuário. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF do proprietário \\
+\hline
+{\em lista\+Carteiras} & Ponteiro para lista onde serão armazenadas as carteiras \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se listou com sucesso, false caso contrário 
+\end{DoxyReturn}
+\Hypertarget{classDatabaseManager_ab2fa89cecc1760db8175e3a9b841cd9e}\index{DatabaseManager@{DatabaseManager}!listarOrdens@{listarOrdens}}
+\index{listarOrdens@{listarOrdens}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{listarOrdens()}{listarOrdens()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_ab2fa89cecc1760db8175e3a9b841cd9e} 
+bool Database\+Manager\+::listar\+Ordens (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCodigo}{Codigo}} \&}]{codigo\+Carteira}{, }\item[{std\+::list$<$ \mbox{\hyperlink{classOrdem}{Ordem}} $>$ \texorpdfstring{$\ast$}{*}}]{lista\+Ordens}{}\end{DoxyParamCaption})}
+
+
+
+Lista todas as ordens de uma carteira. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo\+Carteira} & Código da carteira \\
+\hline
+{\em lista\+Ordens} & Ponteiro para lista onde serão armazenadas as ordens \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se listou com sucesso, false caso contrário 
+\end{DoxyReturn}
+\Hypertarget{classDatabaseManager_a44be591e987cc7a30ea3695d4cd4273a}\index{DatabaseManager@{DatabaseManager}!obterEstatisticas@{obterEstatisticas}}
+\index{obterEstatisticas@{obterEstatisticas}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{obterEstatisticas()}{obterEstatisticas()}}
+{\footnotesize\ttfamily \label{classDatabaseManager_a44be591e987cc7a30ea3695d4cd4273a} 
+std\+::string Database\+Manager\+::obter\+Estatisticas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Obtém estatísticas do banco. 
+
+\begin{DoxyReturn}{Returns}
+string com informações sobre número de registros 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/database/\mbox{\hyperlink{DatabaseManager_8hpp}{Database\+Manager.\+hpp}}\item 
+src/database/\mbox{\hyperlink{DatabaseManager_8cpp}{Database\+Manager.\+cpp}}\end{DoxyCompactItemize}

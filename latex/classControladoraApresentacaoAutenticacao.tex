@@ -1,0 +1,125 @@
+\doxysection{Controladora\+Apresentacao\+Autenticacao Class Reference}
+\hypertarget{classControladoraApresentacaoAutenticacao}{}\label{classControladoraApresentacaoAutenticacao}\index{ControladoraApresentacaoAutenticacao@{ControladoraApresentacaoAutenticacao}}
+
+
+Implementação concreta da interface de apresentação para autenticação.  
+
+
+
+
+{\ttfamily \#include $<$controladoras\+Apresentacao.\+hpp$>$}
+
+Inheritance diagram for Controladora\+Apresentacao\+Autenticacao\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classControladoraApresentacaoAutenticacao}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classControladoraApresentacaoAutenticacao_aa7d344def6022c5493cc4519a54edc9b}{autenticar}} (\mbox{\hyperlink{classNcpf}{Ncpf}} \texorpdfstring{$\ast$}{*}cpf) override
+\begin{DoxyCompactList}\small\item\em Realiza a autenticação do usuário. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classControladoraApresentacaoAutenticacao_af242fa3aac61d97df947b63cf7c24d04}{set\+Controladora\+Servico}} (\mbox{\hyperlink{classIServicoAutenticacao}{IServico\+Autenticacao}} \texorpdfstring{$\ast$}{*}cntr\+Servico\+Autenticacao) override
+\begin{DoxyCompactList}\small\item\em Define a controladora de serviço para autenticação. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIApresentacaoAutenticacao}{IApresentacao\+Autenticacao}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classIApresentacaoAutenticacao_abf1863be8e6fa8b487e8e4c5f978aa59}{\texorpdfstring{$\sim$}{\string~}\+IApresentacao\+Autenticacao}} ()
+\begin{DoxyCompactList}\small\item\em Destrutor virtual para permitir herança. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementação concreta da interface de apresentação para autenticação. 
+
+Responsável por exibir o diálogo de login e capturar os dados do usuário. Implementa funcionalidades de formatação automática de CPF e validação de credenciais. \begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classControladoraApresentacaoAutenticacao_aa7d344def6022c5493cc4519a54edc9b}\index{ControladoraApresentacaoAutenticacao@{ControladoraApresentacaoAutenticacao}!autenticar@{autenticar}}
+\index{autenticar@{autenticar}!ControladoraApresentacaoAutenticacao@{ControladoraApresentacaoAutenticacao}}
+\doxysubsubsection{\texorpdfstring{autenticar()}{autenticar()}}
+{\footnotesize\ttfamily \label{classControladoraApresentacaoAutenticacao_aa7d344def6022c5493cc4519a54edc9b} 
+bool Controladora\+Apresentacao\+Autenticacao\+::autenticar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNcpf}{Ncpf}} \texorpdfstring{$\ast$}{*}}]{cpf}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Realiza a autenticação do usuário. 
+
+Implementação do método que apresenta o formulário de autenticação.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & Ponteiro para objeto \doxylink{classNcpf}{Ncpf} onde será armazenado o CPF validado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool true se autenticação bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+Apresenta interface de login com\+:
+\begin{DoxyItemize}
+\item Máscara automática para CPF (aceita apenas números)
+\item Validação de formato e dígitos verificadores
+\item Tratamento de erros com dicas informativas
+\item Opção de cancelamento a qualquer momento
+
+Este método implementa uma interface amigável para autenticação de usuários, com as seguintes melhorias de usabilidade\+:
+\item Máscara automática para CPF\+: usuário pode digitar apenas números
+\item Tratamento de erros claro e informativo
+\item Loop de tentativas até entrada válida
+\end{DoxyItemize}
+
+O usuário pode digitar o CPF de duas formas\+:
+\begin{DoxyEnumerate}
+\item Apenas números\+: "{}12345678901"{} (será formatado automaticamente)
+\item Já formatado\+: "{}xxx.\+xxx.\+xxx-\/xx"{} (será aceito se válido)
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & Ponteiro para objeto \doxylink{classNcpf}{Ncpf} onde será armazenado o CPF validado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool true se autenticação bem-\/sucedida, false caso contrário
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+O método aplica validação tanto de formato quanto de dígitos verificadores 
+\end{DoxyNote}
+
+
+Implements \mbox{\hyperlink{classIApresentacaoAutenticacao_a9e9f0d31faa3e04138409bef160fe16f}{IApresentacao\+Autenticacao}}.
+
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+\Hypertarget{classControladoraApresentacaoAutenticacao_af242fa3aac61d97df947b63cf7c24d04}\index{ControladoraApresentacaoAutenticacao@{ControladoraApresentacaoAutenticacao}!setControladoraServico@{setControladoraServico}}
+\index{setControladoraServico@{setControladoraServico}!ControladoraApresentacaoAutenticacao@{ControladoraApresentacaoAutenticacao}}
+\doxysubsubsection{\texorpdfstring{setControladoraServico()}{setControladoraServico()}}
+{\footnotesize\ttfamily \label{classControladoraApresentacaoAutenticacao_af242fa3aac61d97df947b63cf7c24d04} 
+void Controladora\+Apresentacao\+Autenticacao\+::set\+Controladora\+Servico (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIServicoAutenticacao}{IServico\+Autenticacao}} \texorpdfstring{$\ast$}{*}}]{cntr\+Servico\+Autenticacao}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Define a controladora de serviço para autenticação. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cntr\+Servico\+Autenticacao} & Ponteiro para a interface de serviço de autenticação\\
+\hline
+\end{DoxyParams}
+Estabelece a conexão com a camada de serviço que será utilizada para realizar as operações de autenticação no banco de dados. 
+
+Implements \mbox{\hyperlink{classIApresentacaoAutenticacao_a93af8a2aa0c33683a7e8cdffe7446668}{IApresentacao\+Autenticacao}}.
+
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/controladoras/\mbox{\hyperlink{controladorasApresentacao_8hpp}{controladoras\+Apresentacao.\+hpp}}\item 
+src/controladoras/\mbox{\hyperlink{controladorasApresentacao_8cpp}{controladoras\+Apresentacao.\+cpp}}\end{DoxyCompactItemize}

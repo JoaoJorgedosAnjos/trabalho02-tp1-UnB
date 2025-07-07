@@ -1,0 +1,262 @@
+\doxysection{Carteira\+Controller Class Reference}
+\hypertarget{classCarteiraController}{}\label{classCarteiraController}\index{CarteiraController@{CarteiraController}}
+
+
+Controlador especializado para operações de carteiras.  
+
+
+
+
+{\ttfamily \#include $<$Carteira\+Controller.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCarteiraController_ab83d39265a73d26a828e6aa2f578f10e}{Carteira\+Controller}} (\mbox{\hyperlink{classIServicoInvestimento}{IServico\+Investimento}} \texorpdfstring{$\ast$}{*}servico)
+\begin{DoxyCompactList}\small\item\em Construtor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCarteiraController_a5f298e29e8c331ec5e2f3ef23ebba863}{executar\+Menu}} (const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf)
+\begin{DoxyCompactList}\small\item\em Executa o menu de gerenciamento de carteiras. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCarteiraController_a0baada268ded341f80f8df481950d61b}{criar\+Carteira}} (const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf)
+\begin{DoxyCompactList}\small\item\em Cria uma nova carteira. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCarteiraController_aa24d418e85cb975b71ad388e2f08901d}{listar\+Carteiras}} (const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf)
+\begin{DoxyCompactList}\small\item\em Lista todas as carteiras do usuário. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCarteiraController_ad470425f1bde593ad3de3f9e68634ea0}{editar\+Carteira}} (const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf)
+\begin{DoxyCompactList}\small\item\em Edita uma carteira existente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCarteiraController_af49ea6c71149d67a94f3087b41904561}{excluir\+Carteira}} (const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf)
+\begin{DoxyCompactList}\small\item\em Exclui uma carteira. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Controlador especializado para operações de carteiras. 
+
+Esta classe é responsável por gerenciar todas as operações relacionadas a carteiras de investimento, incluindo criação, edição, exclusão e consulta. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCarteiraController_ab83d39265a73d26a828e6aa2f578f10e}\index{CarteiraController@{CarteiraController}!CarteiraController@{CarteiraController}}
+\index{CarteiraController@{CarteiraController}!CarteiraController@{CarteiraController}}
+\doxysubsubsection{\texorpdfstring{CarteiraController()}{CarteiraController()}}
+{\footnotesize\ttfamily \label{classCarteiraController_ab83d39265a73d26a828e6aa2f578f10e} 
+Carteira\+Controller\+::\+Carteira\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIServicoInvestimento}{IServico\+Investimento}} \texorpdfstring{$\ast$}{*}}]{servico}{}\end{DoxyParamCaption})}
+
+
+
+Construtor. 
+
+Construtor do controlador de carteiras.
+
+
+\begin{DoxyParams}{Parameters}
+{\em servico} & Ponteiro para o serviço de investimentos\\
+\hline
+{\em servico} & Ponteiro para o serviço de investimentos que será utilizado para realizar operações no banco de dados\\
+\hline
+\end{DoxyParams}
+Inicializa o controlador com uma referência ao serviço de investimentos. O serviço é responsável por todas as operações de persistência de dados. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCarteiraController_a0baada268ded341f80f8df481950d61b}\index{CarteiraController@{CarteiraController}!criarCarteira@{criarCarteira}}
+\index{criarCarteira@{criarCarteira}!CarteiraController@{CarteiraController}}
+\doxysubsubsection{\texorpdfstring{criarCarteira()}{criarCarteira()}}
+{\footnotesize\ttfamily \label{classCarteiraController_a0baada268ded341f80f8df481950d61b} 
+void Carteira\+Controller\+::criar\+Carteira (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf}{}\end{DoxyParamCaption})}
+
+
+
+Cria uma nova carteira. 
+
+Cria uma nova carteira de investimento.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF do usuário autenticado\\
+\hline
+{\em cpf} & CPF do usuário que está criando a carteira\\
+\hline
+\end{DoxyParams}
+Implementa o fluxo completo de criação de carteira\+:
+
+
+\begin{DoxyEnumerate}
+\item Verifica o limite de carteiras (máximo 5 por usuário)
+\item Solicita e valida o código da carteira (5 dígitos)
+\item Solicita e valida o nome da carteira (até 20 caracteres)
+\item Solicita e valida o tipo de perfil (Conservador/\+Moderado/\+Agressivo)
+\item Exibe resumo dos dados para confirmação
+\item Cria a carteira através do serviço
+\end{DoxyEnumerate}
+
+Validações implementadas\+:
+\begin{DoxyItemize}
+\item Limite máximo de 5 carteiras por usuário
+\item Código deve ser único no sistema
+\item Formato do código\+: exatamente 5 dígitos numéricos
+\item \doxylink{classNome}{Nome}\+: até 20 caracteres (letras, números e espaços)
+\item Perfil\+: deve ser um dos três tipos válidos
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+O usuário pode cancelar a operação a qualquer momento digitando \textquotesingle{}0\textquotesingle{} 
+
+A carteira é criada com saldo inicial zero 
+\end{DoxyNote}
+\Hypertarget{classCarteiraController_ad470425f1bde593ad3de3f9e68634ea0}\index{CarteiraController@{CarteiraController}!editarCarteira@{editarCarteira}}
+\index{editarCarteira@{editarCarteira}!CarteiraController@{CarteiraController}}
+\doxysubsubsection{\texorpdfstring{editarCarteira()}{editarCarteira()}}
+{\footnotesize\ttfamily \label{classCarteiraController_ad470425f1bde593ad3de3f9e68634ea0} 
+void Carteira\+Controller\+::editar\+Carteira (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf}{}\end{DoxyParamCaption})}
+
+
+
+Edita uma carteira existente. 
+
+Inicia o processo de edição de carteira.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF do usuário autenticado\\
+\hline
+{\em cpf} & CPF do usuário autenticado\\
+\hline
+\end{DoxyParams}
+Implementa o fluxo de seleção e edição de carteira\+:
+
+
+\begin{DoxyEnumerate}
+\item Lista todas as carteiras do usuário
+\item Solicita o código da carteira a ser editada
+\item Valida a existência da carteira
+\item Chama o método de edição específica
+\end{DoxyEnumerate}
+
+Validações\+:
+\begin{DoxyItemize}
+\item Verifica se o usuário possui carteiras
+\item Valida o formato do código (5 dígitos)
+\item Confirma a existência da carteira no sistema
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+O usuário pode cancelar a operação digitando \textquotesingle{}0\textquotesingle{} 
+
+Apenas carteiras do usuário autenticado podem ser editadas 
+\end{DoxyNote}
+\Hypertarget{classCarteiraController_af49ea6c71149d67a94f3087b41904561}\index{CarteiraController@{CarteiraController}!excluirCarteira@{excluirCarteira}}
+\index{excluirCarteira@{excluirCarteira}!CarteiraController@{CarteiraController}}
+\doxysubsubsection{\texorpdfstring{excluirCarteira()}{excluirCarteira()}}
+{\footnotesize\ttfamily \label{classCarteiraController_af49ea6c71149d67a94f3087b41904561} 
+void Carteira\+Controller\+::excluir\+Carteira (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf}{}\end{DoxyParamCaption})}
+
+
+
+Exclui uma carteira. 
+
+Inicia o processo de exclusão de carteira.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF do usuário autenticado\\
+\hline
+{\em cpf} & CPF do usuário autenticado\\
+\hline
+\end{DoxyParams}
+Implementa o fluxo de seleção e exclusão de carteira\+:
+
+
+\begin{DoxyEnumerate}
+\item Lista todas as carteiras do usuário
+\item Solicita o código da carteira a ser excluída
+\item Valida a existência da carteira
+\item Chama o método de exclusão específica
+\end{DoxyEnumerate}
+
+Validações\+:
+\begin{DoxyItemize}
+\item Verifica se o usuário possui carteiras
+\item Valida o formato do código (5 dígitos)
+\item Confirma a existência da carteira no sistema
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+O usuário pode cancelar a operação digitando \textquotesingle{}0\textquotesingle{} 
+
+Apenas carteiras do usuário autenticado podem ser excluídas 
+\end{DoxyNote}
+\Hypertarget{classCarteiraController_a5f298e29e8c331ec5e2f3ef23ebba863}\index{CarteiraController@{CarteiraController}!executarMenu@{executarMenu}}
+\index{executarMenu@{executarMenu}!CarteiraController@{CarteiraController}}
+\doxysubsubsection{\texorpdfstring{executarMenu()}{executarMenu()}}
+{\footnotesize\ttfamily \label{classCarteiraController_a5f298e29e8c331ec5e2f3ef23ebba863} 
+void Carteira\+Controller\+::executar\+Menu (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf}{}\end{DoxyParamCaption})}
+
+
+
+Executa o menu de gerenciamento de carteiras. 
+
+Executa o menu principal de gerenciamento de carteiras.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF do usuário autenticado\\
+\hline
+{\em cpf} & CPF do usuário autenticado para filtrar as carteiras\\
+\hline
+\end{DoxyParams}
+Apresenta um menu interativo com as seguintes opções\+:
+\begin{DoxyItemize}
+\item 1\+: Criar nova carteira
+\item 2\+: Listar e consultar carteiras existentes
+\item 3\+: Editar carteira existente
+\item 4\+: Excluir carteira
+\item 0\+: Voltar ao menu anterior
+\end{DoxyItemize}
+
+O menu é executado em loop até que o usuário escolha sair (opção 0). Todas as operações são realizadas no contexto do CPF fornecido. \Hypertarget{classCarteiraController_aa24d418e85cb975b71ad388e2f08901d}\index{CarteiraController@{CarteiraController}!listarCarteiras@{listarCarteiras}}
+\index{listarCarteiras@{listarCarteiras}!CarteiraController@{CarteiraController}}
+\doxysubsubsection{\texorpdfstring{listarCarteiras()}{listarCarteiras()}}
+{\footnotesize\ttfamily \label{classCarteiraController_aa24d418e85cb975b71ad388e2f08901d} 
+void Carteira\+Controller\+::listar\+Carteiras (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf}{}\end{DoxyParamCaption})}
+
+
+
+Lista todas as carteiras do usuário. 
+
+Lista e permite consulta detalhada das carteiras do usuário.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF do usuário autenticado\\
+\hline
+{\em cpf} & CPF do usuário para filtrar as carteiras\\
+\hline
+\end{DoxyParams}
+Implementa um sistema de listagem interativo que\+:
+
+
+\begin{DoxyEnumerate}
+\item Exibe todas as carteiras do usuário em formato tabular
+\item Permite selecionar uma carteira específica para ver detalhes
+\item Mostra o saldo atual da carteira (calculado a partir das ordens)
+\item Lista todas as ordens associadas à carteira
+\item Oferece opções para editar ou excluir a carteira selecionada
+\end{DoxyEnumerate}
+
+Se o usuário não possui carteiras, oferece a opção de criar uma nova.
+
+Funcionalidades específicas\+:
+\begin{DoxyItemize}
+\item Exibição do saldo total da carteira
+\item Listagem de todas as ordens associadas
+\item Acesso rápido às operações de edição e exclusão
+\item Validação de códigos de carteira
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+O saldo é calculado dinamicamente a partir das ordens de investimento 
+
+Apenas carteiras do usuário autenticado são exibidas 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/controladoras/\mbox{\hyperlink{CarteiraController_8hpp}{Carteira\+Controller.\+hpp}}\item 
+src/controladoras/\mbox{\hyperlink{CarteiraController_8cpp}{Carteira\+Controller.\+cpp}}\end{DoxyCompactItemize}

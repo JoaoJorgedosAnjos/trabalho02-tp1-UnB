@@ -1,0 +1,155 @@
+\doxysection{Controladora\+Apresentacao\+Usuario Class Reference}
+\hypertarget{classControladoraApresentacaoUsuario}{}\label{classControladoraApresentacaoUsuario}\index{ControladoraApresentacaoUsuario@{ControladoraApresentacaoUsuario}}
+
+
+Implementação concreta da interface de apresentação para gerenciamento de usuário.  
+
+
+
+
+{\ttfamily \#include $<$controladoras\+Apresentacao.\+hpp$>$}
+
+Inheritance diagram for Controladora\+Apresentacao\+Usuario\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classControladoraApresentacaoUsuario}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classControladoraApresentacaoUsuario_a885ddce6f703af180ff097f77852307d}{executar}} (const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf) override
+\begin{DoxyCompactList}\small\item\em Executa o menu de gerenciamento de conta do usuário. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classControladoraApresentacaoUsuario_ad3ff4b91e95ddbf6b8999e113a5bbf45}{cadastrar}} () override
+\begin{DoxyCompactList}\small\item\em Implementa o cadastro de uma nova conta no sistema. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classControladoraApresentacaoUsuario_a75e8ad32494259e0d8b33a3697df56c0}{set\+Controladora\+Servico}} (\mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}} \texorpdfstring{$\ast$}{*}cntr\+Servico\+Usuario) override
+\begin{DoxyCompactList}\small\item\em Define a controladora de serviço para gerenciamento de usuários. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classIApresentacaoUsuario}{IApresentacao\+Usuario}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classIApresentacaoUsuario_aa224b8ee9930600a828f3c0feb673c1f}{\texorpdfstring{$\sim$}{\string~}\+IApresentacao\+Usuario}} ()
+\begin{DoxyCompactList}\small\item\em Destrutor virtual para permitir herança. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementação concreta da interface de apresentação para gerenciamento de usuário. 
+
+Responsável por exibir os menus de conta (consultar, editar, excluir) e cadastro. Implementa todas as funcionalidades relacionadas ao ciclo de vida das contas de usuário. \begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classControladoraApresentacaoUsuario_ad3ff4b91e95ddbf6b8999e113a5bbf45}\index{ControladoraApresentacaoUsuario@{ControladoraApresentacaoUsuario}!cadastrar@{cadastrar}}
+\index{cadastrar@{cadastrar}!ControladoraApresentacaoUsuario@{ControladoraApresentacaoUsuario}}
+\doxysubsubsection{\texorpdfstring{cadastrar()}{cadastrar()}}
+{\footnotesize\ttfamily \label{classControladoraApresentacaoUsuario_ad3ff4b91e95ddbf6b8999e113a5bbf45} 
+void Controladora\+Apresentacao\+Usuario\+::cadastrar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implementa o cadastro de uma nova conta no sistema. 
+
+Oferece interface amigável para cadastro com\+:
+\begin{DoxyItemize}
+\item Máscara automática para CPF
+\item Validação em tempo real dos dados
+\item Possibilidade de corrigir dados anteriores
+\item Confirmação antes de salvar
+\item Tratamento robusto de erros
+
+Este método oferece uma interface amigável para cadastro de novos usuários, com as mesmas melhorias de usabilidade da autenticação\+:
+\item Máscara automática para CPF
+\item Dicas claras para formatação de dados
+\item Tratamento robusto de erros
+\end{DoxyItemize}
+
+O método valida todos os dados antes de tentar o cadastro e fornece feedback específico sobre cada tipo de erro encontrado. 
+
+Implements \mbox{\hyperlink{classIApresentacaoUsuario_afa952785f0a9e44b1b5cd925df4791d9}{IApresentacao\+Usuario}}.
+
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+\Hypertarget{classControladoraApresentacaoUsuario_a885ddce6f703af180ff097f77852307d}\index{ControladoraApresentacaoUsuario@{ControladoraApresentacaoUsuario}!executar@{executar}}
+\index{executar@{executar}!ControladoraApresentacaoUsuario@{ControladoraApresentacaoUsuario}}
+\doxysubsubsection{\texorpdfstring{executar()}{executar()}}
+{\footnotesize\ttfamily \label{classControladoraApresentacaoUsuario_a885ddce6f703af180ff097f77852307d} 
+bool Controladora\+Apresentacao\+Usuario\+::executar (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Executa o menu de gerenciamento de conta do usuário. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF do usuário autenticado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool true se a conta foi excluída (logout forçado), false caso contrário
+\end{DoxyReturn}
+Apresenta menu interativo com opções para\+:
+\begin{DoxyItemize}
+\item Consultar dados da conta e saldo total
+\item Editar nome e/ou senha
+\item Excluir conta permanentemente
+\item Voltar ao menu principal
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpf} & CPF do usuário autenticado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool true se a conta foi excluída (logout forçado), false caso contrário
+\end{DoxyReturn}
+Apresenta um menu interativo com as seguintes opções\+:
+\begin{DoxyItemize}
+\item 1\+: Consultar dados da conta (CPF, nome, saldo total)
+\item 2\+: Editar dados da conta (nome e/ou senha)
+\item 3\+: Excluir conta permanentemente
+\item 0\+: Voltar ao menu principal
+\end{DoxyItemize}
+
+O menu é executado em loop até que o usuário escolha voltar (0) ou até que a conta seja excluída (retorna true para forçar logout).
+
+\begin{DoxyNote}{Note}
+Se a conta for excluída, o método retorna true para sinalizar que o usuário deve ser deslogado do sistema 
+\end{DoxyNote}
+
+
+Implements \mbox{\hyperlink{classIApresentacaoUsuario_aa67a6204e32fcc2c34b7adc048fff300}{IApresentacao\+Usuario}}.
+
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+\Hypertarget{classControladoraApresentacaoUsuario_a75e8ad32494259e0d8b33a3697df56c0}\index{ControladoraApresentacaoUsuario@{ControladoraApresentacaoUsuario}!setControladoraServico@{setControladoraServico}}
+\index{setControladoraServico@{setControladoraServico}!ControladoraApresentacaoUsuario@{ControladoraApresentacaoUsuario}}
+\doxysubsubsection{\texorpdfstring{setControladoraServico()}{setControladoraServico()}}
+{\footnotesize\ttfamily \label{classControladoraApresentacaoUsuario_a75e8ad32494259e0d8b33a3697df56c0} 
+void Controladora\+Apresentacao\+Usuario\+::set\+Controladora\+Servico (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}} \texorpdfstring{$\ast$}{*}}]{cntr\+Servico\+Usuario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Define a controladora de serviço para gerenciamento de usuários. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cntr\+Servico\+Usuario} & Ponteiro para a interface de serviço de usuário\\
+\hline
+\end{DoxyParams}
+Estabelece a conexão com a camada de serviço que será utilizada para realizar operações de cadastro, consulta, edição e exclusão de contas. 
+
+Implements \mbox{\hyperlink{classIApresentacaoUsuario_a09344c8c79699a3614454b0f8a0951c7}{IApresentacao\+Usuario}}.
+
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/controladoras/\mbox{\hyperlink{controladorasApresentacao_8hpp}{controladoras\+Apresentacao.\+hpp}}\item 
+src/controladoras/\mbox{\hyperlink{controladorasApresentacao_8cpp}{controladoras\+Apresentacao.\+cpp}}\end{DoxyCompactItemize}

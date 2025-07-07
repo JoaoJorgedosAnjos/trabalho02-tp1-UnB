@@ -1,0 +1,53 @@
+\doxysection{controladoras\+Servico.\+hpp}
+\hypertarget{controladorasServico_8hpp_source}{}\label{controladorasServico_8hpp_source}\index{src/controladoras/controladorasServico.hpp@{src/controladoras/controladorasServico.hpp}}
+\mbox{\hyperlink{controladorasServico_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CONTROLADORASSERVICO\_HPP\_INCLUDED}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CONTROLADORASSERVICO\_HPP\_INCLUDED}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{interfaces_8hpp}{interfaces.hpp}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{DatabaseManager_8hpp}{database/DatabaseManager.hpp}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classControladoraServico_a41ac11ca9ab0da6253e83bc3b87dc7f9}{ControladoraServico}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIServicoAutenticacao}{IServicoAutenticacao}},\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIServicoUsuario}{IServicoUsuario}},\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIServicoInvestimento}{IServicoInvestimento}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00023\ \ \ \ \ std::unique\_ptr<DatabaseManager>\ dbManager;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{classControladoraServico_a41ac11ca9ab0da6253e83bc3b87dc7f9}{ControladoraServico}}();}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{classControladoraServico_a5b6a36c509d41a70841986d5686937e8}{\string~ControladoraServico}}();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classControladoraServico_aa4499659855c0f6fa26e7b1a082b3f45}{inicializar}}();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classControladoraServico_a2e09ee54f12f55ff14b765bc8bebf2c3}{autenticar}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\ \&cpf,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSenha}{Senha}}\ \&senha)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classControladoraServico_a199e6826c93a1dff384c6ac6982d9248}{cadastrarConta}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classConta}{Conta}}\ \&conta)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classControladoraServico_a61dfec50428bf6d71e613c08a2b8ef3c}{consultarConta}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\ \&cpf,\ \mbox{\hyperlink{classConta}{Conta}}\ *conta,\ \mbox{\hyperlink{classDinheiro}{Dinheiro}}\ *saldo)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classControladoraServico_ae68b1c59d37e3d9407a448ab65a54d36}{editarConta}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classConta}{Conta}}\ \&conta)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classControladoraServico_a254c87b7f8047ba6e08778f0a609f1d8}{excluirConta}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\ \&cpf)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classControladoraServico_a3d4442e713e97a7ba5d16aca686f8b47}{criarCarteira}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\ \&cpf,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classCarteira}{Carteira}}\ \&carteira)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classControladoraServico_aca702aa2ddf241f781e910435904708c}{listarCarteiras}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\ \&cpf,\ std::list<Carteira>\ *listaCarteiras)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classControladoraServico_a0d9d7714c974e1a78ffa4af0ee56c365}{consultarCarteira}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCodigo}{Codigo}}\ \&codigo,\ \mbox{\hyperlink{classCarteira}{Carteira}}\ *carteira,\ \mbox{\hyperlink{classDinheiro}{Dinheiro}}\ *saldo)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classControladoraServico_aaa4a33a114b96b7dd915c7a6ef611cba}{editarCarteira}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCarteira}{Carteira}}\ \&carteira)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classControladoraServico_ac6c0ff971bae21c8ed8b5d1414831af1}{excluirCarteira}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCodigo}{Codigo}}\ \&codigo)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classControladoraServico_ac3190bdd09c60d1eabab2e8f46b80157}{criarOrdem}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCodigo}{Codigo}}\ \&codigoCarteira,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classOrdem}{Ordem}}\ \&ordem)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classControladoraServico_abe7260d0e5def6a1415a6cd0fbd13f0d}{listarOrdens}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCodigo}{Codigo}}\ \&codigoCarteira,\ std::list<Ordem>\ *listaOrdens)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classControladoraServico_a395894fb2889ad5907f4a4f62990b871}{excluirOrdem}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCodigo}{Codigo}}\ \&codigo)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00186\ \};}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CONTROLADORASSERVICO\_HPP\_INCLUDED}}
+
+\end{DoxyCode}

@@ -1,0 +1,94 @@
+\doxysection{IServico\+Autenticacao Class Reference}
+\hypertarget{classIServicoAutenticacao}{}\label{classIServicoAutenticacao}\index{IServicoAutenticacao@{IServicoAutenticacao}}
+
+
+Interface para os serviços de autenticação providos pela camada de serviço.  
+
+
+
+
+{\ttfamily \#include $<$interfaces.\+hpp$>$}
+
+Inheritance diagram for IServico\+Autenticacao\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classIServicoAutenticacao}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{classIServicoAutenticacao_af561fb6693fe74412369bcc06f005035}{autenticar}} (const \mbox{\hyperlink{classNcpf}{Ncpf}} \&cpf, const \mbox{\hyperlink{classSenha}{Senha}} \&senha)=0
+\begin{DoxyCompactList}\small\item\em Valida as credenciais de autenticação do usuário. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classIServicoAutenticacao_aa2f9ad33148b3b12a205e992079e4368}{\texorpdfstring{$\sim$}{\string~}\+IServico\+Autenticacao}} ()
+\begin{DoxyCompactList}\small\item\em Destrutor virtual para permitir herança. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface para os serviços de autenticação providos pela camada de serviço. 
+
+Esta interface define os contratos para a camada de serviço relacionada à autenticação de usuários. Responsável por validar credenciais e gerenciar o processo de autenticação no sistema.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classIApresentacaoAutenticacao}{IApresentacao\+Autenticacao} 
+\end{DoxySeeAlso}
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classIServicoAutenticacao_aa2f9ad33148b3b12a205e992079e4368}\index{IServicoAutenticacao@{IServicoAutenticacao}!````~IServicoAutenticacao@{\texorpdfstring{$\sim$}{\string~}IServicoAutenticacao}}
+\index{````~IServicoAutenticacao@{\texorpdfstring{$\sim$}{\string~}IServicoAutenticacao}!IServicoAutenticacao@{IServicoAutenticacao}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}IServicoAutenticacao()}{\string~IServicoAutenticacao()}}
+{\footnotesize\ttfamily \label{classIServicoAutenticacao_aa2f9ad33148b3b12a205e992079e4368} 
+virtual IServico\+Autenticacao\+::\texorpdfstring{$\sim$}{\string~}\+IServico\+Autenticacao (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destrutor virtual para permitir herança. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIServicoAutenticacao_af561fb6693fe74412369bcc06f005035}\index{IServicoAutenticacao@{IServicoAutenticacao}!autenticar@{autenticar}}
+\index{autenticar@{autenticar}!IServicoAutenticacao@{IServicoAutenticacao}}
+\doxysubsubsection{\texorpdfstring{autenticar()}{autenticar()}}
+{\footnotesize\ttfamily \label{classIServicoAutenticacao_af561fb6693fe74412369bcc06f005035} 
+virtual bool IServico\+Autenticacao\+::autenticar (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNcpf}{Ncpf}} \&}]{cpf}{, }\item[{const \mbox{\hyperlink{classSenha}{Senha}} \&}]{senha}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Valida as credenciais de autenticação do usuário. 
+
+Verifica se o CPF e senha fornecidos correspondem a uma conta válida no sistema, realizando a validação contra o banco de dados.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em cpf} & CPF do usuário a ser autenticado \\
+\hline
+\mbox{\texttt{ in}}  & {\em senha} & \doxylink{classSenha}{Senha} do usuário a ser validada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se as credenciais são válidas, false caso contrário
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Deve validar o formato do CPF e senha antes da consulta 
+
+Deve realizar consulta segura no banco de dados 
+
+Deve retornar false se a conta não existir ou senha estiver incorreta 
+\end{DoxyNote}
+
+
+Implemented in \mbox{\hyperlink{classControladoraServico_a2e09ee54f12f55ff14b765bc8bebf2c3}{Controladora\+Servico}}.
+
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}}.\end{Desc}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/interfaces/\mbox{\hyperlink{interfaces_8hpp}{interfaces.\+hpp}}\end{DoxyCompactItemize}

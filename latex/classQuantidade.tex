@@ -1,0 +1,98 @@
+\doxysection{Quantidade Class Reference}
+\hypertarget{classQuantidade}{}\label{classQuantidade}\index{Quantidade@{Quantidade}}
+
+
+Classe que representa o numero inteiro de unidades de um ativo financeiro, adquiridas, utilizadas ou mantidas por um investidor em transacoes financeiras.  
+
+
+
+
+{\ttfamily \#include $<$dominios.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classQuantidade_ae3c5852824ccb6f0c2969bddeccfb1e2}{set\+Valor}} (const string \&)
+\begin{DoxyCompactList}\small\item\em Metodo publico que define o valor da quantidade apos validacao. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classQuantidade_ae4be1e32edb650493638473ffca18bfa}{get\+Valor}} () const
+\begin{DoxyCompactList}\small\item\em Metodo publico que retorna a quantidade armazenada. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que representa o numero inteiro de unidades de um ativo financeiro, adquiridas, utilizadas ou mantidas por um investidor em transacoes financeiras. 
+
+\DoxyHorRuler{0}
+
+
+Esta classe e utilizada no sistema de investimentos para representar quantidades inteiras de ativos ou unidades movimentadas por usuarios, como acoes compradas ou cotas de fundos. A quantidade deve estar em um formato legivel, com separador de milhar, e respeitar o intervalo permitido.
+
+O valor e fornecido como uma string com numeros inteiros simples ou formato brasileiro, por exemplo\+:
+\begin{DoxyItemize}
+\item "{}1000"{} ou "{}1.\+000"{}
+\item "{}10000"{} ou "{}10.\+000"{}
+\item "{}999999"{} ou "{}999.\+999"{}
+\end{DoxyItemize}
+
+A classe {\ttfamily \doxylink{classQuantidade}{Quantidade}} e responsavel por armazenar essa string, garantindo que esteja corretamente formatada e que o numero representado esteja dentro do intervalo permitido.
+
+Regras de validacao\+:
+\begin{DoxyItemize}
+\item O valor deve ser um numero inteiro positivo simples (ex\+: "{}1000"{}, "{}50000"{}) ou formato brasileiro (ex\+: "{}1.\+000"{}, "{}50.\+000"{}).
+\item Deve representar um numero inteiro entre 1 e 1.\+000.\+000 (inclusive).
+\item Nao sao permitidas casas decimais ou outros simbolos alem de pontos como separadores de milhar.
+\end{DoxyItemize}
+
+Metodos disponiveis\+:
+\begin{DoxyItemize}
+\item {\ttfamily set\+Valor}\+: Metodo publico que define a quantidade apos validacao.
+\item {\ttfamily get\+Valor}\+: Metodo publico que retorna a quantidade armazenada como string.
+\end{DoxyItemize}
+
+Em caso de valor invalido, lanca {\ttfamily std\+::invalid\+\_\+argument}. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classQuantidade_ae4be1e32edb650493638473ffca18bfa}\index{Quantidade@{Quantidade}!getValor@{getValor}}
+\index{getValor@{getValor}!Quantidade@{Quantidade}}
+\doxysubsubsection{\texorpdfstring{getValor()}{getValor()}}
+{\footnotesize\ttfamily \label{classQuantidade_ae4be1e32edb650493638473ffca18bfa} 
+string Quantidade\+::get\+Valor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo publico que retorna a quantidade armazenada. 
+
+Implementacao inline do metodo que retorna a quantidade armazenada.
+
+\begin{DoxyReturn}{Returns}
+std\+::string Valor atual da quantidade como numero inteiro simples.
+
+std\+::string \doxylink{classQuantidade}{Quantidade} como numero inteiro simples. 
+\end{DoxyReturn}
+\Hypertarget{classQuantidade_ae3c5852824ccb6f0c2969bddeccfb1e2}\index{Quantidade@{Quantidade}!setValor@{setValor}}
+\index{setValor@{setValor}!Quantidade@{Quantidade}}
+\doxysubsubsection{\texorpdfstring{setValor()}{setValor()}}
+{\footnotesize\ttfamily \label{classQuantidade_ae3c5852824ccb6f0c2969bddeccfb1e2} 
+void Quantidade\+::set\+Valor (\begin{DoxyParamCaption}\item[{const string \&}]{valor}{}\end{DoxyParamCaption})}
+
+
+
+Metodo publico que define o valor da quantidade apos validacao. 
+
+Utiliza o metodo {\ttfamily validar()} para garantir que a quantidade esteja no formato correto e no intervalo permitido. O valor e armazenado somente se a validacao for bem-\/sucedida.
+
+
+\begin{DoxyParams}{Parameters}
+{\em valor} & String com a quantidade a ser definida. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & Se o valor for invalido. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/dominios/\mbox{\hyperlink{dominios_8hpp}{dominios.\+hpp}}\item 
+src/dominios/\mbox{\hyperlink{dominios_8cpp}{dominios.\+cpp}}\end{DoxyCompactItemize}

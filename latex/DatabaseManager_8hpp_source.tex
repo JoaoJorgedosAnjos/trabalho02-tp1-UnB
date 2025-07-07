@@ -1,0 +1,84 @@
+\doxysection{Database\+Manager.\+hpp}
+\hypertarget{DatabaseManager_8hpp_source}{}\label{DatabaseManager_8hpp_source}\index{src/database/DatabaseManager.hpp@{src/database/DatabaseManager.hpp}}
+\mbox{\hyperlink{DatabaseManager_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DATABASEMANAGER\_HPP\_INCLUDED}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DATABASEMANAGER\_HPP\_INCLUDED}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <sqlite3.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{dominios_8hpp}{../dominios/dominios.hpp}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{entidades_8hpp}{../entidades/entidades.hpp}}"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classDatabaseManager_a994baccc2ff50fecda3cb3597ef5143b}{DatabaseManager}}\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00020\ \ \ \ \ sqlite3*\ db;}
+\DoxyCodeLine{00021\ \ \ \ \ std::string\ dbPath;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{bool}\ connected;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{bool}\ executarSQL(\textcolor{keyword}{const}\ std::string\&\ sql);}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{bool}\ prepararStatement(\textcolor{keyword}{const}\ std::string\&\ sql,\ sqlite3\_stmt**\ stmt);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ finalizarStatement(sqlite3\_stmt*\ stmt);}
+\DoxyCodeLine{00027\ \ \ \ \ std::string\ escaparString(\textcolor{keyword}{const}\ std::string\&\ str);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{bool}\ carteiraTemOrdens(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCodigo}{Codigo}}\&\ codigoCarteira);}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{bool}\ contaTemCarteiras(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classDatabaseManager_a994baccc2ff50fecda3cb3597ef5143b}{DatabaseManager}}(\textcolor{keyword}{const}\ std::string\&\ caminhoBanco\ =\ \textcolor{stringliteral}{"{}investimentos.db"{}});}
+\DoxyCodeLine{00038\ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{classDatabaseManager_ae9b3a5da1e04fbb00faf8a034da1d063}{\string~DatabaseManager}}();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDatabaseManager_aa34b73b2c7dd4fc4c41bcde5c043cd04}{conectar}}();}
+\DoxyCodeLine{00049\ \ \ \ \ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDatabaseManager_a432f91fd4ea52b834dd5bcab69e6e693}{desconectar}}();}
+\DoxyCodeLine{00054\ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDatabaseManager_abd7b3f0f8264e1a8c451194a2adc67bf}{inicializarBanco}}();}
+\DoxyCodeLine{00060\ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDatabaseManager_a31ce681e47e60321acee37684fcc9162}{estaConectado}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ connected;\ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDatabaseManager_ad74c763b3e09b3eb3f30d35f4822d10a}{inserirConta}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classConta}{Conta}}\&\ conta);}
+\DoxyCodeLine{00073\ \ \ \ \ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDatabaseManager_ab3c54af72bd930db9adc1ffc4ebc901f}{buscarConta}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf,\ \mbox{\hyperlink{classConta}{Conta}}*\ conta);}
+\DoxyCodeLine{00081\ \ \ \ \ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDatabaseManager_a7851c336f359b715d81b3428dc187dfd}{atualizarConta}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classConta}{Conta}}\&\ conta);}
+\DoxyCodeLine{00088\ \ \ \ \ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDatabaseManager_adb3b5621377fcdb6e83042e15e51a199}{excluirConta}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf);}
+\DoxyCodeLine{00095\ \ \ \ \ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDatabaseManager_a2aeb74eff715732d0f48adcc4b21486d}{autenticarUsuario}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSenha}{Senha}}\&\ senha);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDatabaseManager_aa0b88e69d778b4eb4c91763e09738b6c}{inserirCarteira}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCarteira}{Carteira}}\&\ carteira,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpfProprietario);}
+\DoxyCodeLine{00111\ \ \ \ \ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDatabaseManager_af6e9e31e1d538417a8ea273fcc2c5437}{listarCarteiras}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf,\ std::list<Carteira>*\ listaCarteiras);}
+\DoxyCodeLine{00119\ \ \ \ \ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDatabaseManager_a5fadc7d35ac54b8c38ab11db6f981c81}{buscarCarteira}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCodigo}{Codigo}}\&\ codigo,\ \mbox{\hyperlink{classCarteira}{Carteira}}*\ carteira);}
+\DoxyCodeLine{00127\ \ \ \ \ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDatabaseManager_a4c546fcadd207fbba44848244a266004}{atualizarCarteira}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCarteira}{Carteira}}\&\ carteira);}
+\DoxyCodeLine{00134\ \ \ \ \ }
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDatabaseManager_aeaa110570f9596093a4400a342ac8346}{excluirCarteira}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCodigo}{Codigo}}\&\ codigo);}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDatabaseManager_af1f7da9adc5e172aeda6c4dfeee3f40e}{inserirOrdem}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classOrdem}{Ordem}}\&\ ordem,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classCodigo}{Codigo}}\&\ codigoCarteira);}
+\DoxyCodeLine{00149\ \ \ \ \ }
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDatabaseManager_ab2fa89cecc1760db8175e3a9b841cd9e}{listarOrdens}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCodigo}{Codigo}}\&\ codigoCarteira,\ std::list<Ordem>*\ listaOrdens);}
+\DoxyCodeLine{00157\ \ \ \ \ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDatabaseManager_acef3e62873ee8f8046c5640c271be016}{buscarOrdem}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCodigo}{Codigo}}\&\ codigo,\ \mbox{\hyperlink{classOrdem}{Ordem}}*\ ordem);}
+\DoxyCodeLine{00165\ \ \ \ \ }
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDatabaseManager_a5b7eedad0ec80c5a7c90743cb0491cdf}{excluirOrdem}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCodigo}{Codigo}}\&\ codigo);}
+\DoxyCodeLine{00172\ \ \ \ \ }
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDatabaseManager_a6a7a6175397b6ebefe59ec6e39cc634e}{calcularSaldoCarteira}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCodigo}{Codigo}}\&\ codigoCarteira,\ \mbox{\hyperlink{classDinheiro}{Dinheiro}}*\ saldo);}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDatabaseManager_a21073136948bacea1708c89da2658bfe}{limparTodasTabelas}}();}
+\DoxyCodeLine{00186\ \ \ \ \ }
+\DoxyCodeLine{00191\ \ \ \ \ std::string\ \mbox{\hyperlink{classDatabaseManager_a44be591e987cc7a30ea3695d4cd4273a}{obterEstatisticas}}();}
+\DoxyCodeLine{00192\ \ \ \ \ }
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{classDatabaseManager_a3b8add30c0ac2bd5050c053f5b9f04b4}{centavosParaDinheiro}}(\textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ centavos);}
+\DoxyCodeLine{00199\ \ \ \ \ }
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classDatabaseManager_abbb94623b3482870645ee030eb0357f8}{dinheiroParaCentavos}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classDinheiro}{Dinheiro}}\&\ dinheiro);}
+\DoxyCodeLine{00206\ \};}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ DATABASEMANAGER\_HPP\_INCLUDED\ }}
+
+\end{DoxyCode}

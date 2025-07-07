@@ -1,0 +1,723 @@
+\doxysection{/home/joaojorge/\+Documents/\+Un\+B/03\+\_\+semestre/tp1/teste/trabalho02-\/tp1-\/\+Un\+B/src/controladoras/controladoras\+Apresentacao.\+cpp}
+\hypertarget{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}{}\label{_2home_2joaojorge_2Documents_2UnB_203_semestre_2tp1_2teste_2trabalho02-tp1-UnB_2src_2controlador38f85208c06504e11768679b3c0ddfd2}Formata uma string de números para o padrão de CPF brasileiro.
+
+Formata uma string de números para o padrão de CPF brasileiro Esta função implementa uma máscara automática que permite ao usuário digitar apenas os 11 dígitos do CPF, sem se preocupar com pontos e hífen. A função automaticamente adiciona a formatação necessária.
+
+Exemplos de transformação\+:
+\begin{DoxyItemize}
+\item "{}12345678901"{} -\/\texorpdfstring{$>$}{>} "{}xxx.\+xxx.\+xxx-\/xx"{}
+\item "{}98765432100"{} -\/\texorpdfstring{$>$}{>} "{}xxx.\+xxx.\+xxx-\/xx"{}
+\end{DoxyItemize}
+
+A função também aceita CPFs já formatados, retornando-\/os inalterados se estiverem no formato correto.
+
+
+\begin{DoxyParams}{Parameters}
+{\em entrada} & String contendo os dígitos do CPF (com ou sem formatação) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string CPF formatado no padrão XXX.\+XXX.\+XXX-\/XX 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & se a entrada não contiver exatamente 11 dígitos numéricos\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyNote}{Note}
+Esta função apenas formata, não valida os dígitos verificadores 
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\doxylink{classNcpf_a5a9638e7c9562e48a2ec755b71db314b}{Ncpf\+::set\+Valor()} para validação completa do CPF
+\end{DoxySeeAlso}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::string\ cpfFormatado\ =\ \mbox{\hyperlink{controladorasApresentacao_8cpp_a731d2a62cf78a8734556112514d642a4}{formatarCPF}}(\textcolor{stringliteral}{"{}xxxxxxxxxxx"{}});}
+\DoxyCodeLine{\textcolor{comment}{//\ Resultado:\ "{}xxx.xxx.xxx-\/xx"{}}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <cctype>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{controladorasApresentacao_8hpp}{controladorasApresentacao.hpp}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{telaUtils_8hpp}{telaUtils.hpp}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{CarteiraController_8hpp}{CarteiraController.hpp}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{OrdemController_8hpp}{OrdemController.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{std::string\ \mbox{\hyperlink{controladorasApresentacao_8cpp_a731d2a62cf78a8734556112514d642a4}{formatarCPF}}(\textcolor{keyword}{const}\ std::string\&\ entrada)\ \{}
+\DoxyCodeLine{\ \ \ \ std::string\ apenasNumeros;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char}\ c\ :\ entrada)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::isdigit(c))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ apenasNumeros\ +=\ c;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (apenasNumeros.length()\ !=\ 11)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}CPF\ deve\ conter\ exatamente\ 11\ dígitos\ numéricos\ (você\ digitou\ "{}}\ +\ std::to\_string(apenasNumeros.length())\ +\ \textcolor{stringliteral}{"{}\ dígitos)"{}});}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ std::string\ cpfFormatado;}
+\DoxyCodeLine{\ \ \ \ cpfFormatado\ +=\ apenasNumeros.substr(0,\ 3);}
+\DoxyCodeLine{\ \ \ \ cpfFormatado\ +=\ \textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{\ \ \ \ cpfFormatado\ +=\ apenasNumeros.substr(3,\ 3);}
+\DoxyCodeLine{\ \ \ \ cpfFormatado\ +=\ \textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{\ \ \ \ cpfFormatado\ +=\ apenasNumeros.substr(6,\ 3);}
+\DoxyCodeLine{\ \ \ \ cpfFormatado\ +=\ \textcolor{stringliteral}{"{}-\/"{}};}
+\DoxyCodeLine{\ \ \ \ cpfFormatado\ +=\ apenasNumeros.substr(9,\ 2);}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ cpfFormatado;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{classControladoraApresentacaoAutenticacao_af242fa3aac61d97df947b63cf7c24d04}{ControladoraApresentacaoAutenticacao::setControladoraServico}}(\mbox{\hyperlink{classIServicoAutenticacao}{IServicoAutenticacao}}*\ cntrServicoAutenticacao)\ \{}
+\DoxyCodeLine{\ \ \ \ this-\/>cntrServicoAutenticacao\ =\ cntrServicoAutenticacao;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classControladoraApresentacaoAutenticacao_aa7d344def6022c5493cc4519a54edc9b}{ControladoraApresentacaoAutenticacao::autenticar}}(\mbox{\hyperlink{classNcpf}{Ncpf}}*\ cpf)\ \{}
+\DoxyCodeLine{\ \ \ \ std::string\ valor;}
+\DoxyCodeLine{\ \ \ \ Senha\ senha;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{classtelaUtils_a8b3b58ae8a28b453d26d6c122bd4b184}{telaUtils::exibirCabecalho}}(\textcolor{stringliteral}{"{}AUTENTICACAO\ DE\ USUARIO"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}(Digite\ '0'\ a\ qualquer\ momento\ para\ cancelar)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}CPF\ (apenas\ numeros\ ou\ XXX.XXX.XXX-\/XX):\ "{}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cin\ >>\ valor;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (valor\ ==\ \textcolor{stringliteral}{"{}0"{}})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Login\ cancelado\ pelo\ usuario."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ cpfFormatado\ =\ \mbox{\hyperlink{controladorasApresentacao_8cpp_a731d2a62cf78a8734556112514d642a4}{formatarCPF}}(valor);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}CPF\ formatado:\ "{}}\ <<\ cpfFormatado\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cpf-\/>\mbox{\hyperlink{classNcpf_a5a9638e7c9562e48a2ec755b71db314b}{setValor}}(cpfFormatado);\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::invalid\_argument\&\ e)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cpf-\/>\mbox{\hyperlink{classNcpf_a5a9638e7c9562e48a2ec755b71db314b}{setValor}}(valor);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::invalid\_argument\&\ e2)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ e;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Senha\ (6\ caracteres)\ \ \ \ :\ "{}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cin\ >>\ valor;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (valor\ ==\ \textcolor{stringliteral}{"{}0"{}})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Login\ cancelado\ pelo\ usuario."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ senha.\mbox{\hyperlink{classSenha_a004b67b8e8c8dbfac70e08fece395ed6}{setValor}}(valor);\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ }
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::invalid\_argument\ \&exp)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtelaUtils_ae623467ad6e4cf0c221e32a73e735bd5}{telaUtils::limparTela}}();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtelaUtils_a8b3b58ae8a28b453d26d6c122bd4b184}{telaUtils::exibirCabecalho}}(\textcolor{stringliteral}{"{}ERRO\ DE\ AUTENTICACAO"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n❌\ Erro:\ "{}}\ <<\ exp.what()\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n💡\ Dicas:"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ \ \ •\ CPF:\ Digite\ apenas\ os\ 11\ números\ (ex:\ xxx.xxx.xxx-\/xx)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ \ \ •\ Senha:\ Use\ 1\ maiúscula,\ 1\ minúscula,\ 1\ número\ e\ 1\ símbolo\ (\#\$\%\&)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nPressione\ qualquer\ tecla\ para\ tentar\ novamente..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cin.ignore();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cin.get();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ cntrServicoAutenticacao-\/>autenticar(*cpf,\ senha);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{classControladoraApresentacaoUsuario_a75e8ad32494259e0d8b33a3697df56c0}{ControladoraApresentacaoUsuario::setControladoraServico}}(\mbox{\hyperlink{classIServicoUsuario}{IServicoUsuario}}*\ cntrServicoUsuario)\ \{}
+\DoxyCodeLine{\ \ \ \ this-\/>cntrServicoUsuario\ =\ cntrServicoUsuario;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classControladoraApresentacaoUsuario_a885ddce6f703af180ff097f77852307d}{ControladoraApresentacaoUsuario::executar}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ opcao\ =\ -\/1;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{while}\ (opcao\ !=\ 0)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{classtelaUtils_a8b3b58ae8a28b453d26d6c122bd4b184}{telaUtils::exibirCabecalho}}(\textcolor{stringliteral}{"{}GERENCIAMENTO\ DE\ CONTA"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}1.\ Consultar\ dados\ da\ conta."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}2.\ Editar\ dados\ da\ conta."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}3.\ Excluir\ minha\ conta."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}0.\ Voltar\ ao\ menu\ principal."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{classtelaUtils_a87c217996714c9144ab2ca60e9bb6d4a}{telaUtils::exibirSeparador}}(\textcolor{charliteral}{'-\/'},\ 40);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Escolha\ uma\ opcao:\ "{}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cin\ >>\ opcao;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (opcao)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (consultarConta(cpf))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ editarConta(cpf);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (excluirConta(cpf))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Opcao\ invalida!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{classControladoraApresentacaoUsuario_ad3ff4b91e95ddbf6b8999e113a5bbf45}{ControladoraApresentacaoUsuario::cadastrar}}()\ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classtelaUtils_a8b3b58ae8a28b453d26d6c122bd4b184}{telaUtils::exibirCabecalho}}(\textcolor{stringliteral}{"{}CADASTRO\ DE\ NOVA\ CONTA"{}});}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}(Digite\ '0'\ a\ qualquer\ momento\ para\ cancelar)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ std::string\ valor;}
+\DoxyCodeLine{\ \ \ \ Conta\ novaConta;}
+\DoxyCodeLine{\ \ \ \ Ncpf\ cpf;}
+\DoxyCodeLine{\ \ \ \ Nome\ nome;}
+\DoxyCodeLine{\ \ \ \ Senha\ senha;}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{bool}\ cpfValido\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{bool}\ nomeValido\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{bool}\ senhaValida\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{while}\ (!cpfValido\ ||\ !nomeValido\ ||\ !senhaValida)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!cpfValido)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n===\ 1.\ CPF\ ==="{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}CPF\ (apenas\ numeros\ ou\ XXX.XXX.XXX-\/XX):\ "{}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cin\ >>\ valor;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (valor\ ==\ \textcolor{stringliteral}{"{}0"{}})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Cadastro\ cancelado\ pelo\ usuario."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ cpfFormatado\ =\ \mbox{\hyperlink{controladorasApresentacao_8cpp_a731d2a62cf78a8734556112514d642a4}{formatarCPF}}(valor);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}CPF\ formatado:\ "{}}\ <<\ cpfFormatado\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cpf.\mbox{\hyperlink{classNcpf_a5a9638e7c9562e48a2ec755b71db314b}{setValor}}(cpfFormatado);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::invalid\_argument\&\ e)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cpf.\mbox{\hyperlink{classNcpf_a5a9638e7c9562e48a2ec755b71db314b}{setValor}}(valor);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::invalid\_argument\&\ e2)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ e;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cpfValido\ =\ \textcolor{keyword}{true};\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::invalid\_argument\ \&exp)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtelaUtils_ae623467ad6e4cf0c221e32a73e735bd5}{telaUtils::limparTela}}();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtelaUtils_a8b3b58ae8a28b453d26d6c122bd4b184}{telaUtils::exibirCabecalho}}(\textcolor{stringliteral}{"{}ERRO\ NO\ CPF"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n❌\ Erro\ no\ CPF:\ "{}}\ <<\ exp.what()\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n💡\ Dica:\ Digite\ apenas\ os\ 11\ números\ (ex:\ xxx.xxx.xxx-\/xx)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nPressione\ qualquer\ tecla\ para\ tentar\ novamente..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cin.ignore();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cin.get();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (!nomeValido)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n===\ 2.\ NOME\ ==="{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}CPF\ já\ cadastrado:\ "{}}\ <<\ cpf.\mbox{\hyperlink{classNcpf_ac9a692881029c6649d7ae8cb65c34037}{getValor}}()\ <<\ \textcolor{stringliteral}{"{}\ ✓"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}(Digite\ '0'\ para\ cancelar\ ou\ 'r'\ para\ reescrever\ CPF)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cin.ignore();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Nome\ (ate\ 20\ caracteres):\ "{}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::getline(std::cin,\ valor);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (valor\ ==\ \textcolor{stringliteral}{"{}0"{}})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Cadastro\ cancelado\ pelo\ usuario."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (valor\ ==\ \textcolor{stringliteral}{"{}r"{}}\ ||\ valor\ ==\ \textcolor{stringliteral}{"{}R"{}})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Voltando\ para\ reescrever\ CPF..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cpfValido\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nome.\mbox{\hyperlink{classNome_ae66ac378b7363a69061bec2356451512}{setValor}}(valor);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nomeValido\ =\ \textcolor{keyword}{true};\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::invalid\_argument\ \&exp)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nErro\ no\ Nome:\ "{}}\ <<\ exp.what()\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Dica:\ Maximo\ 20\ caracteres,\ sem\ espacos\ duplos"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (!senhaValida)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n===\ 3.\ SENHA\ ==="{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}CPF\ já\ cadastrado:\ "{}}\ <<\ cpf.\mbox{\hyperlink{classNcpf_ac9a692881029c6649d7ae8cb65c34037}{getValor}}()\ <<\ \textcolor{stringliteral}{"{}\ ✓"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Nome\ já\ cadastrado:\ "{}}\ <<\ nome.\mbox{\hyperlink{classNome_ac8881234a0e2d0ddff4fb689ceb256eb}{getValor}}()\ <<\ \textcolor{stringliteral}{"{}\ ✓"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}(Digite\ '0'\ para\ cancelar,\ 'r'\ para\ reescrever\ CPF,\ 'n'\ para\ reescrever\ nome)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Senha\ (6\ caracteres):\ "{}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cin\ >>\ valor;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (valor\ ==\ \textcolor{stringliteral}{"{}0"{}})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Cadastro\ cancelado\ pelo\ usuario."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (valor\ ==\ \textcolor{stringliteral}{"{}r"{}}\ ||\ valor\ ==\ \textcolor{stringliteral}{"{}R"{}})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Voltando\ para\ reescrever\ CPF..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cpfValido\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (valor\ ==\ \textcolor{stringliteral}{"{}n"{}}\ ||\ valor\ ==\ \textcolor{stringliteral}{"{}N"{}})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Voltando\ para\ reescrever\ nome..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nomeValido\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ senha.\mbox{\hyperlink{classSenha_a004b67b8e8c8dbfac70e08fece395ed6}{setValor}}(valor);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ senhaValida\ =\ \textcolor{keyword}{true};\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::invalid\_argument\ \&exp)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nErro\ na\ Senha:\ "{}}\ <<\ exp.what()\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Dica:\ 6\ caracteres\ com\ 1\ maiuscula,\ 1\ minuscula,\ 1\ numero\ e\ 1\ simbolo\ (\#\$\%\&)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n===\ RESUMO\ DO\ CADASTRO\ ==="{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}CPF\ \ :\ "{}}\ <<\ cpf.\mbox{\hyperlink{classNcpf_ac9a692881029c6649d7ae8cb65c34037}{getValor}}()\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Nome\ :\ "{}}\ <<\ nome.\mbox{\hyperlink{classNome_ac8881234a0e2d0ddff4fb689ceb256eb}{getValor}}()\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Senha:\ ******\ (6\ caracteres)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}=========================="{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ confirmacao;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nConfirma\ o\ cadastro?\ (s/n):\ "{}};}
+\DoxyCodeLine{\ \ \ \ std::cin\ >>\ confirmacao;}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (confirmacao\ !=\ \textcolor{charliteral}{'s'}\ \&\&\ confirmacao\ !=\ \textcolor{charliteral}{'S'})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nCadastro\ cancelado\ pelo\ usuario."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ novaConta.\mbox{\hyperlink{classConta_a43311ce624c7f47b3db12cb8465f517c}{setNcpf}}(cpf);}
+\DoxyCodeLine{\ \ \ \ novaConta.\mbox{\hyperlink{classConta_a11a93387df644b2320209d427bca097e}{setNome}}(nome);}
+\DoxyCodeLine{\ \ \ \ novaConta.\mbox{\hyperlink{classConta_a98a6e1362fe65d2849413a52823e7247}{setSenha}}(senha);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (cntrServicoUsuario-\/>cadastrarConta(novaConta))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n***\ CONTA\ CADASTRADA\ COM\ SUCESSO!\ ***"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}CPF\ cadastrado:\ "{}}\ <<\ cpf.\mbox{\hyperlink{classNcpf_ac9a692881029c6649d7ae8cb65c34037}{getValor}}()\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Agora\ voce\ ja\ pode\ fazer\ login!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nErro\ ao\ cadastrar\ conta.\ CPF\ ja\ existe\ no\ sistema."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{bool}\ ControladoraApresentacaoUsuario::consultarConta(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf)\ \{}
+\DoxyCodeLine{\ \ \ \ Conta\ conta;}
+\DoxyCodeLine{\ \ \ \ Dinheiro\ saldo;}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (cntrServicoUsuario-\/>consultarConta(cpf,\ \&conta,\ \&saldo))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n===\ DADOS\ DA\ CONTA\ ==="{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}CPF\ \ \ :\ "{}}\ <<\ conta.\mbox{\hyperlink{classConta_a7a68e39e7dd328440f1d9182943533b8}{getNcpf}}().\mbox{\hyperlink{classNcpf_ac9a692881029c6649d7ae8cb65c34037}{getValor}}()\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Nome\ \ :\ "{}}\ <<\ conta.\mbox{\hyperlink{classConta_aac660b7dd90148ff41f89f3732f0d52b}{getNome}}().\mbox{\hyperlink{classNome_ac8881234a0e2d0ddff4fb689ceb256eb}{getValor}}()\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Saldo\ Total:\ R\$\ "{}}\ <<\ saldo.\mbox{\hyperlink{classDinheiro_a8bdf6f6ddd5287d4c170cd15f067becd}{getValor}}()\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}======================"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ opcao;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nO\ que\ deseja\ fazer\ agora?"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}1.\ Editar\ dados\ da\ conta"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}2.\ Excluir\ minha\ conta"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}0.\ Voltar\ ao\ menu\ anterior"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Escolha\ uma\ opcao:\ "{}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cin\ >>\ opcao;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (opcao)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ editarConta(cpf);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (excluirConta(cpf))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Opcao\ invalida!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtelaUtils_ad69a9f1c27f459cce5366a28824e5837}{telaUtils::pausar}}();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nErro\ ao\ consultar\ conta."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{classtelaUtils_ad69a9f1c27f459cce5366a28824e5837}{telaUtils::pausar}}();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ ControladoraApresentacaoUsuario::editarConta(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf)\ \{}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n-\/-\/-\/\ Edicao\ de\ Conta\ -\/-\/-\/"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ Conta\ conta;}
+\DoxyCodeLine{\ \ \ \ Dinheiro\ saldo;}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (!cntrServicoUsuario-\/>consultarConta(cpf,\ \&conta,\ \&saldo))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Erro\ ao\ consultar\ conta."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Dados\ atuais:"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Nome:\ "{}}\ <<\ conta.\mbox{\hyperlink{classConta_aac660b7dd90148ff41f89f3732f0d52b}{getNome}}().\mbox{\hyperlink{classNome_ac8881234a0e2d0ddff4fb689ceb256eb}{getValor}}()\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Senha:\ ******\ (6\ caracteres)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ opcao;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nO\ que\ deseja\ editar?"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}1.\ Nome"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}2.\ Senha"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}3.\ Ambos"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}0.\ Cancelar"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Escolha:\ "{}};}
+\DoxyCodeLine{\ \ \ \ std::cin\ >>\ opcao;}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (opcao\ ==\ 0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ std::string\ valor;}
+\DoxyCodeLine{\ \ \ \ Nome\ novoNome\ =\ conta.\mbox{\hyperlink{classConta_aac660b7dd90148ff41f89f3732f0d52b}{getNome}}();}
+\DoxyCodeLine{\ \ \ \ Senha\ novaSenha\ =\ conta.\mbox{\hyperlink{classConta_aa36f37646e006dc200f82bc9f384d79b}{getSenha}}();}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (opcao\ ==\ 1\ ||\ opcao\ ==\ 3)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cin.ignore();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Nome\ atual:\ "{}}\ <<\ conta.\mbox{\hyperlink{classConta_aac660b7dd90148ff41f89f3732f0d52b}{getNome}}().\mbox{\hyperlink{classNome_ac8881234a0e2d0ddff4fb689ceb256eb}{getValor}}()\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Novo\ nome\ (ate\ 20\ caracteres,\ ou\ 0\ para\ cancelar):\ "{}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::getline(std::cin,\ valor);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (valor\ ==\ \textcolor{stringliteral}{"{}0"{}})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Edicao\ de\ conta\ cancelada\ pelo\ usuario."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ novoNome.\mbox{\hyperlink{classNome_ae66ac378b7363a69061bec2356451512}{setValor}}(valor);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (opcao\ ==\ 2\ ||\ opcao\ ==\ 3)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Senha\ atual:\ ******\ (6\ caracteres)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Nova\ senha\ (6\ caracteres,\ ou\ 0\ para\ cancelar):\ "{}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cin\ >>\ valor;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (valor\ ==\ \textcolor{stringliteral}{"{}0"{}})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Edicao\ de\ conta\ cancelada\ pelo\ usuario."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ novaSenha.\mbox{\hyperlink{classSenha_a004b67b8e8c8dbfac70e08fece395ed6}{setValor}}(valor);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ conta.\mbox{\hyperlink{classConta_a11a93387df644b2320209d427bca097e}{setNome}}(novoNome);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ conta.\mbox{\hyperlink{classConta_a98a6e1362fe65d2849413a52823e7247}{setSenha}}(novaSenha);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cntrServicoUsuario-\/>editarConta(conta))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nConta\ editada\ com\ sucesso!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nErro\ ao\ editar\ conta."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::invalid\_argument\ \&exp)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nErro:\ "{}}\ <<\ exp.what()\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nPressione\ qualquer\ tecla\ para\ continuar..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cin.ignore();}
+\DoxyCodeLine{\ \ \ \ std::cin.get();}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{bool}\ ControladoraApresentacaoUsuario::excluirConta(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf)\ \{}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n-\/-\/-\/\ Exclusao\ de\ Conta\ -\/-\/-\/"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}ATENCAO:\ Esta\ operacao\ e\ irreversivel!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Tem\ certeza\ que\ deseja\ excluir\ sua\ conta?\ (s/N):\ "{}};}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ confirmacao;}
+\DoxyCodeLine{\ \ \ \ std::cin\ >>\ confirmacao;}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (confirmacao\ ==\ \textcolor{charliteral}{'s'}\ ||\ confirmacao\ ==\ \textcolor{charliteral}{'S'})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cntrServicoUsuario-\/>excluirConta(cpf))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nConta\ excluida\ com\ sucesso!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Obrigado\ por\ utilizar\ nosso\ sistema."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nPressione\ qualquer\ tecla\ para\ continuar..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cin.ignore();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cin.get();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nErro\ ao\ excluir\ conta.\ Verifique\ se\ nao\ existem\ carteiras\ associadas."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nPressione\ qualquer\ tecla\ para\ continuar..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cin.ignore();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cin.get();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nOperacao\ cancelada."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{classControladoraApresentacaoInvestimento_a43de8f443f4449d4a628f4a762306e25}{ControladoraApresentacaoInvestimento::ControladoraApresentacaoInvestimento}}()\ }
+\DoxyCodeLine{\ \ \ \ :\ cntrServicoInvestimento(nullptr),\ carteiraController(nullptr),\ ordemController(nullptr)\ \{}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{classControladoraApresentacaoInvestimento_a034e725325daaca4de4099f0eced704a}{ControladoraApresentacaoInvestimento::\string~ControladoraApresentacaoInvestimento}}()\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{delete}\ carteiraController;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{delete}\ ordemController;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{classControladoraApresentacaoInvestimento_aafbc842c529651a6027154c52de79749}{ControladoraApresentacaoInvestimento::setControladoraServico}}(\mbox{\hyperlink{classIServicoInvestimento}{IServicoInvestimento}}*\ cntrServicoInvestimento)\ \{}
+\DoxyCodeLine{\ \ \ \ this-\/>cntrServicoInvestimento\ =\ cntrServicoInvestimento;}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (carteiraController)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ carteiraController;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (ordemController)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ ordemController;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ carteiraController\ =\ \textcolor{keyword}{new}\ CarteiraController(cntrServicoInvestimento);}
+\DoxyCodeLine{\ \ \ \ ordemController\ =\ \textcolor{keyword}{new}\ OrdemController(cntrServicoInvestimento);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{classControladoraApresentacaoInvestimento_aeeb3905f39cbd169789b59ac3c984d69}{ControladoraApresentacaoInvestimento::executar}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classNcpf}{Ncpf}}\&\ cpf)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ opcao;}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{classtelaUtils_a8b3b58ae8a28b453d26d6c122bd4b184}{telaUtils::exibirCabecalho}}(\textcolor{stringliteral}{"{}MENU\ DE\ INVESTIMENTOS"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}1.\ Gerenciar\ Carteiras"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}2.\ Gerenciar\ Ordens\ (selecionar\ carteira)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}0.\ Voltar\ ao\ menu\ principal"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{classtelaUtils_a87c217996714c9144ab2ca60e9bb6d4a}{telaUtils::exibirSeparador}}(\textcolor{charliteral}{'-\/'},\ 40);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Escolha\ uma\ opção:\ "{}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cin\ >>\ opcao;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (opcao)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ carteiraController-\/>executarMenu(cpf);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::list<Carteira>\ carteiras;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cntrServicoInvestimento-\/>listarCarteiras(cpf,\ \&carteiras))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (carteiras.empty())\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Você\ não\ possui\ carteiras.\ Crie\ uma\ primeiro."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nPressione\ qualquer\ tecla\ para\ continuar..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cin.ignore();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cin.get();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nSuas\ carteiras:"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ carteira\ :\ carteiras)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Código:\ "{}}\ <<\ carteira.getCodigo().getValor()\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ -\/\ "{}}\ <<\ carteira.getNome().getValor()\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ codigoStr;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Digite\ o\ código\ da\ carteira:\ "{}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cin\ >>\ codigoStr;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Codigo\ codigoCarteira;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ codigoCarteira.\mbox{\hyperlink{classCodigo_a78ccbafec5fe4213788805ca242802a8}{setValor}}(codigoStr);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ordemController-\/>executarMenu(codigoCarteira);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::invalid\_argument\ \&exp)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Código\ inválido:\ "{}}\ <<\ exp.what()\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nPressione\ qualquer\ tecla\ para\ continuar..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cin.ignore();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cin.get();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Erro\ ao\ listar\ carteiras."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nPressione\ qualquer\ tecla\ para\ continuar..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cin.ignore();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cin.get();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Opcao\ invalida!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{classInterfaceManager_a83b46799fad1dd51451a78a61e6388a7}{InterfaceManager::InterfaceManager}}(}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classControladoraApresentacaoAutenticacao}{ControladoraApresentacaoAutenticacao}}*\ cntrApresentacaoAutenticacao,}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classControladoraApresentacaoUsuario}{ControladoraApresentacaoUsuario}}*\ cntrApresentacaoUsuario,}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classControladoraApresentacaoInvestimento}{ControladoraApresentacaoInvestimento}}*\ cntrApresentacaoInvestimento}
+\DoxyCodeLine{)\ :\ cntrApresentacaoAutenticacao(cntrApresentacaoAutenticacao),}
+\DoxyCodeLine{\ \ \ \ cntrApresentacaoUsuario(cntrApresentacaoUsuario),}
+\DoxyCodeLine{\ \ \ \ cntrApresentacaoInvestimento(cntrApresentacaoInvestimento),}
+\DoxyCodeLine{\ \ \ \ telaAtual(TelaAtual::MENU\_INICIAL),}
+\DoxyCodeLine{\ \ \ \ usuarioAutenticado(false)\ \{}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ InterfaceManager::limparTela()\ \{}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ InterfaceManager::mostrarMenuInicial()\ \{}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n===\ GERENCIAMENTO\ DE\ CONTA\ ==="{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}1.\ Login"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}2.\ Cadastrar\ nova\ conta"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}0.\ Sair"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Escolha\ uma\ opção:\ "{}};}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ InterfaceManager::mostrarMenuPrincipal()\ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classtelaUtils_a8b3b58ae8a28b453d26d6c122bd4b184}{telaUtils::exibirCabecalho}}(\textcolor{stringliteral}{"{}MENU\ PRINCIPAL"{}});}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Usuário:\ "{}}\ <<\ cpfAutenticado.getValor()\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}======================="{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}1.\ Gerenciar\ Conta"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}2.\ Gerenciar\ Investimentos"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}0.\ Logout"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Escolha\ uma\ opção:\ "{}};}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ InterfaceManager::processarMenuInicial()\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ opcao;}
+\DoxyCodeLine{\ \ \ \ std::cin\ >>\ opcao;}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{switch}\ (opcao)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ telaAtual\ =\ TelaAtual::LOGIN;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ telaAtual\ =\ TelaAtual::CADASTRO;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ telaAtual\ =\ TelaAtual::SAIR;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Opção\ inválida!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nPressione\ qualquer\ tecla\ para\ continuar..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cin.ignore();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cin.get();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ InterfaceManager::processarMenuPrincipal()\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ opcao;}
+\DoxyCodeLine{\ \ \ \ std::cin\ >>\ opcao;}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{switch}\ (opcao)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ telaAtual\ =\ TelaAtual::GERENCIAR\_CONTA;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ telaAtual\ =\ TelaAtual::GERENCIAR\_INVESTIMENTOS;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ fazerLogout();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Opção\ inválida!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nPressione\ qualquer\ tecla\ para\ continuar..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cin.ignore();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cin.get();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ InterfaceManager::processarGerenciarConta()\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (cntrApresentacaoUsuario-\/>executar(cpfAutenticado))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fazerLogout();}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ telaAtual\ =\ TelaAtual::MENU\_PRINCIPAL;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ InterfaceManager::processarGerenciarInvestimentos()\ \{}
+\DoxyCodeLine{\ \ \ \ cntrApresentacaoInvestimento-\/>executar(cpfAutenticado);}
+\DoxyCodeLine{\ \ \ \ telaAtual\ =\ TelaAtual::MENU\_PRINCIPAL;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ InterfaceManager::fazerLogout()\ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classtelaUtils_a8b3b58ae8a28b453d26d6c122bd4b184}{telaUtils::exibirCabecalho}}(\textcolor{stringliteral}{"{}GERENCIAMENTO\ DE\ CONTA"{}});}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Logout\ realizado\ com\ sucesso!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nPressione\ qualquer\ tecla\ para\ continuar..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cin.ignore();}
+\DoxyCodeLine{\ \ \ \ std::cin.get();}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classtelaUtils_ae623467ad6e4cf0c221e32a73e735bd5}{telaUtils::limparTela}}();}
+\DoxyCodeLine{\ \ \ \ usuarioAutenticado\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\ \ \ \ telaAtual\ =\ TelaAtual::MENU\_INICIAL;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{classInterfaceManager_a9757f673e258d66b7b666a46802652dc}{InterfaceManager::executar}}()\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{while}\ (telaAtual\ !=\ TelaAtual::SAIR)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (telaAtual)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TelaAtual::MENU\_INICIAL:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mostrarMenuInicial();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ processarMenuInicial();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TelaAtual::LOGIN:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cntrApresentacaoAutenticacao-\/>autenticar(\&cpfAutenticado))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n>>>\ Autenticação\ realizada\ com\ sucesso\ <<<"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Usuário\ autenticado:\ "{}}\ <<\ cpfAutenticado.getValor()\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nPressione\ qualquer\ tecla\ para\ continuar..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cin.ignore();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cin.get();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtelaUtils_ae623467ad6e4cf0c221e32a73e735bd5}{telaUtils::limparTela}}();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ usuarioAutenticado\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ telaAtual\ =\ TelaAtual::MENU\_PRINCIPAL;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n>>>\ Falha\ na\ autenticação.\ CPF\ ou\ senha\ inválidos.\ <<<"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nPressione\ qualquer\ tecla\ para\ continuar..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cin.ignore();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cin.get();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtelaUtils_ae623467ad6e4cf0c221e32a73e735bd5}{telaUtils::limparTela}}();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ telaAtual\ =\ TelaAtual::MENU\_INICIAL;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TelaAtual::CADASTRO:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cntrApresentacaoUsuario-\/>cadastrar();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nPressione\ qualquer\ tecla\ para\ continuar..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cin.ignore();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cin.get();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtelaUtils_ae623467ad6e4cf0c221e32a73e735bd5}{telaUtils::limparTela}}();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ telaAtual\ =\ TelaAtual::MENU\_INICIAL;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TelaAtual::MENU\_PRINCIPAL:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mostrarMenuPrincipal();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ processarMenuPrincipal();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TelaAtual::GERENCIAR\_CONTA:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ processarGerenciarConta();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TelaAtual::GERENCIAR\_INVESTIMENTOS:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ processarGerenciarInvestimentos();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TelaAtual::SAIR:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Obrigado\ por\ utilizar\ nosso\ sistema!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\}\ }
+
+\end{DoxyCodeInclude}
+ 
